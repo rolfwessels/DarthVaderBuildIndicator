@@ -26,14 +26,11 @@ namespace BuildIndicatron.Console
                 System.Console.Out.WriteLine("Test");
             }
 
-            if (Parameters.Test)
+            if (!string.IsNullOrEmpty(Parameters.InputFile))
             {
-                using (var file = new FileStream("Resources/Play/police_s.wav", FileMode.Open, FileAccess.Read))
+                if (File.Exists(Parameters.InputFile))
                 {
-                    using (var player = new SoundPlayer(file))
-                    {
-                        player.PlaySync();
-                    }
+
                 }
             }
         }

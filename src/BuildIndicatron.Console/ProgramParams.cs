@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using CommandLine;
@@ -7,6 +8,7 @@ namespace BuildIndicatron.Console
 {
     public class ProgramParameters
     {
+        [Option("file", HelpText = "upload a file to server")]
         public string InputFile { get; set; }
 
         [Option("length", DefaultValue = -1, HelpText = "The maximum number of bytes to process.")]
@@ -32,6 +34,5 @@ namespace BuildIndicatron.Console
             help.AddOptions(this);
             return help;
         }
-
     }
 }
