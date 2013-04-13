@@ -11,6 +11,9 @@ namespace BuildIndicatron.Console
         [Option("file", HelpText = "upload a file to server")]
         public string InputFile { get; set; }
 
+        [Option("h", DefaultValue = Shared.ApiPaths.LocalHost, HelpText = "Host to connect to")]
+        public string UrlToConnectTo { get; set; }
+
         [Option("length", DefaultValue = -1, HelpText = "The maximum number of bytes to process.")]
         public int MaximumLength { get; set; }
 

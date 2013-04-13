@@ -12,7 +12,7 @@
     </layout>
   </appender>
   <root>
-    <level value="INFO" />
+    <level value="DEBUG" />
     <appender-ref ref="RollingFileAppender" />
   </root>
 </log4net>

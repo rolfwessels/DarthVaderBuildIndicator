@@ -1,0 +1,1 @@
+copy /y "wavs\*" ..\src\BuildIndicatron.Tests\Resources\wavs\*  

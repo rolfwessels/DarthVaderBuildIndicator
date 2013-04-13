@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace BuildIndicatron.UnitTests
+namespace BuildIndicatron.Tests
 {
     [TestFixture]
     public class SampleTests

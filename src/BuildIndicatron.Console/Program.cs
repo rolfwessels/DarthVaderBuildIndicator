@@ -1,6 +1,8 @@
 using System;
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
+using BuildIndicatron.Shared;
 using log4net;
 using log4net.Config;
 
@@ -34,7 +36,7 @@ namespace BuildIndicatron.Console
                 }
                 catch (Exception e)
                 {
-                    Log.Error("Program:Main " + e.Message);
+                    Log.Error(e.Message, e);
                     System.Console.Out.WriteLine(e.Message);
                     return ReturnFailed;
                 }
@@ -80,5 +82,7 @@ namespace BuildIndicatron.Console
         }
 
         #endregion
+
+        
     }
 }

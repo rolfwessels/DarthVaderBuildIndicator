@@ -78,8 +78,12 @@
     <Compile Include="..\BuildIndicatron.Console\Properties\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Api\ApiBase.cs" />
+    <Compile Include="Api\IRobotApi.cs" />
+    <Compile Include="Api\PingResponse.cs" />
     <Compile Include="Api\RobotApi.cs" />
     <Compile Include="Media\WavPlayer.cs" />
+    <Compile Include="MimeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

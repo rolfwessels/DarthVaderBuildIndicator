@@ -1,0 +1,63 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=47AFA779EDED7643BC04C3B37FB7FED3/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=47AFA779EDED7643BC04C3B37FB7FED3/Field/=method/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=47AFA779EDED7643BC04C3B37FB7FED3/Field/=Method/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=47AFA779EDED7643BC04C3B37FB7FED3/Field/=method/Expression/@EntryValue">decapitalize(method)</s:String>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=47AFA779EDED7643BC04C3B37FB7FED3/Field/=method/Order/@EntryValue">2</s:Int64>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=47AFA779EDED7643BC04C3B37FB7FED3/Field/=Method/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=47AFA779EDED7643BC04C3B37FB7FED3/Field/=Param/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=47AFA779EDED7643BC04C3B37FB7FED3/Field/=Param/Order/@EntryValue">1</s:Int64>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=47AFA779EDED7643BC04C3B37FB7FED3/Shortcut/@EntryValue">apimethod</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=47AFA779EDED7643BC04C3B37FB7FED3/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=47AFA779EDED7643BC04C3B37FB7FED3/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=47AFA779EDED7643BC04C3B37FB7FED3/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=47AFA779EDED7643BC04C3B37FB7FED3/Scope/=139FF4CE89E7094686FDA7BF5FFBBE92/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=47AFA779EDED7643BC04C3B37FB7FED3/Scope/=139FF4CE89E7094686FDA7BF5FFBBE92/Type/@EntryValue">Everywhere</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=47AFA779EDED7643BC04C3B37FB7FED3/Text/@EntryValue">[Test]&#xD;
+public async Task $Method$_Call_ValidResponse()&#xD;
+{&#xD;
+    var result = await _robotApi.$Method$("tests");&#xD;
+    result.Should().NotBeNull();&#xD;
+    result.Success.Should().BeTrue();&#xD;
+    result.ErrorMessage.Should().BeNullOrEmpty();&#xD;
+}&#xD;
+&#xD;
+/*&#xD;
+IRobotApi&#xD;
+&#xD;
+Task&lt;$Method$Response&gt; $Method$(string $Param$);&#xD;
+&#xD;
+&#xD;
+public class $Method$Response : BaseResponse&#xD;
+{&#xD;
+}&#xD;
+&#xD;
+RobotApi&#xD;
+&#xD;
+public Task&lt;$Method$Response&gt; $Method$(string $Param$)&#xD;
+        {&#xD;
+            var restRequest = GetRestRequest(ApiPaths.$Method$, Method.GET);&#xD;
+            restRequest.AddUrlSegment("$Param$",$Param$);&#xD;
+            return ProcessDefaultRequest&lt;$Method$Response&gt;(restRequest);&#xD;
+        }&#xD;
+&#xD;
+&#xD;
+ApiPaths&#xD;
+&#xD;
+public const string $Method$ = "/$method$/{$Param$}";&#xD;
+&#xD;
+serverstart.py&#xD;
+&#xD;
+@app.route('/$method$/&lt;$Param$&gt;')&#xD;
+def $method$($Param$):&#xD;
+    response = $Method$Response()&#xD;
+    response.$Param$ = $Param$&#xD;
+    return Response(response.Call(), mimetype='application/json')&#xD;
+&#xD;
+class $Method$Response(BaseResponse):&#xD;
+    def Call(self):&#xD;
+        &#xD;
+        return  self.ReturnJson()&#xD;
+&#xD;
+&#xD;
+*/</s:String></wpf:ResourceDictionary>

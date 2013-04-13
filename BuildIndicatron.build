@@ -36,7 +36,9 @@
   <!-- User targets -->
   <target name="test" depends="compile, run-unit-tests" description="Compile and Run Tests" />
   <target name="cover" depends="compile, run-code-cover-tests" description="Compile and Run Tests" />
+  <target name="upload" depends="msbuild.copy, scp"	description="Upload files to the server" />
   <target name="full" depends="clean, version, test, dist , version.update"	description="Compiles, tests, and produces distributions" />
+  
 
   <!-- Internal targets -->
   <target name="clean" description="Delete Automated Build artifacts">
@@ -74,11 +76,30 @@
       <fileset basedir="${msbuild.ilmerge.sourceFolder}">
         <include name="*.*"/>
         <include name="**/*.*"/>
-<!--        <exclude name="*.exe"/>-->
-<!--        <exclude name="*.dll"/>-->
-<!--        <exclude name="*.pdb"/>-->
       </fileset>
     </copy>
+    <property name="msbuild.ilmerge.sourceFolder" value="${src.folder}\BuildIndicatron.Server\${msbuild.bin.folder}"/>
+    <property name="msbuild.ilmerge.buildFolder" value="${build.debug.dir}\${src.sln.configuration.prefix}BuildIndicatron.Server"/>
+    <echo message="Copy files from ${msbuild.ilmerge.sourceFolder}"/>
+    <echo message="Copy files to ${msbuild.ilmerge.buildFolder}"/>
+    <copy todir="${msbuild.ilmerge.buildFolder}" overwrite="true"   >
+      <fileset basedir="${msbuild.ilmerge.sourceFolder}">
+        <include name="*.*"/>
+        <include name="**/*.*"/>
+      </fileset>
+    </copy>
+    
+    <property name="msbuild.ilmerge.sourceFolder" value="${src.folder}\PyBuildIndicator\robotServer"/>
+    <property name="msbuild.ilmerge.buildFolder" value="${build.debug.dir}\${src.sln.configuration.prefix}PyRobotServer"/>
+    <echo message="Copy files from ${msbuild.ilmerge.sourceFolder}"/>
+    <echo message="Copy files to ${msbuild.ilmerge.buildFolder}"/>
+    <copy todir="${msbuild.ilmerge.buildFolder}" overwrite="true"   >
+      <fileset basedir="${msbuild.ilmerge.sourceFolder}">
+        <include name="*.*"/>
+        <include name="**/*.*"/>
+      </fileset>
+    </copy>
+
 <!--    Use ilmerge-->
 <!--    <echo message="${msbuild.ilmerge.sourceFolder}\Plossum CommandLine.pdb"/>-->
 <!--    <delete file="${msbuild.ilmerge.sourceFolder}\Plossum CommandLine.pdb"/>-->
@@ -202,10 +223,21 @@
   <target name="scp">
     <property name="scp.exe" value="scp" />
     <property name="scp.path" value="C:\Program Files (x86)\Git\bin\" />
-    
-    <property name="scp.commandLine" value="-r build/Release/BuildIndicatron.Console/* pi@192.168.1.14:/home/pi/BuildIndicatron" />
+    <!--    mkdir BuildIndicatron.Console  BuildIndicatron.Server PyRobotServer-->
+    <property name="scp.commandLine" value="-r build/Release/BuildIndicatron.Console/* pi@192.168.1.14:/home/pi/BuildIndicatron.Console" />
     <echo message="${scp.exe} ${scp.commandLine}"  />
     <exec program="${scp.exe}" commandline="${scp.commandLine}" basedir="${scp.path}"  failonerror="false"  workingdir="./" />
+
+    <property name="scp.commandLine" value="-r build/Release/BuildIndicatron.Server/* pi@192.168.1.14:/home/pi/BuildIndicatron.Server" />
+    <echo message="${scp.exe} ${scp.commandLine}"  />
+    <exec program="${scp.exe}" commandline="${scp.commandLine}" basedir="${scp.path}"  failonerror="false"  workingdir="./" />
+
+    <property name="scp.commandLine" value="-r build/Release/PyRobotServer/* pi@192.168.1.14:/home/pi/PyRobotServer" />
+    <echo message="${scp.exe} ${scp.commandLine}"  />
+    <exec program="${scp.exe}" commandline="${scp.commandLine}" basedir="${scp.path}"  failonerror="false"  workingdir="./" />
+
+    <echo message="build\Release\BuildIndicatron.Console\BuildIndicatron.exe --file BuildIndicatron.build --h &quot;http://192.168.1.14:8080/api&quot;" />
+
   </target>
   
   <!-- Drop box -->

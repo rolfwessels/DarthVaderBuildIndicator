@@ -1,4 +1,4 @@
-﻿namespace BuildIndicatron.Server.Models
+﻿namespace BuildIndicatron.Shared.Models
 {
     public class Index
     {

@@ -25,7 +25,7 @@ namespace BuildIndicatron.Server {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Storage\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Storage")]
         public string FileStorage {
             get {
                 return ((string)(this["FileStorage"]));

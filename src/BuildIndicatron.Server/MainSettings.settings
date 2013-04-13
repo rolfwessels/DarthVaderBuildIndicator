@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="FileStorage" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Storage\</Value>
+      <Value Profile="(Default)">Storage</Value>
     </Setting>
   </Settings>
 </SettingsFile>
