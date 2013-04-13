@@ -11,7 +11,10 @@ namespace BuildIndicatron.Core.Api
         Task<PingResponse> Ping();
         Task<PlayMp3FileResponse> PlayMp3File(string fileName);
         Task<TextToSpeechResponse> TextToSpeech(string text);
+        Task<SetupGpIoResponse> GpIoSetup(int pin, GPIO direction);
+        Task<GpIoOutputResponse> GpIoOutput(int pin, bool isOn);
+        
     }
 
-    
+   
 }

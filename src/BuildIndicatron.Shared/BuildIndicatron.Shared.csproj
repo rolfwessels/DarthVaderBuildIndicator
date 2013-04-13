@@ -45,6 +45,7 @@
     <Compile Include="Models\FileUploadUploadResponse.cs" />
     <Compile Include="Models\Index.cs" />
     <Compile Include="Models\PlayMp3FileResponse.cs" />
+    <Compile Include="Models\SetupGpIoResponse.cs" />
     <Compile Include="Models\TextToSpeechResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

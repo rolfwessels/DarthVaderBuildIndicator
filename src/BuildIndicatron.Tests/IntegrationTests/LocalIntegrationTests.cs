@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 using BuildIndicatron.Core.Api;
+using BuildIndicatron.Shared.Models;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -14,7 +15,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
 
         public LocalIntegrationTests()
         {
-            _hostApi = Config.Url;
+            //_hostApi = Config.Url;
+            _hostApi = "http://192.168.1.14:5000/";
         }
 
         #region Setup/Teardown
@@ -64,13 +66,50 @@ namespace BuildIndicatron.Tests.IntegrationTests
         [Test]
         public async Task TextToSpeech_Call_ValidResponse()
         {
-            var result = await _robotApi.TextToSpeech("i'm so cool it is not even funny");
+            var result = await _robotApi.TextToSpeech("nice one");
             result.Should().NotBeNull();
             result.Success.Should().BeTrue();
             result.ErrorMessage.Should().BeNullOrEmpty();
         }
 
-        
+        [Test]
+        public async Task SetupGpIo_Call_ValidResponse()
+        {
+            var result = await _robotApi.GpIoSetup(18,GPIO.Out);
+            result.Should().NotBeNull();
+            result.Success.Should().BeTrue();
+            result.ErrorMessage.Should().BeNullOrEmpty();
+        }
+
+        [Test]
+        public async Task GpIoOutput_Call_ValidResponse()
+        {
+            var result = await _robotApi.GpIoOutput(18, false);
+            result.Should().NotBeNull();
+            result.Success.Should().BeTrue();
+            result.ErrorMessage.Should().BeNullOrEmpty();
+        }
+
+/*
+IRobotApi
+
+RobotApi
+
+
+
+
+ApiPaths
+
+
+
+serverstart.py
+
+
+
+*/
+
+
+
 
 //        [Test]
 //        public async Task PlayAudioFile()
@@ -87,4 +126,6 @@ namespace BuildIndicatron.Tests.IntegrationTests
 //            result
 //        }
     }
+
+    
 }

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
 using System.Threading.Tasks;
 using BuildIndicatron.Shared;
 using BuildIndicatron.Shared.Models;
@@ -45,9 +46,26 @@ namespace BuildIndicatron.Core.Api
         {
             var restRequest = GetRestRequest(ApiPaths.TextToSpeech, Method.GET);
             restRequest.AddUrlSegment("text", text);
+            
             return ProcessDefaultRequest<TextToSpeechResponse>(restRequest);
         }
 
+        public Task<SetupGpIoResponse> GpIoSetup(int pin, GPIO direction)
+        {
+            var restRequest = GetRestRequest(ApiPaths.SetupGpIo, Method.GET);
+            restRequest.AddUrlSegment("pin", pin.ToString(CultureInfo.InvariantCulture));
+            restRequest.AddUrlSegment("direction", direction.ToString());
+            return ProcessDefaultRequest<SetupGpIoResponse>(restRequest);
+        }
+
+     
+        public Task<GpIoOutputResponse> GpIoOutput(int pin, bool isOn)
+        {
+            var restRequest = GetRestRequest(ApiPaths.GpIoOutput, Method.GET);
+            restRequest.AddUrlSegment("pin", pin.ToString(CultureInfo.InvariantCulture));
+            restRequest.AddUrlSegment("ison", isOn.ToString());
+            return ProcessDefaultRequest<GpIoOutputResponse>(restRequest);
+        }
     }
 
    
