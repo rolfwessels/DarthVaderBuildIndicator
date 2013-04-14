@@ -1,16 +1,15 @@
-import io
 import os
 import re
 import urllib
 import urllib2
 import RPi.GPIO as GPIO
 
-from flask import jsonify
 from flask.helpers import json
+from robotServer.helperClasses import MyEncoder
 
 
 class BaseResponse:
-    def __init__(self, ):
+    def __init__(self):
         self.Success = True
         self.ErrorMessage = ""
 
@@ -21,13 +20,6 @@ class BaseResponse:
     def ReturnJson(self):
         self.Success = self.ErrorMessage == "";
         return json.dumps(self, cls=MyEncoder)
-
-
-class MyEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if not isinstance(obj, BaseResponse):
-            return super(MyEncoder, self).default(obj)
-        return obj.__dict__
 
 
 class PingResponse(BaseResponse):
@@ -101,5 +93,13 @@ class GpIoOutputResponse(BaseResponse):
     def Call(self):
         print 'push pin ', self.pin, ' to ' , self.IsOn;
         GPIO.output(int(self.pin), self.IsOn)
+        return self.ReturnJson()
+
+class PassiveResponse(BaseResponse):
+    def __init__(self):
+        BaseResponse.__init__(self)
+        # super(BaseResponse, self).__init__()
+        self.Passive = None
+    def Call(self):
         return self.ReturnJson()
 

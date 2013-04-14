@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BuildIndicatron.Shared.Models
+namespace BuildIndicatron.Shared.Models.ApiResponses
 {
     public class FileUploadUploadResponse : BaseResponse
     {

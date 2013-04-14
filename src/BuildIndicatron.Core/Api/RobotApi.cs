@@ -3,6 +3,8 @@ using System.IO;
 using System.Threading.Tasks;
 using BuildIndicatron.Shared;
 using BuildIndicatron.Shared.Models;
+using BuildIndicatron.Shared.Models.ApiResponses;
+using BuildIndicatron.Shared.Models.Composition;
 using RestSharp;
 
 namespace BuildIndicatron.Core.Api
@@ -13,17 +15,19 @@ namespace BuildIndicatron.Core.Api
         {
         }
 
+        #region IRobotApi Members
+
         public Task<FileUploadHasFileInArchiveResponse> HasFileInArchive(string inputFile)
         {
-            var restRequest = GetRestRequest(ApiPaths.FileUploadHasFileInArchive, Method.GET);
+            RestRequest restRequest = GetRestRequest(ApiPaths.FileUploadHasFileInArchive, Method.GET);
             restRequest.AddUrlSegment("filename", Path.GetFileName(inputFile));
             return ProcessDefaultRequest<FileUploadHasFileInArchiveResponse>(restRequest);
         }
 
         public Task<FileUploadUploadResponse> UploadFile(string inputFile)
         {
-            var restRequest = GetRestRequest(ApiPaths.FileUploadUpload, Method.POST);
-            
+            RestRequest restRequest = GetRestRequest(ApiPaths.FileUploadUpload, Method.POST);
+
             restRequest.AddHeader("Content-Type", "multipart/form-data");
             AddFile(inputFile, restRequest);
             return ProcessDefaultRequest<FileUploadUploadResponse>(restRequest);
@@ -31,42 +35,53 @@ namespace BuildIndicatron.Core.Api
 
         public Task<PingResponse> Ping()
         {
-            var restRequest = GetRestRequest(ApiPaths.Ping, Method.GET);
+            RestRequest restRequest = GetRestRequest(ApiPaths.Ping, Method.GET);
             return ProcessDefaultRequest<PingResponse>(restRequest);
         }
 
         public Task<PlayMp3FileResponse> PlayMp3File(string fileName)
         {
-            var restRequest = GetRestRequest(ApiPaths.PlayMp3File, Method.GET);
+            RestRequest restRequest = GetRestRequest(ApiPaths.PlayMp3File, Method.GET);
             restRequest.AddUrlSegment("fileName", fileName);
             return ProcessDefaultRequest<PlayMp3FileResponse>(restRequest);
         }
 
         public Task<TextToSpeechResponse> TextToSpeech(string text)
         {
-            var restRequest = GetRestRequest(ApiPaths.TextToSpeech, Method.GET);
+            RestRequest restRequest = GetRestRequest(ApiPaths.TextToSpeech, Method.GET);
             restRequest.AddUrlSegment("text", text);
-            
+
             return ProcessDefaultRequest<TextToSpeechResponse>(restRequest);
         }
 
-        public Task<SetupGpIoResponse> GpIoSetup(int pin, GPIO direction)
+        public Task<SetupGpIoResponse> GpIoSetup(int pin, Gpio direction)
         {
-            var restRequest = GetRestRequest(ApiPaths.SetupGpIo, Method.GET);
+            RestRequest restRequest = GetRestRequest(ApiPaths.SetupGpIo, Method.GET);
             restRequest.AddUrlSegment("pin", pin.ToString(CultureInfo.InvariantCulture));
             restRequest.AddUrlSegment("direction", direction.ToString());
             return ProcessDefaultRequest<SetupGpIoResponse>(restRequest);
         }
 
-     
         public Task<GpIoOutputResponse> GpIoOutput(int pin, bool isOn)
         {
-            var restRequest = GetRestRequest(ApiPaths.GpIoOutput, Method.GET);
+            RestRequest restRequest = GetRestRequest(ApiPaths.GpIoOutput, Method.GET);
             restRequest.AddUrlSegment("pin", pin.ToString(CultureInfo.InvariantCulture));
             restRequest.AddUrlSegment("ison", isOn.ToString());
             return ProcessDefaultRequest<GpIoOutputResponse>(restRequest);
         }
-    }
 
-   
+        public Task<PassiveProcessResponse> PassiveProcess()
+        {
+            RestRequest restRequest = GetRestRequest(ApiPaths.PassiveProcess, Method.GET);
+            return ProcessDefaultRequest<PassiveProcessResponse>(restRequest);
+        }
+
+        public Task<PassiveProcessResponse> PassiveProcess(Passive passive)
+        {
+            RestRequest restRequest = GetRestRequest(ApiPaths.PassiveProcess, Method.POST, passive);
+            return ProcessDefaultRequest<PassiveProcessResponse>(restRequest);
+        }
+
+        #endregion
+    }
 }

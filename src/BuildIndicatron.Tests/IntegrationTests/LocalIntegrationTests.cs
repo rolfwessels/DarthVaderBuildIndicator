@@ -1,7 +1,10 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using BuildIndicatron.Core.Api;
 using BuildIndicatron.Shared.Models;
+using BuildIndicatron.Shared.Models.ApiResponses;
+using BuildIndicatron.Shared.Models.Composition;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -55,7 +58,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         }
 
         [Test]
-        public async Task PlayMp3File_Call_ValidResponse1()
+        public async Task PlayMp3File_CallOther_ValidResponse()
         {
             var result = await _robotApi.PlayMp3File("darthvader_dontmakeme.wav");
             result.Should().NotBeNull();
@@ -75,10 +78,10 @@ namespace BuildIndicatron.Tests.IntegrationTests
         [Test]
         public async Task SetupGpIo_Call_ValidResponse()
         {
-            var result = await _robotApi.GpIoSetup(18,GPIO.Out);
+            var result = await _robotApi.GpIoSetup(18,Gpio.Out);
             result.Should().NotBeNull();
-            result.Success.Should().BeTrue();
             result.ErrorMessage.Should().BeNullOrEmpty();
+            result.Success.Should().BeTrue();
         }
 
         [Test]
@@ -86,29 +89,41 @@ namespace BuildIndicatron.Tests.IntegrationTests
         {
             var result = await _robotApi.GpIoOutput(18, false);
             result.Should().NotBeNull();
+            result.ErrorMessage.Should().BeNullOrEmpty();
+            result.Success.Should().BeTrue();
+        }
+
+        [Test]
+        public async Task PassiveProcess_Call_ValidResponse()
+        {
+            var result = await _robotApi.PassiveProcess();
+            result.Should().NotBeNull();
             result.Success.Should().BeTrue();
             result.ErrorMessage.Should().BeNullOrEmpty();
         }
 
-/*
-IRobotApi
-
-RobotApi
-
-
-
-
-ApiPaths
-
-
-
-serverstart.py
-
-
-
-*/
-
-
+        [Test]
+        public async Task PassiveProcess_CallToSetThePassive_ValidResponse()
+        {
+            var result = await _robotApi.PassiveProcess(new Passive()
+            {
+                Interval = 20,
+                StartTime = "07:00",
+                SleepTime = "20:00",
+                Compositions = new List<Choreography>()
+                {
+                    new Choreography() {
+                    Sequences = new List<Sequences>()
+                        {
+                            new SequencesPlaySound() {File = "darthvader_lackoffaith.wav"}
+                        }   
+                    }
+                }
+            });
+            result.Should().NotBeNull();
+            result.Success.Should().BeTrue();
+            result.ErrorMessage.Should().BeNullOrEmpty();
+        }
 
 
 //        [Test]

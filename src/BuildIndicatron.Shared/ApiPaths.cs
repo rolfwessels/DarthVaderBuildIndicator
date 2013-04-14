@@ -10,5 +10,7 @@
         public const string PlayMp3File = "/playmp3file/{fileName}";
         public const string SetupGpIo = "/setupgpio/{pin}/{direction}";
         public const string GpIoOutput = "/ouputgpio/{pin}/{ison}";
+        public const string PassiveProcess = "/passive";
+
     }
 }

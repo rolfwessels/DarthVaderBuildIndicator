@@ -80,7 +80,6 @@
     </Compile>
     <Compile Include="IntegrationTests\Config.cs" />
     <Compile Include="IntegrationTests\LocalIntegrationTests.cs" />
-    <Compile Include="IntegrationTests\RemoteIntegrationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleTests.cs" />
   </ItemGroup>

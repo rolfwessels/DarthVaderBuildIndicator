@@ -40,13 +40,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiPaths.cs" />
-    <Compile Include="Models\BaseResponse.cs" />
-    <Compile Include="Models\FileUploadHasFileInArchiveResponse.cs" />
-    <Compile Include="Models\FileUploadUploadResponse.cs" />
-    <Compile Include="Models\Index.cs" />
-    <Compile Include="Models\PlayMp3FileResponse.cs" />
-    <Compile Include="Models\SetupGpIoResponse.cs" />
-    <Compile Include="Models\TextToSpeechResponse.cs" />
+    <Compile Include="Models\ApiResponses\BaseResponse.cs" />
+    <Compile Include="Models\ApiResponses\FileUploadHasFileInArchiveResponse.cs" />
+    <Compile Include="Models\ApiResponses\FileUploadUploadResponse.cs" />
+    <Compile Include="Models\ApiResponses\GpIoOutputResponse.cs" />
+    <Compile Include="Models\ApiResponses\PlayMp3FileResponse.cs" />
+    <Compile Include="Models\ApiResponses\PassiveProcessResponse.cs" />
+    <Compile Include="Models\ApiResponses\SetupGpIoResponse.cs" />
+    <Compile Include="Models\ApiResponses\TextToSpeechResponse.cs" />
+    <Compile Include="Models\Composition\Choreography.cs" />
+    <Compile Include="Models\Composition\SequencesPlaySound.cs" />
+    <Compile Include="Models\Composition\Passive.cs" />
+    <Compile Include="Models\Composition\Sequences.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

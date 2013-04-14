@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using BuildIndicatron.Shared;
 using BuildIndicatron.Shared.Models;
+using BuildIndicatron.Shared.Models.ApiResponses;
 using Nancy;
 using log4net;
 
