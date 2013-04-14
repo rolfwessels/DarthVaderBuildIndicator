@@ -1,105 +1,60 @@
-import os
-import re
-import urllib
-import urllib2
-import RPi.GPIO as GPIO
+from robotServer.helperClasses import MediaPlayer
 
-from flask.helpers import json
-from robotServer.helperClasses import MyEncoder
+__author__ = 'rolf'
+PLAYSOUND = "playsound"
+
+class Sequences(object):
+    def __init__(self, typeName):
+        self.__type = typeName
+
+    def get_Type(self):
+        return self.__type
+
+    Type = property(fget=get_Type)
 
 
-class BaseResponse:
+class SequencesPlaySound(Sequences):
+    def __init__(self, fileName=""):
+        super(SequencesPlaySound, self).__init__(PLAYSOUND)
+        self.File = fileName
+
+
+class Passive(object):
     def __init__(self):
-        self.Success = True
-        self.ErrorMessage = ""
+        self.Initialize()
 
-    def setStatus(self, status, errorMessage=""):
-        self.Success = status
-        self.ErrorMessage = errorMessage
+    def __init__(self, **params):
+        self.Initialize()
+        self.__dict__.update(params)
 
-    def ReturnJson(self):
-        self.Success = self.ErrorMessage == "";
-        return json.dumps(self, cls=MyEncoder)
-
-
-class PingResponse(BaseResponse):
-    def Call(self):
-        self.setStatus(True)
-        return self.ReturnJson()
+    def Initialize(self):
+        self.Interval = 5000
+        self.StartTime = "06:00"
+        self.SleepTime = "19:00"
+        self.LastRun = None
+        self.Compositions = []
 
 
-class PlayMp3FileResponse(BaseResponse):
-    def GetMediaPlayer(self):
-        if os.path.exists("/usr/bin/mpg321"):
-            return "/usr/bin/mpg321"
-        else:
-            return 'D:\\Work\\Projects\\Home\\BuildIndicatron\\var\\cmdmp3\cmdmp3.exe'
-
-    def Play(self, file):
-        callSystem = self.GetMediaPlayer() + ' ' + file + ''
-        return os.system(callSystem)
-
-    def Call(self):
-        self.Path = 'Resources/mp3/' + self.FileName
-
-        self.FileFound = os.path.exists(self.Path)
-        self.callResponse = 0
-        if not self.FileFound:
-            self.ErrorMessage = "File could not be found"
-        else:
-            self.callResponse = self.Play(self.Path)
-        if self.callResponse == 1:
-            self.ErrorMessage = 'Could not call the process [' + self.GetMediaPlayer() + ' ' + self.Path + ']'
-        return self.ReturnJson()
-
-
-class TextToSpeechResponse(BaseResponse):
-    def ConvertToFileName(self, text):
-        return re.sub('[^A-z0-9]', '_', text);
-
-    def Download(self, url, toFile=None):
-        request = urllib2.Request(url)
-        request.add_header('User-Agent',
-                           'Mozilla/5.0 (Windows; U; Windows NT 5.1; it; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11')
-        opener = urllib2.build_opener()
-        f = open(toFile, 'w')
-        f.write(opener.open(request).read())
-        f.flush()
-        f.close()
-
-    def Call(self):
-        url = 'http://translate.google.com/translate_tts?tl=en&q=' + urllib.quote_plus(self.text)
-        self.SaveTo = 'Resources/mp3/' + self.ConvertToFileName(self.text) + '.mp3'
-        if not os.path.exists(self.SaveTo):
-            print "downloading file " + self.SaveTo
-            self.Download(url, self.SaveTo)
-
-        player = PlayMp3FileResponse()
-        player.Play(self.SaveTo)
-
-        return self.ReturnJson()
-
-
-class SetupGpIoResponse(BaseResponse):
-    def Call(self):
-        out = GPIO.OUT if self.direction.upper() == 'out'.upper() else GPIO.IN
-        print 'settings pin ' + self.pin + ' to ' + str(self.direction)
-        GPIO.setmode(GPIO.BCM)
-        GPIO.setup(int(self.pin), out)
-        return self.ReturnJson()
-
-
-class GpIoOutputResponse(BaseResponse):
-    def Call(self):
-        print 'push pin ', self.pin, ' to ' , self.IsOn;
-        GPIO.output(int(self.pin), self.IsOn)
-        return self.ReturnJson()
-
-class PassiveResponse(BaseResponse):
+class Choreography(object):
     def __init__(self):
-        BaseResponse.__init__(self)
-        # super(BaseResponse, self).__init__()
-        self.Passive = None
-    def Call(self):
-        return self.ReturnJson()
+        self.__sequences = []
 
+    def get_Sequences(self):
+        return self.__sequences
+
+    def set_Sequences(self, value):
+        self.__sequences = value
+
+    Sequences = property(fget=get_Sequences, fset=set_Sequences)
+
+    def Execute(self):
+        for sequence in self.Sequences:
+            if sequence.Type == PLAYSOUND:
+                MediaPlayer().Play(self.Sequences.File)
+
+
+    @staticmethod
+    def SimpleChoreographyPlaySound(fileName):
+        choreography = Choreography()
+        choreography.Sequences.append(SequencesPlaySound(fileName))
+        return choreography
