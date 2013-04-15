@@ -17,6 +17,10 @@ namespace BuildIndicatron.Core.Api
         Task<GpIoOutputResponse> GpIoOutput(int pin, bool isOn);
         Task<PassiveProcessResponse> PassiveProcess();
         Task<PassiveProcessResponse> PassiveProcess(Passive passive);
+        Task<EnqueueResponse> Enqueue(Choreography choreography);
+
+
+       
     }
 
    

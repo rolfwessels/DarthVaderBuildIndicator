@@ -1,3 +1,4 @@
+import datetime
 from flask import json
 import os
 import threading
@@ -6,10 +7,10 @@ import time
 
 class MyEncoder(json.JSONEncoder):
     def default(self, obj):
-        # if not isinstance(obj, BaseResponse):
-        #     return super(MyEncoder, self).default(obj)
-        # if not isinstance(obj, BaseResponse):
-        #     return super(MyEncoder, self).default(obj)
+    # if not isinstance(obj, BaseResponse):
+    #     return super(MyEncoder, self).default(obj)
+    #     if isinstance(obj, datetime.datetime):
+    #         return "Dasdasdasdasd".__dict__
         return obj.__dict__
 
 
@@ -27,6 +28,7 @@ class SleepingThread(threading.Thread):
 
 
 class MediaPlayer():
+
     _instance = None
 
     def __new__(cls, *args, **kwargs):
@@ -36,7 +38,9 @@ class MediaPlayer():
         return cls._instance
 
     def __init__(self):
+
         self.MediaPlayer = self.DetermineTheMediaPlayer()
+        print "Media player is ", self.MediaPlayer
 
     def DetermineTheMediaPlayer(self):
         if os.path.exists("/usr/bin/mpg321"):

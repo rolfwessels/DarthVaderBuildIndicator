@@ -10,6 +10,7 @@ class PassiveManager():
         self.Timer = SleepingThread(self.ThreadTimerTick, 5)
         self.Timer.start()
         self.runner = composition_runner
+        self.LastRun = datetime.datetime.now()
 
     def SetCurrentPassive(self, passive):
         print "Setting new passive", passive
@@ -17,13 +18,14 @@ class PassiveManager():
             self.CurrentPassive = passive
 
     def ThreadTimerTick(self):
-        if self.CurrentPassive.LastRun is None \
-            or (datetime.datetime.now() - self.CurrentPassive.LastRun).total_seconds() > self.CurrentPassive.Interval:
-            self.CurrentPassive.LastRun = datetime.datetime.now()
+        pass
+        if  (datetime.datetime.now() - self.LastRun).total_seconds() > (self.CurrentPassive.Interval*60):
+            self.CurrentPassive.LastRun =  str(datetime.datetime.now())
+            self.LastRun = datetime.datetime.now()
             self.RunRandomSequence()
         # else:
-        #     seconds = (datetime.datetime.now() - self.CurrentPassive.LastRun).total_seconds()
-        #     print "The passive is ticking", seconds
+        #     seconds = (datetime.datetime.now() - self.LastRun).total_seconds()
+            # print "The passive is ticking", seconds
 
     def RunRandomSequence(self):
         print "Running a Composition"

@@ -13,5 +13,7 @@
         {
             get { return _type; }
         }
+
+        public int BeginTime { get; set; }
     }
 }

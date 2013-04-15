@@ -22,7 +22,7 @@ namespace BuildIndicatron.Server.Modules
 
             Get[ApiPaths.FileUploadUpload] = x =>
                 {
-                    var model = new Index {Name = "Boss Hawg"};
+                    var model = new object();
                     return View["FileUpload", model];
                 };
 

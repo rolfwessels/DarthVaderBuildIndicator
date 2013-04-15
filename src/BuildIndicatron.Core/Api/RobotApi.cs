@@ -82,6 +82,12 @@ namespace BuildIndicatron.Core.Api
             return ProcessDefaultRequest<PassiveProcessResponse>(restRequest);
         }
 
+        public Task<EnqueueResponse> Enqueue(Choreography choreography)
+        {
+            var restRequest = GetRestRequest(ApiPaths.Enqueue, Method.POST, choreography);
+            return ProcessDefaultRequest<EnqueueResponse>(restRequest);
+        }
+
         #endregion
     }
 }

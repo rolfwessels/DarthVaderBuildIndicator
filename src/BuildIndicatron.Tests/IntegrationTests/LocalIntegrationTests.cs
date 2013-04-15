@@ -78,7 +78,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         [Test]
         public async Task SetupGpIo_Call_ValidResponse()
         {
-            var result = await _robotApi.GpIoSetup(18,Gpio.Out);
+            var result = await _robotApi.GpIoSetup(25,Gpio.Out);
             result.Should().NotBeNull();
             result.ErrorMessage.Should().BeNullOrEmpty();
             result.Success.Should().BeTrue();
@@ -87,7 +87,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         [Test]
         public async Task GpIoOutput_Call_ValidResponse()
         {
-            var result = await _robotApi.GpIoOutput(18, false);
+            var result = await _robotApi.GpIoOutput(25, true);
             result.Should().NotBeNull();
             result.ErrorMessage.Should().BeNullOrEmpty();
             result.Success.Should().BeTrue();
@@ -107,7 +107,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         {
             var result = await _robotApi.PassiveProcess(new Passive()
             {
-                Interval = 20,
+                Interval = 10,
                 StartTime = "07:00",
                 SleepTime = "20:00",
                 Compositions = new List<Choreography>()
@@ -115,9 +115,64 @@ namespace BuildIndicatron.Tests.IntegrationTests
                     new Choreography() {
                     Sequences = new List<Sequences>()
                         {
-                            new SequencesPlaySound() {File = "darthvader_lackoffaith.wav"}
+                            new SequencesPlaySound() {File = "darthvader_failedme.wav"},
+                        }   
+                    } , 
+                    new Choreography() {
+                    Sequences = new List<Sequences>()
+                        {
+                            new SequencesPlaySound() {File = "darthvader_pointless.wav"},
+                        }   
+                    }, 
+                    new Choreography() {
+                    Sequences = new List<Sequences>()
+                        {
+                            new SequencesPlaySound() {File = "darthvader_yesmaster.wav"},
+                        }   
+                    }, 
+                    new Choreography() {
+                        Sequences = new List<Sequences>()
+                        {
+                            new SequencesPlaySound() {File = "hansolo_captain.wav"},
                         }   
                     }
+
+                }
+            });
+            result.Should().NotBeNull();
+            result.Success.Should().BeTrue();
+            result.ErrorMessage.Should().BeNullOrEmpty();
+        }
+
+        [Test]
+        public async Task Enqueue_Call_ValidResponse()
+        {
+            var result = await _robotApi.Enqueue(new Choreography()
+            {
+                Sequences = new List<Sequences>() { 
+                    new SequencesGpIo() { BeginTime=0, Pin=25 , IsOn = true },
+                    new SequencesGpIo() { BeginTime=1000, Pin=25 , IsOn = false },
+                    new SequencesGpIo() { BeginTime=1000, Pin=23 , IsOn = true },
+                    new SequencesGpIo() { BeginTime=2000, Pin=23 , IsOn = false }
+                }
+            });
+            result.Should().NotBeNull();
+            result.Success.Should().BeTrue();
+            result.ErrorMessage.Should().BeNullOrEmpty();
+        }
+
+        [Test]
+        public async Task Enqueue_Call2_ValidResponse()
+        {
+            var result = await _robotApi.Enqueue(new Choreography()
+            {
+                Sequences = new List<Sequences>() { 
+                    new SequencesGpIo() { BeginTime=0, Pin=25 , IsOn = true },
+                    new SequencesPlaySound() {File = "hansolo_captain.wav"},
+                    new SequencesGpIo() { BeginTime=4000, Pin=25 , IsOn = false },
+                    new SequencesGpIo() { BeginTime=4000, Pin=23 , IsOn = true },
+                    new SequencesGpIo() { BeginTime=11000, Pin=23 , IsOn = false },
+                    new SequencesText2Speech() { BeginTime=11000, Text = "Wicked this seems to work" }
                 }
             });
             result.Should().NotBeNull();
@@ -142,5 +197,4 @@ namespace BuildIndicatron.Tests.IntegrationTests
 //        }
     }
 
-    
 }

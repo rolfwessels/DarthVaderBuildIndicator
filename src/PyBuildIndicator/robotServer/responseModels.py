@@ -6,7 +6,7 @@ import RPi.GPIO as GPIO
 
 from flask.helpers import json
 from robotServer.helperClasses import MyEncoder
-from robotServer.models import Choreography
+from robotServer.models import Choreography, RESOURCES_SOUNDS_, RESOURCES_TEXT_SPEACH_
 
 
 class BaseResponse:
@@ -30,9 +30,8 @@ class PingResponse(BaseResponse):
 
 
 class PlayMp3FileResponse(BaseResponse):
-
     def Call(self, runner):
-        self.Path = 'Resources/mp3/' + self.FileName
+        self.Path = RESOURCES_SOUNDS_ + self.FileName
         self.FileFound = os.path.exists(self.Path)
         self.callResponse = 0
 
@@ -46,27 +45,8 @@ class PlayMp3FileResponse(BaseResponse):
 
 
 class TextToSpeechResponse(BaseResponse):
-    def ConvertToFileName(self, text):
-        return re.sub('[^A-z0-9]', '_', text);
-
-    def Download(self, url, toFile=None):
-        request = urllib2.Request(url)
-        request.add_header('User-Agent',
-                           'Mozilla/5.0 (Windows; U; Windows NT 5.1; it; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11')
-        opener = urllib2.build_opener()
-        f = open(toFile, 'w')
-        f.write(opener.open(request).read())
-        f.flush()
-        f.close()
-
     def Call(self, runner):
-        url = 'http://translate.google.com/translate_tts?tl=en&q=' + urllib.quote_plus(self.text)
-        self.SaveTo = 'Resources/mp3/' + self.ConvertToFileName(self.text) + '.mp3'
-        if not os.path.exists(self.SaveTo):
-            print "downloading file " + self.SaveTo
-            self.Download(url, self.SaveTo)
-
-        runner.AddChoreography(Choreography.SimpleChoreographyPlaySound(self.SaveTo))
+        runner.AddChoreography(Choreography.SimpleSequencesText2Speech(self.Text))
         return self.ReturnJson()
 
 
@@ -81,9 +61,12 @@ class SetupGpIoResponse(BaseResponse):
 
 class GpIoOutputResponse(BaseResponse):
     def Call(self):
-        print 'push pin ', self.pin, ' to ' , self.IsOn;
-        GPIO.output(int(self.pin), self.IsOn)
+        print 'push pin ', self.pin, ' to ', self.IsOn;
+        pin = int(self.pin)
+        GPIO.setup(pin, GPIO.OUT)
+        GPIO.output(pin, self.IsOn)
         return self.ReturnJson()
+
 
 class PassiveResponse(BaseResponse):
     def __init__(self):
@@ -93,3 +76,13 @@ class PassiveResponse(BaseResponse):
     def Call(self):
         return self.ReturnJson()
 
+
+class EnqueueResponse(BaseResponse):
+    def __init__(self):
+        BaseResponse.__init__(self)
+        self.Choreography = None
+
+    def Call(self, runner):
+        if self.Choreography is not None:
+            runner.AddChoreography(self.Choreography)
+        return self.ReturnJson()
