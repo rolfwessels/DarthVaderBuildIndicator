@@ -1,20 +1,36 @@
 from __future__ import with_statement
 from RPi import GPIO
 from flask import Flask, redirect, url_for, render_template, jsonify, Response, request
-from responseModels import PingResponse, PlayMp3FileResponse, TextToSpeechResponse, SetupGpIoResponse, GpIoOutputResponse, PassiveResponse, EnqueueResponse
+from multiprocessing import Lock
+from responseModels import PingResponse, PlayMp3FileResponse, TextToSpeechResponse, SetupGpIoResponse, GpIoOutputResponse, PassiveResponse, EnqueueResponse, SetButtonChoreographyResponse
 from robotServer.CompositionRunner import CompositionRunner
 from robotServer.backgroundProcess import PassiveManager
 
 # configuration
+from robotServer.buttonClickRunner import buttonClickRunner
 from robotServer.models import Passive, Choreography
 
 DEBUG = True
 MP3PATH = "Resources/mp3"
+bRedPin = 17
+bGreenPin = 24
+lsRedPin = 27
+lsGreenPin = 9
+lsBluePin = 11
+buttonPin = 10
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(bRedPin, GPIO.OUT)
+GPIO.setup(bGreenPin, GPIO.OUT)
+GPIO.setup(lsBluePin, GPIO.OUT)
+GPIO.setup(lsGreenPin, GPIO.OUT)
+GPIO.setup(lsRedPin, GPIO.OUT)
+GPIO.setup(buttonPin, GPIO.IN)
 
 # globals
 GlobalCompositionRunner = CompositionRunner()
 GlobalCurrentProcess = PassiveManager(GlobalCompositionRunner)
-
+GlobalButtonClickRunner = buttonClickRunner(buttonPin,GlobalCompositionRunner)
 
 # create our little application :)
 app = Flask(__name__)
@@ -47,7 +63,7 @@ def setup_gpio(pin,direction):
     response = SetupGpIoResponse()
     response.pin = pin
     response.direction = direction
-    return Response(response.Call(), mimetype='application/json')
+    return Response(response.Call(GlobalCompositionRunner), mimetype='application/json')
 
 @app.route('/ouputgpio/<pin>/<ison>')
 def output_gpio(pin,ison):
@@ -55,7 +71,7 @@ def output_gpio(pin,ison):
     response.pin = int(pin)
     print "ke > ",ison
     response.IsOn = ison in ['true', '1', 't', 'y', 'yes', 'yeah', 'TRUE', 'certainly', 'True']
-    return Response(response.Call(), mimetype='application/json')
+    return Response(response.Call(GlobalCompositionRunner), mimetype='application/json')
 
 @app.route('/passive')
 def get_passive():
@@ -79,10 +95,16 @@ def enqueue():
     response.Choreography = Choreography(request.json)
     return Response(response.Call(GlobalCompositionRunner), mimetype='application/json')
 
+@app.route('/setButtonChoreography', methods=['POST'])
+def setButtonChoreography():
+    response = SetButtonChoreographyResponse()
+    response.Choreography = Choreography(request.json)
+    GlobalButtonClickRunner.SetChoreography(response.Choreography)
+    return Response(response.Call(), mimetype='application/json')
+
+
 if __name__ == '__main__':
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(25, GPIO.OUT)
-    GPIO.setup(23, GPIO.OUT)
+
     app.run(host='0.0.0.0')
 
 

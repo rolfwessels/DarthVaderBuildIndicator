@@ -19,7 +19,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         public LocalIntegrationTests()
         {
             //_hostApi = Config.Url;
-            _hostApi = "http://192.168.1.14:5000/";
+            _hostApi = "http://192.168.1.13:5000/";
         }
 
         #region Setup/Teardown
@@ -69,7 +69,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         [Test]
         public async Task TextToSpeech_Call_ValidResponse()
         {
-            var result = await _robotApi.TextToSpeech("nice one");
+            var result = await _robotApi.TextToSpeech("werner is the biggest pus");
             result.Should().NotBeNull();
             result.Success.Should().BeTrue();
             result.ErrorMessage.Should().BeNullOrEmpty();
@@ -87,7 +87,16 @@ namespace BuildIndicatron.Tests.IntegrationTests
         [Test]
         public async Task GpIoOutput_Call_ValidResponse()
         {
-            var result = await _robotApi.GpIoOutput(25, true);
+            var result = await _robotApi.GpIoOutput(24, false);
+            result.Should().NotBeNull();
+            result.ErrorMessage.Should().BeNullOrEmpty();
+            result.Success.Should().BeTrue();
+        }
+
+        [Test]
+        public async Task GpIoOutput_Call_ValidResponse1()
+        {
+            var result = await _robotApi.GpIoOutput(17, true);
             result.Should().NotBeNull();
             result.ErrorMessage.Should().BeNullOrEmpty();
             result.Success.Should().BeTrue();
@@ -107,7 +116,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         {
             var result = await _robotApi.PassiveProcess(new Passive()
             {
-                Interval = 10,
+                Interval = 5,
                 StartTime = "07:00",
                 SleepTime = "20:00",
                 Compositions = new List<Choreography>()
@@ -147,13 +156,72 @@ namespace BuildIndicatron.Tests.IntegrationTests
         [Test]
         public async Task Enqueue_Call_ValidResponse()
         {
+            var pinRed = 17;
+            var pinGreen = 24;
             var result = await _robotApi.Enqueue(new Choreography()
             {
                 Sequences = new List<Sequences>() { 
-                    new SequencesGpIo() { BeginTime=0, Pin=25 , IsOn = true },
-                    new SequencesGpIo() { BeginTime=1000, Pin=25 , IsOn = false },
-                    new SequencesGpIo() { BeginTime=1000, Pin=23 , IsOn = true },
-                    new SequencesGpIo() { BeginTime=2000, Pin=23 , IsOn = false }
+                    new SequencesGpIo() { BeginTime=0, Pin=pinRed , IsOn = true },
+                    new SequencesGpIo() { BeginTime=1000, Pin=pinRed , IsOn = false },
+                    new SequencesGpIo() { BeginTime=1000, Pin=pinGreen , IsOn = true },
+                    new SequencesGpIo() { BeginTime=2000, Pin=pinGreen , IsOn = false }
+                }
+            });
+            result.Should().NotBeNull();
+            result.Success.Should().BeTrue();
+            result.ErrorMessage.Should().BeNullOrEmpty();
+        }
+
+         [Test]
+        public async Task Werner_Show_oFf()
+        {
+             
+            var pinRed = 27;
+            var pinBlue = 11;
+            var pinGreen = 9;
+
+            var result = await _robotApi.Enqueue(new Choreography()
+            {
+                Sequences = new List<Sequences>() { 
+                    new SequencesGpIo() { BeginTime=0, Pin=pinRed , IsOn = false },
+                    new SequencesGpIo() { BeginTime=0, Pin=pinBlue , IsOn = true },
+                    new SequencesGpIo() { BeginTime=0, Pin=pinGreen , IsOn = false },
+
+                    
+                    new SequencesGpIo() { BeginTime=2999, Pin=pinBlue , IsOn = false },
+                    new SequencesGpIo() { BeginTime=2999, Pin=pinRed , IsOn = true },
+                    new SequencesPlaySound() {BeginTime=3000, File = "darthvader_poweroftheforce.wav"},
+                    
+                    
+                    new SequencesGpIo() { BeginTime=13000, Pin=pinBlue , IsOn = true },
+                    new SequencesPlaySound() {BeginTime=14000, File = "darthvader_yourfather.wav"},
+                    new SequencesGpIo() { BeginTime=14000, Pin=pinGreen , IsOn = true },
+                    new SequencesGpIo() { BeginTime=14000, Pin=pinBlue , IsOn = false },
+                    new SequencesGpIo() { BeginTime=14000, Pin=pinRed , IsOn = false },
+                    new SequencesText2Speech() { BeginTime=14000, Text = "Wynand !!! How cool is this!" }
+                }
+            });
+            result.Should().NotBeNull();
+            result.Success.Should().BeTrue();
+            result.ErrorMessage.Should().BeNullOrEmpty();
+        }
+
+
+        
+        [Test]
+        public async Task Enqueue_Call2_ValidResponse()
+        {
+            var pinBlue = 11;
+            var pinGreen = 9;
+
+            var result = await _robotApi.Enqueue(new Choreography()
+            {
+                Sequences = new List<Sequences>() { 
+                    new SequencesGpIo() { BeginTime=0, Pin=pinBlue , IsOn = true },
+                    new SequencesPlaySound() {File = "hansolo_captain.wav"},
+                    new SequencesGpIo() { BeginTime=4000, Pin=pinBlue , IsOn = false },
+                    new SequencesGpIo() { BeginTime=4000, Pin=pinGreen , IsOn = true },
+                    new SequencesText2Speech() { BeginTime=5000, Text = "Wicked this seems to work" }
                 }
             });
             result.Should().NotBeNull();
@@ -162,17 +230,22 @@ namespace BuildIndicatron.Tests.IntegrationTests
         }
 
         [Test]
-        public async Task Enqueue_Call2_ValidResponse()
+        public async Task Enqueue_Call3_ValidResponse()
         {
+            var pinRed = 17;
+            var pinGreen = 24;
+
             var result = await _robotApi.Enqueue(new Choreography()
             {
                 Sequences = new List<Sequences>() { 
-                    new SequencesGpIo() { BeginTime=0, Pin=25 , IsOn = true },
-                    new SequencesPlaySound() {File = "hansolo_captain.wav"},
-                    new SequencesGpIo() { BeginTime=4000, Pin=25 , IsOn = false },
-                    new SequencesGpIo() { BeginTime=4000, Pin=23 , IsOn = true },
-                    new SequencesGpIo() { BeginTime=11000, Pin=23 , IsOn = false },
-                    new SequencesText2Speech() { BeginTime=11000, Text = "Wicked this seems to work" }
+                    new SequencesGpIo() { BeginTime=0, Pin=pinGreen , IsOn = true },
+                    new SequencesText2Speech() { BeginTime=0, Text = "Build Done by rolf has passed" },
+                    new SequencesGpIo() { BeginTime=0, Pin=pinGreen , IsOn = false },
+                    new SequencesGpIo() { BeginTime=0, Pin=pinRed , IsOn = true },
+                    new SequencesPlaySound() {File = "hansolo_situation.wav"},
+                    new SequencesGpIo() { BeginTime=4000, Pin=pinRed , IsOn = true },
+                    
+                    
                 }
             });
             result.Should().NotBeNull();
@@ -181,20 +254,22 @@ namespace BuildIndicatron.Tests.IntegrationTests
         }
 
 
-//        [Test]
-//        public async Task PlayAudioFile()
-//        {
-//            var sendChoreography = _robotApi.SendChoreography(new Choreography()
-//                {
-//                    Sequences = new List<Sequences>()
-//                        {
-//                            new SequencesPlaySound() {File = "wavs/darthvader_lackoffaith.wav"}
-//                        }
-//                });
-//
-//            var result = await sendChoreography;
-//            result
-//        }
+        [Test]
+        public async Task SetButtonChoreography_Call_ValidResponse()
+        {
+            var result = await _robotApi.SetButtonChoreography(new Choreography()
+            {
+                Sequences = new List<Sequences>() { 
+                    new SequencesText2Speech() { BeginTime=0, Text = "20 builds passed. 1 failed. development bla bla bla" }
+                }
+            });
+
+
+            result.Should().NotBeNull();
+            result.Success.Should().BeTrue();
+            result.ErrorMessage.Should().BeNullOrEmpty();
+        }
+
     }
 
 }

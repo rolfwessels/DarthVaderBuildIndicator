@@ -140,3 +140,9 @@ class Choreography(object):
         choreography = Choreography()
         choreography.Sequences.append(SequencesText2Speech(text))
         return choreography
+
+    @staticmethod
+    def SimpleSequencesGpIo(pin, state):
+        choreography = Choreography()
+        choreography.Sequences.append(SequencesGpIo(pin,state))
+        return choreography

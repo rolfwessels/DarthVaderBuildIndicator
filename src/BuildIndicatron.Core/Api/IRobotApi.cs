@@ -18,6 +18,9 @@ namespace BuildIndicatron.Core.Api
         Task<PassiveProcessResponse> PassiveProcess();
         Task<PassiveProcessResponse> PassiveProcess(Passive passive);
         Task<EnqueueResponse> Enqueue(Choreography choreography);
+        Task<SetButtonChoreographyResponse> SetButtonChoreography(Choreography choreography);
+
+
 
 
        

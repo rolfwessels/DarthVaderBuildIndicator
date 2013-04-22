@@ -13,11 +13,11 @@ class CompositionRunner():
         self.StartTheThread()
 
     def Initialize(self):
-        self.sleepTime = 5
+        self.sleepTime = 1
         self.queue = Queue()
 
     def StartTheThread(self):
-        self.Timer = SleepingThread(self.WorkingFunction, 2)
+        self.Timer = SleepingThread(self.WorkingFunction, 1)
         self.Timer.start()
         print "Starting the running thread"
 

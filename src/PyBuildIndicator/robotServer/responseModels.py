@@ -51,20 +51,20 @@ class TextToSpeechResponse(BaseResponse):
 
 
 class SetupGpIoResponse(BaseResponse):
-    def Call(self):
+    def Call(self,runnner):
         out = GPIO.OUT if self.direction.upper() == 'out'.upper() else GPIO.IN
         print 'settings pin ' + self.pin + ' to ' + str(self.direction)
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(int(self.pin), out)
+        # runner.AddChoreography(Choreography.SimpleSequencesGpIo(pin,self.IsOn))
         return self.ReturnJson()
 
 
 class GpIoOutputResponse(BaseResponse):
-    def Call(self):
+    def Call(self, runner):
         print 'push pin ', self.pin, ' to ', self.IsOn;
         pin = int(self.pin)
-        GPIO.setup(pin, GPIO.OUT)
-        GPIO.output(pin, self.IsOn)
+        runner.AddChoreography(Choreography.SimpleSequencesGpIo(pin,self.IsOn))
         return self.ReturnJson()
 
 
@@ -86,3 +86,8 @@ class EnqueueResponse(BaseResponse):
         if self.Choreography is not None:
             runner.AddChoreography(self.Choreography)
         return self.ReturnJson()
+
+class SetButtonChoreographyResponse(BaseResponse):
+    def Call(self):
+
+        return  self.ReturnJson()

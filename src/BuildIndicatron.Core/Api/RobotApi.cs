@@ -88,6 +88,12 @@ namespace BuildIndicatron.Core.Api
             return ProcessDefaultRequest<EnqueueResponse>(restRequest);
         }
 
+        public Task<SetButtonChoreographyResponse> SetButtonChoreography(Choreography choreography)
+        {
+            var restRequest = GetRestRequest(ApiPaths.SetButtonChoreography, Method.POST, choreography);
+            return ProcessDefaultRequest<SetButtonChoreographyResponse>(restRequest);
+        }
+
         #endregion
     }
 }

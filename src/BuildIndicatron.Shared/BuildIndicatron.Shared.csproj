@@ -47,6 +47,7 @@
     <Compile Include="Models\ApiResponses\GpIoOutputResponse.cs" />
     <Compile Include="Models\ApiResponses\PlayMp3FileResponse.cs" />
     <Compile Include="Models\ApiResponses\PassiveProcessResponse.cs" />
+    <Compile Include="Models\ApiResponses\SetButtonChoreographyResponse.cs" />
     <Compile Include="Models\ApiResponses\SetupGpIoResponse.cs" />
     <Compile Include="Models\ApiResponses\TextToSpeechResponse.cs" />
     <Compile Include="Models\Composition\Choreography.cs" />
