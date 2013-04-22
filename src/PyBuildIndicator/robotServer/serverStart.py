@@ -52,7 +52,7 @@ def playMp3File(filename):
     player.FileName = filename
     return Response(player.Call(GlobalCompositionRunner), mimetype='application/json')
 
-@app.route('/TextToSpeech/<text>')
+@app.route('/texttospeech/<text>')
 def  TextToSpeech(text):
     response = TextToSpeechResponse()
     response.Text = text

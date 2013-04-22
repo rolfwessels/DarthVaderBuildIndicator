@@ -1,5 +1,6 @@
 from RPi import GPIO
 import os
+from random import choice
 import re
 import urllib
 import urllib2
@@ -43,7 +44,17 @@ class SequencesPlaySound(Sequences):
 
     def ExecuteFirstInstance(self):
         print "play the file ", self.File
-        MediaPlayer().Play(RESOURCES_SOUNDS_ + self.File)
+        soundFile = RESOURCES_SOUNDS_ + self.File
+        if os.path.isdir(soundFile):
+            soundFile = RESOURCES_SOUNDS_ + choice(os.listdir(soundFile))
+            print soundFile
+            MediaPlayer().Play(soundFile)
+
+
+
+
+        elif os.path.exists(soundFile):
+            MediaPlayer().Play(soundFile)
         super(SequencesPlaySound, self).ExecuteFirstInstance()
 
 
@@ -144,5 +155,5 @@ class Choreography(object):
     @staticmethod
     def SimpleSequencesGpIo(pin, state):
         choreography = Choreography()
-        choreography.Sequences.append(SequencesGpIo(pin,state))
+        choreography.Sequences.append(SequencesGpIo(pin, state))
         return choreography
