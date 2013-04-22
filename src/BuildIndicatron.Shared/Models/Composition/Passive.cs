@@ -6,9 +6,9 @@ namespace BuildIndicatron.Shared.Models.Composition
     {
         public int Interval { get; set; }
 
-        public string StartTime { get; set; }
+        public int StartTime { get; set; }
 
-        public string SleepTime { get; set; }
+        public int SleepTime { get; set; }
 
         public List<Choreography> Compositions { get; set; }
     }

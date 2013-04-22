@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 using CommandLine;
 using CommandLine.Text;
 
@@ -8,21 +6,29 @@ namespace BuildIndicatron.Console
 {
     public class ProgramParameters
     {
-        [Option("file", HelpText = "upload a file to server")]
-        public string InputFile { get; set; }
+        
+        [Option('h',  HelpText = "Host to connect to")]
+        public string Host { get; set; }
 
-        [Option("h", DefaultValue = Shared.ApiPaths.LocalHost, HelpText = "Host to connect to")]
-        public string UrlToConnectTo { get; set; }
-
-        [Option("length", DefaultValue = -1, HelpText = "The maximum number of bytes to process.")]
-        public int MaximumLength { get; set; }
-
-        [Option('v', null, HelpText = "Print details during execution.")]
+        [Option('v', HelpText = "Print details during execution.")]
         public bool Verbose { get; set; }
 
-        [Option('p', null, HelpText = "Play test file")]
-        public bool Test { get; set; }
+        [Option('m', HelpText = "additional message")]
+        public string Message { get; set; }
 
+        [Option("setpassive", HelpText = "Set the passive")]
+        public bool SetPassive { get; set; }
+
+        [Option('s', HelpText = "set state [Success - Fail - InProgress]")]
+        public string State { get; set; }
+
+        [Option("ls", HelpText = "Set state for light saber")]
+        public bool LightSaber { get; set; }
+
+        [Option("glow", HelpText = "Set state for lower glow")]
+        public bool Glow { get; set; }
+        
+        
         [HelpOption]
         public string GetUsage()
         {

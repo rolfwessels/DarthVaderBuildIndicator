@@ -72,10 +72,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="serverStart.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="serverStart.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/robotServer/serverStart.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="0" selection-start="1734" selection-end="1734" vertical-scroll-proportion="0.0">
+            <state line="22" column="29" selection-start="794" selection-end="794" vertical-scroll-proportion="-2.574944">
               <folding />
             </state>
           </provider>
@@ -119,10 +119,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_compositionRunner.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="test_compositionRunner.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/robotServer/test_compositionRunner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="12" selection-start="375" selection-end="375" vertical-scroll-proportion="0.3803132">
+            <state line="13" column="0" selection-start="502" selection-end="502" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -153,9 +153,9 @@
         <option value="$PROJECT_DIR$/robotServer/templates/buttonClickRunner.py" />
         <option value="$PROJECT_DIR$/robotServer/responseModels.py" />
         <option value="$PROJECT_DIR$/robotServer/buttonClickRunner.py" />
-        <option value="$PROJECT_DIR$/robotServer/serverStart.py" />
         <option value="$PROJECT_DIR$/robotServer/test_compositionRunner.py" />
         <option value="$PROJECT_DIR$/robotServer/models.py" />
+        <option value="$PROJECT_DIR$/robotServer/serverStart.py" />
       </list>
     </option>
   </component>
@@ -272,7 +272,7 @@
       <recent name="D:\Work\Projects\Home\BuildIndicatron\src\PyBuildIndicator\flaskr" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittest TestCompositionRunner.test_RunCorr">
+  <component name="RunManager" selected="Python.serverStart">
     <configuration default="false" name="serverStart" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -454,9 +454,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestCompositionRunner.test_RunCorr" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest serverStart_Tests.test_playMp3File" />
-        <item index="2" class="java.lang.String" itemvalue="Python.serverStart" />
+        <item index="0" class="java.lang.String" itemvalue="Python.serverStart" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestCompositionRunner.test_RunCorr" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest serverStart_Tests.test_playMp3File" />
         <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestPassive" />
         <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestPassive.testButton" />
       </list>
@@ -491,7 +491,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -505,7 +505,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.67261904" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26256078" sideWeight="0.6270784" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37292162" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37292162" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -640,13 +640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/robotServer/serverStart.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="1734" selection-end="1734" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/2105529800/ntpath.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="0" selection-start="838" selection-end="838" vertical-scroll-proportion="0.0">
@@ -691,10 +684,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/robotServer/test_compositionRunner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="12" selection-start="375" selection-end="375" vertical-scroll-proportion="0.3803132">
+        <state line="13" column="0" selection-start="502" selection-end="502" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robotServer/serverStart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="29" selection-start="794" selection-end="794" vertical-scroll-proportion="-2.574944">
+          <folding />
         </state>
       </provider>
     </entry>

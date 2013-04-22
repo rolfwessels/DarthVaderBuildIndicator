@@ -117,35 +117,22 @@ namespace BuildIndicatron.Tests.IntegrationTests
             var result = await _robotApi.PassiveProcess(new Passive()
             {
                 Interval = 5,
-                StartTime = "07:00",
-                SleepTime = "20:00",
+                StartTime = 7,
+                SleepTime = 20,
                 Compositions = new List<Choreography>()
                 {
                     new Choreography() {
                     Sequences = new List<Sequences>()
                         {
-                            new SequencesPlaySound() {File = "darthvader_failedme.wav"},
+                            new SequencesPlaySound() {File = "Funny"},
                         }   
                     } , 
                     new Choreography() {
                     Sequences = new List<Sequences>()
                         {
-                            new SequencesPlaySound() {File = "darthvader_pointless.wav"},
-                        }   
-                    }, 
-                    new Choreography() {
-                    Sequences = new List<Sequences>()
-                        {
-                            new SequencesPlaySound() {File = "darthvader_yesmaster.wav"},
-                        }   
-                    }, 
-                    new Choreography() {
-                        Sequences = new List<Sequences>()
-                        {
-                            new SequencesPlaySound() {File = "hansolo_captain.wav"},
+                            new SequencesPlaySound() {File = "Wtf"},
                         }   
                     }
-
                 }
             });
             result.Should().NotBeNull();
@@ -190,11 +177,11 @@ namespace BuildIndicatron.Tests.IntegrationTests
                     
                     new SequencesGpIo() { BeginTime=2999, Pin=pinBlue , IsOn = false },
                     new SequencesGpIo() { BeginTime=2999, Pin=pinRed , IsOn = true },
-                    new SequencesPlaySound() {BeginTime=3000, File = "darthvader_poweroftheforce.wav"},
+                    new SequencesPlaySound() {BeginTime=3000, File = "Fail"},
                     
                     
                     new SequencesGpIo() { BeginTime=13000, Pin=pinBlue , IsOn = true },
-                    new SequencesPlaySound() {BeginTime=14000, File = "darthvader_yourfather.wav"},
+                    new SequencesPlaySound() {BeginTime=14000, File = "Success"},
                     new SequencesGpIo() { BeginTime=14000, Pin=pinGreen , IsOn = true },
                     new SequencesGpIo() { BeginTime=14000, Pin=pinBlue , IsOn = false },
                     new SequencesGpIo() { BeginTime=14000, Pin=pinRed , IsOn = false },
@@ -218,7 +205,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
             {
                 Sequences = new List<Sequences>() { 
                     new SequencesGpIo() { BeginTime=0, Pin=pinBlue , IsOn = true },
-                    new SequencesPlaySound() {File = "hansolo_captain.wav"},
+                    new SequencesPlaySound() {File = "Success"},
                     new SequencesGpIo() { BeginTime=4000, Pin=pinBlue , IsOn = false },
                     new SequencesGpIo() { BeginTime=4000, Pin=pinGreen , IsOn = true },
                     new SequencesText2Speech() { BeginTime=5000, Text = "Wicked this seems to work" }
@@ -242,7 +229,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
                     new SequencesText2Speech() { BeginTime=0, Text = "Build Done by rolf has passed" },
                     new SequencesGpIo() { BeginTime=0, Pin=pinGreen , IsOn = false },
                     new SequencesGpIo() { BeginTime=0, Pin=pinRed , IsOn = true },
-                    new SequencesPlaySound() {File = "hansolo_situation.wav"},
+                    new SequencesPlaySound() {File = "Fail"},
                     new SequencesGpIo() { BeginTime=4000, Pin=pinRed , IsOn = true },
                     
                     
@@ -252,7 +239,6 @@ namespace BuildIndicatron.Tests.IntegrationTests
             result.Success.Should().BeTrue();
             result.ErrorMessage.Should().BeNullOrEmpty();
         }
-
 
         [Test]
         public async Task SetButtonChoreography_Call_ValidResponse()
@@ -269,7 +255,6 @@ namespace BuildIndicatron.Tests.IntegrationTests
             result.Success.Should().BeTrue();
             result.ErrorMessage.Should().BeNullOrEmpty();
         }
-
     }
 
 }
