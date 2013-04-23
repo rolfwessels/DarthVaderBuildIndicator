@@ -50,13 +50,14 @@ namespace BuildIndicatron.Core.Api
             Log.Debug(string.Format("ApiBase:ProcessDefaultRequest {0} {1} [{2}]", request.Method, buildUri, request.Parameters.FirstOrDefault(x=>x.Name == _applicationJson)));
             stopwatch.Start();
             var taskCompletionSource = new TaskCompletionSource<T>();
+            
             RestClientExtensions.ExecuteAsync<T>(_client, request, response =>
                 {
                     Exception errorException = null;
                     try
                     {
                         stopwatch.Stop();
-                        Log.Debug(string.Format("ApiBase:ProcessDefaultRequest Content {0} [RequestTime:{1}] [{2}]", buildUri, stopwatch.Elapsed, response.Content));
+                        Log.Debug(string.Format("ApiBase:ProcessDefaultRequest Content {0} [RequestTime:{1}] [{2}]", buildUri, stopwatch.ElapsedMilliseconds, response.Content));
                         if (response.ErrorException == null && response.StatusCode == HttpStatusCode.OK)
                         {
                             var result = response.Data;

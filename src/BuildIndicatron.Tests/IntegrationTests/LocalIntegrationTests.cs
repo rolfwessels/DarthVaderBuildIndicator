@@ -18,6 +18,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
 
         public LocalIntegrationTests()
         {
+            log4net.Config.XmlConfigurator.Configure(new FileInfo("Log4Net.config"));
             //_hostApi = Config.Url;
             _hostApi = "http://192.168.1.13:5000/";
         }
@@ -27,7 +28,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         [SetUp]
         public void Setup()
         {
-            log4net.Config.XmlConfigurator.Configure(new FileInfo("Log4Net.config"));
+            
             _robotApi = new RobotApi(_hostApi);
         }
 

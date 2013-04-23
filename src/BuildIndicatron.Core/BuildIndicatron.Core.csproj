@@ -80,6 +80,11 @@
     </Compile>
     <Compile Include="Api\ApiBase.cs" />
     <Compile Include="Api\IRobotApi.cs" />
+    <Compile Include="Api\JenkensApi.cs" />
+    <Compile Include="Api\Model\ChangeSet.cs" />
+    <Compile Include="Api\Model\LastFailedBuild.cs" />
+    <Compile Include="Api\Model\JenkensProjectsResult.cs" />
+    <Compile Include="Api\Model\Job.cs" />
     <Compile Include="Api\PingResponse.cs" />
     <Compile Include="Api\RobotApi.cs" />
     <Compile Include="Media\WavPlayer.cs" />

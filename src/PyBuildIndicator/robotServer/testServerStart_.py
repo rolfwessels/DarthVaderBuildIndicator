@@ -4,7 +4,7 @@ import serverStart
 import unittest
 
 
-class serverStart_Tests(unittest.TestCase):
+class test_serverStart(unittest.TestCase):
     def setUp(self):
         """Before each test, set up a blank database"""
         print "Starting"
