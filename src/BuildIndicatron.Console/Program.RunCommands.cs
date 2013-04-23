@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Media;
 using System.Threading.Tasks;
 using BuildIndicatron.Core.Api;
 using BuildIndicatron.Shared.Models.Composition;
@@ -43,6 +41,39 @@ namespace BuildIndicatron.Console
                 var buildState = GetState();
                 SetGlow(buildState, Parameters.Message);
             }
+
+            if (!string.IsNullOrEmpty(Parameters.ButtonClick))
+            {
+                SetButtonClick(Parameters.ButtonClick);
+            }
+
+
+            if (Parameters.Off)
+            {
+                var result = CurrenRobotAmi.Enqueue(new Choreography() { Sequences = new List<Sequences>() { 
+                    new SequencesGpIo() { Pin = AppSettings.Default.LsBluePin , IsOn =  false},
+                    new SequencesGpIo() { Pin = AppSettings.Default.LsGreenPin , IsOn =  false},
+                    new SequencesGpIo() { Pin = AppSettings.Default.LsRedPin , IsOn =  false},
+                    new SequencesGpIo() { Pin = AppSettings.Default.FeetGreenPin , IsOn =  false},
+                    new SequencesGpIo() { Pin = AppSettings.Default.FeetRedPin , IsOn =  false}
+                } });
+                result.Wait();
+            }
+        }
+
+        private void SetButtonClick(string message)
+        {
+            var choreography = new Choreography()
+                {
+                    Sequences = new List<Sequences>()
+                        {
+                            new SequencesGpIo() { BeginTime = 0 ,Pin = AppSettings.Default.LsBluePin , IsOn =  true},
+                            new SequencesText2Speech() {BeginTime = 0, Text = message},
+                            new SequencesGpIo() { BeginTime = 1000,Pin = AppSettings.Default.LsBluePin , IsOn =  false},
+                        }
+                };
+            var result = CurrenRobotAmi.SetButtonChoreography(choreography);
+            result.Wait();
         }
 
         private States GetState()

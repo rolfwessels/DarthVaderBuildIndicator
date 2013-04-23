@@ -27,8 +27,14 @@ namespace BuildIndicatron.Console
 
         [Option("glow", HelpText = "Set state for lower glow")]
         public bool Glow { get; set; }
-        
-        
+
+
+        [Option("off", HelpText = "Stop all lights")]
+        public bool Off { get; set; }
+
+        [Option("button", HelpText = "Text to be read when the button gets clicked")]
+        public string ButtonClick { get; set; }
+
         [HelpOption]
         public string GetUsage()
         {
