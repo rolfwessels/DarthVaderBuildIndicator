@@ -45,5 +45,8 @@ class CompositionRunner():
                 else :
                     print "Huh this is not a Sequences", sequence
             time.sleep(0.01)
+        # reset to allow another playback
+        for sequence in item.Sequences:
+            sequence.Done = False
 
 

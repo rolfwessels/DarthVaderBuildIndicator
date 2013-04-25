@@ -44,6 +44,9 @@ cd sox-14.4.1
 ./configure
 make -s && make install
 
+sudo apt-get -y install libsox-fmt-mp3 sox
+
+
 sudo apt-get -y install git-core
 sudo wget http://goo.gl/1BOfJ -O /usr/bin/rpi-update && sudo chmod +x /usr/bin/rpi-update
 sudo rpi-update

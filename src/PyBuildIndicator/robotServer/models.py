@@ -1,4 +1,6 @@
 from RPi import GPIO
+import hashlib
+import md5
 import os
 from random import choice
 import re
@@ -76,7 +78,11 @@ class SequencesText2Speech(Sequences):
         self.Text = text
 
     def ConvertToFileName(self, text):
-        return re.sub('[^A-z0-9]', '_', text);
+        hash = hashlib.md5(text).hexdigest()
+        print hash
+        print re.sub('[^A-z0-9]', '_', text)[:30]
+        code = re.sub('[^A-z0-9]', '_', text)[:30] + '_' + str(hash)
+        return code
 
     def Download(self, url, toFile=None):
         request = urllib2.Request(url)
@@ -89,13 +95,49 @@ class SequencesText2Speech(Sequences):
         f.close()
 
     def ExecuteFirstInstance(self):
-        self.SaveTo = RESOURCES_TEXT_SPEACH_ + self.ConvertToFileName(self.Text) + '.mp3'
-        if not os.path.exists(self.SaveTo):
-            url = 'http://translate.google.com/translate_tts?tl=en&q=' + urllib.quote_plus(self.Text)
-            print "downloading file " + self.SaveTo
-            self.Download(url, self.SaveTo)
-        MediaPlayer().Play(self.SaveTo)
+        strings = self.SplitString(self.Text)
+        print "reading"
+        print strings
+        for s in strings:
+            self.PlayPartText(s)
         super(SequencesText2Speech, self).ExecuteFirstInstance()
+
+    def PlayPartText(self, input):
+        self.SaveTo = RESOURCES_TEXT_SPEACH_ + self.ConvertToFileName(input) + '.mp3'
+        if not os.path.exists(self.SaveTo):
+            url = 'http://translate.google.com/translate_tts?tl=en&q=' + urllib.quote_plus(input)
+            print "downloading file " + url + " " + self.SaveTo
+            self.Download(url, self.SaveTo)
+            self.Transform(self.SaveTo)
+        os.system("play " + self.SaveTo + " echo 0.8 0.88 6.0 0.4")
+
+
+    def SplitString(self, string):
+        strings = []
+        sentences = string.split('.')
+        for sentence in sentences:
+            if len(sentence) < 80:
+                strings.append(sentence)
+            else:
+                st = ""
+                for i, word in enumerate(sentence.split(), 1):
+                    if len(st) < 80:
+                        st += word + " "
+                    else:
+                        strings.append(st)
+                        st = ""
+                strings.append(st)
+        return strings
+
+    def Transform(self, SaveTo):
+        path = "Resources/text2speach/"
+        tmpF = path + "foreground.mp3"
+        tmpB = path + "background.mp3"
+        background = path + "Star-Wars-1391.mp3"
+
+        os.system("sox " + SaveTo + " -r 32000 " + tmpF + "  speed 0.75")
+        os.system("sox -v 0.2 " + background + " -r 32000 " + tmpB)
+        os.system("sox -m " + tmpB + "  " + tmpF + " " + SaveTo)
 
 
 class Passive(object):

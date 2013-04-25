@@ -8,11 +8,11 @@
     <file path="/serverStart.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1366643760322" ignored="false" />
     <file path="/show_entries.html" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365844449384" ignored="false" />
     <file path="/pingResponse.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365879453057" ignored="false" />
-    <file path="/models.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1366644612597" ignored="false" />
+    <file path="/models.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1366922583452" ignored="false" />
     <file path="/a.dummy" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1366644598117" ignored="false" />
     <file path="/serverStart_tests.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365925617210" ignored="false" />
     <file path="/backgroundProcess.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365936360252" ignored="false" />
-    <file path="/CompositionRunner.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1366059617494" ignored="false" />
+    <file path="/CompositionRunner.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1366730338088" ignored="false" />
     <file path="/helperClasses.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365936485388" ignored="false" />
     <file path="/Python Console" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365940026832" ignored="false" />
     <file path="/test_passive.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365941780460" ignored="false" />
@@ -20,6 +20,7 @@
     <file path="/responseModels.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1366060918483" ignored="false" />
     <file path="/buttonClickRunner.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1366573054591" ignored="false" />
     <file path="/test_compositionRunner.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1366644530838" ignored="false" />
+    <file path="/test_sequencesText2Speech.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1366921474947" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,17 +40,93 @@
       <file leaf-file-name="serverStart.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/robotServer/serverStart.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="25" selection-start="1381" selection-end="1381" vertical-scroll-proportion="0.0">
+            <state line="102" column="26" selection-start="3527" selection-end="3527" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testServerStart_.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/robotServer/testServerStart_.py">
+      <file leaf-file-name="responseModels.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/robotServer/responseModels.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="15" selection-start="86" selection-end="86" vertical-scroll-proportion="0.1390593">
+            <state line="55" column="36" selection-start="1626" selection-end="1626" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/robotServer/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="111" column="39" selection-start="3287" selection-end="3287" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="helperClasses.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/robotServer/helperClasses.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="50" column="8" selection-start="1314" selection-end="1314" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Install.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Install.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_serverStart_.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/robotServer/test_serverStart_.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="15" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_sequencesText2Speech.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/robotServer/test_sequencesText2Speech.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="0" selection-start="1048" selection-end="1048" vertical-scroll-proportion="0.5971564">
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_passive.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/robotServer/test_passive.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="8" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hashlib.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/2105529800/hashlib.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_gpio.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/robotServer/test_gpio.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="72" column="0" selection-start="1515" selection-end="1515" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,22 +141,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/flaskr/flaskr.py" />
-        <option value="$PROJECT_DIR$/robotServer/serverStart_tests.py" />
-        <option value="$USER_HOME$/.PyCharm20/system/python_stubs/2105529800/time.py" />
-        <option value="$PROJECT_DIR$/robotServer/helperClasses.py" />
         <option value="$PROJECT_DIR$/robotServer/test_passive.py" />
         <option value="$PROJECT_DIR$/robotServer/templates/TestGpio.py" />
         <option value="$PROJECT_DIR$/robotServer/backgroundProcess.py" />
-        <option value="$PROJECT_DIR$/robotServer/CompositionRunner.py" />
         <option value="$PROJECT_DIR$/robotServer/TestGpio.py" />
         <option value="$PROJECT_DIR$/robotServer/templates/buttonClickRunner.py" />
         <option value="$PROJECT_DIR$/robotServer/responseModels.py" />
         <option value="$PROJECT_DIR$/robotServer/buttonClickRunner.py" />
         <option value="$PROJECT_DIR$/robotServer/test_compositionRunner.py" />
-        <option value="$PROJECT_DIR$/robotServer/models.py" />
-        <option value="$PROJECT_DIR$/robotServer/serverStart.py" />
         <option value="$PROJECT_DIR$/robotServer/testServerStart_.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/robotServer/main.py" />
+        <option value="$PROJECT_DIR$/robotServer/serverStart.py" />
+        <option value="$PROJECT_DIR$/robotServer/CompositionRunner.py" />
+        <option value="$USER_HOME$/.PyCharm20/system/python_stubs/2105529800/hashlib.py" />
+        <option value="$PROJECT_DIR$/robotServer/models.py" />
+        <option value="$PROJECT_DIR$/robotServer/test_sequencesText2Speech.py" />
       </list>
     </option>
   </component>
@@ -115,6 +192,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -149,22 +227,21 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
-    <property name="options.lastSelected" value="preferences.keymap" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="preferences.keymap" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/robotServer/models.py" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
   </component>
   <component name="PublishConfig" serverName="Pi" serverId="8865d74a-9859-4986-9dc9-5da3fff13cdf" autoUpload="true" showNewOnTargetInSync="false">
     <servers>
@@ -216,75 +293,6 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittest TestPassive.testButton" type="tests" factoryName="Unittests" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/robotServer" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <module name="PyBuildIndicator" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\Work\Projects\Home\BuildIndicatron\src\PyBuildIndicator\robotServer\test_gpio.py" />
-      <option name="CLASS_NAME" value="TestPassive" />
-      <option name="METHOD_NAME" value="testButton" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittests in TestPassive" type="tests" factoryName="Unittests" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/robotServer" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <module name="PyBuildIndicator" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\Work\Projects\Home\BuildIndicatron\src\PyBuildIndicator\robotServer\test_gpio.py" />
-      <option name="CLASS_NAME" value="TestPassive" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_CLASS" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest test_serverStart.test_playMp3File" type="tests" factoryName="Unittests" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/robotServer" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <module name="PyBuildIndicator" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\Work\Projects\Home\BuildIndicatron\src\PyBuildIndicator\robotServer\testServerStart_.py" />
-      <option name="CLASS_NAME" value="test_serverStart" />
-      <option name="METHOD_NAME" value="test_playMp3File" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
     <configuration default="false" name="Unittest TestCompositionRunner.test_RunCorr" type="tests" factoryName="Unittests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -297,6 +305,69 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/robotServer/test_compositionRunner.py" />
       <option name="CLASS_NAME" value="TestCompositionRunner" />
       <option name="METHOD_NAME" value="test_RunCorr" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/robotServer" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <module name="PyBuildIndicator" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/robotServer/main.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestSequencesText2Speech.testSplitString" type="tests" factoryName="Unittests" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/robotServer" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <module name="PyBuildIndicator" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/robotServer/test_sequencesText2Speech.py" />
+      <option name="CLASS_NAME" value="TestSequencesText2Speech" />
+      <option name="METHOD_NAME" value="testSplitString" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestSequencesText2Speech.testingSample" type="tests" factoryName="Unittests" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/robotServer" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <module name="PyBuildIndicator" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/robotServer/test_sequencesText2Speech.py" />
+      <option name="CLASS_NAME" value="TestSequencesText2Speech" />
+      <option name="METHOD_NAME" value="testingSample" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -371,18 +442,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.serverStart" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestPassive.testButton" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in TestPassive" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest test_serverStart.test_playMp3File" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestCompositionRunner.test_RunCorr" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestCompositionRunner.test_RunCorr" />
+      <item index="2" class="java.lang.String" itemvalue="Python.main" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestSequencesText2Speech.testSplitString" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestSequencesText2Speech.testingSample" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.serverStart" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestCompositionRunner.test_RunCorr" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest test_serverStart.test_playMp3File" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestPassive" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestPassive.testButton" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestSequencesText2Speech.testingSample" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestSequencesText2Speech.testSplitString" />
+        <item index="3" class="java.lang.String" itemvalue="Python.main" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestCompositionRunner.test_RunCorr" />
       </list>
     </recent_temporary>
   </component>
@@ -415,24 +486,24 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779098" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27552673" sideWeight="0.6270784" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39904988" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297619" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.67261904" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.67261904" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26256078" sideWeight="0.6270784" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37292162" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27552673" sideWeight="0.5973872" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.267423" sideWeight="0.5973872" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39904988" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.67261904" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297619" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40261284" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779098" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -492,44 +563,50 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/robotServer/responseModels.py</url>
-          <line>85</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/robotServer/models.py</url>
-          <line>67</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="7" />
+      <option name="time" value="8" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/2105529800/Queue.py">
+    <entry file="file://$PROJECT_DIR$/robotServer/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="8" selection-start="3866" selection-end="3866" vertical-scroll-proportion="0.0" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/2105529800/__builtin__.py">
+    <entry file="file://$PROJECT_DIR$/robotServer/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3286" column="8" selection-start="112092" selection-end="112092" vertical-scroll-proportion="0.0">
+        <state line="10" column="0" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/2105529800/RPi/GPIO.py">
+    <entry file="file://$PROJECT_DIR$/robotServer/CompositionRunner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="18" vertical-scroll-proportion="0.0">
+        <state line="34" column="28" selection-start="939" selection-end="939" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robotServer/test_compositionRunner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="502" selection-end="502" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robotServer/buttonClickRunner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="26" selection-start="1027" selection-end="1027" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/robotServer/helperClasses.py">
+    <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/2105529800/md5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="703" selection-end="703" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -539,21 +616,27 @@
         <state line="72" column="0" selection-start="1515" selection-end="1515" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <marker date="1366567144000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/2105529800/ntpath.py">
+    <entry file="file://$PROJECT_DIR$/robotServer/responseModels.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="838" selection-end="838" vertical-scroll-proportion="0.0">
+        <state line="55" column="36" selection-start="1626" selection-end="1626" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/robotServer/CompositionRunner.py">
+    <entry file="file://$PROJECT_DIR$/robotServer/serverStart.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="2" selection-start="1112" selection-end="1112" vertical-scroll-proportion="0.92075473">
+        <state line="102" column="26" selection-start="3527" selection-end="3527" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Install.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -565,65 +648,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/robotServer/responseModels.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="35" selection-start="2638" selection-end="2667" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/robotServer/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="35" selection-start="1372" selection-end="1372" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/robotServer/test_compositionRunner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="502" selection-end="502" vertical-scroll-proportion="0.83396226">
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-            <marker date="1366644532000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1366644532000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/robotServer/backgroundProcess.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="80" selection-start="1219" selection-end="1259" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/robotServer/buttonClickRunner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="799" selection-end="799" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/robotServer/__init__.py">
+    <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/2105529800/hashlib.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/robotServer/serverStart.py">
+    <entry file="file://$PROJECT_DIR$/robotServer/test_serverStart_.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="25" selection-start="1381" selection-end="1381" vertical-scroll-proportion="0.0">
+        <state line="6" column="15" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/robotServer/testServerStart_.py">
+    <entry file="file://$PROJECT_DIR$/robotServer/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="15" selection-start="86" selection-end="86" vertical-scroll-proportion="0.1390593">
+        <state line="111" column="39" selection-start="3287" selection-end="3287" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robotServer/helperClasses.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="8" selection-start="1314" selection-end="1314" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robotServer/test_sequencesText2Speech.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="0" selection-start="1048" selection-end="1048" vertical-scroll-proportion="0.5971564">
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

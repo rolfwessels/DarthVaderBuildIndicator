@@ -20,18 +20,14 @@ namespace BuildIndicatron.Tests.IntegrationTests
         [Test]
         public async Task GetAllProjects()
         {
-            var allProjects = await JenkensProjectsResult();
-            allProjects.Should().NotBeNull();
+            var projects = await JenkensProjectsResult();
+            projects.Should().NotBeNull();
         }
 
         private static async Task<JenkensProjectsResult> JenkensProjectsResult()
         {
             var jenkensApi = new JenkensApi();
-            if (allProjects == null)
-            {
-                allProjects = await jenkensApi.GetAllProjects();
-            }
-            return allProjects;
+            return allProjects ?? (allProjects = await jenkensApi.GetAllProjects());
         }
     }
 

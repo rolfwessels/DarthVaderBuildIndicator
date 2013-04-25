@@ -32,10 +32,7 @@ GlobalCompositionRunner = CompositionRunner()
 GlobalCurrentProcess = PassiveManager(GlobalCompositionRunner)
 GlobalButtonClickRunner = buttonClickRunner(buttonPin,GlobalCompositionRunner)
 
-# create our little application :)
 app = Flask(__name__)
-app.config.from_object(__name__)
-app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
 @app.route('/')
 def show_index():
@@ -104,7 +101,6 @@ def setButtonChoreography():
 
 
 if __name__ == '__main__':
-
     app.run(host='0.0.0.0')
 
 

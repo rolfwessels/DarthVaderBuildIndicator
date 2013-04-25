@@ -1,14 +1,13 @@
-rem Example of how to do batch processing with SoX on MS-Windows.
-rem
-rem Place this file in the same folder as sox.exe (& rename it as appropriate).
-rem You can then drag and drop a selection of files onto the batch file (or
-rem onto a `short-cut' to it).
-rem
-rem In this example, the converted files end up in a folder called `converted',
-rem but this, of course, can be changed, as can the parameters to the sox
-rem command.
 
-cd %~dp0
-mkdir converted
-FOR %%A IN (%*) DO sox %%A "converted/%%~nxA" rate -v 44100
-pause
+sox translate_tts.mp3 -r 32000 foreground.mp3  speed 0.75
+sox -v 0.2 Star-Wars-1391.mp3 -r 32000 background.mp3
+sox -m background.mp3 foreground.mp3 test.mp3
+
+start test.mp3
+
+rem sox Star-Wars-1391.mp3  -r 32000 background.mp3
+rem sox translate_tts.mp3  -r 32000 foreground.mp3
+rem remsox -v 1.880 background.mp3 background.mp3
+rem sox -v 2.880 foreground.mp3 foreground.mp3
+rem sox -m background.mp3 foreground.mp3 test.mp3
+
