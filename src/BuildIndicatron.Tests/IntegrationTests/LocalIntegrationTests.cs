@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using BuildIndicatron.Core.Api;
 using BuildIndicatron.Shared.Models;
@@ -70,7 +71,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         [Test]
         public async Task TextToSpeech_Call_ValidResponse()
         {
-            var result = await _robotApi.TextToSpeech("werner is the biggest pus");
+            var result = await _robotApi.TextToSpeech("werner is the biggest pusy");
             result.Should().NotBeNull();
             result.Success.Should().BeTrue();
             result.ErrorMessage.Should().BeNullOrEmpty();
@@ -255,6 +256,17 @@ namespace BuildIndicatron.Tests.IntegrationTests
             result.Should().NotBeNull();
             result.Success.Should().BeTrue();
             result.ErrorMessage.Should().BeNullOrEmpty();
+        }
+
+        [Test]
+        public async Task GetClips_Call_ValidResponse()
+        {
+            var result = await _robotApi.GetClips();
+            result.Should().NotBeNull();
+            result.Success.Should().BeTrue();
+            result.ErrorMessage.Should().BeNullOrEmpty();
+            result.Folders.Count.Should().BeGreaterOrEqualTo(4);
+            result.Folders.First().Files.Count.Should().BeGreaterOrEqualTo(2);
         }
     }
 

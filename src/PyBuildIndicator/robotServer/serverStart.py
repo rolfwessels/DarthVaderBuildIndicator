@@ -2,7 +2,7 @@ from __future__ import with_statement
 from RPi import GPIO
 from flask import Flask, redirect, url_for, render_template, jsonify, Response, request
 from multiprocessing import Lock
-from responseModels import PingResponse, PlayMp3FileResponse, TextToSpeechResponse, SetupGpIoResponse, GpIoOutputResponse, PassiveResponse, EnqueueResponse, SetButtonChoreographyResponse
+from responseModels import PingResponse, PlayMp3FileResponse, TextToSpeechResponse, SetupGpIoResponse, GpIoOutputResponse, PassiveResponse, EnqueueResponse, SetButtonChoreographyResponse, GetClipsResponse
 from robotServer.CompositionRunner import CompositionRunner
 from robotServer.backgroundProcess import PassiveManager
 
@@ -98,6 +98,12 @@ def setButtonChoreography():
     response.Choreography = Choreography(request.json)
     GlobalButtonClickRunner.SetChoreography(response.Choreography)
     return Response(response.Call(), mimetype='application/json')
+
+@app.route('/getClips')
+def getClips():
+    response = GetClipsResponse()
+    return Response(response.Call(), mimetype='application/json')
+
 
 
 if __name__ == '__main__':

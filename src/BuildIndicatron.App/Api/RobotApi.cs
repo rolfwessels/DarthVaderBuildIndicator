@@ -1,13 +1,14 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.IO;
-using System.Threading.Tasks;
+using BuildIndicatron.App.Api.Model;
+using BuildIndicatron.App.Core.Task;
 using BuildIndicatron.Shared;
-using BuildIndicatron.Shared.Models;
 using BuildIndicatron.Shared.Models.ApiResponses;
 using BuildIndicatron.Shared.Models.Composition;
 using RestSharp;
 
-namespace BuildIndicatron.Core.Api
+namespace BuildIndicatron.App.Api
 {
     public class RobotApi : ApiBase, IRobotApi
     {
@@ -42,7 +43,7 @@ namespace BuildIndicatron.Core.Api
         public Task<PlayMp3FileResponse> PlayMp3File(string fileName)
         {
             RestRequest restRequest = GetRestRequest(ApiPaths.PlayMp3File, Method.GET);
-            restRequest.AddUrlSegment("fileName", fileName);
+            restRequest.AddUrlSegment("fileName", Uri.EscapeUriString(fileName));
             return ProcessDefaultRequest<PlayMp3FileResponse>(restRequest);
         }
 

@@ -1,10 +1,9 @@
-﻿using System.Threading.Tasks;
-using BuildIndicatron.Shared;
-using BuildIndicatron.Shared.Models;
+﻿using BuildIndicatron.App.Api.Model;
+using BuildIndicatron.App.Core.Task;
 using BuildIndicatron.Shared.Models.ApiResponses;
 using BuildIndicatron.Shared.Models.Composition;
 
-namespace BuildIndicatron.Core.Api
+namespace BuildIndicatron.App.Api
 {
     public interface IRobotApi
     {

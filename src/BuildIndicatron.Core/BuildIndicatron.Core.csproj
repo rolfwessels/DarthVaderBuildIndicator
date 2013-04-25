@@ -85,7 +85,6 @@
     <Compile Include="Api\Model\LastFailedBuild.cs" />
     <Compile Include="Api\Model\JenkensProjectsResult.cs" />
     <Compile Include="Api\Model\Job.cs" />
-    <Compile Include="Api\PingResponse.cs" />
     <Compile Include="Api\RobotApi.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Media\WavPlayer.cs" />

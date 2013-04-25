@@ -91,3 +91,12 @@ class SetButtonChoreographyResponse(BaseResponse):
     def Call(self):
 
         return  self.ReturnJson()
+
+class GetClipsResponse(BaseResponse):
+    def Call(self):
+        self.Folders = []
+        for folder in os.listdir("Resources/sounds"):
+            self.Folders.append(
+                {'name': folder, 'files': os.listdir("Resources/sounds/"+folder)}
+            )
+        return  self.ReturnJson()

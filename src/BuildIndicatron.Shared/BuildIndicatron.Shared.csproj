@@ -44,7 +44,9 @@
     <Compile Include="Models\ApiResponses\EnqueueResponse.cs" />
     <Compile Include="Models\ApiResponses\FileUploadHasFileInArchiveResponse.cs" />
     <Compile Include="Models\ApiResponses\FileUploadUploadResponse.cs" />
+    <Compile Include="Models\ApiResponses\GetClipsResponse.cs" />
     <Compile Include="Models\ApiResponses\GpIoOutputResponse.cs" />
+    <Compile Include="Models\ApiResponses\PingResponse.cs" />
     <Compile Include="Models\ApiResponses\PlayMp3FileResponse.cs" />
     <Compile Include="Models\ApiResponses\PassiveProcessResponse.cs" />
     <Compile Include="Models\ApiResponses\SetButtonChoreographyResponse.cs" />

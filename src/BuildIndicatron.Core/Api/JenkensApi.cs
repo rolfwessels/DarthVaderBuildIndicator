@@ -1,8 +1,5 @@
 ﻿using System.Threading.Tasks;
 using BuildIndicatron.Core.Api.Model;
-using BuildIndicatron.Shared;
-using BuildIndicatron.Shared.Models.ApiResponses;
-using BuildIndicatron.Shared.Models.Composition;
 using RestSharp;
 
 namespace BuildIndicatron.Core.Api

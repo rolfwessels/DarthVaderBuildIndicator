@@ -12,7 +12,7 @@
         public const string GpIoOutput = "/ouputgpio/{pin}/{ison}";
         public const string PassiveProcess = "/passive";
         public const string Enqueue = "/enqueue";
-
         public const string SetButtonChoreography = "/setButtonChoreography";
+        public const string GetClips = "/getClips";
     }
 }

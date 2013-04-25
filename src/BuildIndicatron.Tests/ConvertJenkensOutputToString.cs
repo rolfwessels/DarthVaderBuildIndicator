@@ -80,7 +80,6 @@ namespace BuildIndicatron.Tests
                                 }},
                                 timestamp = DateTime.Now.AddDays(-1).Ticks.ToString()
                         }
-                            
                     }
                 },
             };
