@@ -72,19 +72,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/robotServer/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="46" selection-start="2287" selection-end="2287" vertical-scroll-proportion="0.5119617">
+            <state line="81" column="46" selection-start="2287" selection-end="2287" vertical-scroll-proportion="-8.56">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="serverStart.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="serverStart.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/robotServer/serverStart.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="140" column="33" selection-start="4472" selection-end="4472" vertical-scroll-proportion="0.0">
+            <state line="77" column="25" selection-start="2390" selection-end="2402" vertical-scroll-proportion="0.4334086">
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -453,7 +453,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -461,7 +461,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32619047" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.67261904" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27552673" sideWeight="0.59880954" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27552673" sideWeight="0.59880954" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27228525" sideWeight="0.59880954" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39904988" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.67261904" order="2" side_tool="false" content_ui="tabs" />
@@ -631,15 +631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/robotServer/serverStart.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="33" selection-start="4472" selection-end="4472" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/robotServer/test_sequencesText2Speech.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="23" selection-start="1361" selection-end="1361" vertical-scroll-proportion="0.0">
@@ -649,8 +640,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/robotServer/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="46" selection-start="2287" selection-end="2287" vertical-scroll-proportion="0.5119617">
+        <state line="81" column="46" selection-start="2287" selection-end="2287" vertical-scroll-proportion="-8.56">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robotServer/serverStart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="25" selection-start="2390" selection-end="2402" vertical-scroll-proportion="0.4334086">
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -44,7 +44,6 @@ namespace BuildIndicatron.App
             {
                 Dispatcher.BeginInvoke(() => NavigationService.Navigate(new Uri("/MainPage.xaml",UriKind.Relative)));
             }
-            
         }
 
         private void EnableButton()

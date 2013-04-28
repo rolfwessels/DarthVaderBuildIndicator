@@ -4,6 +4,6 @@ namespace BuildIndicatron.Core.Api.Model
 {
     public class JenkensProjectsResult
     {
-        public List<Job> jobs { get; set; }
+        public List<Job> Jobs { get; set; }
     }
 }

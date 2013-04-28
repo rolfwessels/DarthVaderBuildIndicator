@@ -3,11 +3,10 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BuildIndicatron.Core.Api;
-using BuildIndicatron.Shared.Models;
 using BuildIndicatron.Shared.Models.ApiResponses;
 using BuildIndicatron.Shared.Models.Composition;
-using FluentAssertions;
 using NUnit.Framework;
+using FluentAssertions;
 
 namespace BuildIndicatron.Tests.IntegrationTests
 {
@@ -53,7 +52,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         [Test]
         public async Task PlayMp3File_Call_ValidResponse()
         {
-            var result = await _robotApi.PlayMp3File("As_You_Wish_Sound_Effect.mp3");
+            var result = await _robotApi.PlayMp3File("Funny");
             result.Should().NotBeNull();
             result.Success.Should().BeTrue();
             result.ErrorMessage.Should().BeNullOrEmpty();
@@ -62,7 +61,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         [Test]
         public async Task PlayMp3File_CallOther_ValidResponse()
         {
-            var result = await _robotApi.PlayMp3File("darthvader_dontmakeme.wav");
+            var result = await _robotApi.PlayMp3File("Start");
             result.Should().NotBeNull();
             result.Success.Should().BeTrue();
             result.ErrorMessage.Should().BeNullOrEmpty();
@@ -71,7 +70,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         [Test]
         public async Task TextToSpeech_Call_ValidResponse()
         {
-            var result = await _robotApi.TextToSpeech("werner is the biggest pusy");
+            var result = await _robotApi.TextToSpeech("Nice");
             result.Should().NotBeNull();
             result.Success.Should().BeTrue();
             result.ErrorMessage.Should().BeNullOrEmpty();
@@ -299,7 +298,6 @@ namespace BuildIndicatron.Tests.IntegrationTests
         [Test]
         public async Task Enqueue_OneLiner()
         {
-            var pinRed = 17;
             var pinGreen = 24;
 
             var result = await _robotApi.Enqueue(new Choreography()
