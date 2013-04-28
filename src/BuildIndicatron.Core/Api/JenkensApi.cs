@@ -1,6 +1,12 @@
-﻿using System.Threading.Tasks;
-using BuildIndicatron.Core.Api.Model;
+﻿using BuildIndicatron.Core.Api.Model;
 using RestSharp;
+
+#if WINDOWS_PHONE
+using BuildIndicatron.App.Core.Task;
+#else
+using log4net;
+using System.Threading.Tasks;
+#endif
 
 namespace BuildIndicatron.Core.Api
 {

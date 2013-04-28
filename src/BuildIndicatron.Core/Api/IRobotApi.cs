@@ -1,8 +1,13 @@
-﻿using System.Threading.Tasks;
-using BuildIndicatron.Shared;
+﻿using BuildIndicatron.Shared;
 using BuildIndicatron.Shared.Models;
 using BuildIndicatron.Shared.Models.ApiResponses;
 using BuildIndicatron.Shared.Models.Composition;
+#if WINDOWS_PHONE
+using BuildIndicatron.App.Core.Task;
+#else
+using log4net;
+using System.Threading.Tasks;
+#endif
 
 namespace BuildIndicatron.Core.Api
 {

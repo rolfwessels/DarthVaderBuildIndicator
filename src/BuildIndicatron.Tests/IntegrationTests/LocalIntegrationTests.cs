@@ -175,7 +175,6 @@ namespace BuildIndicatron.Tests.IntegrationTests
             var pinRed = 27;
             var pinBlue = 11;
             var pinGreen = 9;
-
             var result = await _robotApi.Enqueue(new Choreography()
             {
                 Sequences = new List<Sequences>() { 
@@ -240,8 +239,6 @@ namespace BuildIndicatron.Tests.IntegrationTests
                     new SequencesGpIo() { BeginTime=0, Pin=pinRed , IsOn = true },
                     new SequencesPlaySound() {File = "Fail"},
                     new SequencesGpIo() { BeginTime=4000, Pin=pinRed , IsOn = true },
-                    
-                    
                 }
             });
             result.Should().NotBeNull();

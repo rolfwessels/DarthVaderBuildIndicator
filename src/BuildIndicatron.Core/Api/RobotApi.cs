@@ -1,12 +1,16 @@
 ﻿using System.Globalization;
 using System.IO;
-using System.Threading.Tasks;
 using BuildIndicatron.Shared;
 using BuildIndicatron.Shared.Models;
 using BuildIndicatron.Shared.Models.ApiResponses;
 using BuildIndicatron.Shared.Models.Composition;
 using RestSharp;
-
+#if WINDOWS_PHONE
+using BuildIndicatron.App.Core.Task;
+#else
+using log4net;
+using System.Threading.Tasks;
+#endif
 namespace BuildIndicatron.Core.Api
 {
     public class RobotApi : ApiBase, IRobotApi

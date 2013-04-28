@@ -7,5 +7,7 @@
         }
 
         public string Text { get; set; }
+
+        public bool DisableTransform { get; set; }
     }
 }

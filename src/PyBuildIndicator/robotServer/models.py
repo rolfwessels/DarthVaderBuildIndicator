@@ -70,15 +70,17 @@ class SequencesGpIo(Sequences):
 
 
 class SequencesText2Speech(Sequences):
-    def __init__(self, text=""):
+    def __init__(self, text="", disableTransform=False):
         super(SequencesText2Speech, self).__init__(TEXT_SPEECH)
         self.Text = text
+        self.DisableTransform = disableTransform
 
     def ConvertToFileName(self, text):
         hash = hashlib.md5(text).hexdigest()
         print hash
         print re.sub('[^A-z0-9]', '_', text)[:30]
-        code = re.sub('[^A-z0-9]', '_', text)[:30] + '_' + str(hash)
+        code = re.sub('[^A-z0-9]', '_', text)[:30] + '_' + str(hash)[:5] + '_' + str(self.DisableTransform)
+
         return code
 
     def Download(self, url, toFile=None):
@@ -105,7 +107,8 @@ class SequencesText2Speech(Sequences):
             url = 'http://translate.google.com/translate_tts?tl=en&q=' + urllib.quote_plus(input)
             print "downloading file " + url + " " + self.SaveTo
             self.Download(url, self.SaveTo)
-            self.Transform(self.SaveTo)
+            if not self.DisableTransform:
+                self.Transform(self.SaveTo)
         os.system("play " + self.SaveTo + " echo 0.8 0.88 6.0 0.4")
 
 
@@ -132,7 +135,7 @@ class SequencesText2Speech(Sequences):
         tmpB = path + "background.mp3"
         background = path + "Star-Wars-1391.mp3"
 
-        os.system("sox " + SaveTo + " -r 32000 " + tmpF + "  speed 0.75")
+        os.system("sox -v 7 " + SaveTo + " -r 32000 " + tmpF + "  speed 0.75")
         os.system("sox -v 0.2 " + background + " -r 32000 " + tmpB)
         os.system("sox -m " + tmpB + "  " + tmpF + " " + SaveTo)
 
@@ -153,6 +156,7 @@ class SequencesJokeOrOneLiner(SequencesText2Speech):
     def GetOneLiner(self):
         return choice(self.Jokes)
         pass
+
 
 class Passive(object):
     def __init__(self, params=None):
@@ -184,7 +188,7 @@ class Choreography(object):
                 elif v['Type'] == GP_IO:
                     sequences = SequencesGpIo(v['Pin'], v['IsOn'])
                 elif v['Type'] == TEXT_SPEECH:
-                    sequences = SequencesText2Speech(v['Text'])
+                    sequences = SequencesText2Speech(v['Text'], v['DisableTransform'])
                 elif v['Type'] == TEXT_ONELINER:
                     sequences = SequencesJokeOrOneLiner()
 

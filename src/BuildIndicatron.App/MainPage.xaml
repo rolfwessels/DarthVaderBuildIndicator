@@ -37,26 +37,47 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
             </controls:PanoramaItem>
- 
-            <!--Panorama item two-->
-            <!--Use 'Orientation="Horizontal"' to enable a panel that lays out horizontally-->
-            <controls:PanoramaItem Header="second item">
-                <!--Double line list with image placeholder and text wrapping-->
-                <ListBox Margin="0,0,-12,0" ItemsSource="{Binding Items}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,17">
-                                <!--Replace rectangle with image-->
-                                <Rectangle Height="100" Width="100" Fill="#FFE5001b" Margin="12,0,9,0"/>
-                                <StackPanel Width="311">                                    
-                                    <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                    <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+            
+            <!--Panorama item one-->
+            <controls:PanoramaItem Header="Speak">
+                <ScrollViewer>
+                    <StackPanel>
+                        <TextBox Text="{Binding Text1, Mode=TwoWay}" TextWrapping="Wrap" />
+                        <TextBox Text="{Binding Text2, Mode=TwoWay}" TextWrapping="Wrap" />
+                        <TextBox Text="{Binding Text3, Mode=TwoWay}" TextWrapping="Wrap" />
+                        <Button Content="Speak normal" Tap="OnSpeakNormalTap"/>
+                        <Button Content="Speak darth" Tap="OnSpeakDarthTap"/>
+                        <Button Content="Adding todo button" Tap="OnAssignToButtonTap"/>
+                            <Grid Height="344"></Grid>
+                        </StackPanel>
+                </ScrollViewer>
             </controls:PanoramaItem>
+
+            <!--Panorama item two-->
+            <controls:PanoramaItem Header="Other">
+
+                    <StackPanel>
+                        <TextBlock Text="Light saber" Style="{StaticResource PhoneTextTitle2Style}" />
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle x:Name="LsRed" Height="100" Width="100" Fill="Red" Margin="12,0,9,0" Tap="OnGlowControlTap" />
+                            <Rectangle x:Name="LsGreen" Height="100" Width="100" Fill="Green" Margin="12,0,9,0"  Tap="OnGlowControlTap"/>
+                            <Rectangle x:Name="LsBlue" Height="100" Width="100" Fill="Blue" Margin="12,0,9,0"  Tap="OnGlowControlTap"/>
+                        </StackPanel>
+                        <TextBlock Text="Glow" Style="{StaticResource PhoneTextTitle2Style}" />
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle x:Name="GlRed" Height="100" Width="100" Fill="Red" Margin="12,0,9,0"  Tap="OnGlowControlTap"/>
+                            <Rectangle x:Name="GlGreen" Height="100" Width="100" Fill="Green" Margin="12,0,9,0"  Tap="OnGlowControlTap"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Joke" Tap="OnJokeTap"/>
+                        </StackPanel>
+                        
+                    </StackPanel>
+                
+            </controls:PanoramaItem>
+                
+
         </controls:Panorama>
     </Grid>
 </phone:PhoneApplicationPage>

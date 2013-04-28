@@ -5,9 +5,18 @@ using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Reflection;
-using System.Threading.Tasks;
+
+
 using RestSharp;
+
+#if WINDOWS_PHONE
+using BuildIndicatron.App.Core.Log;
+using BuildIndicatron.App.Core.Task;
+#else
 using log4net;
+using System.Threading.Tasks;
+#endif
+
 
 namespace BuildIndicatron.Core.Api
 {

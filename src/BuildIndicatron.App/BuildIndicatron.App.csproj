@@ -62,6 +62,18 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\BuildIndicatron.Core\Api\ApiBase.cs">
+      <Link>Api\ApiBase.cs</Link>
+    </Compile>
+    <Compile Include="..\BuildIndicatron.Core\Api\IRobotApi.cs">
+      <Link>Api\IRobotApi.cs</Link>
+    </Compile>
+    <Compile Include="..\BuildIndicatron.Core\Api\RobotApi.cs">
+      <Link>Api\RobotApi.cs</Link>
+    </Compile>
+    <Compile Include="..\BuildIndicatron.Core\MimeHelper.cs">
+      <Link>Api\MimeHelper.cs</Link>
+    </Compile>
     <Compile Include="..\BuildIndicatron.Shared\ApiPaths.cs">
       <Link>Api\ApiPaths.cs</Link>
     </Compile>
@@ -85,6 +97,9 @@
     </Compile>
     <Compile Include="..\BuildIndicatron.Shared\Models\ApiResponses\PassiveProcessResponse.cs">
       <Link>Api\Model\PassiveProcessResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\BuildIndicatron.Shared\Models\ApiResponses\PingResponse.cs">
+      <Link>Api\Model\PingResponse.cs</Link>
     </Compile>
     <Compile Include="..\BuildIndicatron.Shared\Models\ApiResponses\PlayMp3FileResponse.cs">
       <Link>Api\Model\PlayMp3FileResponse.cs</Link>
@@ -110,19 +125,20 @@
     <Compile Include="..\BuildIndicatron.Shared\Models\Composition\SequencesGpIo.cs">
       <Link>Api\Model\SequencesGpIo.cs</Link>
     </Compile>
+    <Compile Include="..\BuildIndicatron.Shared\Models\Composition\SequencesOneLiner.cs">
+      <Link>Api\Model\SequencesOneLiner.cs</Link>
+    </Compile>
     <Compile Include="..\BuildIndicatron.Shared\Models\Composition\SequencesPlaySound.cs">
       <Link>Api\Model\SequencesPlaySound.cs</Link>
     </Compile>
     <Compile Include="..\BuildIndicatron.Shared\Models\Composition\SequencesText2Speech.cs">
       <Link>Api\Model\SequencesText2Speech.cs</Link>
     </Compile>
-    <Compile Include="Api\ApiBase.cs" />
-    <Compile Include="Api\IRobotApi.cs" />
-    <Compile Include="Api\MimeHelper.cs" />
-    <Compile Include="Api\Model\PingResponse.cs" />
-    <Compile Include="Api\RobotApi.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectView.xaml.cs">
+      <DependentUpon>ConnectView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Log\Logger.cs" />
     <Compile Include="Core\Log\LoggerDefault.cs" />
@@ -134,6 +150,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="ViewModels\ClipItemModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
   </ItemGroup>
@@ -142,6 +159,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="ConnectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

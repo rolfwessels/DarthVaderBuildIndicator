@@ -35,3 +35,10 @@ class TestSequencesText2Speech(TestCase):
         sec = SequencesText2Speech(string)
         sec.PlayPartText(string)
         print string
+
+
+    def testingSample_single(self):
+        string = "Dirk listen to this"
+        sec = SequencesText2Speech(string)
+        sec.PlayPartText(string)
+        print string
