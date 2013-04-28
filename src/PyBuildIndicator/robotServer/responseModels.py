@@ -100,3 +100,5 @@ class GetClipsResponse(BaseResponse):
                 {'name': folder, 'files': os.listdir("Resources/sounds/"+folder)}
             )
         return  self.ReturnJson()
+
+    

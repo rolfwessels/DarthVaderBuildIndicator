@@ -26,6 +26,12 @@ class SleepingThread(threading.Thread):
             time.sleep(self.sleepTime)
             self.action()
 
+    def Stop(self):
+        self.stopped = True
+        if self.isAlive():
+            self.join()
+        pass
+
 
 class MediaPlayer():
 

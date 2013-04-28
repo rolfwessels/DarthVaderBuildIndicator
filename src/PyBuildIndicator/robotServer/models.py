@@ -1,7 +1,9 @@
 from RPi import GPIO
+from flask import json
 import hashlib
 import md5
 import os
+from pprint import pprint
 from random import choice
 import re
 import urllib
@@ -9,7 +11,7 @@ import urllib2
 from robotServer.helperClasses import MediaPlayer
 
 TEXT_SPEECH = "Text2Speech"
-
+TEXT_ONELINER = "oneliner"
 PLAYSOUND = "playsound"
 GP_IO = 'GpIO'
 
@@ -22,7 +24,6 @@ class Sequences(object):
         self.__type = typeName
         self.Done = False
         self.BeginTime = 0
-
 
     def get_Type(self):
         return self.__type
@@ -48,7 +49,7 @@ class SequencesPlaySound(Sequences):
         print "play the file ", self.File
         soundFile = RESOURCES_SOUNDS_ + self.File
         if os.path.isdir(soundFile):
-            soundFile = soundFile +"/"+ choice(os.listdir(soundFile))
+            soundFile = soundFile + "/" + choice(os.listdir(soundFile))
             print soundFile
             MediaPlayer().Play(soundFile)
         elif os.path.exists(soundFile):
@@ -136,6 +137,23 @@ class SequencesText2Speech(Sequences):
         os.system("sox -m " + tmpB + "  " + tmpF + " " + SaveTo)
 
 
+class SequencesJokeOrOneLiner(SequencesText2Speech):
+    def __init__(self):
+        super(SequencesJokeOrOneLiner, self).__init__("")
+        self.__type = TEXT_ONELINER
+        json_data = open('Resources/jokes.json')
+        self.Jokes = json.load(json_data)
+        json_data.close()
+        pass
+
+    def ExecuteFirstInstance(self):
+        self.Text = self.GetOneLiner()
+        super(SequencesJokeOrOneLiner, self).ExecuteFirstInstance()
+
+    def GetOneLiner(self):
+        return choice(self.Jokes)
+        pass
+
 class Passive(object):
     def __init__(self, params=None):
         self.Initialize()
@@ -167,6 +185,9 @@ class Choreography(object):
                     sequences = SequencesGpIo(v['Pin'], v['IsOn'])
                 elif v['Type'] == TEXT_SPEECH:
                     sequences = SequencesText2Speech(v['Text'])
+                elif v['Type'] == TEXT_ONELINER:
+                    sequences = SequencesJokeOrOneLiner()
+
                 sequences.BeginTime = v['BeginTime']
                 self.__sequences.append(sequences)
 

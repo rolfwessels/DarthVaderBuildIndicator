@@ -95,7 +95,10 @@ def enqueue():
 @app.route('/setButtonChoreography', methods=['POST'])
 def setButtonChoreography():
     response = SetButtonChoreographyResponse()
-    response.Choreography = Choreography(request.json)
+    response.Choreography = []
+    for cor in request.json:
+        response.Choreography.append(Choreography(cor))
+
     GlobalButtonClickRunner.SetChoreography(response.Choreography)
     return Response(response.Call(), mimetype='application/json')
 
@@ -104,9 +107,7 @@ def getClips():
     response = GetClipsResponse()
     return Response(response.Call(), mimetype='application/json')
 
-
-
 if __name__ == '__main__':
+    sound = Choreography.SimpleChoreographyPlaySound("Start")
+    GlobalCompositionRunner.AddChoreography(sound)
     app.run(host='0.0.0.0')
-
-

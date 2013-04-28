@@ -1,4 +1,7 @@
 from RPi import GPIO
+import datetime
+import re
+import socket
 from robotServer.helperClasses import SleepingThread
 from robotServer.models import Passive, Choreography
 
@@ -7,25 +10,55 @@ class buttonClickRunner():
     def __init__(self, pin, composition_runner):
         self.CurrentPassive = Passive()
         self.Pin = pin
-        GPIO.setup(self.Pin,GPIO.IN)
+        GPIO.setup(self.Pin, GPIO.IN)
         self.PinValue = GPIO.input(self.Pin)
         self.Runner = composition_runner
-        self.Choreography = Choreography.SimpleSequencesText2Speech("please add a button Choreography")
+        self.Choreography = []
+        self.Choreography.append(Choreography.SimpleSequencesText2Speech(self.GetInitialString()))
+        self.CurrentCount = 0
+        self.LastCall = datetime.datetime.now()
+        self.DelayBeforeReset = datetime.timedelta(0, 30)
         self.Timer = SleepingThread(self.ThreadTimerTick, 0.5)
         self.Timer.start()
 
-
     def SetChoreography(self, choreography):
         print "Setting new Choreography for button play", choreography
-        if isinstance(choreography, Choreography):
-            self.Choreography = choreography
+        self.CurrentCount = 0
+        self.LastCall = datetime.datetime.now()
+        self.Choreography = choreography
 
     def ThreadTimerTick(self):
         if self.PinValue != GPIO.input(self.Pin):
             self.PinValue = GPIO.input(self.Pin)
-            self.RunRandomSequence()
+            self.RunNextSequence()
 
-    def RunRandomSequence(self):
-        self.Runner.AddChoreography(self.Choreography)
+    def GetNextSequence(self):
+        count = len(self.Choreography)
+        if datetime.datetime.now() - self.LastCall > self.DelayBeforeReset:
+            print "reset"
+            self.CurrentCount = 0
+        nextSequence = self.Choreography[self.CurrentCount]
+        print "count ", self.CurrentCount
+        self.CurrentCount = min(count-1,self.CurrentCount+1)
+        self.LastCall = datetime.datetime.now()
+        return nextSequence
+
+    def RunNextSequence(self):
+        sequence = self.GetNextSequence()
+        self.Runner.AddChoreography(sequence)
+
+    def GetInitialString(self):
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("telkom.co.za", 80))
+        myIp = s.getsockname()[0]
+        s.close()
+        myIp = myIp.replace(".", "dot ")
+        myIp = re.sub(r'([1-9])', r'\1 ', myIp)
+        return "What is thy bidding, my master? " + myIp
+        pass
+
+    def Stop(self):
+        # self.Timer.Stop()
+        pass
 
 

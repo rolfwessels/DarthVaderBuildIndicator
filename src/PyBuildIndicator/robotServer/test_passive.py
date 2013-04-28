@@ -33,6 +33,5 @@ class TestPassive(TestCase):
         assert sequences_.File == "darthvader_lackoffaith.wav"
     pass
 
-
 if __name__ == '__main__':
     unittest.main()
