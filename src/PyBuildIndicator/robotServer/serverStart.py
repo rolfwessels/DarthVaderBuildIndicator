@@ -53,7 +53,12 @@ def noCache(f):
     @wraps(f)
     @add_response_headers({'Expires': 'Mon, 26 Jul 1997 05:00:00 GMT'})
     def decorated_function(*args, **kwargs):
-        print "header"
+        return f(*args, **kwargs)
+    return decorated_function
+def noCache(f):
+    @wraps(f)
+    @add_response_headers({'Expires': 'Mon, 26 Jul 1997 05:00:00 GMT'})
+    def decorated_function(*args, **kwargs):
         return f(*args, **kwargs)
     return decorated_function
 
@@ -62,6 +67,11 @@ def noCache(f):
 def show_index():
     error = "allgood"
     return render_template('index.html', error=error)
+
+@app.route('/api/json')
+def show_json():
+    f = open('static/jsonsample', 'r')
+    return Response(f.read(), mimetype='application/json')
 
 @app.route('/ping')
 @noCache
@@ -128,11 +138,10 @@ def enqueue():
 @noCache
 def setButtonChoreography():
     response = SetButtonChoreographyResponse()
-    response.Choreography = []
+    choreography = []
     for cor in request.json:
-        response.Choreography.append(Choreography(cor))
-
-    GlobalButtonClickRunner.SetChoreography(response.Choreography)
+        choreography.append(Choreography(cor))
+    GlobalButtonClickRunner.SetChoreography(choreography)
     return Response(response.Call(), mimetype='application/json')
 
 @app.route('/getClips')

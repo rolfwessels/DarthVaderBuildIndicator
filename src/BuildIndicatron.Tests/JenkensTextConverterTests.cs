@@ -49,7 +49,7 @@ namespace BuildIndicatron.Tests
             var jenkensProjectsResult = new JenkensProjectsResult()
             {
                 Jobs = new List<Job>() { 
-                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { score = 100 } } } ,
+                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
                 },
             };
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
@@ -63,8 +63,8 @@ namespace BuildIndicatron.Tests
             var jenkensProjectsResult = new JenkensProjectsResult()
             {
                 Jobs = new List<Job>() { 
-                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { score = 100 } } } ,
-                    new Job() { Color = "blue", Name = "Build - Zapper IPN Service", HealthReport = new List<Health>() { new Health() { score = 100 } } } 
+                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
+                    new Job() { Color = "blue", Name = "Build - Zapper IPN Service", HealthReport = new List<Health>() { new Health() { Score = 100 } } } 
                 },
             };
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
@@ -77,8 +77,8 @@ namespace BuildIndicatron.Tests
             var jenkensProjectsResult = new JenkensProjectsResult()
             {
                 Jobs = new List<Job>() { 
-                    new Job() { Color = "red", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { score = 100 } } } ,
-                    new Job() { Color = "red", Name = "Build - Zapper IPN Service", HealthReport = new List<Health>() { new Health() { score = 100 } } } 
+                    new Job() { Color = "red", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
+                    new Job() { Color = "red", Name = "Build - Zapper IPN Service", HealthReport = new List<Health>() { new Health() { Score = 100 } } } 
                 },
             };
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
@@ -91,7 +91,7 @@ namespace BuildIndicatron.Tests
             var jenkensProjectsResult = new JenkensProjectsResult()
             {
                 Jobs = new List<Job>() { 
-                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { score = 100 } } } ,
+                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
                     new Job() { Color = "red", Name = "Build - Zapper IPN Service", 
                         LastFailedBuild = new LastFailedBuild() { 
                             ChangeSet = new ChangeSet() { 
@@ -116,7 +116,7 @@ namespace BuildIndicatron.Tests
             var jenkensProjectsResult = new JenkensProjectsResult()
             {
                 Jobs = new List<Job>() { 
-                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { score = 100 } } } ,
+                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
                     new Job() { Color = "red", Name = "Build - Zapper IPN Service", 
                         LastFailedBuild = new LastFailedBuild() { 
                             ChangeSet = new ChangeSet() { 
@@ -142,9 +142,9 @@ namespace BuildIndicatron.Tests
             var jenkensProjectsResult = new JenkensProjectsResult()
             {
                 Jobs = new List<Job>() { 
-                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { score = 100 } } } ,
-                    new Job() { Color = "Disabled", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { score = 100 } } } ,
-                    new Job() { Color = "grey", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { score = 100 } } } ,
+                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
+                    new Job() { Color = "Disabled", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
+                    new Job() { Color = "grey", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
                     new Job() { Color = "red", Name = "Build - Zapper IPN Service", 
                         LastFailedBuild = new LastFailedBuild() { 
                             ChangeSet = new ChangeSet() { 
@@ -169,7 +169,7 @@ namespace BuildIndicatron.Tests
             var jenkensProjectsResult = new JenkensProjectsResult()
             {
                 Jobs = new List<Job>() { 
-                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { score = 100 } } } ,
+                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
                     new Job() { Color = "red", Name = "Build - Zapper IPN Service", 
                         LastFailedBuild = new LastFailedBuild() { 
                             ChangeSet = new ChangeSet() { 
@@ -205,7 +205,7 @@ namespace BuildIndicatron.Tests
             var jenkensProjectsResult = new JenkensProjectsResult()
             {
                 Jobs = new List<Job>() { 
-                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { score = 100 } } } ,
+                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
                     new Job() { Color = "red", Name = "Build - Zapper IPN Service", 
                         LastFailedBuild = new LastFailedBuild() { 
                             ChangeSet = new ChangeSet() { 
@@ -313,14 +313,41 @@ namespace BuildIndicatron.Tests
         }
 
         [Test]
+        public void UsingTheSampleGetAllValues_1_day_agoe()
+        {
+            var jenkensProjectsResult = JenkensProjectsResult();
+            _jenkensTextConverter.ToSummaryList(jenkensProjectsResult)
+                .Should().Contain("The Deploy Dev - ZoomLogin + SampleMerchant last failed 1 day ago, It was last modified by a ghost");
+
+        }
+
+        [Test]
+        public void UsingTheSampleGetAllValues_fastest()
+        {
+            var jenkensProjectsResult = JenkensProjectsResult();
+            _jenkensTextConverter.ToSummaryList(jenkensProjectsResult)
+                .Should().Contain("The fastest build is Deploy Dev - ZapperPayments + ZapperCallback at 10 seconds per build. The slowest build is Build - ZapZap API at 4 minutes per build");
+
+        }
+
+        [Test]
+        public void UsingTheSampleGetAllValues_Deployments_InARow()
+        {
+            var jenkensProjectsResult = JenkensProjectsResult();
+            _jenkensTextConverter.ToSummaryList(jenkensProjectsResult).Last()
+                .Should().Be("Deploy Dev - ZapperPayments + ZapperCallback as 172 succesfull builds in a row. Deploy Dev - ZoomLogin + SampleMerchant has 0 succesfull builds in a row");
+
+        }
+
+        [Test]
         public void UsingTheSampleGetAllValues_LastOne()
         {
             var jenkensProjectsResult = JenkensProjectsResult();
             _jenkensTextConverter.ToSummaryList(jenkensProjectsResult).Last()
-                .Should().Be("The Deploy Dev - ZoomLogin + SampleMerchant last failed 1 day ago, It was last modified by a ghost");
-
+                .Should().Be("Deploy Dev - ZapperPayments + ZapperCallback as 172 succesfull builds in a row. Deploy Dev - ZoomLogin + SampleMerchant has 0 succesfull builds in a row");
         }
 
+        
         private static JenkensProjectsResult JenkensProjectsResult()
         {
             if (_jenkensProjectsResult == null)

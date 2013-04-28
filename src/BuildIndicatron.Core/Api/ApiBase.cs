@@ -23,7 +23,7 @@ namespace BuildIndicatron.Core.Api
     public class ApiBase
     {
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly RestClient _client;
+        protected readonly RestClient _client;
         private readonly string _applicationJson = "application/json";
 
         public ApiBase(string hostApi)

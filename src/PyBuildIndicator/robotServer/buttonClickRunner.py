@@ -17,7 +17,7 @@ class buttonClickRunner():
         self.Choreography.append(Choreography.SimpleSequencesText2Speech(self.GetInitialString()))
         self.CurrentCount = 0
         self.LastCall = datetime.datetime.now()
-        self.DelayBeforeReset = datetime.timedelta(0, 30)
+        self.DelayBeforeReset = datetime.timedelta(0, 60)
         self.Timer = SleepingThread(self.ThreadTimerTick, 0.5)
         self.Timer.start()
 

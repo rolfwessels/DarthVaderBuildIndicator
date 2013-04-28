@@ -15,10 +15,17 @@ namespace BuildIndicatron.Tests.IntegrationTests
     {
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private static JenkensProjectsResult _allProjects;
+        private static string _hostApi;
 
         public JenkensApiTests()
         {
             log4net.Config.XmlConfigurator.Configure(new FileInfo("Log4Net.config"));
+        }
+
+        static JenkensApiTests()
+        {
+            _hostApi = "http://fulliautomatix:8080";
+            //_hostApi = "http://192.168.1.13:5000/";
         }
 
         [Test]
@@ -27,7 +34,6 @@ namespace BuildIndicatron.Tests.IntegrationTests
             var projects = await JenkensProjectsResult();
             projects.Should().NotBeNull();
         }
-
 
 
         [Test]
@@ -42,7 +48,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
 
         private static async Task<JenkensProjectsResult> JenkensProjectsResult()
         {
-            var jenkensApi = new JenkensApi();
+            var jenkensApi = new JenkensApi(_hostApi);
             return _allProjects ?? (_allProjects = await jenkensApi.GetAllProjects());
         }
         // Oh no, there are currently 43 build on jenkins with 8 build failing. The Build - Zapper IPN Service last failed 24499 months ago, It was last modified by Sean P Cleworth. The Build - ZoomLogin DB + SampleMerchant DB last failed 24499 months ago, It was last modified by Sean Bruins. The Deploy Dev - ZoomLogin + SampleMerchant last failed 24499 months ago, It was last modified by . The XXX LIVE PROD - Build Websites and Test-Deploy last failed 24499 months ago, It was last modified by Mark D. Isaacs and Cobus Bernard and Gino Arpesella and Keiran van Vuuren and Sean P Cleworth

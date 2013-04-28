@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BuildIndicatron.Core;
 using BuildIndicatron.Core.Api;
 using BuildIndicatron.Shared.Models.Composition;
 using log4net;
@@ -47,18 +48,52 @@ namespace BuildIndicatron.Console
                 SetButtonClick(Parameters.ButtonClick);
             }
 
-
             if (Parameters.Off)
             {
-                var result = CurrenRobotAmi.Enqueue(new Choreography() { Sequences = new List<Sequences>() { 
-                    new SequencesGpIo() { Pin = AppSettings.Default.LsBluePin , IsOn =  false},
-                    new SequencesGpIo() { Pin = AppSettings.Default.LsGreenPin , IsOn =  false},
-                    new SequencesGpIo() { Pin = AppSettings.Default.LsRedPin , IsOn =  false},
-                    new SequencesGpIo() { Pin = AppSettings.Default.FeetGreenPin , IsOn =  false},
-                    new SequencesGpIo() { Pin = AppSettings.Default.FeetRedPin , IsOn =  false}
-                } });
-                result.Wait();
+                SwithAllOff();
             }
+
+            if (Parameters.ReadFromJenkinsServer)
+            {
+                ReadFromJenkinsServer();
+            }
+        }
+
+        private void ReadFromJenkinsServer()
+        {
+            var jenkensApi = new JenkensApi(AppSettings.Default.JenkenServer);
+            var allProjects = jenkensApi.GetAllProjects();
+            Log.Info("Downloading jenkins values");
+            allProjects.Wait();
+            var jenkensTextConverter = new JenkensTextConverter();
+            var summaryList = jenkensTextConverter.ToSummaryList(allProjects.Result);
+            var choreography = summaryList.Select(summary => new Choreography()
+                {
+                    Sequences = new List<Sequences>()
+                        {
+                            new SequencesGpIo() {BeginTime = 0, Pin = AppSettings.Default.LsBluePin, IsOn = true},
+                            new SequencesText2Speech() {BeginTime = 0, Text = summary},
+                            new SequencesGpIo() {BeginTime = 1000, Pin = AppSettings.Default.LsBluePin, IsOn = false},
+                        }
+                }).ToArray();
+            var result = CurrenRobotAmi.SetButtonChoreography(choreography);
+            result.Wait();
+        }
+
+        private void SwithAllOff()
+        {
+            var result = CurrenRobotAmi.Enqueue(new Choreography()
+                {
+                    Sequences = new List<Sequences>()
+                        {
+                            new SequencesGpIo() {Pin = AppSettings.Default.LsBluePin, IsOn = false},
+                            new SequencesGpIo() {Pin = AppSettings.Default.LsGreenPin, IsOn = false},
+                            new SequencesGpIo() {Pin = AppSettings.Default.LsRedPin, IsOn = false},
+                            new SequencesGpIo() {Pin = AppSettings.Default.FeetGreenPin, IsOn = false},
+                            new SequencesGpIo() {Pin = AppSettings.Default.FeetRedPin, IsOn = false}
+                        }
+                });
+            result.Wait();
         }
 
         private void SetButtonClick(string message)

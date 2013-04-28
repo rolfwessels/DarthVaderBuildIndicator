@@ -5,11 +5,11 @@
     <ignored path="PyBuildIndicator.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Install.txt" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365839696001" ignored="false" />
-    <file path="/serverStart.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367140375013" ignored="false" />
+    <file path="/serverStart.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367154673547" ignored="false" />
     <file path="/show_entries.html" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365844449384" ignored="false" />
     <file path="/pingResponse.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365879453057" ignored="false" />
     <file path="/models.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367143093047" ignored="false" />
-    <file path="/a.dummy" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367131867747" ignored="false" />
+    <file path="/a.dummy" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367154050893" ignored="false" />
     <file path="/serverStart_tests.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365925617210" ignored="false" />
     <file path="/backgroundProcess.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365936360252" ignored="false" />
     <file path="/CompositionRunner.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1366730338088" ignored="false" />
@@ -25,6 +25,7 @@
     <file path="/RandomJokes.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367126918480" ignored="false" />
     <file path="/test_sequencesJokeOrOneLiner.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367128529573" ignored="false" />
     <file path="$PROJECT_DIR$/robotServer/Resources/jokes.json" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367127869141" ignored="false" />
+    <file path="/index.html" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367154102614" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,10 +53,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="buttonClickRunner.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="buttonClickRunner.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/robotServer/buttonClickRunner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="48" selection-start="1154" selection-end="1154" vertical-scroll-proportion="0.0">
+            <state line="53" column="17" selection-start="1941" selection-end="1941" vertical-scroll-proportion="0.81941307">
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -67,7 +68,9 @@
         <entry file="file://$PROJECT_DIR$/robotServer/test_sequencesText2Speech.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="41" column="23" selection-start="1361" selection-end="1361" vertical-scroll-proportion="0.0">
-              <folding />
+              <folding>
+                <marker date="1367138314000" expanded="true" signature="146:1434" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -75,19 +78,55 @@
       <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/robotServer/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="46" selection-start="2287" selection-end="2287" vertical-scroll-proportion="-8.56">
+            <state line="76" column="0" selection-start="2087" selection-end="2087" vertical-scroll-proportion="-23.52">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="serverStart.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="serverStart.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/robotServer/serverStart.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="25" selection-start="2390" selection-end="2402" vertical-scroll-proportion="0.4334086">
+            <state line="73" column="4" selection-start="2307" selection-end="2307" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jsonsample" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/robotServer/static/jsonsample">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="51657" column="16" selection-start="1661021" selection-end="1661021" vertical-scroll-proportion="-7.923077">
+              <folding>
+                <marker date="1367153922000" expanded="true" signature="2579925:4899173" placeholder="..." />
+                <marker date="1367153922000" expanded="true" signature="2580010:4899173" placeholder="..." />
+                <marker date="1367153922000" expanded="true" signature="2580268:4899173" placeholder="..." />
+                <marker date="1367153922000" expanded="true" signature="2580353:4899173" placeholder="..." />
+                <marker date="1367153922000" expanded="true" signature="2657444:4899173" placeholder="..." />
+                <marker date="1367153922000" expanded="true" signature="2657529:4899173" placeholder="..." />
+                <marker date="1367153922000" expanded="true" signature="2657787:4899173" placeholder="..." />
+                <marker date="1367153922000" expanded="true" signature="2657872:4899173" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/robotServer/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="0" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/robotServer/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="0" selection-start="104" selection-end="104" vertical-scroll-proportion="-3.9230769">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -102,7 +141,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/robotServer/test_compositionRunner.py" />
         <option value="$PROJECT_DIR$/robotServer/testServerStart_.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/robotServer/main.py" />
@@ -114,10 +152,11 @@
         <option value="$PROJECT_DIR$/robotServer/test_passive.py" />
         <option value="$PROJECT_DIR$/robotServer/helperClasses.py" />
         <option value="$PROJECT_DIR$/robotServer/test_buttonClickRunner.py" />
-        <option value="$PROJECT_DIR$/robotServer/buttonClickRunner.py" />
         <option value="$PROJECT_DIR$/robotServer/test_sequencesText2Speech.py" />
-        <option value="$PROJECT_DIR$/robotServer/serverStart.py" />
         <option value="$PROJECT_DIR$/robotServer/models.py" />
+        <option value="$PROJECT_DIR$/robotServer/templates/index.html" />
+        <option value="$PROJECT_DIR$/robotServer/serverStart.py" />
+        <option value="$PROJECT_DIR$/robotServer/buttonClickRunner.py" />
       </list>
     </option>
   </component>
@@ -186,6 +225,42 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PyBuildIndicator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PyBuildIndicator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="robotServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PyBuildIndicator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PyBuildIndicator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="robotServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -230,6 +305,7 @@
       <recent name="D:\Work\Projects\Home\BuildIndicatron\src\PyBuildIndicator\robotServer\template" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Work\Projects\Home\BuildIndicatron\src\PyBuildIndicator\robotServer\static" />
       <recent name="D:\Work\Projects\Home\BuildIndicatron\src\PyBuildIndicator\robotServer" />
       <recent name="D:\Work\Projects\Home\BuildIndicatron\src\PyBuildIndicator\flaskr" />
     </key>
@@ -452,7 +528,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32779098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -534,20 +610,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/2105529800/hashlib.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/robotServer/test_serverStart_.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="8" selection-start="502" selection-end="540" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/robotServer/CompositionRunner.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="34" column="28" selection-start="939" selection-end="939" vertical-scroll-proportion="0.0">
@@ -583,13 +645,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/robotServer/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/robotServer/responseModels.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="66" column="44" selection-start="2045" selection-end="2045" vertical-scroll-proportion="0.0">
@@ -608,7 +663,62 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="32" selection-start="337" selection-end="337" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robotServer/test_sequencesText2Speech.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="23" selection-start="1361" selection-end="1361" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1367138314000" expanded="true" signature="146:1434" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robotServer/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robotServer/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="104" selection-end="104" vertical-scroll-proportion="-3.9230769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robotServer/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="0" selection-start="2087" selection-end="2087" vertical-scroll-proportion="-23.52">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robotServer/static/jsonsample">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51657" column="16" selection-start="1661021" selection-end="1661021" vertical-scroll-proportion="-7.923077">
+          <folding>
+            <marker date="1367153922000" expanded="true" signature="2579925:4899173" placeholder="..." />
+            <marker date="1367153922000" expanded="true" signature="2580010:4899173" placeholder="..." />
+            <marker date="1367153922000" expanded="true" signature="2580268:4899173" placeholder="..." />
+            <marker date="1367153922000" expanded="true" signature="2580353:4899173" placeholder="..." />
+            <marker date="1367153922000" expanded="true" signature="2657444:4899173" placeholder="..." />
+            <marker date="1367153922000" expanded="true" signature="2657529:4899173" placeholder="..." />
+            <marker date="1367153922000" expanded="true" signature="2657787:4899173" placeholder="..." />
+            <marker date="1367153922000" expanded="true" signature="2657872:4899173" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robotServer/serverStart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="4" selection-start="2307" selection-end="2307" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -624,32 +734,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/robotServer/buttonClickRunner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="48" selection-start="1154" selection-end="1154" vertical-scroll-proportion="0.0">
+        <state line="53" column="17" selection-start="1941" selection-end="1941" vertical-scroll-proportion="0.81941307">
           <folding>
             <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/robotServer/test_sequencesText2Speech.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="23" selection-start="1361" selection-end="1361" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/robotServer/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="46" selection-start="2287" selection-end="2287" vertical-scroll-proportion="-8.56">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/robotServer/serverStart.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="25" selection-start="2390" selection-end="2402" vertical-scroll-proportion="0.4334086">
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>

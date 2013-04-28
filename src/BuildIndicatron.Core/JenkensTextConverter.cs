@@ -50,7 +50,64 @@ namespace BuildIndicatron.Core
                     yield return failedValue;
                 }
             }
-            
+            var slowestAndFastedBuild = GetSlowestAndFastedBuild(jenkensProjectsResult);
+            if (slowestAndFastedBuild != null) yield return slowestAndFastedBuild;
+
+            var mostSuccessFullBuild = GetMostSuccessFullBuild(jenkensProjectsResult);
+            if (mostSuccessFullBuild != null) yield return mostSuccessFullBuild;
+        }
+
+        private string GetMostSuccessFullBuild(JenkensProjectsResult jenkensProjectsResult)
+        {
+            if (jenkensProjectsResult.Jobs != null)
+            {
+                var orderedEnumerable =
+                    jenkensProjectsResult.Jobs.Where(x => x.Builds != null && x.Builds.Count > 3)
+                                         .Select(x => new { x.Name, SuccessFullBuilds = SuccessFullBuildInARow(x.Builds) })
+                                         .OrderByDescending(x => x.SuccessFullBuilds)
+                                         .ToArray();
+
+                if (orderedEnumerable.Length > 2)
+                {
+                    return string.Format("{0} as {1} succesfull builds in a row. {2} has {3} succesfull builds in a row",
+                                         orderedEnumerable.First().Name,
+                                         orderedEnumerable.First().SuccessFullBuilds,
+                                         orderedEnumerable.Last().Name,
+                                         orderedEnumerable.Last().SuccessFullBuilds);
+                }
+            }
+
+            return null; 
+        }
+
+        private int SuccessFullBuildInARow(List<Build> builds)
+        {
+            var firstOrDefault = builds.FirstOrDefault(x => x.Result != "SUCCESS");
+            if (firstOrDefault == null) return builds.Count;
+            return builds.IndexOf(firstOrDefault);
+        }
+
+        private string GetSlowestAndFastedBuild(JenkensProjectsResult jenkensProjectsResult)
+        {
+            if (jenkensProjectsResult.Jobs != null)
+            {
+                var orderedEnumerable =
+                    jenkensProjectsResult.Jobs.Where(x => x.Builds != null && x.Builds.Count > 3)
+                                         .Select(x => new {x.Name, Duration = x.Builds.Average(s => s.Duration)})
+                                         .OrderBy(x => x.Duration)
+                                         .ToArray();
+
+                if (orderedEnumerable.Length > 2)
+                {
+                    return string.Format("The fastest build is {0} at {1} per build. The slowest build is {2} at {3} per build",
+                                         orderedEnumerable.First().Name,
+                                         HumanReadable(TimeSpan.FromMilliseconds(orderedEnumerable.First().Duration),""),
+                                         orderedEnumerable.Last().Name,
+                                         HumanReadable(TimeSpan.FromMilliseconds(orderedEnumerable.Last().Duration), ""));
+                }
+            }
+
+            return null;
         }
 
         private IEnumerable<string> FailedBuildDetail(IEnumerable<Job> failedValues)
@@ -69,46 +126,50 @@ namespace BuildIndicatron.Core
         public string GetLastModifiedDateString(LastFailedBuild lastFailedBuild)
         {
             var timeSpan = DateTime.Now - lastFailedBuild.DateTime.AddSeconds(-1);
-            return timeSpan.TotalDays > 2000 ? "uhhmm who knows" : HumanReadable(timeSpan);
+            return timeSpan.TotalDays > 2000 ? "uhhmm who knows" : HumanReadable(timeSpan, " ago");
         }
 
-        public static string HumanReadable(TimeSpan timeSpan)
+        public static string HumanReadable(TimeSpan timeSpan, string postfix)
         {
             if (timeSpan.TotalDays > 60)
             {
-                return ((int)(timeSpan.TotalDays / 30)) + " months ago";
+                return ((int)(timeSpan.TotalDays / 30)) + " months"+postfix;
             }
             if (timeSpan.TotalDays > 30)
             {
-                return ((int)(timeSpan.TotalDays / 30)) + " month ago";
+                return ((int)(timeSpan.TotalDays / 30)) + " month"+postfix;
             }
             if (timeSpan.TotalDays > 2)
             {
-                return ((int)timeSpan.TotalDays) + " days ago";
+                return ((int)timeSpan.TotalDays) + " days"+postfix;
             }
             if (timeSpan.TotalHours > 23)
             {
-                return ((int)timeSpan.TotalDays) + " day ago";
+                return ((int)timeSpan.TotalDays) + " day"+postfix;
             }
             if (timeSpan.TotalMinutes > 110)
             {
-                return ((int)timeSpan.TotalHours) + " hours ago";
+                return ((int)timeSpan.TotalHours) + " hours"+postfix;
             }
             if (timeSpan.TotalMinutes > 60)
             {
-                return ((int)timeSpan.TotalHours) + " hour ago";
+                return ((int)timeSpan.TotalHours) + " hour"+postfix;
             }
             if (timeSpan.TotalMinutes > 2)
             {
-                return ((int)timeSpan.TotalMinutes) + " minutes ago";
+                return ((int)timeSpan.TotalMinutes) + " minutes"+postfix;
             }
             if (timeSpan.TotalSeconds > 59)
             {
-                return ((int)timeSpan.TotalMinutes) + " minute ago";
+                return ((int)timeSpan.TotalMinutes) + " minute"+postfix;
             }
-            if (timeSpan.TotalSeconds > 5)
+            if (timeSpan.TotalSeconds > 3)
             {
-                return ((int)timeSpan.TotalSeconds) + " seconds ago";
+                return ((int)timeSpan.TotalSeconds) + " seconds"+postfix;
+            }
+            if (timeSpan.Milliseconds > 1 && string.IsNullOrEmpty(postfix))
+            {
+                return ((int)timeSpan.Milliseconds) + " milliseconds" + postfix;
             }
             return "just now";
         }

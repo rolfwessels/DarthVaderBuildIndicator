@@ -23,10 +23,13 @@ namespace BuildIndicatron.Core.Api
         {
             var restRequest = GetRestRequest("api/json", Method.GET);
             //restRequest.AddParameter("pretty", "true");
+            restRequest.RequestFormat = DataFormat.Json;
             restRequest.AddParameter("depth", "1");
-            restRequest.AddParameter("tree", "jobs[name,color,healthReport[score],lastFailedBuild[number,timestamp,changeSet[items[author[fullName]]]]]");
+            restRequest.AddParameter("tree", "jobs[name,color,healthReport[score],build[duration,result],lastFailedBuild[number,timestamp,changeSet[items[author[fullName]]]]]");
             return ProcessDefaultRequest<JenkensProjectsResult>(restRequest);
         }
+
+
     }
 
 }

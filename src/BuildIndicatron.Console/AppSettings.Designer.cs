@@ -142,5 +142,29 @@ namespace BuildIndicatron.Console {
                 this["PassiveStopHour"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.1.13:5000/")]
+        public string JenkenServer {
+            get {
+                return ((string)(this["JenkenServer"]));
+            }
+            set {
+                this["JenkenServer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string RemoveFromNames {
+            get {
+                return ((string)(this["RemoveFromNames"]));
+            }
+            set {
+                this["RemoveFromNames"] = value;
+            }
+        }
     }
 }

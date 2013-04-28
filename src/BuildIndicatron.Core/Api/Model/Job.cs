@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BuildIndicatron.Core.Api.Model
 {
@@ -7,7 +8,15 @@ namespace BuildIndicatron.Core.Api.Model
         public string Name { get; set; }
         public string Color { get; set; }
         public List<Health> HealthReport { get; set; }
+        public List<Build> Builds { get; set; }
+        
         public LastFailedBuild LastFailedBuild { get; set; }
+    }
+
+    public class Build
+    {
+        public int Duration { get; set; }
+        public string Result { get; set; }
     }
 
     public class Health
