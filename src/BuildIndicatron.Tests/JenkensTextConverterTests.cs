@@ -53,7 +53,7 @@ namespace BuildIndicatron.Tests
                 },
             };
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
-            summary.Should().Be("Yea, there are currently 1 build on jenkins and they are all passing");
+            summary.Should().Be("Good work, there are currently 1 build on jenkins and they are all passing");
         }
 
 
@@ -68,7 +68,7 @@ namespace BuildIndicatron.Tests
                 },
             };
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
-            summary.Should().Be("Yea, there are currently 2 builds on jenkins and they are all passing");
+            summary.Should().Be("Good work, there are currently 2 builds on jenkins and they are all passing");
         }
 
         [Test]
@@ -82,7 +82,7 @@ namespace BuildIndicatron.Tests
                 },
             };
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
-            summary.Should().Be("Oh no, there are currently 2 builds on jenkins and they are all broken. Maybe development is not for you");
+            summary.Should().Be("There are currently 2 builds on jenkins and they are all broken. Maybe development is not for you");
         }
 
         [Test]
@@ -106,7 +106,7 @@ namespace BuildIndicatron.Tests
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
             summary.Should()
                    .Be(
-                       "Oh no, there are currently 2 builds on jenkins with 1 build failing. The Build - Zapper IPN Service last failed 1 day ago, It was last modified by Rolf Wessels");
+                       "You have failed me, there are currently 2 builds on jenkins with 1 build failing. The Build - Zapper IPN Service last failed 1 day ago, It was last modified by Rolf Wessels");
 
         }
 
@@ -132,7 +132,7 @@ namespace BuildIndicatron.Tests
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
             summary.Should()
                    .Be(
-                       "Oh no, there are currently 2 builds on jenkins with 1 build failing. The Build - Zapper IPN Service last failed 1 day ago, It was last modified by Rolf Wessels");
+                       "You have failed me, there are currently 2 builds on jenkins with 1 build failing. The Build - Zapper IPN Service last failed 1 day ago, It was last modified by Rolf Wessels");
 
         }
 
@@ -159,7 +159,7 @@ namespace BuildIndicatron.Tests
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
             summary.Should()
                    .Be(
-                       "Oh no, there are currently 4 builds on jenkins with 1 build failing. The Build - Zapper IPN Service last failed 1 day ago, It was last modified by Rolf Wessels");
+                       "You have failed me, there are currently 4 builds on jenkins with 1 build failing. The Build - Zapper IPN Service last failed 1 day ago, It was last modified by Rolf Wessels");
 
         }
 
@@ -195,7 +195,7 @@ namespace BuildIndicatron.Tests
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
             summary.Should()
                    .StartWith(
-                       "Oh no, there are currently 3 builds on jenkins with 2 builds failing");
+                       "You have failed me, there are currently 3 builds on jenkins with 2 builds failing");
 
         }
 
@@ -221,7 +221,7 @@ namespace BuildIndicatron.Tests
             };
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
             summary.Should()
-                   .Be("Oh no, there are currently 2 builds on jenkins with 1 build failing. The Build - Zapper IPN Service last failed 1 day ago, It was last modified by Rolf Wessels and Coreen");
+                   .Be("You have failed me, there are currently 2 builds on jenkins with 1 build failing. The Build - Zapper IPN Service last failed 1 day ago, It was last modified by Rolf Wessels and Coreen");
 
         }
 
@@ -309,7 +309,6 @@ namespace BuildIndicatron.Tests
             var jenkensProjectsResult = JenkensProjectsResult();
             _jenkensTextConverter.ToSummaryList(jenkensProjectsResult)
                 .Should().Contain("The Build - Zapper IPN Service last failed 2 days ago, It was last modified by Sean P Cleworth");
-
         }
 
         [Test]
@@ -317,7 +316,10 @@ namespace BuildIndicatron.Tests
         {
             var jenkensProjectsResult = JenkensProjectsResult();
             _jenkensTextConverter.ToSummaryList(jenkensProjectsResult)
-                .Should().Contain("The Deploy Dev - ZoomLogin + SampleMerchant last failed 1 day ago, It was last modified by a ghost");
+                                 .Where(x => x.Contains("a ghost"))
+                                 .First()
+                                 .Should()
+                                 .StartWith("The Deploy Dev - ZoomLogin + SampleMerchant last failed ");
 
         }
 

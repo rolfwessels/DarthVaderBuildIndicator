@@ -24,21 +24,21 @@ namespace BuildIndicatron.Core
         {
             if (jenkensProjectsResult.Jobs != null && jenkensProjectsResult.Jobs.All(x => x.Color == SuccessColor))
             {
-                yield return string.Format("Yea, there are currently {0} {1} on jenkins and they are all passing",                                      jenkensProjectsResult.Jobs.Count,
+                yield return string.Format("Good work, there are currently {0} {1} on jenkins and they are all passing",                                      jenkensProjectsResult.Jobs.Count,
                                      jenkensProjectsResult.Jobs.Count == 1 ? "build" : "builds");
             }
             else if (jenkensProjectsResult.Jobs != null && jenkensProjectsResult.Jobs.All(x => x.Color == FailColor))
             {
-                yield return string.Format("Oh no, there are currently {0} {1} on jenkins and they are all broken. Maybe development is not for you",
+                yield return string.Format("There are currently {0} {1} on jenkins and they are all broken. Maybe development is not for you",
                                      jenkensProjectsResult.Jobs.Count,
                                      jenkensProjectsResult.Jobs.Count == 1 ? "build" : "builds");
             }
             else if (jenkensProjectsResult.Jobs != null && jenkensProjectsResult.Jobs.Any())
             {
                 var failedValues = jenkensProjectsResult.Jobs.Where(x => x.Color == FailColor).ToList();
-                
 
-                yield return string.Format("Oh no, there are currently {0} {2} on jenkins with {1} {3} failing",
+
+                yield return string.Format("You have failed me, there are currently {0} {2} on jenkins with {1} {3} failing",
                                      jenkensProjectsResult.Jobs.Count,
                                      failedValues.Count,
                                      jenkensProjectsResult.Jobs.Count == 1? "build":"builds",
