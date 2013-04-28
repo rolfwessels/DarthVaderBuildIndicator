@@ -11,6 +11,4 @@
 
         public bool IsOn { get; set; }
     }
-
-    
 }

@@ -3,3 +3,4 @@
 bin/
 obj/
 *.suo
+/src/_NCrunch_BuildIndicatron/*.cache

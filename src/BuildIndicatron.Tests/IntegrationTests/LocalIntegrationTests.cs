@@ -134,7 +134,14 @@ namespace BuildIndicatron.Tests.IntegrationTests
                         {
                             new SequencesPlaySound() {File = "Wtf"},
                         }   
+                    },
+                    new Choreography() {
+                    Sequences = new List<Sequences>()
+                        {
+                            new SequencesOneLiner(),
+                        }   
                     }
+
                 }
             });
             result.Should().NotBeNull();
@@ -259,6 +266,29 @@ namespace BuildIndicatron.Tests.IntegrationTests
         }
 
         [Test]
+        public async Task SetButtonChoreography_CallWithMultipleChoreography_ValidResponse()
+        {
+            var result = await _robotApi.SetButtonChoreography(new Choreography()
+            {
+                Sequences = new List<Sequences>() { 
+                    new SequencesText2Speech() { BeginTime=0, Text = "20 builds passed. 1 failed. development bla bla bla" }
+                }
+            },
+            new Choreography()
+            {
+                Sequences = new List<Sequences>() { 
+                    new SequencesPlaySound() { BeginTime=0, File = "Funny"}
+                }
+            }
+            );
+
+
+            result.Should().NotBeNull();
+            result.Success.Should().BeTrue();
+            result.ErrorMessage.Should().BeNullOrEmpty();
+        }
+
+        [Test]
         public async Task GetClips_Call_ValidResponse()
         {
             var result = await _robotApi.GetClips();
@@ -267,6 +297,24 @@ namespace BuildIndicatron.Tests.IntegrationTests
             result.ErrorMessage.Should().BeNullOrEmpty();
             result.Folders.Count.Should().BeGreaterOrEqualTo(4);
             result.Folders.First().Files.Count.Should().BeGreaterOrEqualTo(2);
+        }
+
+        [Test]
+        public async Task Enqueue_OneLiner()
+        {
+            var pinRed = 17;
+            var pinGreen = 24;
+
+            var result = await _robotApi.Enqueue(new Choreography()
+            {
+                Sequences = new List<Sequences>() { 
+                    new SequencesGpIo() { BeginTime=0, Pin=pinGreen , IsOn = true },
+                    new SequencesOneLiner()
+                }
+            });
+            result.Should().NotBeNull();
+            result.Success.Should().BeTrue();
+            result.ErrorMessage.Should().BeNullOrEmpty();
         }
     }
 
