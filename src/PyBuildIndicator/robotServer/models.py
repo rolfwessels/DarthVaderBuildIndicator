@@ -8,7 +8,7 @@ from random import choice
 import re
 import urllib
 import urllib2
-from robotServer.helperClasses import MediaPlayer
+from helperClasses import MediaPlayer
 
 TEXT_SPEECH = "Text2Speech"
 TEXT_ONELINER = "oneliner"

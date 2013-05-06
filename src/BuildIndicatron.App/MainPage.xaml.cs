@@ -52,14 +52,15 @@ namespace BuildIndicatron.App
             Dispatcher.BeginInvoke(() =>
                 {
                     _mainViewModel.Items.Clear();
-                    foreach (var trigger in task.Result.Folders)
-                    {
-                        _mainViewModel.Items.Add(new ClipItemModel() { Name = trigger.Name });
-                        foreach (var file in trigger.Files)
+                    if (task.Result != null)
+                        foreach (var trigger in task.Result.Folders)
                         {
-                            _mainViewModel.Items.Add(new ClipItemModel() { Name = trigger.Name+"/"+file });
+                            _mainViewModel.Items.Add(new ClipItemModel() { Name = trigger.Name });
+                            foreach (var file in trigger.Files)
+                            {
+                                _mainViewModel.Items.Add(new ClipItemModel() { Name = trigger.Name+"/"+file });
+                            }
                         }
-                    }
                 });
            
         }

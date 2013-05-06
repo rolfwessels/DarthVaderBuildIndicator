@@ -2,8 +2,8 @@ from RPi import GPIO
 import datetime
 from pprint import pprint
 from unittest import TestCase
-from robotServer.buttonClickRunner import buttonClickRunner
-from robotServer.models import Choreography
+from buttonClickRunner import buttonClickRunner
+from models import Choreography
 
 __author__ = 'rolf'
 

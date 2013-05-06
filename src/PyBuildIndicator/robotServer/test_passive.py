@@ -1,6 +1,6 @@
 from unittest import TestCase
 import unittest
-from robotServer.models import Passive, Choreography, Sequences, SequencesPlaySound
+from models import Passive, Choreography, Sequences, SequencesPlaySound
 
 __author__ = 'rolf'
 

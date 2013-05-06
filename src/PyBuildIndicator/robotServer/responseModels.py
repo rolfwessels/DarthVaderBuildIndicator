@@ -1,12 +1,9 @@
 import os
-import re
-import urllib
-import urllib2
 import RPi.GPIO as GPIO
 
 from flask.helpers import json
-from robotServer.helperClasses import MyEncoder
-from robotServer.models import Choreography, RESOURCES_SOUNDS_, RESOURCES_TEXT_SPEACH_
+from models import Choreography, RESOURCES_SOUNDS_
+from helperClasses import MyEncoder
 
 
 class BaseResponse:

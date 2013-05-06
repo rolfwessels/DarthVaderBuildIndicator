@@ -1,10 +1,8 @@
 from Queue import Queue
-from RPi import GPIO
 from datetime import datetime
-import threading
 import time
-from robotServer.helperClasses import SleepingThread, MediaPlayer
-from robotServer.models import Choreography, PLAYSOUND, RESOURCES_SOUNDS_, GP_IO, SequencesGpIo, Sequences
+from helperClasses import SleepingThread
+from models import Sequences
 
 
 class CompositionRunner():
@@ -25,27 +23,29 @@ class CompositionRunner():
         item = self.queue.get()
         print  "Looking at ", item
         try:
-            self.RunCorr(item)
+            self.RunChoreography(item)
         finally:
             self.queue.task_done()
 
     def AddChoreography(self, choreography):
         self.queue.put(choreography)
 
-    def RunCorr(self, item):
+    def RunChoreography(self, item):
         startTime = datetime.now()
         allDone = False
         while not allDone:
             timedDifference = datetime.now() - startTime
             allDone = True
             for sequence in item.Sequences:
-                if isinstance(sequence,Sequences) :
-                    sequence.Execute(timedDifference.total_seconds()*1000)
-                    allDone = allDone and sequence.Done
-                else :
+                if isinstance(sequence, Sequences):
                     print "Huh this is not a Sequences", sequence
+                try:
+                    sequence.Execute(timedDifference.total_seconds() * 1000)
+                    allDone = allDone and sequence.Done
+                except Exception:
+                    print "Exception loading the values", sequence
             time.sleep(0.01)
-        # reset to allow another playback
+            # reset to allow another playback
         for sequence in item.Sequences:
             sequence.Done = False
 

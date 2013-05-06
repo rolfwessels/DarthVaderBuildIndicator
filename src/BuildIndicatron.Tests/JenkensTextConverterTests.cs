@@ -307,20 +307,18 @@ namespace BuildIndicatron.Tests
         public void UsingTheSampleGetAllValues_LastWorked()
         {
             var jenkensProjectsResult = JenkensProjectsResult();
-            _jenkensTextConverter.ToSummaryList(jenkensProjectsResult)
-                .Should().Contain("The Build - Zapper IPN Service last failed 2 days ago, It was last modified by Sean P Cleworth");
+            _jenkensTextConverter.ToSummaryList(jenkensProjectsResult).First(x => x.Contains("P Cleworth"))
+                                 .Should()
+                                 .StartWith("The Build - Zapper IPN Service last failed ");
         }
 
         [Test]
         public void UsingTheSampleGetAllValues_1_day_agoe()
         {
             var jenkensProjectsResult = JenkensProjectsResult();
-            _jenkensTextConverter.ToSummaryList(jenkensProjectsResult)
-                                 .Where(x => x.Contains("a ghost"))
-                                 .First()
+            _jenkensTextConverter.ToSummaryList(jenkensProjectsResult).First(x => x.Contains("a ghost"))
                                  .Should()
                                  .StartWith("The Deploy Dev - ZoomLogin + SampleMerchant last failed ");
-
         }
 
         [Test]
@@ -329,7 +327,6 @@ namespace BuildIndicatron.Tests
             var jenkensProjectsResult = JenkensProjectsResult();
             _jenkensTextConverter.ToSummaryList(jenkensProjectsResult)
                 .Should().Contain("The fastest build is Deploy Dev - ZapperPayments + ZapperCallback at 10 seconds per build. The slowest build is Build - ZapZap API at 4 minutes per build");
-
         }
 
         [Test]

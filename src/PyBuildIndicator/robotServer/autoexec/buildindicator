@@ -1,0 +1,37 @@
+#! /bin/bash
+
+# /etc/init.d/buildindicator
+
+
+
+### BEGIN INIT INFO
+# Provides:          buildindicator
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Starts my build indicator when the system starts
+# Description:       A simple script which will start / stop buildindicator at boot /$
+### END INIT INFO
+
+# If you want a command to always run, put it here
+
+# Carry out specific functions when asked to by the system
+case "$1" in
+  start)
+    echo "Starting !"
+    sleep 2s
+    cd /home/pi/PyRobotServer/robotServer
+    /usr/bin/python -u /home/pi/PyRobotServer/robotServer/serverStart.py
+    ;;
+  stop)
+    ;;
+  *)
+    echo "Bye!"
+    sleep 2s
+    killall python
+    exit 1
+    ;;
+esac
+
+exit 0 

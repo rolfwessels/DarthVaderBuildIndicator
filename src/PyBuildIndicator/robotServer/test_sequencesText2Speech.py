@@ -1,5 +1,6 @@
 from unittest import TestCase
-from robotServer.models import SequencesText2Speech
+from models import SequencesText2Speech
+from twitterComs import TwitterCommunication
 
 __author__ = 'rolf'
 

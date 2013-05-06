@@ -1,8 +1,7 @@
 from unittest import TestCase
-from robotServer.models import SequencesJokeOrOneLiner
+from models import SequencesJokeOrOneLiner
 
 __author__ = 'rolf'
-
 
 class TestSequencesJokeOrOneLiner(TestCase):
     def testGetRandom(self):

@@ -2,8 +2,8 @@ from RPi import GPIO
 import datetime
 import re
 import socket
-from robotServer.helperClasses import SleepingThread
-from robotServer.models import Passive, Choreography
+from helperClasses import SleepingThread
+from models import Passive, Choreography
 
 
 class buttonClickRunner():

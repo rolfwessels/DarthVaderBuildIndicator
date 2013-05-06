@@ -3,35 +3,27 @@ from RPi import GPIO
 from flask import Flask, redirect, url_for, render_template, jsonify, Response, request, make_response
 from functools import wraps
 from multiprocessing import Lock
+import thread
 from responseModels import PingResponse, PlayMp3FileResponse, TextToSpeechResponse, SetupGpIoResponse, GpIoOutputResponse, PassiveResponse, EnqueueResponse, SetButtonChoreographyResponse, GetClipsResponse
-from robotServer.CompositionRunner import CompositionRunner
-from robotServer.backgroundProcess import PassiveManager
+from CompositionRunner import CompositionRunner
+from backgroundProcess import PassiveManager
 
 # configuration
-from robotServer.buttonClickRunner import buttonClickRunner
-from robotServer.models import Passive, Choreography
+from buttonClickRunner import buttonClickRunner
+from models import Passive, Choreography
+from pins import *
+from robotServer.twitterComs import TwitterCommunication
 
 DEBUG = True
 MP3PATH = "Resources/mp3"
-bRedPin = 17
-bGreenPin = 24
-lsRedPin = 27
-lsGreenPin = 9
-lsBluePin = 11
-buttonPin = 10
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(bRedPin, GPIO.OUT)
-GPIO.setup(bGreenPin, GPIO.OUT)
-GPIO.setup(lsBluePin, GPIO.OUT)
-GPIO.setup(lsGreenPin, GPIO.OUT)
-GPIO.setup(lsRedPin, GPIO.OUT)
-GPIO.setup(buttonPin, GPIO.IN)
 
 # globals
 GlobalCompositionRunner = CompositionRunner()
 GlobalCurrentProcess = PassiveManager(GlobalCompositionRunner)
 GlobalButtonClickRunner = buttonClickRunner(buttonPin,GlobalCompositionRunner)
+GlobalTwitterCommunication = TwitterCommunication()
+thread.start_new_thread(GlobalTwitterCommunication.GetTimeLineSteam, (GlobalCompositionRunner,))
 
 app = Flask(__name__)
 
