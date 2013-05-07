@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using BuildIndicatron.Core;
@@ -42,8 +43,15 @@ namespace BuildIndicatron.Tests.IntegrationTests
             var projects = await JenkensProjectsResult();
             var jenkensProjectsResult = new JenkensProjectsResult();
             var jenkensTextConverter = new JenkensTextConverter();
-            var summary = jenkensTextConverter.ToSummary(projects);
-            _log.Warn(summary);  
+            var summary = jenkensTextConverter.ToSummaryList(projects).ToArray();
+            
+            foreach (var line in summary)
+            {
+                _log.Info(line);  
+            }
+
+            summary.Length.Should().BeGreaterOrEqualTo(3);
+            
         }
 
         private static async Task<JenkensProjectsResult> JenkensProjectsResult()
