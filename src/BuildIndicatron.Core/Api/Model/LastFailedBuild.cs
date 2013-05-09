@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BuildIndicatron.Core.Api.Model
 {
@@ -12,6 +14,11 @@ namespace BuildIndicatron.Core.Api.Model
                 var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
                 return epoch.AddMilliseconds(Convert.ToDouble(Timestamp));
             }
+        }
+
+        public IEnumerable<string> Authors()
+        {
+            return ChangeSet != null ? ChangeSet.items.Select(x => x.author.fullName).Distinct() : new string[0];
         }
     }
 }

@@ -7,8 +7,9 @@ namespace BuildIndicatron.Core
 {
     public class JenkensTextConverter
     {
-        private const string FailColor = "red";
-        private const string SuccessColor = "blue";
+        public const string FailColor = "red";
+        public const string SuccessColor = "blue";
+        public const string ResultSuccess = "SUCCESS";
 
         public string ToSummary(JenkensProjectsResult jenkensProjectsResult)
         {
@@ -63,7 +64,7 @@ namespace BuildIndicatron.Core
             {
                 var orderedEnumerable =
                     jenkensProjectsResult.Jobs.Where(x => x.Builds != null && x.Builds.Count > 3)
-                                         .Select(x => new { x.Name, SuccessFullBuilds = SuccessFullBuildInARow(x.Builds) })
+                                         .Select(x => new { x.Name, SuccessFullBuilds = SuccessfulBuildInARow(x.Builds) })
                                          .OrderByDescending(x => x.SuccessFullBuilds)
                                          .ToArray();
 
@@ -80,9 +81,16 @@ namespace BuildIndicatron.Core
             return null; 
         }
 
-        private int SuccessFullBuildInARow(List<Build> builds)
+        public static int SuccessfulBuildInARow(List<Build> builds)
         {
-            var firstOrDefault = builds.FirstOrDefault(x => x.Result != "SUCCESS");
+            var firstOrDefault = builds.FirstOrDefault(x => x.Result != ResultSuccess);
+            if (firstOrDefault == null) return builds.Count;
+            return builds.IndexOf(firstOrDefault);
+        }
+
+        public static int FailsInARow(List<Build> builds)
+        {
+            var firstOrDefault = builds.FirstOrDefault(x => x.Result == ResultSuccess);
             if (firstOrDefault == null) return builds.Count;
             return builds.IndexOf(firstOrDefault);
         }
