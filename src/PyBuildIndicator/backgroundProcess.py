@@ -5,7 +5,7 @@ from random import choice
 from helperClasses import SleepingThread, MyEncoder
 from models import Passive
 
-FileLocation = "Resources/passive.json"
+FileLocation = "resources/passive.json"
 
 class PassiveManager():
     def __init__(self, composition_runner):

@@ -15,7 +15,7 @@ from pins import *
 from twitterComs import TwitterCommunication
 
 DEBUG = True
-MP3PATH = "Resources/mp3"
+MP3PATH = "resources/mp3"
 
 
 # globals

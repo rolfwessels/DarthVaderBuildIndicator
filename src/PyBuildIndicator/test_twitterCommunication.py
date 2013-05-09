@@ -1,5 +1,5 @@
 from unittest import TestCase
-from robotServer.CompositionRunner import CompositionRunner
+from CompositionRunner import CompositionRunner
 from twitterComs import TwitterCommunication
 
 __author__ = 'rolf'

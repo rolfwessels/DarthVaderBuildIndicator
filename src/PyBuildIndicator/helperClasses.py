@@ -50,7 +50,7 @@ class MediaPlayer():
 
     def DetermineTheMediaPlayer(self):
         if os.path.exists("/usr/bin/mpg321"):
-            return "/usr/bin/mpg321"
+            return "/usr/bin/mpg321 -q"
         else:
             return 'D:\\Work\\Projects\\Home\\BuildIndicatron\\var\\cmdmp3\cmdmp3.exe'
 

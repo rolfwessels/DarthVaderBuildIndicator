@@ -15,8 +15,8 @@ TEXT_ONELINER = "oneliner"
 PLAYSOUND = "playsound"
 GP_IO = 'GpIO'
 
-RESOURCES_TEXT_SPEACH_ = 'Resources/text2speach/'
-RESOURCES_SOUNDS_ = 'Resources/sounds/'
+RESOURCES_TEXT_SPEACH_ = 'resources/text2speach/'
+RESOURCES_SOUNDS_ = 'resources/sounds/'
 
 
 class Sequences(object):
@@ -131,7 +131,7 @@ class SequencesText2Speech(Sequences):
         return strings
 
     def Transform(self, SaveTo):
-        path = "Resources/text2speach/"
+        path = "resources/text2speach/"
         tmpF = path + "foreground.mp3"
         tmpB = path + "background.mp3"
         background = path + "Star-Wars-1391.mp3"
@@ -145,7 +145,7 @@ class SequencesJokeOrOneLiner(SequencesText2Speech):
     def __init__(self):
         super(SequencesJokeOrOneLiner, self).__init__("")
         self.__type = TEXT_ONELINER
-        json_data = open('Resources/jokes.json')
+        json_data = open('resources/jokes.json')
         self.Jokes = json.load(json_data)
         json_data.close()
         pass

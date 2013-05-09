@@ -21,9 +21,9 @@ case "$1" in
   start)
     echo "Starting !"
     sleep 2s
-    cd /home/pi/PyRobotServer/robotServer
+    cd /home/pi/PyRobotServer
     echo "Check /home/pi/PyRobotServer/runner.log for output"
-    /usr/bin/python -u /home/pi/PyRobotServer/robotServer/serverStart.py >> /home/pi/PyRobotServer/runner.log
+    /usr/bin/python -u /home/pi/PyRobotServer/serverStart.py >> /home/pi/PyRobotServer/runner.log
     ;;
   stop)
     ;;

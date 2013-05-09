@@ -1,0 +1,13 @@
+chmod +x ~/PyRobotServer/autoexec/buildindicator
+sudo chown  pi:pi ~/PyRobotServer/*
+
+~/PyRobotServer/autoexec/buildindicator
+
+sudo cp ~/PyRobotServer/autoexec/buildindicator /etc/init.d/buildindicator
+sudo update-rc.d buildindicator defaults
+sudo reboot
+
+sudo /etc/init.d/buildindicator start
+sudo /etc/init.d/buildindicator
+
+sudo ps -A | grep python
