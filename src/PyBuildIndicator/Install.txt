@@ -1,3 +1,4 @@
 cinst easy.install
 easy_install pip
 pip install Flask
+easy_install pip

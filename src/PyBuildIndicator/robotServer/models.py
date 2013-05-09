@@ -25,6 +25,7 @@ class Sequences(object):
         self.Done = False
         self.BeginTime = 0
 
+
     def get_Type(self):
         return self.__type
 
@@ -177,6 +178,7 @@ class Passive(object):
 
 class Choreography(object):
     def __init__(self, params=None):
+        self.AllowRepeat = True
         self.__sequences = []
         if params is not None:
             self.__dict__.update(params)

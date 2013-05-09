@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Host" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://192.168.1.13:5000/</Value>
+      <Value Profile="(Default)">http://192.168.1.15:5000/</Value>
     </Setting>
     <Setting Name="FeetRedPin" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">17</Value>
@@ -33,7 +33,7 @@
       <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="JenkenServer" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://192.168.1.13:5000/</Value>
+      <Value Profile="(Default)">http://192.168.1.15:5000/</Value>
     </Setting>
     <Setting Name="RemoveFromNames" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

@@ -12,17 +12,20 @@ from backgroundProcess import PassiveManager
 from buttonClickRunner import buttonClickRunner
 from models import Passive, Choreography
 from pins import *
-from robotServer.twitterComs import TwitterCommunication
+from twitterComs import TwitterCommunication
 
 DEBUG = True
 MP3PATH = "Resources/mp3"
 
 
 # globals
+
+GlobalTwitterCommunication = TwitterCommunication()
 GlobalCompositionRunner = CompositionRunner()
 GlobalCurrentProcess = PassiveManager(GlobalCompositionRunner)
 GlobalButtonClickRunner = buttonClickRunner(buttonPin,GlobalCompositionRunner)
-GlobalTwitterCommunication = TwitterCommunication()
+
+GlobalCompositionRunner.SetRepeatComposition(GlobalButtonClickRunner.SetLastComposition)
 thread.start_new_thread(GlobalTwitterCommunication.GetTimeLineSteam, (GlobalCompositionRunner,))
 
 app = Flask(__name__)

@@ -25,7 +25,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         static JenkensApiTests()
         {
             _hostApi = "http://fulliautomatix:8080";
-            //_hostApi = "http://192.168.1.13:5000/";
+            //_hostApi = "http://192.168.1.15:5000/";
         }
 
         [Test]

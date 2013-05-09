@@ -21,6 +21,11 @@ class buttonClickRunner():
         self.Timer = SleepingThread(self.ThreadTimerTick, 0.5)
         self.Timer.start()
 
+    def SetLastComposition(self, lastComposition):
+        self.LastComposition = lastComposition
+        self.CurrentCount = -1
+        self.LastCall = datetime.datetime.now()
+
     def SetChoreography(self, choreography):
         print "Setting new Choreography for button play", choreography
         self.CurrentCount = 0
@@ -34,17 +39,21 @@ class buttonClickRunner():
 
     def GetNextSequence(self):
         count = len(self.Choreography)
-        if datetime.datetime.now() - self.LastCall > self.DelayBeforeReset:
+        if datetime.datetime.now() - self.LastCall > self.DelayBeforeReset or self.CurrentCount > (count - 1):
             print "reset"
             self.CurrentCount = 0
-        nextSequence = self.Choreography[self.CurrentCount]
+        if self.CurrentCount == -1:
+            nextSequence = self.LastComposition
+        else:
+            nextSequence = self.Choreography[self.CurrentCount]
         print "count ", self.CurrentCount
-        self.CurrentCount = min(count-1,self.CurrentCount+1)
+        self.CurrentCount = min(count - 1, self.CurrentCount + 1)
         self.LastCall = datetime.datetime.now()
         return nextSequence
 
     def RunNextSequence(self):
         sequence = self.GetNextSequence()
+        sequence.AllowRepeat = False
         self.Runner.AddChoreography(sequence)
 
     def GetInitialString(self):
@@ -58,7 +67,7 @@ class buttonClickRunner():
         pass
 
     def Stop(self):
-        # self.Timer.Stop()
+        self.Timer.Stop()
         pass
 
 

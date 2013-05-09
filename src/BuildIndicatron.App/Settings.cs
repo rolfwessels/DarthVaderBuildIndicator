@@ -28,7 +28,7 @@ namespace BuildIndicatron.App
             }
             else
             {
-                Host = "192.168.1.13";
+                Host = "192.168.1.15";
             }
         }
 

@@ -20,7 +20,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         {
             log4net.Config.XmlConfigurator.Configure(new FileInfo("Log4Net.config"));
             //_hostApi = Config.Url;
-            _hostApi = "http://192.168.1.13:5000/";
+            _hostApi = "http://192.168.1.15:5000/";
         }
 
         #region Setup/Teardown

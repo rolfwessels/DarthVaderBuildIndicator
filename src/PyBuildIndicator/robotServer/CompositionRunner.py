@@ -9,6 +9,7 @@ class CompositionRunner():
     def __init__(self):
         self.Initialize()
         self.StartTheThread()
+        self.SetLastComposition = None
 
     def Initialize(self):
         self.sleepTime = 1
@@ -31,6 +32,8 @@ class CompositionRunner():
         self.queue.put(choreography)
 
     def RunChoreography(self, item):
+        if self.SetLastComposition is not None and item.AllowRepeat:
+            self.SetLastComposition(item)
         startTime = datetime.now()
         allDone = False
         while not allDone:
@@ -46,7 +49,12 @@ class CompositionRunner():
                     print "Exception loading the values", sequence
             time.sleep(0.01)
             # reset to allow another playback
+
         for sequence in item.Sequences:
             sequence.Done = False
+
+    def SetRepeatComposition(self, setLastComposition):
+        self.SetLastComposition = setLastComposition
+        pass
 
 

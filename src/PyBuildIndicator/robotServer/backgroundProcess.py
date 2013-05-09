@@ -22,7 +22,6 @@ class PassiveManager():
             filePointer = open(FileLocation,"r")
             json_load = json.load(filePointer)
             self.CurrentPassive = Passive(json_load)
-            print "Passive loaded" + str(json_load)
             filePointer.close()
 
     def SaveToFile(self, passive):
