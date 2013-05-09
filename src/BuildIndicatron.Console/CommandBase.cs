@@ -49,7 +49,7 @@ namespace BuildIndicatron.Console
         {
             try
             {
-                var dictionary = AppSettings.Default.StringReplaces.Split('|').Select(s => s.Split(':')).ToDictionary(kv => kv.FirstOrDefault(), kv => kv.Skip(1).FirstOrDefault());
+                var dictionary = AppSettings.Default.StringReplaces.Split('|').Select(s => s.Split(':')).ToDictionary(kv => kv.FirstOrDefault(), kv => kv.Skip(1).FirstOrDefault()??"");
                 SequencesText2Speech.SetDefaultCleanAndReplace(dictionary);
                 if (Verbose)
                 {
@@ -114,8 +114,19 @@ namespace BuildIndicatron.Console
                             new SequencesGpIo {BeginTime = 1000, Pin = AppSettings.Default.LsBluePin, IsOn = false},
                         }
                 }).ToArray();
-            Task<SetButtonChoreographyResponse> result = BuildIndicationApi.SetButtonChoreography(choreography);
-            result.Wait();
+
+            BuildIndicationApi.SetButtonChoreography(choreography).Wait();
+            var failed = allProjects.Result.Jobs.All(x => x.Color != JenkensTextConverter.FailColor);
+            var glow = new Choreography()
+            {
+                Sequences = new List<Sequences>
+                        {
+                            new SequencesGpIo {BeginTime = 0, Pin = AppSettings.Default.FeetGreenPin, IsOn = !failed},
+                            new SequencesGpIo {BeginTime = 0, Pin = AppSettings.Default.FeetRedPin, IsOn = failed},
+                        }
+            };
+            BuildIndicationApi.Enqueue(glow).Wait();
+            
         }
 
         public static Task<JenkensProjectsResult> AllProjects()

@@ -86,6 +86,7 @@
     <Compile Include="Api\Model\JenkensProjectsResult.cs" />
     <Compile Include="Api\Model\Job.cs" />
     <Compile Include="Api\RobotApi.cs" />
+    <Compile Include="EnumerableHelper.cs" />
     <Compile Include="JenkensTextConverter.cs" />
     <Compile Include="Media\WavPlayer.cs" />
     <Compile Include="MimeHelper.cs" />

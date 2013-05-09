@@ -157,7 +157,8 @@ namespace BuildIndicatron.Console {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("zapzap:zap zap|dev:development|ZAPPER.SCANNER.WP8:zapper windows phone")]
+        [global::System.Configuration.DefaultSettingValueAttribute("zapzap:zap zap|dev :development|ZAPPER.SCANNER.WP8:zapper windows phone|DEV -:|Bu" +
+            "ild - :|Deploy - :|")]
         public string StringReplaces {
             get {
                 return ((string)(this["StringReplaces"]));

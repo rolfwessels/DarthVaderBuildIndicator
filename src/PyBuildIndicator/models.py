@@ -1,20 +1,21 @@
 from RPi import GPIO
 from flask import json
 import hashlib
-import md5
 import os
-from pprint import pprint
 from random import choice
 import re
 import urllib
 import urllib2
 from helperClasses import MediaPlayer
+from twitterComs import TwitterCommunication
+
 
 TEXT_SPEECH = "Text2Speech"
 TEXT_ONELINER = "oneliner"
 PLAYSOUND = "playsound"
 GP_IO = 'GpIO'
-
+TWEETING = "Tweet"
+QUOTES = "Quotes"
 RESOURCES_TEXT_SPEACH_ = 'resources/text2speach/'
 RESOURCES_SOUNDS_ = 'resources/sounds/'
 
@@ -140,24 +141,68 @@ class SequencesText2Speech(Sequences):
         os.system("sox -v 0.2 " + background + " -r 32000 " + tmpB)
         os.system("sox -m " + tmpB + "  " + tmpF + " " + SaveTo)
 
+class SequencesTweet(Sequences):
+    def __init__(self, text=""):
+        super(SequencesTweet, self).__init__(TWEETING)
+        self.Text = text
+        pass
+
+    def ExecuteFirstInstance(self):
+        if len(self.Text) > 0:
+            twitter = TwitterCommunication()
+            twitter.SendTweet(self.Text)
+        super(SequencesTweet, self).ExecuteFirstInstance()
 
 class SequencesJokeOrOneLiner(SequencesText2Speech):
     def __init__(self):
         super(SequencesJokeOrOneLiner, self).__init__("")
         self.__type = TEXT_ONELINER
-        json_data = open('resources/jokes.json')
-        self.Jokes = json.load(json_data)
-        json_data.close()
-        pass
 
     def ExecuteFirstInstance(self):
         self.Text = self.GetOneLiner()
+        if len(self.Text) > 0:
+            twitter = TwitterCommunication()
+            twitter.SendTweet(self.Text)
         super(SequencesJokeOrOneLiner, self).ExecuteFirstInstance()
 
     def GetOneLiner(self):
-        return choice(self.Jokes)
+        json_data = open('resources/jokes.json')
+        Jokes = json.load(json_data)
+        json_data.close()
+        return choice(Jokes)
         pass
 
+class SequencesQuotes(SequencesText2Speech):
+    def __init__(self):
+        super(SequencesQuotes, self).__init__("")
+        self.__type = QUOTES
+
+    def ExecuteFirstInstance(self):
+        Quotes = ["I find your lack of faith disturbing.", "You don't know the power of the dark side!",
+                  "Luke, I am your father!.",
+                  "Today will be a day long remembered. It has seen the death of Kenobi, and soon the fall of the rebellion.",
+                  "The force is strong with this one.", "I sense something, a presence I've not felt since.......",
+                  "You should not have come back!",
+                  "The ability to destroy a planet is insignificant next to the power of the force.",
+                  "Just for once, let me look at your face with my own eyes.",
+                  "I've been waiting for you, Obi-wan. We meet again at last. The circle is now complete. When I left you I was but the learner. Now I am the master.",
+                  "Perhaps I can find new ways to motivate them.", "Obi-Wan has taught you well.",
+                  "Obi-Wan once thought as you do. You don't know the power of the Dark Side, I must obey my master.",
+                  "It is too late for me, son. The Emperor will show you the true nature of the Force. He is your master now.",
+                  "You are unwise to lower your defenses!", " As you wish.",
+                  "No. Leave them to me. I will deal with them myself.", "My son is with them.",
+                  "You cannot hide forever, Luke.", "Don't fail me again, Admiral.",
+                  "Asteroids do not concern me, Admiral. I want that ship, not excuses.",
+                  "He will join us or die, my master.",
+                  "Alert all commands. Calculate every possible destination along their last known trajectory.",
+                  "Impressive. Most impressive. Obi-Wan has taught you well. You have controlled your fear. Now, release your anger. Only your hatred can destroy me.",
+                  "The force is with you, young Skywalker, but you are not a Jedi yet.",
+                  "What is thy bidding, my master?", "When I left you I was but the learner. Now I am the master."]
+        self.Text = choice(Quotes)
+        if len(self.Text) > 0:
+            twitter = TwitterCommunication()
+            twitter.SendTweet(self.Text)
+        super(SequencesQuotes, self).ExecuteFirstInstance()
 
 class Passive(object):
     def __init__(self, params=None):
@@ -193,7 +238,10 @@ class Choreography(object):
                     sequences = SequencesText2Speech(v['Text'], v['DisableTransform'])
                 elif v['Type'] == TEXT_ONELINER:
                     sequences = SequencesJokeOrOneLiner()
-
+                elif v['Type'] == TWEETING:
+                    sequences = SequencesTweet(v['Text'])
+                elif v['Type'] == QUOTES:
+                    sequences = SequencesQuotes()
                 sequences.BeginTime = v['BeginTime']
                 self.__sequences.append(sequences)
 

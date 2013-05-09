@@ -29,7 +29,6 @@ namespace BuildIndicatron.Core.Api
             return ProcessDefaultRequest<JenkensProjectsResult>(restRequest);
         }
 
-
     }
 
 }

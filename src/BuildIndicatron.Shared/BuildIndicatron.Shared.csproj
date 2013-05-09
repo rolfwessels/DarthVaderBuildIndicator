@@ -58,7 +58,9 @@
     <Compile Include="Models\Composition\SequencesPlaySound.cs" />
     <Compile Include="Models\Composition\Passive.cs" />
     <Compile Include="Models\Composition\Sequences.cs" />
+    <Compile Include="Models\Composition\SequencesQuotes.cs" />
     <Compile Include="Models\Composition\SequencesText2Speech.cs" />
+    <Compile Include="Models\Composition\SequencesTweet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

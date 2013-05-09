@@ -1,9 +1,9 @@
 import select
 
 from RPi import GPIO
-from pygame.tests.test_utils import unittest
 from time import sleep
 from unittest import TestCase
+import unittest
 
 
 class TestPassive(TestCase):

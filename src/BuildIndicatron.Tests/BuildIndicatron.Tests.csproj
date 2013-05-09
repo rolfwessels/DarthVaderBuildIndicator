@@ -84,7 +84,7 @@
     </Compile>
     <Compile Include="IntegrationTests\Config.cs" />
     <Compile Include="IntegrationTests\JenkensApiTests.cs" />
-    <Compile Include="IntegrationTests\LocalIntegrationTests.cs" />
+    <Compile Include="IntegrationTests\BuildIndicationApiTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="JenkensTextConverterTests.cs" />
   </ItemGroup>

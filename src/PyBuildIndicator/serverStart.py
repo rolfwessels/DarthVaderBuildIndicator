@@ -1,8 +1,6 @@
 from __future__ import with_statement
-from RPi import GPIO
-from flask import Flask, redirect, url_for, render_template, jsonify, Response, request, make_response
+from flask import Flask, render_template, Response, request, make_response
 from functools import wraps
-from multiprocessing import Lock
 import thread
 from responseModels import PingResponse, PlayMp3FileResponse, TextToSpeechResponse, SetupGpIoResponse, GpIoOutputResponse, PassiveResponse, EnqueueResponse, SetButtonChoreographyResponse, GetClipsResponse
 from CompositionRunner import CompositionRunner
@@ -12,7 +10,7 @@ from backgroundProcess import PassiveManager
 from buttonClickRunner import buttonClickRunner
 from models import Passive, Choreography
 from pins import *
-from twitterComs import TwitterCommunication
+from twitterListner import TwitterListener
 
 DEBUG = True
 MP3PATH = "resources/mp3"
@@ -20,7 +18,7 @@ MP3PATH = "resources/mp3"
 
 # globals
 
-GlobalTwitterCommunication = TwitterCommunication()
+GlobalTwitterCommunication = TwitterListener()
 GlobalCompositionRunner = CompositionRunner()
 GlobalCurrentProcess = PassiveManager(GlobalCompositionRunner)
 GlobalButtonClickRunner = buttonClickRunner(buttonPin,GlobalCompositionRunner)

@@ -36,7 +36,7 @@
       <Value Profile="(Default)">http://192.168.1.15:5000/</Value>
     </Setting>
     <Setting Name="StringReplaces" Type="System.String" Scope="User">
-      <Value Profile="(Default)">zapzap:zap zap|dev:development|ZAPPER.SCANNER.WP8:zapper windows phone</Value>
+      <Value Profile="(Default)">zapzap:zap zap|dev :development|ZAPPER.SCANNER.WP8:zapper windows phone|DEV -:|Build - :|Deploy - :|</Value>
     </Setting>
     <Setting Name="CoreProjects" Type="System.String" Scope="User">
       <Value Profile="(Default)">DEV - Zapper.Scanner.WP8 - Build Development|Build - Zapper IPN Ser1vice</Value>
