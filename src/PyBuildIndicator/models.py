@@ -75,6 +75,7 @@ class SequencesText2Speech(Sequences):
     def __init__(self, text="", disableTransform=False):
         super(SequencesText2Speech, self).__init__(TEXT_SPEECH)
         self.Text = text
+        self.SendTweet = False
         self.DisableTransform = disableTransform
 
     def ConvertToFileName(self, text):
@@ -101,17 +102,23 @@ class SequencesText2Speech(Sequences):
         print strings
         for s in strings:
             self.PlayPartText(s)
+
+        if  self.SendTweet and len(self.Text) > 0:
+            twitter = TwitterCommunication()
+            twitter.SendTweet(self.Text)
+
         super(SequencesText2Speech, self).ExecuteFirstInstance()
 
     def PlayPartText(self, input):
-        self.SaveTo = RESOURCES_TEXT_SPEACH_ + self.ConvertToFileName(input) + '.mp3'
-        if not os.path.exists(self.SaveTo):
-            url = 'http://translate.google.com/translate_tts?tl=en&q=' + urllib.quote_plus(input)
-            print "downloading file " + url + " " + self.SaveTo
-            self.Download(url, self.SaveTo)
-            if not self.DisableTransform:
-                self.Transform(self.SaveTo)
-        os.system("play " + self.SaveTo + " echo 0.8 0.88 6.0 0.4")
+        if len(input) > 0:
+            self.SaveTo = RESOURCES_TEXT_SPEACH_ + self.ConvertToFileName(input) + '.mp3'
+            if not os.path.exists(self.SaveTo):
+                url = 'http://translate.google.com/translate_tts?tl=en&q=' + urllib.quote_plus(input)
+                print "downloading file " + url + " " + self.SaveTo
+                self.Download(url, self.SaveTo)
+                if not self.DisableTransform:
+                    self.Transform(self.SaveTo)
+            os.system("play " + self.SaveTo + " echo 0.8 0.88 6.0 0.4")
 
 
     def SplitString(self, string):
@@ -156,13 +163,11 @@ class SequencesTweet(Sequences):
 class SequencesJokeOrOneLiner(SequencesText2Speech):
     def __init__(self):
         super(SequencesJokeOrOneLiner, self).__init__("")
+        self.SendTweet = True
         self.__type = TEXT_ONELINER
 
     def ExecuteFirstInstance(self):
         self.Text = self.GetOneLiner()
-        if len(self.Text) > 0:
-            twitter = TwitterCommunication()
-            twitter.SendTweet(self.Text)
         super(SequencesJokeOrOneLiner, self).ExecuteFirstInstance()
 
     def GetOneLiner(self):
@@ -176,6 +181,7 @@ class SequencesQuotes(SequencesText2Speech):
     def __init__(self):
         super(SequencesQuotes, self).__init__("")
         self.__type = QUOTES
+        self.SendTweet = True
 
     def ExecuteFirstInstance(self):
         Quotes = ["I find your lack of faith disturbing.", "You don't know the power of the dark side!",
@@ -199,9 +205,6 @@ class SequencesQuotes(SequencesText2Speech):
                   "The force is with you, young Skywalker, but you are not a Jedi yet.",
                   "What is thy bidding, my master?", "When I left you I was but the learner. Now I am the master."]
         self.Text = choice(Quotes)
-        if len(self.Text) > 0:
-            twitter = TwitterCommunication()
-            twitter.SendTweet(self.Text)
         super(SequencesQuotes, self).ExecuteFirstInstance()
 
 class Passive(object):

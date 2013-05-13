@@ -31,7 +31,7 @@ namespace BuildIndicatron.App
 
             // Set the data context of the listbox control to the sample data
             _mainViewModel = new MainViewModel();
-            _hostApi = "http://192.168.1.15:5000/";
+            _hostApi = string.Format("http://{0}:{1}/", Settings.Instance.Host, Settings.Instance.Port);
             _robotApi = new RobotApi(_hostApi);
             DataContext = _mainViewModel;
             Loaded += OnLoaded;

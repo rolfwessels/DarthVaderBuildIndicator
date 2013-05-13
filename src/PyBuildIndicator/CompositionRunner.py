@@ -57,4 +57,8 @@ class CompositionRunner():
         self.SetLastComposition = setLastComposition
         pass
 
+    def Stop(self):
+        self.Timer.Stop()
+        pass
+
 

@@ -20,10 +20,11 @@ namespace BuildIndicatron.Shared.Models.Composition
                 _text = value;
                 if (_text != null)
                 {
-                    foreach (var replacement in _replace)
-                    {
-                        _text = Regex.Replace(_text, replacement.Key, replacement.Value, RegexOptions.IgnoreCase);
-                    }
+                    if (_replace != null)
+                        foreach (var replacement in _replace)
+                        {
+                            _text = Regex.Replace(_text, replacement.Key, replacement.Value, RegexOptions.IgnoreCase);
+                        }
                 }
             }
         }

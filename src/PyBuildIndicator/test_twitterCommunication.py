@@ -66,6 +66,4 @@ class CompRunnerNow(CompositionRunner):
     def AddChoreography(self, choreography):
         self.RunChoreography(choreography)
 
-    def Stop(self):
-        self.Timer.Stop()
-        pass
+

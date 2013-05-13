@@ -2,6 +2,7 @@
   <dictionary name="rolf">
     <words>
       <w>gpio</w>
+      <w>wolframalpha</w>
     </words>
   </dictionary>
 </component>

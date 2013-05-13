@@ -15,7 +15,6 @@ from twitterListner import TwitterListener
 DEBUG = True
 MP3PATH = "resources/mp3"
 
-
 # globals
 
 GlobalTwitterCommunication = TwitterListener()
