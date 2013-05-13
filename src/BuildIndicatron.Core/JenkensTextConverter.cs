@@ -70,7 +70,7 @@ namespace BuildIndicatron.Core
 
                 if (orderedEnumerable.Length > 2)
                 {
-                    return string.Format("{0} as {1} succesfull builds in a row. {2} has {3} succesfull builds in a row",
+                    return string.Format("{0} has {1} succesfull builds in a row. {2} has {3} succesfull builds in a row",
                                          orderedEnumerable.First().Name,
                                          orderedEnumerable.First().SuccessFullBuilds,
                                          orderedEnumerable.Last().Name,
