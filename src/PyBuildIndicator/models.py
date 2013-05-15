@@ -116,9 +116,12 @@ class SequencesText2Speech(Sequences):
                 url = 'http://translate.google.com/translate_tts?tl=en&q=' + urllib.quote_plus(input)
                 print "downloading file " + url + " " + self.SaveTo
                 self.Download(url, self.SaveTo)
-                if not self.DisableTransform:
-                    self.Transform(self.SaveTo)
-            os.system("play " + self.SaveTo + " echo 0.8 0.88 6.0 0.4")
+
+            if not self.DisableTransform:
+                os.system("play -m resources/text2speach/background.mp3  -v 5 " + self.SaveTo + " speed 0.78 echo 0.8 0.88 6.0 0.4")
+            else:
+                os.system("play -v 5 " + self.SaveTo )
+
 
 
     def SplitString(self, string):

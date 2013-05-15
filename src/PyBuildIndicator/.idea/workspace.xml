@@ -8,8 +8,8 @@
     <file path="/serverStart.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368132069027" ignored="false" />
     <file path="/show_entries.html" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365844449384" ignored="false" />
     <file path="/pingResponse.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365879453057" ignored="false" />
-    <file path="/models.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368478574568" ignored="false" />
-    <file path="/a.dummy" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368480017316" ignored="false" />
+    <file path="/models.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368589573679" ignored="false" />
+    <file path="/a.dummy" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368586871047" ignored="false" />
     <file path="/serverStart_tests.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365925617210" ignored="false" />
     <file path="/backgroundProcess.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367159062196" ignored="false" />
     <file path="/CompositionRunner.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367873602832" ignored="false" />
@@ -34,7 +34,7 @@
     <file path="/twitterListner.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368482135538" ignored="false" />
     <file path="/soundRec2.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368385373523" ignored="false" />
     <file path="/test_voiceRecognition.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368478744181" ignored="false" />
-    <file path="/voiceRecognition.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368389551446" ignored="false" />
+    <file path="/voiceRecognition.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368587381452" ignored="false" />
     <file path="/wolframalphaLoopup.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368479834735" ignored="false" />
     <file path="/test_wolframalphaLookup.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368482751778" ignored="false" />
     <file path="/wolframalphaLookup.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368482995145" ignored="false" />
@@ -62,10 +62,10 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="test_twitterCommunication.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="test_twitterCommunication.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_twitterCommunication.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="0" selection-start="3860" selection-end="3860" vertical-scroll-proportion="0.98356164">
+            <state line="69" column="0" selection-start="3860" selection-end="3860" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -75,9 +75,7 @@
         <entry file="file://$PROJECT_DIR$/wolframalphaLookup.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="18" column="64" selection-start="362" selection-end="388" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#17#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -86,9 +84,7 @@
         <entry file="file://$PROJECT_DIR$/test_wolframalphaLookup.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="13" column="21" selection-start="384" selection-end="384" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -102,24 +98,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CompositionRunner.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CompositionRunner.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="12" selection-start="1884" selection-end="1884" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1368478778000" expanded="true" signature="164:1884" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="voiceRecognition.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/voiceRecognition.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="573" selection-end="573" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state line="27" column="16" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -127,10 +110,8 @@
       <file leaf-file-name="test_sequencesText2Speech.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_sequencesText2Speech.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
+            <state line="45" column="0" selection-start="1573" selection-end="1573" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -144,22 +125,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="models.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="8" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.0">
+            <state line="120" column="108" selection-start="3791" selection-end="3791" vertical-scroll-proportion="0.255079">
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="os.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/1576037948/os.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="6" selection-start="677" selection-end="677" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="twitterComs.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/twitterComs.py">
+      <file leaf-file-name="helperClasses.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/helperClasses.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
+            <state line="52" column="29" selection-start="1309" selection-end="1309" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -174,22 +164,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/serverStart.py" />
         <option value="$PROJECT_DIR$/twitterComs.py" />
         <option value="$PROJECT_DIR$/autoexec/buildindicator" />
         <option value="$PROJECT_DIR$/soundrecorder.py" />
         <option value="$PROJECT_DIR$/Install.txt" />
         <option value="$PROJECT_DIR$/soundRec2.py" />
         <option value="$PROJECT_DIR$/faceDetect.py" />
-        <option value="$PROJECT_DIR$/models.py" />
         <option value="$PROJECT_DIR$/test_twitterCommunication.py" />
         <option value="$PROJECT_DIR$/CompositionRunner.py" />
         <option value="$PROJECT_DIR$/test_voiceRecognition.py" />
         <option value="$PROJECT_DIR$/wolframalphaLoopup.py" />
-        <option value="$PROJECT_DIR$/voiceRecognition.py" />
         <option value="$PROJECT_DIR$/twitterListner.py" />
         <option value="$PROJECT_DIR$/test_wolframalphaLookup.py" />
         <option value="$PROJECT_DIR$/wolframalphaLookup.py" />
+        <option value="$PROJECT_DIR$/voiceRecognition.py" />
+        <option value="$PROJECT_DIR$/test_sequencesText2Speech.py" />
+        <option value="$PROJECT_DIR$/models.py" />
       </list>
     </option>
   </component>
@@ -267,16 +257,16 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
-    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PythonSdkConfigurable" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PythonSdkConfigurable" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/robotServer/models.py" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
   </component>
   <component name="PublishConfig" serverName="Pi2" serverId="4edc3e3c-3ad1-4d04-ad19-c72242ecbcb6" autoUpload="true" showNewOnTargetInSync="false">
     <servers>
@@ -316,7 +306,7 @@
       <recent name="D:\Work\Projects\Home\BuildIndicatron\src\PyBuildIndicator\flaskr" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittest TestWolframalphaLookup.test_LookupResult_Darth">
+  <component name="RunManager" selected="Python tests.Unittest TestSequencesText2Speech.testingSample1">
     <configuration default="false" name="Unittest TestVoiceRecognition.test_processClips" type="tests" factoryName="Unittests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -329,52 +319,6 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_voiceRecognition.py" />
       <option name="CLASS_NAME" value="TestVoiceRecognition" />
       <option name="METHOD_NAME" value="test_processClips" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest TestWolframalphaLookup.test_LookupResult" type="tests" factoryName="Unittests" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <module name="PyBuildIndicator" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_wolframalphaLookup.py" />
-      <option name="CLASS_NAME" value="TestWolframalphaLookup" />
-      <option name="METHOD_NAME" value="test_LookupResult" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest TestWolframalphaLookup.test_LookupResult_NotFound" type="tests" factoryName="Unittests" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <module name="PyBuildIndicator" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_wolframalphaLookup.py" />
-      <option name="CLASS_NAME" value="TestWolframalphaLookup" />
-      <option name="METHOD_NAME" value="test_LookupResult_NotFound" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -409,7 +353,7 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittests in TestWolframalphaLookup" type="tests" factoryName="Unittests" temporary="true">
+    <configuration default="false" name="Unittest TestSequencesText2Speech.testingSample" type="tests" factoryName="Unittests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -418,11 +362,57 @@
       <option name="IS_MODULE_SDK" value="true" />
       <module name="PyBuildIndicator" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_wolframalphaLookup.py" />
-      <option name="CLASS_NAME" value="TestWolframalphaLookup" />
-      <option name="METHOD_NAME" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_sequencesText2Speech.py" />
+      <option name="CLASS_NAME" value="TestSequencesText2Speech" />
+      <option name="METHOD_NAME" value="testingSample" />
       <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestSequencesText2Speech.testSplitString" type="tests" factoryName="Unittests" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <module name="PyBuildIndicator" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_sequencesText2Speech.py" />
+      <option name="CLASS_NAME" value="TestSequencesText2Speech" />
+      <option name="METHOD_NAME" value="testSplitString" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestSequencesText2Speech.testingSample1" type="tests" factoryName="Unittests" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <module name="PyBuildIndicator" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_sequencesText2Speech.py" />
+      <option name="CLASS_NAME" value="TestSequencesText2Speech" />
+      <option name="METHOD_NAME" value="testingSample1" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
       <option name="PUREUNITTEST" value="true" />
@@ -495,18 +485,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestVoiceRecognition.test_processClips" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestWolframalphaLookup.test_LookupResult" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestWolframalphaLookup.test_LookupResult_NotFound" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestWolframalphaLookup.test_LookupResult_Darth" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in TestWolframalphaLookup" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestWolframalphaLookup.test_LookupResult_Darth" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestSequencesText2Speech.testingSample" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestSequencesText2Speech.testSplitString" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestSequencesText2Speech.testingSample1" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestWolframalphaLookup.test_LookupResult_Darth" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestWolframalphaLookup.test_LookupResult" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestVoiceRecognition.test_processClips" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestWolframalphaLookup" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestWolframalphaLookup.test_LookupResult_NotFound" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestSequencesText2Speech.testingSample1" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestSequencesText2Speech.testSplitString" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestSequencesText2Speech.testingSample" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestVoiceRecognition.test_processClips" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestWolframalphaLookup.test_LookupResult_Darth" />
       </list>
     </recent_temporary>
   </component>
@@ -561,7 +551,7 @@
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32619047" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20476191" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.59880954" order="3" side_tool="false" content_ui="tabs" />
@@ -572,8 +562,8 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.67261904" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30145866" sideWeight="0.5857143" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41428572" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30470017" sideWeight="0.59880954" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4011905" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -640,36 +630,19 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test_compositionRunner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#29#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/soundrecorder2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/serverStart.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="30" selection-start="1738" selection-end="1738" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="47" column="30" selection-start="1738" selection-end="1738" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/responseModels.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#9#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Install.txt">
@@ -683,16 +656,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="61" column="12" selection-start="1884" selection-end="1884" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1368478778000" expanded="true" signature="164:1884" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_sequencesText2Speech.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
+            <marker date="1368478778000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -707,24 +671,6 @@
     <entry file="file://$PROJECT_DIR$/wolframalphaLookup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="64" selection-start="362" selection-end="388" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voiceRecognition.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="573" selection-end="573" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="8" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -732,18 +678,28 @@
     <entry file="file://$PROJECT_DIR$/twitterComs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_wolframalphaLookup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="21" selection-start="384" selection-end="384" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_twitterCommunication.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="0" selection-start="3860" selection-end="3860" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helperClasses.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="29" selection-start="1309" selection-end="1309" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -754,10 +710,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_twitterCommunication.py">
+    <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/1576037948/os.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="0" selection-start="3860" selection-end="3860" vertical-scroll-proportion="0.98356164">
+        <state line="12" column="6" selection-start="677" selection-end="677" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voiceRecognition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="16" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_sequencesText2Speech.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="0" selection-start="1573" selection-end="1573" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="120" column="108" selection-start="3791" selection-end="3791" vertical-scroll-proportion="0.255079">
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

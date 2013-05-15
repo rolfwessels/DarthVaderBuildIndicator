@@ -32,9 +32,9 @@ class TestSequencesText2Speech(TestCase):
         print string
 
     def testingSample1(self):
-        string = "Oh no, there are currently 2 build on jenkins with 1 build failing"
+        string = "Oh no, there are currently 2 build on jenkins with 1 build failing. The Build - Zapper IPN Service last failed 1 day ago, It was last modified by Rolf Wessels and Coreen"
         sec = SequencesText2Speech(string)
-        sec.PlayPartText(string)
+        sec.ExecuteFirstInstance()
         print string
 
 
