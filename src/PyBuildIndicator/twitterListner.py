@@ -1,6 +1,7 @@
 import re
 import time
-from models import Choreography, SequencesGpIo, SequencesText2Speech, SequencesPlaySound, SequencesQuotes, SequencesTweet, SequencesJokeOrOneLiner
+from jenkinsBuildServer import JenkinsBuildServer
+from models import Choreography, SequencesGpIo, SequencesText2Speech, SequencesPlaySound, SequencesQuotes, SequencesTweet, SequencesJokeOrOneLiner, SequencesInsult
 from pins import lsRedPin, lsGreenPin, lsBluePin, bRedPin, bGreenPin
 from twitter import TwitterStream, OAuth
 from twitterComs import TwitterCommunication, oauth_token, oauth_secret, CONSUMER_KEY, CONSUMER_SECRET, monitorName, screen_name
@@ -70,16 +71,38 @@ class TwitterListener(TwitterCommunication):
             choreography.Sequences.append(SequencesQuotes())
         elif "tell" in textToRead.lower() and "joke" in textToRead.lower():
             choreography.Sequences.append(SequencesJokeOrOneLiner())
+        elif ("tell" in textToRead.lower() or "say" in textToRead.lower() ) and "insult" in textToRead.lower():
+            choreography.Sequences.append(SequencesInsult())
         elif textToRead.startswith('tweet'):
             choreography.Sequences.append(SequencesTweet(textToRead[6:]))
+        elif  ("build" in textToRead.lower() or "both" in textToRead.lower()) and "status" in textToRead.lower():
+            jenkins = JenkinsBuildServer()
+            choreography.Sequences.append(SequencesText2Speech(jenkins.GetStatus()))
+
+        elif  ("build" in textToRead.lower() or "both" in textToRead.lower()) and "how are" in textToRead.lower():
+            jenkins = JenkinsBuildServer()
+            choreography.Sequences.append(SequencesText2Speech(jenkins.GetStatus()))
+
+        elif "who" in textToRead.lower() and ("fail" in textToRead.lower() or "failing" in textToRead.lower() or "failed" in textToRead.lower() or "broken" in textToRead.lower() or "broke" in textToRead.lower()):
+            jenkins = JenkinsBuildServer()
+            choreography.Sequences.append(SequencesText2Speech(jenkins.GetWhoBrokeTheBuilds()))
+
+        elif ("build" in textToRead.lower() or "both" in textToRead.lower()) and ("fail" in textToRead.lower() or "failing" in textToRead.lower() or "failed" in textToRead.lower() or "broken" in textToRead.lower() or "broke" in textToRead.lower()):
+            jenkins = JenkinsBuildServer()
+            choreography.Sequences.append(SequencesText2Speech(jenkins.GetFailingBuilds()))
+
         elif textToRead.startswith('say'):
             choreography.Sequences.append(SequencesText2Speech(textToRead[3:]))
-        elif "what" in textToRead.lower() or "where" in textToRead.lower() or "who" in textToRead.lower() or "why" in textToRead.lower() or "when" in textToRead.lower() or "how" in textToRead.lower() or "define" in textToRead.lower():
-            loopkupQuestion = textToRead.replace("you","darth vader").replace("your","darth vader")
+        elif "what" in textToRead.lower() or "where" in textToRead.lower() or "who" in textToRead.lower() or "why" in textToRead.lower() or "when" in textToRead.lower() or "how" in textToRead.lower() or "define" in textToRead.lower() or "which" in textToRead.lower():
+            loopkupQuestion = textToRead
+            loopkupQuestion = loopkupQuestion\
+                .replace("are you","is darth vader")\
+                .replace("were you","was darth vader")\
+                .replace("your","darth vader")\
+                .replace("you","darth vader")
             lookup = WolframalphaLookup()
             result = lookup.LookupResult(loopkupQuestion)
             t2s = SequencesText2Speech(result)
-            t2s.DisableTransform = True
             choreography.Sequences.append(t2s)
         if len(choreography.Sequences) > 0:
             compositionRunner.AddChoreography(choreography)

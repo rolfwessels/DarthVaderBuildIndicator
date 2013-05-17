@@ -1,9 +1,9 @@
 ﻿namespace BuildIndicatron.Shared.Models.Composition
 {
-    public class SequencesQuotes : Sequences
+    public class SequencesInsult : Sequences
     {
-        public SequencesQuotes()
-            : base("Quotes")
+        public SequencesInsult()
+            : base("Insult")
         {
         }
 

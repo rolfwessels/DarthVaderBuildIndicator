@@ -26,29 +26,29 @@ class WolframalphaLookup(object):
             m = re.search(res, result)
             result = m.group(1)
         except:
-            result = "Failed to get result"
-        finally:
-            if len(result) == 0:
-                result = choice(["Let me check on that.",
-                                 "That's a really good question.",
-                                 "So this is really preliminary data, but we felt that it was important that we get this out there first...",
-                                 "Try that again",
-                                 "Look at the time! Gotta go!",
-                                 "Who said that",
-                                 "Here's the NMR, Professor Sames!",
-                                 "Did rolf put you up to this?",
-                                 "I think that's in my lab notebook.",
-                                 "I haven't looked at that yet.",
-                                 "The literature doesn't really speak to that.",
-                                 "But, it's obviously the thermodynamic product!",
-                                 "hmmmm",
-                                 "You know, that's something we're going to look at in our next round of experiments.",
-                                 "Try any other question?",
-                                 "IDK my BFF Jill?",
-                                 "Huh.",
-                                 "You know, there are some questions that we haven't been able to answer.",
-                                 "I don't know."])
-            h = HTMLParser.HTMLParser()
-            result = h.unescape(result).replace("\\n", " ")
-            return result
+            result = ""
+
+        if len(result) == 0:
+            result = choice(["Let me check on that.",
+                             "That's a really good question.",
+                             "So this is really preliminary data, but we felt that it was important that we get this out there first...",
+                             "Try that again",
+                             "Look at the time! Gotta go!",
+                             "Who said that",
+                             "Here's the NMR, Professor Sames!",
+                             "Did rolf put you up to this?",
+                             "I think that's in my lab notebook.",
+                             "I haven't looked at that yet.",
+                             "The literature doesn't really speak to that.",
+                             "But, it's obviously the thermodynamic product!",
+                             "hmmmm",
+                             "You know, that's something we're going to look at in our next round of experiments.",
+                             "Try any other question?",
+                             "IDK my BFF Jill?",
+                             "Huh.",
+                             "You know, there are some questions that we haven't been able to answer.",
+                             "I don't know."])
+        h = HTMLParser.HTMLParser()
+        result = h.unescape(result).replace("\\n", " ")
+        return result
 

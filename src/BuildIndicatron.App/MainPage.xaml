@@ -48,6 +48,7 @@
                         <Button Content="Speak normal" Tap="OnSpeakNormalTap"/>
                         <Button Content="Speak darth" Tap="OnSpeakDarthTap"/>
                         <Button Content="Adding todo button" Tap="OnAssignToButtonTap"/>
+                        <Button Content="Tweet" Tap="OnTweetTap"/>
                             <Grid Height="344"></Grid>
                         </StackPanel>
                 </ScrollViewer>
@@ -71,7 +72,9 @@
 
                         <StackPanel Orientation="Horizontal">
                             <Button Content="Joke" Tap="OnJokeTap"/>
-                        </StackPanel>
+                            <Button Content="Quote" Tap="OnQuoteTap"/>
+                            <Button Content="Insult" Tap="OnInsultTap"/>
+                    </StackPanel>
                         
                     </StackPanel>
                 

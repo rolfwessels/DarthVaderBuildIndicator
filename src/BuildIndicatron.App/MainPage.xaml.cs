@@ -9,11 +9,10 @@ using BuildIndicatron.App.ViewModels;
 using BuildIndicatron.Core.Api;
 using BuildIndicatron.Shared.Models.ApiResponses;
 using BuildIndicatron.Shared.Models.Composition;
-using Microsoft.Phone.Controls;
 
 namespace BuildIndicatron.App
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class MainPage
     {
         private const int PinRed = 27;
         private const int PinBlue = 11;
@@ -29,7 +28,7 @@ namespace BuildIndicatron.App
         {
             InitializeComponent();
 
-            // Set the data context of the listbox control to the sample data
+            // Set the data context of the list box control to the sample data
             _mainViewModel = new MainViewModel();
             _hostApi = string.Format("http://{0}:{1}/", Settings.Instance.Host, Settings.Instance.Port);
             _robotApi = new RobotApi(_hostApi);
@@ -68,10 +67,11 @@ namespace BuildIndicatron.App
             if (textBox != null)
             {
                 var clipItemModel = textBox.DataContext as ClipItemModel;
-                _robotApi.Enqueue(new Choreography
-                    {
-                        Sequences = new List<Sequences> {new SequencesPlaySound {File = clipItemModel.Name}}
-                    });
+                if (clipItemModel != null)
+                    _robotApi.Enqueue(new Choreography
+                        {
+                            Sequences = new List<Sequences> {new SequencesPlaySound {File = clipItemModel.Name}}
+                        });
             }
         }
 
@@ -131,9 +131,35 @@ namespace BuildIndicatron.App
                 });
         }
 
+        private void OnQuoteTap(object sender, GestureEventArgs e)
+        {
+            _robotApi.Enqueue(new Choreography
+            {
+                Sequences = new List<Sequences>
+                        {
+                            new SequencesGpIo(PinBlue, true),
+                            new SequencesQuotes(),
+                            new SequencesGpIo(PinBlue, false),
+                        }
+            });
+        }
+
+        private void OnInsultTap(object sender, GestureEventArgs e)
+        {
+            _robotApi.Enqueue(new Choreography
+            {
+                Sequences = new List<Sequences>
+                        {
+                            new SequencesGpIo(PinBlue, true),
+                            new SequencesInsult(),
+                            new SequencesGpIo(PinBlue, false),
+                        }
+            });
+        }
+
         private IEnumerable<Sequences> SequencesText2Speeches(bool disableTransform)
         {
-            yield return new SequencesGpIo(PinBlue, disableTransform);
+            yield return new SequencesGpIo(PinBlue, true);
             foreach (
                 string s in
                     new[] {_mainViewModel.Text1, _mainViewModel.Text2, _mainViewModel.Text3}.Where(
@@ -144,6 +170,30 @@ namespace BuildIndicatron.App
             yield return new SequencesGpIo(PinBlue, false) {BeginTime = 1000};
         }
 
+
+        private void OnTweetTap(object sender, GestureEventArgs e)
+        {
+            var choreography = new Choreography
+            {
+                Sequences = SequencesTweet().ToList()
+            };
+            _robotApi.Enqueue(choreography);
+        }
+
+        private IEnumerable<Sequences> SequencesTweet()
+        {
+            yield return new SequencesGpIo(PinBlue, true);
+            foreach (
+                string s in
+                    new[] { _mainViewModel.Text1, _mainViewModel.Text2, _mainViewModel.Text3 }.Where(
+                        x => !string.IsNullOrEmpty(x)))
+            {
+                yield return new SequencesTweet() { Text = s };
+            }
+            yield return new SequencesGpIo(PinBlue, false) { BeginTime = 1000 };
+        }
+
+        
 
         private void OnSpeakNormalTap(object sender, GestureEventArgs e)
         {
@@ -177,5 +227,8 @@ namespace BuildIndicatron.App
                 });
             _robotApi.SetButtonChoreography(choreographys.ToArray());
         }
+
+
+        
     }
 }

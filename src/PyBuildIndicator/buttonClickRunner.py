@@ -28,8 +28,6 @@ class buttonClickRunner():
 
     def SetChoreography(self, choreography):
         print "Setting new Choreography for button play", choreography
-        self.CurrentCount = 0
-        self.LastCall = datetime.datetime.now()
         self.Choreography = choreography
 
     def ThreadTimerTick(self):

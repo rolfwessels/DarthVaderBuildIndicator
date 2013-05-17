@@ -125,14 +125,23 @@
     <Compile Include="..\BuildIndicatron.Shared\Models\Composition\SequencesGpIo.cs">
       <Link>Api\Model\SequencesGpIo.cs</Link>
     </Compile>
+    <Compile Include="..\BuildIndicatron.Shared\Models\Composition\SequencesInsult.cs">
+      <Link>Api\Model\SequencesInsult.cs</Link>
+    </Compile>
     <Compile Include="..\BuildIndicatron.Shared\Models\Composition\SequencesOneLiner.cs">
       <Link>Api\Model\SequencesOneLiner.cs</Link>
     </Compile>
     <Compile Include="..\BuildIndicatron.Shared\Models\Composition\SequencesPlaySound.cs">
       <Link>Api\Model\SequencesPlaySound.cs</Link>
     </Compile>
+    <Compile Include="..\BuildIndicatron.Shared\Models\Composition\SequencesQuotes.cs">
+      <Link>Api\Model\SequencesQuotes.cs</Link>
+    </Compile>
     <Compile Include="..\BuildIndicatron.Shared\Models\Composition\SequencesText2Speech.cs">
       <Link>Api\Model\SequencesText2Speech.cs</Link>
+    </Compile>
+    <Compile Include="..\BuildIndicatron.Shared\Models\Composition\SequencesTweet.cs">
+      <Link>Api\Model\SequencesTweet.cs</Link>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

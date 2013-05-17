@@ -54,6 +54,7 @@
     <Compile Include="Models\ApiResponses\TextToSpeechResponse.cs" />
     <Compile Include="Models\Composition\Choreography.cs" />
     <Compile Include="Models\Composition\SequencesGpIo.cs" />
+    <Compile Include="Models\Composition\SequencesInsult.cs" />
     <Compile Include="Models\Composition\SequencesOneLiner.cs" />
     <Compile Include="Models\Composition\SequencesPlaySound.cs" />
     <Compile Include="Models\Composition\Passive.cs" />
