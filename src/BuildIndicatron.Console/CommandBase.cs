@@ -36,15 +36,12 @@ namespace BuildIndicatron.Console
         {
             Options = new OptionSet
                 {
-                    {"h", "Host to connect to", s => Host = s},
+                    {"h=", "Host to connect to", s => Host = s},
                     {"m=", "additional message", s => Message = s},
                     {"v", "Print details during execution.", s => Verbose = true},
                 };
         }
-
         
-
-
         public override int Run(string[] remainingArguments)
         {
             try
@@ -116,7 +113,7 @@ namespace BuildIndicatron.Console
                 }).ToArray();
 
             BuildIndicationApi.SetButtonChoreography(choreography).Wait();
-            var failed = allProjects.Result.Jobs.All(x => x.Color != JenkensTextConverter.FailColor);
+            var failed = allProjects.Result.Jobs.Any(x => x.Color == JenkensTextConverter.FailColor);
             var glow = new Choreography()
             {
                 Sequences = new List<Sequences>

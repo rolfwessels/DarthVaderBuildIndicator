@@ -9,7 +9,7 @@ __author__ = 'rolf'
 class TestVoiceRecognition(TestCase):
     def test_recordClip(self):
         recognition = VoiceRecognition()
-        for clips in recognition.recordClip():
+        for clips in recognition.RecordClip():
             print "Say exit to continue"
             if "exit" in clips:
                 break
@@ -18,7 +18,7 @@ class TestVoiceRecognition(TestCase):
         recognition = VoiceRecognition()
         runner = CompositionRunner()
 
-        for clips in recognition.processClips(runner):
+        for clips in recognition.ProcessClips(runner):
             print "Say exit to continue"
             if "exit" in clips:
                 runner.Stop()

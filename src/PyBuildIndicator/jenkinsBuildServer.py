@@ -47,7 +47,7 @@ class JenkinsBuildServer(object):
                 buildFailed += jobs['name'] + " failed"
         if buildFailed != "":
             return buildFailed
-        return "All builds are passing"
+        return "There are no failing builds"
 
     def GetWhoBrokeTheBuilds(self):
         result = self.GetJenkinsData()

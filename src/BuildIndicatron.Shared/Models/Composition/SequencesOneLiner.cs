@@ -7,5 +7,6 @@
         {
         }
 
+        public bool SendTweet { get; set; } 
     }
 }

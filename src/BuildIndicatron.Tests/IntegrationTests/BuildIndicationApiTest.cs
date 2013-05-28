@@ -21,7 +21,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         {
             log4net.Config.XmlConfigurator.Configure(new FileInfo("Log4Net.config"));
             //_hostApi = Config.Url;
-            _hostApi = "http://192.168.1.15:5000/";
+            _hostApi = "http://192.168.1.242:5000/";
         }
 
         #region Setup/Teardown
@@ -140,8 +140,13 @@ namespace BuildIndicatron.Tests.IntegrationTests
                         {
                             new SequencesOneLiner(),
                         }   
+                    },
+                    new Choreography() {
+                    Sequences = new List<Sequences>()
+                        {
+                            new SequencesQuotes(),
+                        }   
                     }
-
                 }
             });
             result.Should().NotBeNull();

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Host" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://192.168.1.15:5000/</Value>
+      <Value Profile="(Default)">http://192.168.1.242:5000/</Value>
     </Setting>
     <Setting Name="FeetRedPin" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">17</Value>
@@ -24,7 +24,7 @@
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="PassiveInterval" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">60</Value>
+      <Value Profile="(Default)">45</Value>
     </Setting>
     <Setting Name="PassiveStartHour" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">7</Value>
@@ -33,7 +33,7 @@
       <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="JenkenServer" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://192.168.1.15:5000/</Value>
+      <Value Profile="(Default)">http://192.168.1.242:5000/</Value>
     </Setting>
     <Setting Name="StringReplaces" Type="System.String" Scope="User">
       <Value Profile="(Default)">zapzap:zap zap|dev :development|ZAPPER.SCANNER.WP8:zapper windows phone|DEV -:|Build - :|Deploy - :|</Value>

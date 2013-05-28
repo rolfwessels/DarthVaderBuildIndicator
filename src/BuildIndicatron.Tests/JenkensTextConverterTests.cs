@@ -334,7 +334,7 @@ namespace BuildIndicatron.Tests
         {
             var jenkensProjectsResult = JenkensProjectsResult();
             _jenkensTextConverter.ToSummaryList(jenkensProjectsResult).Last()
-                .Should().Be("Deploy Dev - ZapperPayments + ZapperCallback as 172 succesfull builds in a row. Deploy Dev - ZoomLogin + SampleMerchant has 0 succesfull builds in a row");
+                .Should().Be("Deploy Dev - ZapperPayments + ZapperCallback has 172 succesfull builds in a row. Deploy Dev - ZoomLogin + SampleMerchant has 0 succesfull builds in a row");
 
         }
 
@@ -343,7 +343,7 @@ namespace BuildIndicatron.Tests
         {
             var jenkensProjectsResult = JenkensProjectsResult();
             _jenkensTextConverter.ToSummaryList(jenkensProjectsResult).Last()
-                .Should().Be("Deploy Dev - ZapperPayments + ZapperCallback as 172 succesfull builds in a row. Deploy Dev - ZoomLogin + SampleMerchant has 0 succesfull builds in a row");
+                .Should().Be("Deploy Dev - ZapperPayments + ZapperCallback has 172 succesfull builds in a row. Deploy Dev - ZoomLogin + SampleMerchant has 0 succesfull builds in a row");
         }
 
         

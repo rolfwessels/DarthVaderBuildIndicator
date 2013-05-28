@@ -33,7 +33,7 @@ namespace BuildIndicatron.Console
         public CommandSimple()
         {
             IsCommand("send", "Send simple commands to build indicator");
-            HasAdditionalArguments(0, "");
+            HasAdditionalArguments(0);
             var optionSet = new OptionSet
                 {
                     {"setpassive", "Set the passive", s => SetPassive = true},
@@ -42,7 +42,7 @@ namespace BuildIndicatron.Console
                     {"sound=", "add sound to play", s => Sound = s},
                     {"button=", "Text to be read when the button gets clicked", s => ButtonClick = s},
                     {"j", "Reads the values from jenkins service", s => JenkensRead = true},
-                    {"off", "Stop all lights", s => Verbose = true},
+                    {"off", "Stop all lights", s => Off = true},
                 };
             
             foreach (var option in optionSet)
@@ -61,16 +61,23 @@ namespace BuildIndicatron.Console
                 RunPassive();
             }
 
+            var message = Message;
+            if (remainingArguments.Length > 0) message = remainingArguments[0];
             if (!string.IsNullOrEmpty(LightSaber))
             {
-                SetLightSaber(LightSaber, Message);
+                SetLightSaber(LightSaber, message);
             }
 
-            if (!string.IsNullOrEmpty(Glow))
+            else if (!string.IsNullOrEmpty(Glow))
             {
 
-                SetGlow(Glow, Message);
+                SetGlow(Glow, message);
             }
+            else
+            {
+                SendText(message);
+            }
+
 
             if (!string.IsNullOrEmpty(ButtonClick))
             {
@@ -87,6 +94,31 @@ namespace BuildIndicatron.Console
                 AddJenkensStatsToButton();
             }
             return 0;
+        }
+
+        private void SendText(string message)
+        {
+            Choreography choreography = null;
+            choreography = new Choreography
+            {
+                Sequences = new List<Sequences>
+                                {
+                                    new SequencesGpIo
+                                        {
+                                            BeginTime = 0,
+                                            Pin = AppSettings.Default.LsBluePin,
+                                            IsOn = true
+                                        }
+                                }
+            };
+            AddMessage(choreography, message);
+            choreography.Sequences.Add(new SequencesGpIo
+                                        {
+                                            BeginTime = 1000,
+                                            Pin = AppSettings.Default.LsBluePin,
+                                            IsOn = false
+                                        });
+            BuildIndicationApi.Enqueue(choreography).Wait();
         }
 
         #endregion
@@ -146,7 +178,7 @@ namespace BuildIndicatron.Console
                                         },
                                 }
             };
-            AddMessage(choreography, Message);
+            AddMessage(choreography, message);
             AddSound(choreography, Sound);
             Task<EnqueueResponse> result = BuildIndicationApi.Enqueue(choreography);
             result.Wait();
@@ -181,7 +213,7 @@ namespace BuildIndicatron.Console
                                         },
                                 }
             };
-            AddMessage(choreography, Message);
+            AddMessage(choreography, message);
             AddSound(choreography, Sound);
             Task<EnqueueResponse> result = BuildIndicationApi.Enqueue(choreography);
             result.Wait();
@@ -225,7 +257,24 @@ namespace BuildIndicatron.Console
                                         {
                                             new SequencesPlaySound {File = "Wtf"},
                                         }
+                                },
+                            new Choreography
+                                {
+                                    Sequences = new List<Sequences>
+                                        {
+                                            new SequencesQuotes(),
+                                        }
                                 }
+                            ,
+                            new Choreography
+                                {
+                                    Sequences = new List<Sequences>
+                                        {
+                                            new SequencesOneLiner(),
+                                            new SequencesPlaySound {File = "Stop/jabba_laugh.wav"},
+                                        }
+                                }
+
                         }
             });
             result.Wait();

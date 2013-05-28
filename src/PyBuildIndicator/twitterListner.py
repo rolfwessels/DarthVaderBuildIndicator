@@ -1,5 +1,6 @@
 import re
 import time
+from helperClasses import MediaPlayer
 from jenkinsBuildServer import JenkinsBuildServer
 from models import Choreography, SequencesGpIo, SequencesText2Speech, SequencesPlaySound, SequencesQuotes, SequencesTweet, SequencesJokeOrOneLiner, SequencesInsult
 from pins import lsRedPin, lsGreenPin, lsBluePin, bRedPin, bGreenPin
@@ -11,6 +12,9 @@ __author__ = 'rolf'
 
 
 class TwitterListener(TwitterCommunication):
+    def __init__(self):
+        self.busyWav = "resources/sounds/Wtf/r2d2_01.wav"
+
     def GetTimeLine(self):
         self.EnsureLogin()
         timeline = self.twitter.statuses.home_timeline()
@@ -31,8 +35,9 @@ class TwitterListener(TwitterCommunication):
             except Exception:
                 time.sleep(60)
 
-    def processText(self, compositionRunner, textToRead):
+    def processText(self, compositionRunner, textToRead, defaultRead=False):
         inter = self.RemoveText(monitorName, textToRead)
+        directedAtDarth = inter[1]
         if inter[1]:
             textToRead = inter[0]
         choreography = Choreography()
@@ -56,7 +61,7 @@ class TwitterListener(TwitterCommunication):
             choreography.Sequences.append(SequencesGpIo(bGreenPin, inter[1]))
             textToRead = inter[0]
 
-        if textToRead.startswith('say something'):
+        if textToRead.lower().startswith('say something'):
             if "funny" in textToRead.lower():
                 choreography.Sequences.append(SequencesPlaySound("Funny"))
             elif "fail" in textToRead.lower() or "bad" in textToRead.lower():
@@ -75,31 +80,47 @@ class TwitterListener(TwitterCommunication):
             choreography.Sequences.append(SequencesInsult())
         elif textToRead.startswith('tweet'):
             choreography.Sequences.append(SequencesTweet(textToRead[6:]))
-        elif  ("build" in textToRead.lower() or "both" in textToRead.lower()) and "status" in textToRead.lower():
+        elif ("build" in textToRead.lower() or "both" in textToRead.lower()) and "status" in textToRead.lower():
+            player = MediaPlayer()
+            player.Play(self.busyWav)
             jenkins = JenkinsBuildServer()
             choreography.Sequences.append(SequencesText2Speech(jenkins.GetStatus()))
 
-        elif  ("build" in textToRead.lower() or "both" in textToRead.lower()) and "how are" in textToRead.lower():
+        elif ("build" in textToRead.lower() or "both" in textToRead.lower()) and "how are" in textToRead.lower():
+            player = MediaPlayer()
+            player.Play(self.busyWav)
             jenkins = JenkinsBuildServer()
             choreography.Sequences.append(SequencesText2Speech(jenkins.GetStatus()))
 
-        elif "who" in textToRead.lower() and ("fail" in textToRead.lower() or "failing" in textToRead.lower() or "failed" in textToRead.lower() or "broken" in textToRead.lower() or "broke" in textToRead.lower()):
+        elif "who" in textToRead.lower() and (
+                                "fail" in textToRead.lower() or "failing" in textToRead.lower() or "failed" in textToRead.lower() or "broken" in textToRead.lower() or "broke" in textToRead.lower()):
+            player = MediaPlayer()
+            player.Play(self.busyWav)
             jenkins = JenkinsBuildServer()
             choreography.Sequences.append(SequencesText2Speech(jenkins.GetWhoBrokeTheBuilds()))
 
-        elif ("build" in textToRead.lower() or "both" in textToRead.lower()) and ("fail" in textToRead.lower() or "failing" in textToRead.lower() or "failed" in textToRead.lower() or "broken" in textToRead.lower() or "broke" in textToRead.lower()):
+        elif ("build" in textToRead.lower() or "both" in textToRead.lower()) and (
+                                "fail" in textToRead.lower() or "failing" in textToRead.lower() or "failed" in textToRead.lower() or "broken" in textToRead.lower() or "broke" in textToRead.lower()):
+            player = MediaPlayer()
+            player.Play(self.busyWav)
             jenkins = JenkinsBuildServer()
             choreography.Sequences.append(SequencesText2Speech(jenkins.GetFailingBuilds()))
 
-        elif textToRead.startswith('say'):
+        elif textToRead.lower().startswith('say'):
             choreography.Sequences.append(SequencesText2Speech(textToRead[3:]))
+        elif textToRead.lower().startswith('saint'):
+            choreography.Sequences.append(SequencesText2Speech(textToRead[5:]))
+        elif defaultRead:
+            choreography.Sequences.append(SequencesText2Speech(textToRead))
         elif "what" in textToRead.lower() or "where" in textToRead.lower() or "who" in textToRead.lower() or "why" in textToRead.lower() or "when" in textToRead.lower() or "how" in textToRead.lower() or "define" in textToRead.lower() or "which" in textToRead.lower():
+            player = MediaPlayer()
+            player.Play(self.busyWav)
             loopkupQuestion = textToRead
-            loopkupQuestion = loopkupQuestion\
-                .replace("are you","is darth vader")\
-                .replace("were you","was darth vader")\
-                .replace("your","darth vader")\
-                .replace("you","darth vader")
+            loopkupQuestion = loopkupQuestion \
+                .replace("are you", "is darth vader") \
+                .replace("were you", "was darth vader") \
+                .replace("your", "darth vader") \
+                .replace("you", "darth vader")
             lookup = WolframalphaLookup()
             result = lookup.LookupResult(loopkupQuestion)
             t2s = SequencesText2Speech(result)
@@ -114,7 +135,7 @@ class TwitterListener(TwitterCommunication):
         if (tweet['user']['screen_name'] == screen_name): return
         textToRead = tweet['text']
 
-        self.processText(compositionRunner, textToRead)
+        self.processText(compositionRunner, textToRead, True)
 
     def RemoveText(self, searchText=None, fromText=None, replacement=''):
         remove = re.compile(re.escape(searchText), re.IGNORECASE)

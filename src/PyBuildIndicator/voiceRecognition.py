@@ -2,15 +2,25 @@ import json
 import os
 import subprocess
 import urllib2
+import cv
 from helperClasses import MediaPlayer
 from twitterListner import TwitterListener
 
 GOOGLE_SR_URL = 'http://www.google.com/speech-api/v1/recognize?lang=en-us&client=chromium'
+TMP_FILENAME = "/home/pi/capture.jpeg"
 
 class VoiceRecognition(object):
     def __init__(self):
         self.ThreshHold = 3.0
-        pass
+        self.storage = cv.CreateMemStorage()
+        self.haar = cv.Load('/usr/share/opencv/haarcascades/haarcascade_frontalface_default.xml')
+
+    def FaceDetected(self):
+        if not os.path.exists("/dev/video0"): return False
+        os.system("streamer -c /dev/video0 -b 16 -q -o " + TMP_FILENAME)
+        image = cv.LoadImage(TMP_FILENAME)
+        detected = cv.HaarDetectObjects(image, self.haar, self.storage, 1.2, 2, cv.CV_HAAR_DO_CANNY_PRUNING, (100,100))
+        return detected
 
     def AudioFileToText(self):
         result = ""
@@ -31,9 +41,12 @@ class VoiceRecognition(object):
             return result
 
 
-    def recordClip(self):
+    def RecordClip(self):
         recordTime = 2
         while True:
+            if not self.FaceDetected():
+                continue
+
             os.system("arecord -D plughw:1,0 -f cd -t wav -d "+str(recordTime)+" -r 16000 /tmp/noise.wav 1>/dev/null 2>/dev/null")
             maxVolume = subprocess.check_output(
                 "sox /tmp/noise.wav -n stats -s 16 2>&1 | awk '/^Max\\ level/ {print $3}'",
@@ -55,8 +68,14 @@ class VoiceRecognition(object):
                     recordTime = 2
             pass
 
-    def processClips(self, compo=None):
-        for cl in self.recordClip():
-            listener = TwitterListener()
-            listener.processText(compo,cl)
-            yield cl
+    def ProcessClips(self, compositionRunner=None):
+            print "starting the voice recognition"
+            for cl in self.RecordClip():
+                listener = TwitterListener()
+                listener.processText(compositionRunner,cl)
+                yield cl
+
+    def ProcessClipsWithNoYield(self, compositionRunner=None):
+        for cl in self.ProcessClips(compositionRunner):
+            print cl
+

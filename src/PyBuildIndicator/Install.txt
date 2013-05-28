@@ -113,3 +113,22 @@ rm master.zip
 mv "PiAUISuite-master" PyAui
 cd PyAui/Install/
 ./InstallAUISuite.sh
+
+Install opencv
+=====================================
+http://mitchtech.net/raspberry-pi-opencv/
+https://github.com/andygrove/rasp_pi_camera_opencv
+http://www.raspberrypi.org/phpBB3/viewtopic.php?p=91076#p91076
+
+
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get install git-core
+sudo wget http://goo.gl/1BOfJ -O /usr/bin/rpi-update
+sudo chmod +x /usr/bin/rpi-update
+sudo rpi-update
+sudo apt-get install libopencv-dev python-opencv
+sudo echo "start_file=start_x.elf" >> /boot/config.txt
+sudo echo "start_fixup=fixup_x.dat" >> /boot/config.txt
+
+

@@ -2,6 +2,7 @@ from __future__ import with_statement
 from flask import Flask, render_template, Response, request, make_response
 from functools import wraps
 import thread
+import threading
 from responseModels import PingResponse, PlayMp3FileResponse, TextToSpeechResponse, SetupGpIoResponse, GpIoOutputResponse, PassiveResponse, EnqueueResponse, SetButtonChoreographyResponse, GetClipsResponse
 from CompositionRunner import CompositionRunner
 from backgroundProcess import PassiveManager
@@ -11,6 +12,7 @@ from buttonClickRunner import buttonClickRunner
 from models import Passive, Choreography
 from pins import *
 from twitterListner import TwitterListener
+from voiceRecognition import VoiceRecognition
 
 DEBUG = True
 MP3PATH = "resources/mp3"
@@ -21,9 +23,17 @@ GlobalTwitterCommunication = TwitterListener()
 GlobalCompositionRunner = CompositionRunner()
 GlobalCurrentProcess = PassiveManager(GlobalCompositionRunner)
 GlobalButtonClickRunner = buttonClickRunner(buttonPin,GlobalCompositionRunner)
+GlobalVoiceRecognition = VoiceRecognition()
 
 GlobalCompositionRunner.SetRepeatComposition(GlobalButtonClickRunner.SetLastComposition)
+#
+# my_thread = threading.Thread(target=GlobalVoiceRecognition.ProcessClips, args=(GlobalCompositionRunner,))
+# my_thread.setDaemon(False)
+# my_thread.start()
+
+thread.start_new_thread(GlobalVoiceRecognition.ProcessClipsWithNoYield, (GlobalCompositionRunner,))
 thread.start_new_thread(GlobalTwitterCommunication.GetTimeLineSteam, (GlobalCompositionRunner,))
+
 
 app = Flask(__name__)
 

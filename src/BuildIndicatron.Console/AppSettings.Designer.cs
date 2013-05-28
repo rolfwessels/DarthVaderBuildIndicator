@@ -25,7 +25,7 @@ namespace BuildIndicatron.Console {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.1.15:5000/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.1.242:5000/")]
         public string Host {
             get {
                 return ((string)(this["Host"]));
@@ -109,7 +109,7 @@ namespace BuildIndicatron.Console {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        [global::System.Configuration.DefaultSettingValueAttribute("45")]
         public int PassiveInterval {
             get {
                 return ((int)(this["PassiveInterval"]));
@@ -145,7 +145,7 @@ namespace BuildIndicatron.Console {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.1.15:5000/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.1.242:5000/")]
         public string JenkenServer {
             get {
                 return ((string)(this["JenkenServer"]));

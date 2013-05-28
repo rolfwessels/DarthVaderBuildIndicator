@@ -29,9 +29,9 @@ namespace BuildIndicatron.Console
             var choreography = AddMainColor();
             AddProjectStatusSounds(allProjects, projectName, choreography);
             AddCoreProjectStatus(choreography);
+            AddJenkensStatsToButton();
             BuildIndicationApi.Enqueue(choreography).Wait();
             //add the jenkens stats
-            AddJenkensStatsToButton();
             return 0;
         }
 
