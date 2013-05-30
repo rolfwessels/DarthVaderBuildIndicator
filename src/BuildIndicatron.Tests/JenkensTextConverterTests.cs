@@ -53,7 +53,7 @@ namespace BuildIndicatron.Tests
                 },
             };
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
-            summary.Should().Be("Good work, there are currently 1 build on jenkins and they are all passing");
+            summary.Should().Contain(", there are currently 1 build on jenkins and they are all passing");
         }
 
 
@@ -68,7 +68,7 @@ namespace BuildIndicatron.Tests
                 },
             };
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
-            summary.Should().Be("Good work, there are currently 2 builds on jenkins and they are all passing");
+            summary.Should().Contain("there are currently 2 builds on jenkins and they are all passing");
         }
 
         [Test]

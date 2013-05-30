@@ -1,6 +1,7 @@
 import json
 import os
 import subprocess
+import time
 import urllib2
 import cv
 from helperClasses import MediaPlayer
@@ -13,6 +14,7 @@ class VoiceRecognition(object):
     def __init__(self):
         self.ThreshHold = 3.0
         self.storage = cv.CreateMemStorage()
+        self.DefaultRecordTime = 3
         self.haar = cv.Load('/usr/share/opencv/haarcascades/haarcascade_frontalface_default.xml')
 
     def FaceDetected(self):
@@ -40,11 +42,11 @@ class VoiceRecognition(object):
         finally:
             return result
 
-
     def RecordClip(self):
-        recordTime = 2
+        recordTime = self.DefaultRecordTime
         while True:
-            if not self.FaceDetected():
+            if recordTime == self.DefaultRecordTime and not self.FaceDetected():
+                time.sleep(0.5)
                 continue
 
             os.system("arecord -D plughw:1,0 -f cd -t wav -d "+str(recordTime)+" -r 16000 /tmp/noise.wav 1>/dev/null 2>/dev/null")
@@ -65,7 +67,7 @@ class VoiceRecognition(object):
                 else:
                     print "Voice text detected text [" + text + "]"
                     yield text
-                    recordTime = 2
+                    recordTime = self.DefaultRecordTime
             pass
 
     def ProcessClips(self, compositionRunner=None):

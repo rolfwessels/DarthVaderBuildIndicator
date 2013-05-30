@@ -170,7 +170,7 @@ namespace BuildIndicatron.Console {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DEV - Zapper.Scanner.WP8 - Build Development|Build - Zapper IPN Ser1vice")]
+        [global::System.Configuration.DefaultSettingValueAttribute("DEV - Zapper.Scanner.WP8 - Build Development|Build - Zapper IPN Service")]
         public string CoreProjects {
             get {
                 return ((string)(this["CoreProjects"]));
