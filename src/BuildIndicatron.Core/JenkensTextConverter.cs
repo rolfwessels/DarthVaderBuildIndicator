@@ -7,6 +7,7 @@ namespace BuildIndicatron.Core
 {
     public class JenkensTextConverter
     {
+        public const string FailInColor = "red_anime";
         public const string FailColor = "red";
         public const string SuccessColor = "blue";
         public const string ResultSuccess = "SUCCESS";
