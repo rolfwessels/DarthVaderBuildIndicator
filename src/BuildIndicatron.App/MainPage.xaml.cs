@@ -14,11 +14,12 @@ namespace BuildIndicatron.App
 {
     public partial class MainPage
     {
-        private const int PinRed = 27;
-        private const int PinBlue = 11;
-        private const int PinGreen = 9;
-        private const int GRed = 17;
-        private const int GGreen = 24;
+        private const int PinRed = 11;
+        private const int PinGreen = 25;
+        private const int PinBlue = 9;
+        
+        private const int GRed = 7;
+        private const int GGreen = 8;
         private readonly string _hostApi;
         private readonly List<object> _isOn;
         private readonly MainViewModel _mainViewModel;

@@ -5,7 +5,7 @@ URL_PARAMETERS = "api/json?depth=2&tree=jobs[name,color,healthReport[score],buil
 
 
 class JenkinsBuildServer(object):
-    def __init__(self, host="http://localhost:5000/"):
+    def __init__(self, host="http://fulliautomatix:8080/"):
         self.Host = host
         pass
 
@@ -52,6 +52,7 @@ class JenkinsBuildServer(object):
     def GetWhoBrokeTheBuilds(self):
         result = self.GetJenkinsData()
         authors = []
+
         for jobs in result['jobs']:
             if jobs['color'] == 'red':
                 for items in jobs['lastFailedBuild']['changeSet']['items']:
@@ -59,4 +60,4 @@ class JenkinsBuildServer(object):
 
         if len(authors) > 0:
             return " and ".join(authors)
-        return "All builds are passing"
+        return "Who knows"

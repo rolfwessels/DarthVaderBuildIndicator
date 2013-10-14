@@ -15,20 +15,21 @@ linux install python
 ----------------------
 
 sudo apt-get -y install python-dev python-rpi.gpio python-virtualenv libsox-fmt-mp3 sox
-sudo pip install Flask
+sudo pip install Flask 
+sudo easy_install json
 
 
--- audio
+audio
+----------------------
 http://learn.adafruit.com/playing-sounds-and-using-buttons-with-raspberry-pi/install-audio
 sudo apt-get -y remove --auto-remove --purge libx11-.*
 sudo apt-get -y update
 sudo apt-get -y upgrade
-sudo apt-get -y install alsa-utils mpg321
-sudo apt-get -y install libsox-fmt-mp3 sox
-
+sudo apt-get -y install alsa-utils mpg321 libsox-fmt-mp3 sox
 
 sudo modprobe snd_bcm2835
 sudo amixer cset numid=3 1
+amixer cset numid=1 -- 95%
 
 --bug with audio click
 sudo apt-get -y install git-core
@@ -101,18 +102,6 @@ sudo make DESTDIR=/usr install
 
 mjpg_streamer -i "/usr/lib/input_uvc.so -d /dev/video0  -r 320x240 -f 10" -o "/usr/lib/output_http.so -p 8090 -w /var/www/mjpg_streamer"
 
-Voice commands
-====================================
-http://stevenhickson.blogspot.com/2013/04/voice-control-on-raspberry-pi.html
-
-sudo sudo apt-get -y install libboost1.50-dev libboost-regex1.50-dev youtube-dl axel curl xterm libcurl4-gnutls-dev mpg123 flac sox 
-
-wget --no-check-certificate https://github.com/StevenHickson/PiAUISuite/archive/master.zip
-unzip master.zip
-rm master.zip
-mv "PiAUISuite-master" PyAui
-cd PyAui/Install/
-./InstallAUISuite.sh
 
 Install opencv
 =====================================
@@ -127,6 +116,7 @@ sudo apt-get install git-core
 sudo wget http://goo.gl/1BOfJ -O /usr/bin/rpi-update
 sudo chmod +x /usr/bin/rpi-update
 sudo rpi-update
+
 sudo apt-get install libopencv-dev python-opencv
 sudo echo "start_file=start_x.elf" >> /boot/config.txt
 sudo echo "start_fixup=fixup_x.dat" >> /boot/config.txt

@@ -1,7 +1,7 @@
+from flask import json
 import os
 import RPi.GPIO as GPIO
 
-from flask.helpers import json
 from models import Choreography, RESOURCES_SOUNDS_
 from helperClasses import MyEncoder
 
