@@ -69,6 +69,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +82,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>AppSettings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SimpleCrypt.cs" />
     <Compile Include="CommandFailedBuild.cs" />
     <Compile Include="CommandSimple.cs" />
     <Compile Include="CommandStartBuild.cs" />

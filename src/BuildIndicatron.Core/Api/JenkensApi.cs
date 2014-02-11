@@ -14,10 +14,13 @@ namespace BuildIndicatron.Core.Api
     /// </summary>
     public class JenkensApi : ApiBase
     {
-        public JenkensApi(string hostApi = "http://fulliautomatix:8080") : base(hostApi)
+        public JenkensApi(string hostApi = "http://fulliautomatix:8080", string jenkenUsername = null, string jenkenPassword = null)
+            : base(hostApi, jenkenUsername, jenkenPassword)
         {
             
         }
+
+      
 
         public Task<JenkensProjectsResult> GetAllProjects()
         {
