@@ -45,8 +45,7 @@
       <Value Profile="(Default)">Rolf</Value>
     </Setting>
     <Setting Name="JenkenPassword" Type="System.String" Scope="User">
-      <Value Profile="(Default)">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEsCG8iuH30eperrCkQ78wwAAAAACAAAAAAADZgAAwAAAABAAAAA7MJf55VFW3deOBYPTkhwRAAAAAASAAACgAAAAEAAAAGMgQsDiCt5clb9gyCekpXMQAAAA5oHinm+LOHZ4pXhdmcNM5BQAAAD2OdiREScGsIIYqABogNnJlbRw5Q==
-</Value>
+      <Value Profile="(Default)">tFZRLdJe8QH2Wk7f6yOH3Q==</Value>
     </Setting>
   </Settings>
 </SettingsFile>
