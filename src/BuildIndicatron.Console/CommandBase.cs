@@ -130,7 +130,8 @@ namespace BuildIndicatron.Console
         {
             if (_allProjects == null)
             {
-                var jenkensApi = new JenkensApi(AppSettings.Default.JenkenServer);
+                var jenkenPassword = new SimpleCrypt().Unprotect(AppSettings.Default.JenkenPassword);
+                var jenkensApi = new JenkensApi(AppSettings.Default.JenkenServer,AppSettings.Default.JenkenUsername,jenkenPassword);
                 _allProjects = jenkensApi.GetAllProjects();
             }
             return _allProjects;

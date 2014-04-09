@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BuildIndicatron.Console" GeneratedClassName="AppSettings">
   <Profiles />
   <Settings>
-    <Setting Name="Host" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://192.168.1.242:5000/</Value>
-    </Setting>
     <Setting Name="FeetRedPin" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">17</Value>
     </Setting>
@@ -32,14 +29,24 @@
     <Setting Name="PassiveStopHour" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
-    <Setting Name="JenkenServer" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://192.168.1.242:5000/</Value>
+    <Setting Name="Host" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://192.168.2.210:5000/</Value>
     </Setting>
     <Setting Name="StringReplaces" Type="System.String" Scope="User">
-      <Value Profile="(Default)">zapzap:zap zap|dev :development|ZAPPER.SCANNER.WP8:zapper windows phone|DEV -:|Build - :|Deploy - :|</Value>
+      <Value Profile="(Default)">zapzap:zap zap|dev :development|WP8:zapper windows phone|DEV -:|Build - :|Deploy - :|</Value>
     </Setting>
     <Setting Name="CoreProjects" Type="System.String" Scope="User">
-      <Value Profile="(Default)">DEV - Zapper.Scanner.WP8 - Build Development|Build - Zapper IPN Service</Value>
+      <Value Profile="(Default)">Build - Zapper WP8|Build - Zapper WP8 (Release)|Build - ZapZap WP8|Build - ZapZap WP8 (Release)</Value>
+    </Setting>
+    <Setting Name="JenkenServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://fulliautomatix:8080/</Value>
+    </Setting>
+    <Setting Name="JenkenUsername" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Rolf</Value>
+    </Setting>
+    <Setting Name="JenkenPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEsCG8iuH30eperrCkQ78wwAAAAACAAAAAAADZgAAwAAAABAAAAA7MJf55VFW3deOBYPTkhwRAAAAAASAAACgAAAAEAAAAGMgQsDiCt5clb9gyCekpXMQAAAA5oHinm+LOHZ4pXhdmcNM5BQAAAD2OdiREScGsIIYqABogNnJlbRw5Q==
+</Value>
     </Setting>
   </Settings>
 </SettingsFile>

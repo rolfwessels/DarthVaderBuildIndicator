@@ -22,26 +22,30 @@ namespace BuildIndicatron.Core.Api
 {
     public class ApiBase
     {
-        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        protected readonly RestClient _client;
-        private readonly string _applicationJson = "application/json";
+        private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        protected readonly RestClient Client;
+        private const string ApplicationJson = "application/json";
 
-        public ApiBase(string hostApi)
+        public ApiBase(string hostApi, string username = null, string password = null)
         {
-            _client = new RestClient(hostApi);
+            
+            Client = new RestClient(hostApi);
+            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
+                Client.Authenticator = new HttpBasicAuthenticator(username, password);
         }
 
 
         protected RestRequest GetRestRequest(string uri,  Method method , object requestObject = null)
         {
             var request = new RestRequest(uri, method) { RequestFormat = DataFormat.Json };
-            request.AddHeader("Accept", _applicationJson);
+            
+            request.AddHeader("Accept", ApplicationJson);
             //add post information
             if (method == Method.POST)
             {
                 if (requestObject != null)
                 {
-                    request.AddHeader("Content-Type", _applicationJson);
+                    request.AddHeader("Content-Type", ApplicationJson);
                     request.AddBody(requestObject);
                 }
             }
@@ -55,18 +59,18 @@ namespace BuildIndicatron.Core.Api
             where T :  new()
         {
             var stopwatch = new Stopwatch();
-            var buildUri = _client.BuildUri(request);
-            Log.Debug(string.Format("ApiBase:ProcessDefaultRequest {0} {1} [{2}]", request.Method, buildUri, request.Parameters.FirstOrDefault(x=>x.Name == _applicationJson)));
+            var buildUri = Client.BuildUri(request);
+            _log.Debug(string.Format("ApiBase:ProcessDefaultRequest {0} {1} [{2}]", request.Method, buildUri, request.Parameters.FirstOrDefault(x=>x.Name == ApplicationJson)));
             stopwatch.Start();
             var taskCompletionSource = new TaskCompletionSource<T>();
             
-            RestClientExtensions.ExecuteAsync<T>(_client, request, response =>
+            RestClientExtensions.ExecuteAsync<T>(Client, request, response =>
                 {
                     Exception errorException = null;
                     try
                     {
                         stopwatch.Stop();
-                        Log.Debug(string.Format("ApiBase:ProcessDefaultRequest Content {0} [RequestTime:{1}] [{2}]", buildUri, stopwatch.ElapsedMilliseconds, response.Content));
+                        _log.Debug(string.Format("ApiBase:ProcessDefaultRequest Content {0} [RequestTime:{1}] [{2}]", buildUri, stopwatch.ElapsedMilliseconds, response.Content));
                         if (response.ErrorException == null && response.StatusCode == HttpStatusCode.OK)
                         {
                             var result = response.Data;
@@ -89,7 +93,7 @@ namespace BuildIndicatron.Core.Api
                     {
                         if (errorException != null)
                         {
-                            Log.Warn("ApiBase:ProcessDefaultRequest " + errorException.Message, errorException);
+                            _log.Warn("ApiBase:ProcessDefaultRequest " + errorException.Message, errorException);
                             taskCompletionSource.TrySetException(errorException);
                         }
                     }

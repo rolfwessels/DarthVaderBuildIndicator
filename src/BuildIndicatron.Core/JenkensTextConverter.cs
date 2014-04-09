@@ -7,6 +7,7 @@ namespace BuildIndicatron.Core
 {
     public class JenkensTextConverter
     {
+        public const string FailInColor = "red_anime";
         public const string FailColor = "red";
         public const string SuccessColor = "blue";
         public const string ResultSuccess = "SUCCESS";
@@ -23,14 +24,17 @@ namespace BuildIndicatron.Core
 
         public IEnumerable<string> ToSummaryList(JenkensProjectsResult jenkensProjectsResult)
         {
-            if (jenkensProjectsResult.Jobs != null && jenkensProjectsResult.Jobs.All(x => x.Color == SuccessColor))
+            // ReSharper disable SimplifyLinqExpression
+            if (jenkensProjectsResult.Jobs != null && !jenkensProjectsResult.Jobs.Any(x => x.Color == FailColor))
             {
                 yield return
                     string.Format("{2}, there are currently {0} {1} on jenkins and they are all passing",
                                   jenkensProjectsResult.Jobs.Count,
                                   jenkensProjectsResult.Jobs.Count == 1 ? "build" : "builds", GetWelDoneMessage());
             }
-            else if (jenkensProjectsResult.Jobs != null && jenkensProjectsResult.Jobs.All(x => x.Color == FailColor))
+
+            else if (jenkensProjectsResult.Jobs != null && !jenkensProjectsResult.Jobs.Any(x => x.Color == SuccessColor))
+
             {
                 yield return
                     string.Format(
@@ -41,8 +45,6 @@ namespace BuildIndicatron.Core
             else if (jenkensProjectsResult.Jobs != null && jenkensProjectsResult.Jobs.Any())
             {
                 List<Job> failedValues = jenkensProjectsResult.Jobs.Where(x => x.Color == FailColor).ToList();
-
-
                 yield return
                     string.Format("You have failed me, there are currently {0} {2} on jenkins with {1} {3} failing",
                                   jenkensProjectsResult.Jobs.Count,
@@ -56,6 +58,7 @@ namespace BuildIndicatron.Core
                     yield return failedValue;
                 }
             }
+            // ReSharper restore SimplifyLinqExpression
             string slowestAndFastedBuild = GetSlowestAndFastedBuild(jenkensProjectsResult);
             if (slowestAndFastedBuild != null) yield return slowestAndFastedBuild;
 

@@ -12,6 +12,7 @@ namespace BuildIndicatron.Console
         public CommandFailedBuild()
         {
             IsCommand("fail", "Mark a build as failed");
+            _isSuccess = false;
         }
 
         #region Overrides of CommandSuccessfulBuild

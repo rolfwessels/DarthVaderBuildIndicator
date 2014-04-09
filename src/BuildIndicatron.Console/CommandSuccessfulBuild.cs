@@ -12,10 +12,13 @@ namespace BuildIndicatron.Console
     public class CommandSuccessfulBuild : CommandBase
     {
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        protected bool _isSuccess;
+
         public CommandSuccessfulBuild()
         {
             IsCommand("successful", "Mark a successful build");
             HasAdditionalArguments(1, "<Name of project>");
+            _isSuccess = true;
         }
 
         #region Overrides of CommandBase
@@ -28,13 +31,15 @@ namespace BuildIndicatron.Console
             
             var choreography = AddMainColor();
             AddProjectStatusSounds(allProjects, projectName, choreography);
-            AddCoreProjectStatus(choreography);
+            
+            AddCoreProjectStatus(choreography, projectName, _isSuccess);
             AddJenkensStatsToButton();
             BuildIndicationApi.Enqueue(choreography).Wait();
             //add the jenkens stats
             return 0;
         }
 
+        
         protected virtual Choreography AddMainColor()
         {
             var choreography = new Choreography
@@ -82,11 +87,17 @@ namespace BuildIndicatron.Console
             }
         }
 
-        protected virtual void AddCoreProjectStatus(Choreography choreography)
+        protected virtual void AddCoreProjectStatus(Choreography choreography, string projectName, bool isSuccess)
         {
+            Log.Warn("CommandSuccessfulBuild:AddCoreProjectStatus Sending green pin");
             var coreProjects = GetCoreProjects().ToArray();
-            Log.Info("Core projects stats" + coreProjects.Select(x => x.Name).ToArray());
-            var beginTime = 10000;
+            foreach (var coreProject in coreProjects.Where(x => x.Name.ToUpper() == projectName))
+            {
+                coreProject.Color = isSuccess ? JenkensTextConverter.SuccessColor : JenkensTextConverter.FailColor;
+            }
+            Log.Info("Core projects stats for " + string.Join(",",coreProjects.Select(x => x.Name).ToArray()));
+            Log.Info("Core projects stats for " + string.Join(",", coreProjects.Select(x => x.Color).ToArray()));
+            const int beginTime = 10000;
             if (coreProjects.Any(x => x.Color == JenkensTextConverter.FailColor))
             {
                 Log.Info("Found atleast one core project that failed");
@@ -94,6 +105,7 @@ namespace BuildIndicatron.Console
             }
             else
             {
+                Log.Warn("CommandSuccessfulBuild:AddCoreProjectStatus Sending green pin");
                 choreography.Sequences.AddRange(SwitchOnPin(beginTime, AppSettings.Default.LsGreenPin));
             }
 
