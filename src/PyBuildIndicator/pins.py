@@ -20,7 +20,7 @@ GPIO.setup(lsRedPin, GPIO.OUT)
 
 
 def GPIOoutput(Pin,ins):
-    InversePins = {lsBluePin, lsGreenPin , lsRedPin}
+    InversePins = {lsBluePin, lsGreenPin , lsRedPin, bGreenPin, bRedPin}
     if Pin in InversePins :  GPIO.output(Pin,ins == 0 or ins == False)
     else : GPIO.output(Pin,ins)
 

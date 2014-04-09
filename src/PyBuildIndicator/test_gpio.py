@@ -8,6 +8,29 @@ from pins import *
 
 
 class TestPassive(TestCase):
+
+    def test_shoot(self):
+        PinSpin = 22
+        PinFire = 10
+        GPIO.setup(PinSpin, GPIO.OUT)
+        GPIO.setup(PinFire, GPIO.OUT)
+
+        sleep(0.5)
+        print 'on'
+        GPIOoutput(PinSpin, True)
+        sleep(3)
+        print 'fire'
+        GPIOoutput(PinFire, True)
+
+        sleep(1)
+        print 'off'
+        GPIOoutput(PinFire, False)
+        sleep(0.5)
+        GPIOoutput(PinSpin, False)
+
+
+
+
     def test_Passive(self):
         GPIO.setmode(GPIO.BCM)
 
