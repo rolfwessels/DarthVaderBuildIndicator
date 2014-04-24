@@ -82,6 +82,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>AppSettings.settings</DependentUpon>
     </Compile>
+    <Compile Include="HelperCommand.cs" />
     <Compile Include="SimpleCrypt.cs" />
     <Compile Include="CommandFailedBuild.cs" />
     <Compile Include="CommandSimple.cs" />

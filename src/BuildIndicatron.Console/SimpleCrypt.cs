@@ -50,37 +50,29 @@ namespace BuildIndicatron.Console
         public string Encrypt(string textValue)
         {
             var bytes = Encoding.UTF8.GetBytes(textValue);
-            byte[] encrypted;
             using (var memoryStream = new MemoryStream())
             {
                 using (var cs = new CryptoStream(memoryStream, _encryptorTransform, CryptoStreamMode.Write))
                 {
                     cs.Write(bytes, 0, bytes.Length);
                     cs.FlushFinalBlock();
-                    encrypted = StreamToBytes(memoryStream);
-                    cs.Close();
+                    return Convert.ToBase64String(StreamToBytes(memoryStream));
                 }
-
             }
-            return Convert.ToBase64String(encrypted);
         }
 
         public string Decrypt(string encryptedValue)
         {
-
-            byte[] bytes = Convert.FromBase64String(encryptedValue);
-            Byte[] decryptedBytes;
+            var bytes = Convert.FromBase64String(encryptedValue);
             using (var encryptedStream = new MemoryStream())
             {
                 using (var decryptStream = new CryptoStream(encryptedStream, _decryptorTransform, CryptoStreamMode.Write))
                 {
                     decryptStream.Write(bytes, 0, bytes.Length);
                     decryptStream.FlushFinalBlock();
-                    decryptedBytes = StreamToBytes(encryptedStream);
+                    return Encoding.UTF8.GetString(StreamToBytes(encryptedStream));
                 }
-
             }
-            return Encoding.UTF8.GetString(decryptedBytes);
         }
 
         #region Private Methods
