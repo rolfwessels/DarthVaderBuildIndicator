@@ -4,9 +4,33 @@ from RPi import GPIO
 from time import sleep
 from unittest import TestCase
 import unittest
+from pins import *
 
 
 class TestPassive(TestCase):
+
+    def test_shoot(self):
+        PinSpin = 22
+        PinFire = 10
+        GPIO.setup(PinSpin, GPIO.OUT)
+        GPIO.setup(PinFire, GPIO.OUT)
+
+        sleep(0.5)
+        print 'on'
+        GPIOoutput(PinSpin, True)
+        sleep(3)
+        print 'fire'
+        GPIOoutput(PinFire, True)
+
+        sleep(1)
+        print 'off'
+        GPIOoutput(PinFire, False)
+        sleep(0.5)
+        GPIOoutput(PinSpin, False)
+
+
+
+
     def test_Passive(self):
         GPIO.setmode(GPIO.BCM)
 
@@ -20,42 +44,37 @@ class TestPassive(TestCase):
         for count in range(0, 11):
             print (count)
 
-            GPIO.output(bGreen, switch)
+            GPIOoutput(bGreen, switch)
 
-            GPIO.output(bRed, not switch)
+            GPIOoutput(bRed, not switch)
             switch = not switch
             sleep(0.5)
 
-        GPIO.output(bGreen, False)
-        GPIO.output(bRed, False)
+        GPIOoutput(bGreen, False)
+        GPIOoutput(bRed, False)
 
         assert True
         pass
 
     def test_RGB(self):
-        GPIO.setmode(GPIO.BCM)
 
-        lsRed = 27 # Works
-        lsGreen = 9 # nothing
-        lsBlue = 11 # nothing
+        GPIOoutput(lsRedPin, False)
+        GPIOoutput(lsGreenPin, False)
+        GPIOoutput(lsBluePin, False)
 
-        GPIO.setup(lsBlue, GPIO.OUT)
-        GPIO.setup(lsGreen, GPIO.OUT)
-        GPIO.setup(lsRed, GPIO.OUT)
-
-        GPIO.output(lsBlue, True)
+        GPIOoutput(lsBluePin, True)
 
         sleep(1.5)
-        GPIO.output(lsBlue, False)
-        GPIO.output(lsGreen, True)
+        GPIOoutput(lsBluePin, False)
+        GPIOoutput(lsGreenPin, True)
         sleep(1.5)
-        GPIO.output(lsGreen, False)
-        GPIO.output(lsRed, True)
+        GPIOoutput(lsGreenPin, False)
+        GPIOoutput(lsRedPin, True)
         sleep(1.5)
 
-        GPIO.output(lsRed, False)
-        GPIO.output(lsGreen, False)
-        GPIO.output(lsBlue, False)
+        GPIOoutput(lsRedPin, False)
+        GPIOoutput(lsGreenPin, False)
+        GPIOoutput(lsBluePin, False)
 
         assert True
         pass

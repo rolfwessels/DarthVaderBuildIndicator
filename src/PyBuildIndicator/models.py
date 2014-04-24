@@ -7,6 +7,7 @@ import re
 import urllib
 import urllib2
 from helperClasses import MediaPlayer
+from pins import GPIOoutput
 from twitterComs import TwitterCommunication
 
 
@@ -68,7 +69,7 @@ class SequencesGpIo(Sequences):
 
     def ExecuteFirstInstance(self):
         print "set pin", self.Pin, " to ", self.IsOn
-        GPIO.output(self.Pin, self.IsOn)
+        GPIOoutput(self.Pin,self.IsOn)
         super(SequencesGpIo, self).ExecuteFirstInstance()
 
 

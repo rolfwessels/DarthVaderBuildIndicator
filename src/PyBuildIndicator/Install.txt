@@ -1,62 +1,3 @@
-Setup local connection
---------------------------
-
-rm c:/Users/rolf/.ssh/known_hosts
-ssh-keygen -t rsa
-rem on the server run mkdir ~/.ssh
-scp /c/Users/rolf/.ssh/id_rsa.pub pi@192.168.1.242:/home/pi/.ssh/authorized_keys
-ssh pi@192.168.1.14
-
-
-scp /c/Users/rolf/.ssh/id_rsa.pub pi@192.168.1.14:/home/pi/.ssh/authorized_keys
-scp -r /D/Work/Projects/Home/BuildIndicatron/src/PyBuildIndicator pi@192.168.1.242:/home/pi/
-
-linux install python
-----------------------
-
-sudo apt-get -y install python-dev python-rpi.gpio python-virtualenv libsox-fmt-mp3 sox
-sudo pip install Flask
-
-
--- audio
-http://learn.adafruit.com/playing-sounds-and-using-buttons-with-raspberry-pi/install-audio
-sudo apt-get -y remove --auto-remove --purge libx11-.*
-sudo apt-get -y update
-sudo apt-get -y upgrade
-sudo apt-get -y install alsa-utils mpg321
-sudo apt-get -y install libsox-fmt-mp3 sox
-
-
-sudo modprobe snd_bcm2835
-sudo amixer cset numid=3 1
-
---bug with audio click
-sudo apt-get -y install git-core
-sudo wget http://goo.gl/1BOfJ -O /usr/bin/rpi-update && sudo chmod +x /usr/bin/rpi-update
-sudo rpi-update
-
-
-sudo apt-get remove desktop-base lightdm lxappearance lxde-common lxde-icon-theme lxinput lxpanel lxpolkit lxrandr lxsession-edit lxshortcut lxtask lxterminal obconf openbox raspberrypi-artwork xarchiver xinit xserver-xorg xserver-xorg-video-fbdev
-
-Windows 
----------------
-cinst easy.install
-easy_install pip
-pip install Flask
-easy_install pip
-
-pyaudio
-========================
-cd ~
-git clone http://people.csail.mit.edu/hubert/git/pyaudio.git
-sudo apt-get -y install libportaudio0 libportaudio2 libportaudiocpp0 portaudio19-dev
-cd pyaudio
-sudo python setup.py install
-
-
-arecord -D plughw:1,0 -f cd -t wav -d 3 -r 16000
-
-
 Static ip
 ======================
 cat /etc/network/interfaces
@@ -87,6 +28,71 @@ domain Home
 search Home
 nameserver 192.168.1.1
 
+Setup local connection
+--------------------------
+notepad c:/Users/rolf/.ssh/known_hosts
+rm c:/Users/rolf/.ssh/known_hosts
+ssh-keygen -t rsa
+rem on the server run mkdir ~/.ssh
+scp /c/Users/rolf/.ssh/id_rsa.pub pi@192.168.1.242:/home/pi/.ssh/authorized_keys
+ssh pi@192.168.1.242
+
+scp /c/Users/rolf/.ssh/id_rsa.pub pi@192.168.1.14:/home/pi/.ssh/authorized_keys
+scp -r /D/Work/Projects/Home/BuildIndicatron/src/PyBuildIndicator pi@192.168.1.242:/home/pi/
+
+linux install python
+--------------------------------------
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get -y install python-dev python-rpi.gpio python-virtualenv
+sudo pip install Flask 
+sudo easy_install json
+
+
+audio
+----------------------
+http://learn.adafruit.com/playing-sounds-and-using-buttons-with-raspberry-pi/install-audio
+# remove the qui libs
+
+sudo apt-get -y install alsa-utils mpg321 libsox-fmt-mp3 sox
+
+sudo modprobe snd_bcm2835
+sudo amixer cset numid=3 1
+amixer cset numid=1 -- 95%
+
+--bug with audio click
+sudo apt-get -y install git-core
+sudo wget http://goo.gl/1BOfJ -O /usr/bin/rpi-update && sudo chmod +x /usr/bin/rpi-update
+sudo rpi-update
+
+Make dist smaller
+--------------------
+
+sudo apt-get remove desktop-base lightdm lxappearance lxde-common lxde-icon-theme lxinput lxpanel lxpolkit lxrandr lxsession-edit lxshortcut lxtask lxterminal obconf openbox raspberrypi-artwork xarchiver xinit xserver-xorg xserver-xorg-video-fbdev
+sudo apt-get -y remove --auto-remove --purge libx11-.*
+
+
+Windows
+---------------
+cinst easy.install
+easy_install pip
+pip install Flask
+easy_install pip
+
+pyaudio
+========================
+cd ~
+git clone http://people.csail.mit.edu/hubert/git/pyaudio.git
+sudo apt-get -y install libportaudio0 libportaudio2 libportaudiocpp0 portaudio19-dev
+cd pyaudio
+sudo python setup.py install
+
+
+arecord -D plughw:1,0 -f cd -t wav -d 3 -r 16000
+
+
+
+
 Install video streaming
 ================================
 
@@ -101,18 +107,6 @@ sudo make DESTDIR=/usr install
 
 mjpg_streamer -i "/usr/lib/input_uvc.so -d /dev/video0  -r 320x240 -f 10" -o "/usr/lib/output_http.so -p 8090 -w /var/www/mjpg_streamer"
 
-Voice commands
-====================================
-http://stevenhickson.blogspot.com/2013/04/voice-control-on-raspberry-pi.html
-
-sudo sudo apt-get -y install libboost1.50-dev libboost-regex1.50-dev youtube-dl axel curl xterm libcurl4-gnutls-dev mpg123 flac sox 
-
-wget --no-check-certificate https://github.com/StevenHickson/PiAUISuite/archive/master.zip
-unzip master.zip
-rm master.zip
-mv "PiAUISuite-master" PyAui
-cd PyAui/Install/
-./InstallAUISuite.sh
 
 Install opencv
 =====================================
@@ -127,6 +121,7 @@ sudo apt-get install git-core
 sudo wget http://goo.gl/1BOfJ -O /usr/bin/rpi-update
 sudo chmod +x /usr/bin/rpi-update
 sudo rpi-update
+
 sudo apt-get install libopencv-dev python-opencv
 sudo echo "start_file=start_x.elf" >> /boot/config.txt
 sudo echo "start_fixup=fixup_x.dat" >> /boot/config.txt

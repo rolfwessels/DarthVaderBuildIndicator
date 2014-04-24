@@ -4,17 +4,17 @@
     <list default="true" id="0316922d-86dd-4494-a7ab-d9330e2972b9" name="Default" comment="" />
     <ignored path="PyBuildIndicator.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Install.txt" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368866894493" ignored="false" />
+    <file path="/Install.txt" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1381905136482" ignored="false" />
     <file path="/serverStart.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368872443694" ignored="false" />
     <file path="/show_entries.html" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365844449384" ignored="false" />
     <file path="/pingResponse.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365879453057" ignored="false" />
-    <file path="/models.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368807116251" ignored="false" />
-    <file path="/a.dummy" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1369762823624" ignored="false" />
+    <file path="/models.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1375114463757" ignored="false" />
+    <file path="/a.dummy" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1375115432441" ignored="false" />
     <file path="/serverStart_tests.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365925617210" ignored="false" />
     <file path="/backgroundProcess.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367159062196" ignored="false" />
     <file path="/CompositionRunner.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367873602832" ignored="false" />
     <file path="/helperClasses.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367132025882" ignored="false" />
-    <file path="/Python Console" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368872048397" ignored="false" />
+    <file path="/Python Console" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1375114924423" ignored="false" />
     <file path="/test_passive.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365941780460" ignored="false" />
     <file path="/TestGpio.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1366567005312" ignored="false" />
     <file path="/responseModels.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1366925266911" ignored="false" />
@@ -40,8 +40,11 @@
     <file path="/wolframalphaLookup.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368482995145" ignored="false" />
     <file path="/jenkensConnect.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368809232275" ignored="false" />
     <file path="/test_jenkinsBuildServer.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368810831771" ignored="false" />
-    <file path="/jenkinsBuildServer.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1369760720162" ignored="false" />
+    <file path="/jenkinsBuildServer.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1370255046754" ignored="false" />
     <file path="/faceDetection.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1369762623275" ignored="false" />
+    <file path="$USER_HOME$/.PyCharm20/system/python_stubs/1576037948/flask/helpers.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1375113662326" ignored="false" />
+    <file path="/pins.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1375115784604" ignored="false" />
+    <file path="/test_gpio.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1382396693679" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,41 +69,82 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="faceDetection.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/faceDetection.py">
+      <file leaf-file-name="serverStart.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/serverStart.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="201" selection-end="201" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="voiceRecognition.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/voiceRecognition.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="25" selection-start="1674" selection-end="1674" vertical-scroll-proportion="0.0">
+            <state line="33" column="0" selection-start="1265" selection-end="1265" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CompositionRunner.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CompositionRunner.py">
+      <file leaf-file-name="responseModels.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/responseModels.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
+            <state line="11" column="30" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Install.txt" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="pins.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pins.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="29" selection-start="465" selection-end="506" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_voiceRecognition.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_voiceRecognition.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_serverStart_.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_serverStart_.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="43" selection-start="1469" selection-end="1469" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_passive.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_passive.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_gpio.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test_gpio.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="15" selection-start="461" selection-end="461" vertical-scroll-proportion="0.41721854">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="124" column="31" selection-start="3826" selection-end="3836" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Install.txt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Install.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="8" selection-start="1833" selection-end="1833" vertical-scroll-proportion="0.23250565">
+            <state line="56" column="39" selection-start="1441" selection-end="1441" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -110,24 +154,6 @@
         <entry file="file://$PROJECT_DIR$/helperClasses.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="25" column="12" selection-start="650" selection-end="676" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="twitterListner.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/twitterListner.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="76" selection-start="4983" selection-end="4983" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wolframalphaLookup.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wolframalphaLookup.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="15" selection-start="764" selection-end="764" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -143,22 +169,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/CompositionRunner.py" />
-        <option value="$PROJECT_DIR$/wolframalphaLoopup.py" />
-        <option value="$PROJECT_DIR$/test_wolframalphaLookup.py" />
-        <option value="$PROJECT_DIR$/test_sequencesText2Speech.py" />
-        <option value="$PROJECT_DIR$/jenkensConnect.py" />
         <option value="$PROJECT_DIR$/test_jenkinsBuildServer.py" />
         <option value="$PROJECT_DIR$/wolframalphaLookup.py" />
-        <option value="$PROJECT_DIR$/models.py" />
-        <option value="$PROJECT_DIR$/Install.txt" />
         <option value="$PROJECT_DIR$/test_voiceRecognition.py" />
-        <option value="$PROJECT_DIR$/serverStart.py" />
         <option value="$PROJECT_DIR$/buttonClickRunner.py" />
         <option value="$PROJECT_DIR$/twitterListner.py" />
-        <option value="$PROJECT_DIR$/jenkinsBuildServer.py" />
         <option value="$PROJECT_DIR$/faceDetection.py" />
         <option value="$PROJECT_DIR$/voiceRecognition.py" />
+        <option value="$PROJECT_DIR$/jenkinsBuildServer.py" />
+        <option value="$PROJECT_DIR$/autoexec/Install.txt" />
+        <option value="$PROJECT_DIR$/responseModels.py" />
+        <option value="$PROJECT_DIR$/backgroundProcess.py" />
+        <option value="$PROJECT_DIR$/models.py" />
+        <option value="$PROJECT_DIR$/serverStart.py" />
+        <option value="$PROJECT_DIR$/Install.txt" />
+        <option value="$PROJECT_DIR$/pins.py" />
+        <option value="$PROJECT_DIR$/test_gpio.py" />
       </list>
     </option>
   </component>
@@ -210,7 +236,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -229,80 +254,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PyBuildIndicator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PyBuildIndicator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PyBuildIndicator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PyBuildIndicator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sounds" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Wtf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PyBuildIndicator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PyBuildIndicator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sounds" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PythonSdkConfigurable" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/robotServer/models.py" />
-    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
-  <component name="PublishConfig" serverName="Pi2" serverId="4edc3e3c-3ad1-4d04-ad19-c72242ecbcb6" autoUpload="true" showNewOnTargetInSync="false">
+  <component name="PublishConfig" serverName="P243" serverId="2295e47b-1a88-4999-87b0-4088a974cd4f" autoUpload="true" showNewOnTargetInSync="false">
     <servers>
+      <server id="2295e47b-1a88-4999-87b0-4088a974cd4f">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/PyBuildIndicator" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </server>
       <server id="4edc3e3c-3ad1-4d04-ad19-c72242ecbcb6">
         <serverdata>
           <mappings>
@@ -339,7 +320,26 @@
       <recent name="D:\Work\Projects\Home\BuildIndicatron\src\PyBuildIndicator\flaskr" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.serverStart">
+  <component name="RunManager" selected="Python tests.Unittest TestPassive.test_shoot">
+    <configuration default="false" name="serverStart" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="ssh://root@192.168.1.242:22/usr/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <module name="PyBuildIndicator" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/serverStart.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
     <configuration default="false" name="Unittest TestVoiceRecognition.test_processClips" type="tests" factoryName="Unittests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -360,25 +360,6 @@
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="jenkinsBuildServer" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <module name="PyBuildIndicator" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/jenkinsBuildServer.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PyDebugRunner" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -405,38 +386,50 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="serverStart" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Unittest TestPassive.test_RGB" type="tests" factoryName="Unittests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
+      <envs />
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <module name="PyBuildIndicator" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/serverStart.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_gpio.py" />
+      <option name="CLASS_NAME" value="TestPassive" />
+      <option name="METHOD_NAME" value="test_RGB" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
       <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="faceDetection" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Unittest TestPassive.test_shoot" type="tests" factoryName="Unittests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
+      <envs />
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <module name="PyBuildIndicator" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/faceDetection.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_gpio.py" />
+      <option name="CLASS_NAME" value="TestPassive" />
+      <option name="METHOD_NAME" value="test_shoot" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
@@ -503,19 +496,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestVoiceRecognition.test_processClips" />
-      <item index="1" class="java.lang.String" itemvalue="Python.jenkinsBuildServer" />
+      <item index="0" class="java.lang.String" itemvalue="Python.serverStart" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestVoiceRecognition.test_processClips" />
       <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in test_voiceRecognition" />
-      <item index="3" class="java.lang.String" itemvalue="Python.serverStart" />
-      <item index="4" class="java.lang.String" itemvalue="Python.faceDetection" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestPassive.test_RGB" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestPassive.test_shoot" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.serverStart" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestVoiceRecognition.test_processClips" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in test_voiceRecognition" />
-        <item index="3" class="java.lang.String" itemvalue="Python.faceDetection" />
-        <item index="4" class="java.lang.String" itemvalue="Python.jenkinsBuildServer" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestPassive.test_shoot" />
+        <item index="1" class="java.lang.String" itemvalue="Python.serverStart" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestPassive.test_RGB" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestVoiceRecognition.test_processClips" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in test_voiceRecognition" />
       </list>
     </recent_temporary>
   </component>
@@ -568,24 +561,24 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1845238" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18333334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.59880954" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27471638" sideWeight="0.59880954" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39880952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297619" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.67261904" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.59880954" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.67261904" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32576984" sideWeight="0.59880954" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4011905" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.273906" sideWeight="0.44047618" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25931928" sideWeight="0.44047618" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39880952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.67261904" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297619" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5595238" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -623,7 +616,7 @@
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
-    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
     <option name="LIMIT_HISTORY" value="true" />
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
@@ -652,100 +645,40 @@
           <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="17" />
+      <option name="time" value="18" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/twitterComs.py">
+    <entry file="file://$PROJECT_DIR$/wolframalphaLookup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="6" selection-start="384" selection-end="384" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/1576037948/thread.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="4" selection-start="4009" selection-end="4009" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/serverStart.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="21" selection-start="1485" selection-end="1485" vertical-scroll-proportion="0.036637932">
-          <folding>
-            <element signature="e#0#37#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/autoexec/Install.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/autoexec/buildindicator">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="4" selection-start="812" selection-end="812" vertical-scroll-proportion="1.033543">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_voiceRecognition.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="8" selection-start="521" selection-end="693" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="27" column="15" selection-start="764" selection-end="764" vertical-scroll-proportion="0.13292117" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backgroundProcess.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.7894737">
-          <folding>
-            <element signature="e#0#15#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="24" column="31" selection-start="796" selection-end="796" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/buttonClickRunner.py">
+    <entry file="file://$PROJECT_DIR$/voiceRecognition.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="46" selection-start="862" selection-end="862" vertical-scroll-proportion="0.3297414">
-          <folding>
-            <element signature="e#0#20#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jenkinsBuildServer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="43" selection-start="1746" selection-end="1746" vertical-scroll-proportion="0.27088037">
+        <state line="5" column="9" selection-start="76" selection-end="76" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faceDetection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="201" selection-end="201" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/twitterListner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="76" selection-start="4983" selection-end="4983" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="51" column="0" selection-start="2092" selection-end="2092" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wolframalphaLookup.py">
+    <entry file="file://$PROJECT_DIR$/autoexec/Install.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="15" selection-start="764" selection-end="764" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="12" column="24" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/soundrecorder2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="7" selection-start="373" selection-end="373" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/helperClasses.py">
@@ -755,25 +688,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voiceRecognition.py">
+    <entry file="file://$PROJECT_DIR$/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="25" selection-start="1674" selection-end="1674" vertical-scroll-proportion="0.0">
+        <state line="124" column="31" selection-start="3826" selection-end="3836" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CompositionRunner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Install.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="8" selection-start="1833" selection-end="1833" vertical-scroll-proportion="0.23250565">
+        <state line="56" column="39" selection-start="1441" selection-end="1441" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_voiceRecognition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="29" selection-start="465" selection-end="506" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/responseModels.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="30" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/serverStart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="1265" selection-end="1265" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_serverStart_.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="43" selection-start="1469" selection-end="1469" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_passive.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_gpio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="15" selection-start="461" selection-end="461" vertical-scroll-proportion="0.41721854">
           <folding />
         </state>
       </provider>

@@ -1,9 +1,9 @@
-chmod +x ~/PyRobotServer/autoexec/buildindicator
-sudo chown  pi:pi ~/PyRobotServer/*
+sudo chmod +x ~/PyBuildIndicator/autoexec/buildindicator
+sudo chown  pi:pi ~/PyBuildIndicator/*
 
-~/PyRobotServer/autoexec/buildindicator
+~/PyBuildIndicator/autoexec/buildindicator
 
-sudo cp ~/PyRobotServer/autoexec/buildindicator /etc/init.d/buildindicator
+sudo cp ~/PyBuildIndicator/autoexec/buildindicator /etc/init.d/buildindicator
 sudo update-rc.d buildindicator defaults
 sudo reboot
 

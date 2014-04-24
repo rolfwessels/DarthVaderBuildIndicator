@@ -1,5 +1,5 @@
 import datetime
-from flask.helpers import json
+from flask import json
 import os
 from random import choice
 from helperClasses import SleepingThread, MyEncoder
