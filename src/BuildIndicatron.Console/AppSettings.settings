@@ -8,25 +8,25 @@
     <Setting Name="FeetGreenPin" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">24</Value>
     </Setting>
-    <Setting Name="LsRedPin" Type="System.Int32" Scope="User">
+    <Setting Name="LsRedPin" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">27</Value>
     </Setting>
-    <Setting Name="LsGreenPin" Type="System.Int32" Scope="User">
+    <Setting Name="LsGreenPin" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">9</Value>
     </Setting>
-    <Setting Name="LsBluePin" Type="System.Int32" Scope="User">
+    <Setting Name="LsBluePin" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">11</Value>
     </Setting>
-    <Setting Name="ButtonPin" Type="System.Int32" Scope="User">
+    <Setting Name="ButtonPin" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">10</Value>
     </Setting>
-    <Setting Name="PassiveInterval" Type="System.Int32" Scope="User">
+    <Setting Name="PassiveInterval" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">45</Value>
     </Setting>
-    <Setting Name="PassiveStartHour" Type="System.Int32" Scope="User">
+    <Setting Name="PassiveStartHour" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">7</Value>
     </Setting>
-    <Setting Name="PassiveStopHour" Type="System.Int32" Scope="User">
+    <Setting Name="PassiveStopHour" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="Host" Type="System.String" Scope="User">

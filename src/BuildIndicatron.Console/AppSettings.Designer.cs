@@ -41,87 +41,66 @@ namespace BuildIndicatron.Console {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("27")]
         public int LsRedPin {
             get {
                 return ((int)(this["LsRedPin"]));
             }
-            set {
-                this["LsRedPin"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("9")]
         public int LsGreenPin {
             get {
                 return ((int)(this["LsGreenPin"]));
             }
-            set {
-                this["LsGreenPin"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("11")]
         public int LsBluePin {
             get {
                 return ((int)(this["LsBluePin"]));
             }
-            set {
-                this["LsBluePin"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public int ButtonPin {
             get {
                 return ((int)(this["ButtonPin"]));
             }
-            set {
-                this["ButtonPin"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("45")]
         public int PassiveInterval {
             get {
                 return ((int)(this["PassiveInterval"]));
             }
-            set {
-                this["PassiveInterval"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("7")]
         public int PassiveStartHour {
             get {
                 return ((int)(this["PassiveStartHour"]));
             }
-            set {
-                this["PassiveStartHour"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("20")]
         public int PassiveStopHour {
             get {
                 return ((int)(this["PassiveStopHour"]));
-            }
-            set {
-                this["PassiveStopHour"] = value;
             }
         }
         

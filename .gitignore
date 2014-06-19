@@ -5,3 +5,5 @@ obj/
 *.suo
 /src/_NCrunch_BuildIndicatron/*.cache
 lib/
+/src/BuildIndicatron.App/*.ncrunchproject
+/src/BuildIndicatron.Console/*.ncrunchproject
