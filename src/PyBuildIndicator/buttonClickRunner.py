@@ -7,11 +7,12 @@ from models import Passive, Choreography
 
 
 class buttonClickRunner():
-    def __init__(self, pin, composition_runner):
+    def __init__(self, pin, composition_runner,isButtonSwitch):
         self.CurrentPassive = Passive()
         self.Pin = pin
         GPIO.setup(self.Pin, GPIO.IN)
         self.PinValue = GPIO.input(self.Pin)
+        self.IsButtonSwitch = isButtonSwitch
         self.Runner = composition_runner
         self.Choreography = []
         self.Choreography.append(Choreography.SimpleSequencesText2Speech(self.GetInitialString()))
@@ -31,9 +32,16 @@ class buttonClickRunner():
         self.Choreography = choreography
 
     def ThreadTimerTick(self):
-        if self.PinValue != GPIO.input(self.Pin):
-            self.PinValue = GPIO.input(self.Pin)
-            self.RunNextSequence()
+        if self.IsButtonSwitch:
+            if self.PinValue != GPIO.input(self.Pin):
+                self.PinValue = GPIO.input(self.Pin)
+                self.RunNextSequence()
+
+            else:
+                if GPIO.input(self.Pin):
+                    self.RunNextSequence()
+
+
 
     def GetNextSequence(self):
         count = len(self.Choreography)

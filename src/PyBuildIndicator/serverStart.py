@@ -22,7 +22,7 @@ MP3PATH = "resources/mp3"
 GlobalTwitterCommunication = TwitterListener()
 GlobalCompositionRunner = CompositionRunner()
 GlobalCurrentProcess = PassiveManager(GlobalCompositionRunner)
-GlobalButtonClickRunner = buttonClickRunner(buttonPin,GlobalCompositionRunner)
+GlobalButtonClickRunner = buttonClickRunner(buttonPin,GlobalCompositionRunner,isButtonSwitch)
 GlobalVoiceRecognition = VoiceRecognition()
 
 GlobalCompositionRunner.SetRepeatComposition(GlobalButtonClickRunner.SetLastComposition)

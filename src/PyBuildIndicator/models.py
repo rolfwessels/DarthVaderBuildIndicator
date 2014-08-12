@@ -201,7 +201,7 @@ class SequencesQuotes(SequencesText2Speech):
         self.SendTweet = True
 
     def ExecuteFirstInstance(self):
-        Quotes = ["I find your lack of faith disturbing.", "You don't know the power of the dark side!",
+        Quotes = ["SendQuotesI find your lack of faith disturbing.", "You don't know the power of the dark side!",
                   "Luke, I am your father!.",
                   "Today will be a day long remembered. It has seen the death of Kenobi, and soon the fall of the rebellion.",
                   "The force is strong with this one.", "I sense something, a presence I've not felt since.......",

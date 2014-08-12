@@ -10,23 +10,20 @@ from pins import *
 class TestPassive(TestCase):
 
     def test_shoot(self):
-        PinSpin = 22
-        PinFire = 10
-        GPIO.setup(PinSpin, GPIO.OUT)
-        GPIO.setup(PinFire, GPIO.OUT)
+
 
         sleep(0.5)
         print 'on'
-        GPIOoutput(PinSpin, True)
+        GPIOoutput(pinSpin, True)
         sleep(3)
         print 'fire'
-        GPIOoutput(PinFire, True)
+        GPIOoutput(pinFire, True)
 
         sleep(1)
         print 'off'
-        GPIOoutput(PinFire, False)
+        GPIOoutput(pinFire, False)
         sleep(0.5)
-        GPIOoutput(PinSpin, False)
+        GPIOoutput(pinSpin, False)
 
 
 
@@ -56,36 +53,53 @@ class TestPassive(TestCase):
         assert True
         pass
 
+
+    def test_SinglePin(self):
+
+        pin = lsGreenPin
+
+        #
+        # GPIOoutput(lsRedPin, False)
+        # GPIOoutput(lsGreenPin, False)
+        # GPIOoutput(lsBluePin, False)
+        print 'off'
+
+        GPIOoutput(pin, True)
+        sleep(3)
+        GPIOoutput(pin, False)
+        pass
+
     def test_RGB(self):
 
         GPIOoutput(lsRedPin, False)
         GPIOoutput(lsGreenPin, False)
         GPIOoutput(lsBluePin, False)
-
+        print 'off'
         GPIOoutput(lsBluePin, True)
-
+        print 'blue'
         sleep(1.5)
         GPIOoutput(lsBluePin, False)
         GPIOoutput(lsGreenPin, True)
+        print 'green'
         sleep(1.5)
         GPIOoutput(lsGreenPin, False)
         GPIOoutput(lsRedPin, True)
+        print 'red'
         sleep(1.5)
 
         GPIOoutput(lsRedPin, False)
         GPIOoutput(lsGreenPin, False)
         GPIOoutput(lsBluePin, False)
-
+        print 'off'
         assert True
         pass
 
 
     def testButton(self):
         GPIO.setmode(GPIO.BCM)
-        pin = 10
-        GPIO.setup(pin, GPIO.IN)
+        GPIO.setup(buttonPin, GPIO.IN)
 
-        input_value = GPIO.input(pin)
+        input_value = GPIO.input(buttonPin)
         print 'Value:', input_value
         assert input_value
         pass
