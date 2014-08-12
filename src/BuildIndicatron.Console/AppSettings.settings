@@ -2,51 +2,50 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BuildIndicatron.Console" GeneratedClassName="AppSettings">
   <Profiles />
   <Settings>
-    <Setting Name="FeetRedPin" Type="System.Int32" Scope="User">
+    <Setting Name="FeetRedPin" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">17</Value>
     </Setting>
-    <Setting Name="FeetGreenPin" Type="System.Int32" Scope="User">
+    <Setting Name="FeetGreenPin" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">24</Value>
     </Setting>
-    <Setting Name="LsRedPin" Type="System.Int32" Scope="User">
+    <Setting Name="LsRedPin" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">27</Value>
     </Setting>
-    <Setting Name="LsGreenPin" Type="System.Int32" Scope="User">
+    <Setting Name="LsGreenPin" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">9</Value>
     </Setting>
-    <Setting Name="LsBluePin" Type="System.Int32" Scope="User">
+    <Setting Name="LsBluePin" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">11</Value>
     </Setting>
-    <Setting Name="ButtonPin" Type="System.Int32" Scope="User">
+    <Setting Name="ButtonPin" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">10</Value>
     </Setting>
-    <Setting Name="PassiveInterval" Type="System.Int32" Scope="User">
+    <Setting Name="PassiveInterval" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">45</Value>
     </Setting>
-    <Setting Name="PassiveStartHour" Type="System.Int32" Scope="User">
+    <Setting Name="PassiveStartHour" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">7</Value>
     </Setting>
-    <Setting Name="PassiveStopHour" Type="System.Int32" Scope="User">
+    <Setting Name="PassiveStopHour" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="Host" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://192.168.2.210:5000/</Value>
+      <Value Profile="(Default)">http://192.168.40.101:5000/</Value>
     </Setting>
-    <Setting Name="StringReplaces" Type="System.String" Scope="User">
-      <Value Profile="(Default)">zapzap:zap zap|dev :development|WP8:zapper windows phone|DEV -:|Build - :|Deploy - :|</Value>
+    <Setting Name="StringReplaces" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">zapzap:zap zap|</Value>
     </Setting>
-    <Setting Name="CoreProjects" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Build - Zapper WP8|Build - Zapper WP8 (Release)|Build - ZapZap WP8|Build - ZapZap WP8 (Release)</Value>
+    <Setting Name="CoreProjects" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">IIAB Integration Tests|IIAB Test|InfoslipWP8 Release|InfoslipWP8 Test</Value>
     </Setting>
-    <Setting Name="JenkenServer" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://fulliautomatix:8080/</Value>
+    <Setting Name="JenkenServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://yumi:8080/</Value>
     </Setting>
     <Setting Name="JenkenUsername" Type="System.String" Scope="User">
       <Value Profile="(Default)">Rolf</Value>
     </Setting>
     <Setting Name="JenkenPassword" Type="System.String" Scope="User">
-      <Value Profile="(Default)">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAEsCG8iuH30eperrCkQ78wwAAAAACAAAAAAADZgAAwAAAABAAAAA7MJf55VFW3deOBYPTkhwRAAAAAASAAACgAAAAEAAAAGMgQsDiCt5clb9gyCekpXMQAAAA5oHinm+LOHZ4pXhdmcNM5BQAAAD2OdiREScGsIIYqABogNnJlbRw5Q==
-</Value>
+      <Value Profile="(Default)">casd</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -1,4 +1,5 @@
-﻿using BuildIndicatron.Core.Api.Model;
+﻿using System.Reflection;
+using BuildIndicatron.Core.Api.Model;
 using RestSharp;
 
 #if WINDOWS_PHONE

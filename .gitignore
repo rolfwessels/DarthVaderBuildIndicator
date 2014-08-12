@@ -6,3 +6,5 @@ obj/
 /src/_NCrunch_BuildIndicatron/*.cache
 /var/Movie
 /lib/
+/src/BuildIndicatron.App/*.ncrunchproject
+/src/BuildIndicatron.Console/*.ncrunchproject
