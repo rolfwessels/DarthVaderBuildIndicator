@@ -127,3 +127,18 @@ sudo echo "start_file=start_x.elf" >> /boot/config.txt
 sudo echo "start_fixup=fixup_x.dat" >> /boot/config.txt
 
 
+Settings for the Darth v.2
+
+bRedPin = 7
+bGreenPin = 8
+lsRedPin = 11
+lsGreenPin = 25
+lsBluePin = 9
+buttonPin = 24
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(bRedPin, GPIO.OUT)
+GPIO.setup(bGreenPin, GPIO.OUT)
+GPIO.setup(lsBluePin, GPIO.OUT)
+GPIO.setup(lsGreenPin, GPIO.OUT)
+GPIO.setup(lsRedPin, GPIO.OUT)
