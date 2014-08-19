@@ -4,7 +4,6 @@ from twitterComs import TwitterCommunication
 
 __author__ = 'rolf'
 
-
 class TestTwitterCommunication(TestCase):
     def __init__(self, methodName='runTest'):
         super(TestTwitterCommunication, self).__init__(methodName)

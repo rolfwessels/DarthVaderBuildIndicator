@@ -29,26 +29,19 @@ class TestPassive(TestCase):
 
 
     def test_Passive(self):
-        GPIO.setmode(GPIO.BCM)
 
-        bRed = 17
-        bGreen = 24
-
-        GPIO.setup(bGreen, GPIO.OUT)
-        GPIO.setup(bRed, GPIO.OUT)
 
         switch = False
         for count in range(0, 11):
             print (count)
 
-            GPIOoutput(bGreen, switch)
-
-            GPIOoutput(bRed, not switch)
+            GPIOoutput(bGreenPin, switch)
+            GPIOoutput(bRedPin, not switch)
             switch = not switch
             sleep(0.5)
 
-        GPIOoutput(bGreen, False)
-        GPIOoutput(bRed, False)
+        GPIOoutput(bGreenPin, False)
+        GPIOoutput(bRedPin, False)
 
         assert True
         pass
@@ -56,7 +49,7 @@ class TestPassive(TestCase):
 
     def test_SinglePin(self):
 
-        pin = lsGreenPin
+        pin = bGreenPin
 
         #
         # GPIOoutput(lsRedPin, False)
@@ -71,25 +64,40 @@ class TestPassive(TestCase):
 
     def test_RGB(self):
 
+
+        delay = 3.5
         GPIOoutput(lsRedPin, False)
         GPIOoutput(lsGreenPin, False)
         GPIOoutput(lsBluePin, False)
         print 'off'
         GPIOoutput(lsBluePin, True)
         print 'blue'
-        sleep(1.5)
+
+        sleep(delay)
         GPIOoutput(lsBluePin, False)
         GPIOoutput(lsGreenPin, True)
         print 'green'
-        sleep(1.5)
+        sleep(delay)
         GPIOoutput(lsGreenPin, False)
         GPIOoutput(lsRedPin, True)
         print 'red'
-        sleep(1.5)
+        sleep(delay)
 
         GPIOoutput(lsRedPin, False)
         GPIOoutput(lsGreenPin, False)
         GPIOoutput(lsBluePin, False)
+
+
+        GPIOoutput(bGreenPin, True)
+        print 'bGreenPin'
+        sleep(delay)
+        GPIOoutput(bGreenPin, False)
+
+        GPIOoutput(bRedPin, True)
+        print 'bRedPin'
+        sleep(delay)
+        GPIOoutput(bRedPin, False)
+
         print 'off'
         assert True
         pass

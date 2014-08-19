@@ -1,0 +1,36 @@
+Settings for the Darth v.2
+
+bRedPin = 7
+bGreenPin = 8
+lsRedPin = 11
+lsGreenPin = 25
+lsBluePin = 9
+buttonPin = 24
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(bRedPin, GPIO.OUT)
+GPIO.setup(bGreenPin, GPIO.OUT)
+GPIO.setup(lsBluePin, GPIO.OUT)
+GPIO.setup(lsGreenPin, GPIO.OUT)
+GPIO.setup(lsRedPin, GPIO.OUT)
+
+GK darth
+
+<setting name="FeetRedPin" serializeAs="String">
+                <value>17</value>
+            </setting>
+            <setting name="FeetGreenPin" serializeAs="String">
+                <value>24</value>
+            </setting>
+            <setting name="LsRedPin" serializeAs="String">
+                <value>27</value>
+            </setting>
+            <setting name="LsGreenPin" serializeAs="String">
+                <value>9</value>
+            </setting>
+            <setting name="LsBluePin" serializeAs="String">
+                <value>11</value>
+            </setting>
+            <setting name="ButtonPin" serializeAs="String">
+                <value>10</value>
+            </setting>

@@ -35,7 +35,7 @@ class PlayMp3FileResponse(BaseResponse):
         if not self.FileFound:
             self.ErrorMessage = "File could not be found"
         else:
-            runner.AddChoreography(Choreography.SimpleChoreographyPlaySound(self.Path))
+            runner.AddChoreography(Choreography.SimpleChoreographyPlaySound(self.FileName))
         if self.callResponse == 1:
             self.ErrorMessage = 'Could not call the process [' + self.Path + ']'
         return self.ReturnJson()

@@ -52,12 +52,16 @@ class SequencesPlaySound(Sequences):
     def ExecuteFirstInstance(self):
         print "play the file ", self.File
         soundFile = RESOURCES_SOUNDS_ + self.File
+        print "play the soundFile ",soundFile
         if os.path.isdir(soundFile):
+            print "path exists ",soundFile
             soundFile = soundFile + "/" + choice(os.listdir(soundFile))
             print soundFile
             MediaPlayer().Play(soundFile)
         elif os.path.exists(soundFile):
+            print "path exists ",soundFile
             MediaPlayer().Play(soundFile)
+        print "done playing file ",soundFile
         super(SequencesPlaySound, self).ExecuteFirstInstance()
 
 

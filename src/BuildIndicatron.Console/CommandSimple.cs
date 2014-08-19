@@ -112,6 +112,7 @@ namespace BuildIndicatron.Console
                                 }
             };
             AddMessage(choreography, message);
+			AddSound(choreography, Sound);
             choreography.Sequences.Add(new SequencesGpIo
                                         {
                                             BeginTime = 1000,
