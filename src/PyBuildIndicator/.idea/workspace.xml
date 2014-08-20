@@ -4,12 +4,12 @@
     <list default="true" id="0316922d-86dd-4494-a7ab-d9330e2972b9" name="Default" comment="" />
     <ignored path="PyBuildIndicator.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Install.txt" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1407863025036" ignored="false" />
+    <file path="/Install.txt" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1408557702298" ignored="false" />
     <file path="/serverStart.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368872443694" ignored="false" />
     <file path="/show_entries.html" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365844449384" ignored="false" />
     <file path="/pingResponse.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365879453057" ignored="false" />
     <file path="/models.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1408480206407" ignored="false" />
-    <file path="/a.dummy" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1408481835062" ignored="false" />
+    <file path="/a.dummy" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1408483646440" ignored="false" />
     <file path="/serverStart_tests.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1365925617210" ignored="false" />
     <file path="/backgroundProcess.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367159062196" ignored="false" />
     <file path="/CompositionRunner.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367873602832" ignored="false" />
@@ -28,7 +28,7 @@
     <file path="/index.html" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367154102614" ignored="false" />
     <file path="/buildindicator" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368083638249" ignored="false" />
     <file path="/twitter.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367847996479" ignored="false" />
-    <file path="/test_twitterCommunication.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367858459286" ignored="false" />
+    <file path="/test_twitterCommunication.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1408483455641" ignored="false" />
     <file path="/twitterComs.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1368131964189" ignored="false" />
     <file path="/stream.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1367853860353" ignored="false" />
     <file path="/twitterListner.py" changelist="0316922d-86dd-4494-a7ab-d9330e2972b9" time="1369760443472" ignored="false" />
@@ -69,13 +69,41 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="test_gpio.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_gpio.py">
+      <file leaf-file-name="voiceRecognition.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/voiceRecognition.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="19" selection-start="1026" selection-end="1026" vertical-scroll-proportion="0.0">
+            <state line="75" column="27" selection-start="3135" selection-end="3135" vertical-scroll-proportion="0.0">
               <folding>
-                <marker date="1408479874000" expanded="true" signature="154:2228" placeholder="..." />
-                <marker date="1408479874000" expanded="true" signature="1143:2009" placeholder="..." />
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="serverStart.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/serverStart.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="37" selection-start="773" selection-end="773" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CompositionRunner.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CompositionRunner.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="41" column="43" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="twitterComs.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/twitterComs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="26" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,28 +118,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models.py">
+      <file leaf-file-name="Install.txt" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Install.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="23" selection-start="1145" selection-end="1145" vertical-scroll-proportion="0.0">
+            <state line="18" column="19" selection-start="352" selection-end="353" vertical-scroll-proportion="0.45">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="random.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/-1799316525/random.py">
+      <file leaf-file-name="test_twitterCommunication.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_twitterCommunication.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="886" column="0" selection-start="31714" selection-end="31714" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="voiceRecognition.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/voiceRecognition.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="33" selection-start="2684" selection-end="2684" vertical-scroll-proportion="0.0">
+            <state line="26" column="19" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -120,26 +139,19 @@
       <file leaf-file-name="__builtin__.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/-1799316525/__builtin__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2054" column="8" selection-start="69089" selection-end="69089" vertical-scroll-proportion="0.0">
+            <state line="31" column="0" selection-start="1170" selection-end="1170" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="serverStart.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/serverStart.py">
+      <file leaf-file-name="twitterListner.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/twitterListner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="24" selection-start="2839" selection-end="2839" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CompositionRunner.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CompositionRunner.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="43" selection-start="1178" selection-end="1178" vertical-scroll-proportion="-0.35068494">
-              <folding />
+            <state line="13" column="31" selection-start="617" selection-end="617" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -150,17 +162,6 @@
             <state line="30" column="53" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="helperClasses.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/helperClasses.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="8" selection-start="1430" selection-end="1430" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -181,17 +182,17 @@
         <option value="$PROJECT_DIR$/jenkinsBuildServer.py" />
         <option value="$PROJECT_DIR$/autoexec/Install.txt" />
         <option value="$PROJECT_DIR$/backgroundProcess.py" />
-        <option value="$PROJECT_DIR$/Install.txt" />
         <option value="$PROJECT_DIR$/pins.py" />
         <option value="$PROJECT_DIR$/buttonClickRunner.py" />
         <option value="$PROJECT_DIR$/twitterComs.py" />
         <option value="$PROJECT_DIR$/serverStart.py" />
-        <option value="$PROJECT_DIR$/test_twitterCommunication.py" />
         <option value="$PROJECT_DIR$/test_gpio.py" />
-        <option value="$USER_HOME$/.PyCharm20/system/python_stubs/-1799316525/__builtin__.py" />
         <option value="$PROJECT_DIR$/models.py" />
         <option value="$PROJECT_DIR$/responseModels.py" />
         <option value="$PROJECT_DIR$/CompositionRunner.py" />
+        <option value="$USER_HOME$/.PyCharm20/system/python_stubs/-1799316525/__builtin__.py" />
+        <option value="$PROJECT_DIR$/test_twitterCommunication.py" />
+        <option value="$PROJECT_DIR$/Install.txt" />
       </list>
     </option>
   </component>
@@ -342,29 +343,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.serverStart">
-    <configuration default="false" name="Unittest TestPassive.test_SinglePin" type="tests" factoryName="Unittests" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <module name="PyBuildIndicator" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_gpio.py" />
-      <option name="CLASS_NAME" value="TestPassive" />
-      <option name="METHOD_NAME" value="test_SinglePin" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
     <configuration default="false" name="Unittest TestTwitterCommunication.testSendQuotes" type="tests" factoryName="Unittests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -428,7 +406,7 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittest TestPassive.test_shoot" type="tests" factoryName="Unittests" temporary="true">
+    <configuration default="false" name="Unittest TestTwitterCommunication.testSendTweet" type="tests" factoryName="Unittests" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -437,9 +415,32 @@
       <option name="IS_MODULE_SDK" value="true" />
       <module name="PyBuildIndicator" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_gpio.py" />
-      <option name="CLASS_NAME" value="TestPassive" />
-      <option name="METHOD_NAME" value="test_shoot" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_twitterCommunication.py" />
+      <option name="CLASS_NAME" value="TestTwitterCommunication" />
+      <option name="METHOD_NAME" value="testSendTweet" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestTwitterCommunication.testGetTimeLine" type="tests" factoryName="Unittests" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <module name="PyBuildIndicator" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_twitterCommunication.py" />
+      <option name="CLASS_NAME" value="TestTwitterCommunication" />
+      <option name="METHOD_NAME" value="testGetTimeLine" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
@@ -513,19 +514,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestPassive.test_SinglePin" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestTwitterCommunication.testSendQuotes" />
-      <item index="2" class="java.lang.String" itemvalue="Python.serverStart" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestPassive.test_RGB" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestPassive.test_shoot" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestTwitterCommunication.testSendQuotes" />
+      <item index="1" class="java.lang.String" itemvalue="Python.serverStart" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestPassive.test_RGB" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestTwitterCommunication.testSendTweet" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestTwitterCommunication.testGetTimeLine" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.serverStart" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestPassive.test_RGB" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestPassive.test_SinglePin" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestPassive.test_shoot" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestTwitterCommunication.testSendQuotes" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestTwitterCommunication.testGetTimeLine" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestTwitterCommunication.testSendTweet" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestTwitterCommunication.testSendQuotes" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestPassive.test_RGB" />
       </list>
     </recent_temporary>
   </component>
@@ -584,15 +585,15 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.59880954" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.273906" sideWeight="0.5309524" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16612642" sideWeight="0.5011905" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39880952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297619" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.67261904" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.67261904" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27309564" sideWeight="0.5309524" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4690476" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27309564" sideWeight="0.5011905" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.49880952" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -666,29 +667,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/twitter/util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/twitter/twitter_globals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="25" selection-start="453" selection-end="453" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_twitterCommunication.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="29" selection-start="395" selection-end="395" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#29#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="0" selection-start="109" selection-end="109" vertical-scroll-proportion="0.0">
@@ -705,34 +683,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Install.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="14" selection-start="3275" selection-end="3275" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_gpio.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="57" column="19" selection-start="1026" selection-end="1026" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1408479874000" expanded="true" signature="154:2228" placeholder="..." />
-            <marker date="1408479874000" expanded="true" signature="1143:2009" placeholder="..." />
+            <marker date="1408479874000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408479874000" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/autoexec/Install.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="18" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/-1799316525/__builtin__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2054" column="8" selection-start="69089" selection-end="69089" vertical-scroll-proportion="0.0">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -742,13 +699,6 @@
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voiceRecognition.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="33" selection-start="2684" selection-end="2684" vertical-scroll-proportion="0.0">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -766,13 +716,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/serverStart.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="24" selection-start="2839" selection-end="2839" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/responseModels.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="53" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0">
@@ -784,7 +727,69 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CompositionRunner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="43" selection-start="1178" selection-end="1178" vertical-scroll-proportion="-0.35068494">
+        <state line="41" column="43" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/-1799316525/__builtin__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="0" selection-start="1170" selection-end="1170" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_twitterCommunication.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="19" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voiceRecognition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="27" selection-start="3135" selection-end="3135" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/serverStart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="37" selection-start="773" selection-end="773" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twitterListner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="31" selection-start="617" selection-end="617" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twitterComs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="26" selection-start="493" selection-end="493" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autoexec/Install.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="18" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Install.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="19" selection-start="352" selection-end="353" vertical-scroll-proportion="0.45">
           <folding />
         </state>
       </provider>
