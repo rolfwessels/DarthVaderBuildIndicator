@@ -1,0 +1,1 @@
+﻿pscp -pw C0ntr0l3 *.* pi@192.168.1.242:/home/pi/buildIndicatron.server

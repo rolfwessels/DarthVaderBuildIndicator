@@ -1,3 +1,7 @@
+Setup
+
+sudo raspi-config
+
 Static ip
 ======================
 cat /etc/network/interfaces

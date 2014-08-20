@@ -1,6 +1,7 @@
 from unittest import TestCase
 from CompositionRunner import CompositionRunner
 from twitterComs import TwitterCommunication
+from twitterListner import TwitterListener
 
 __author__ = 'rolf'
 
@@ -10,13 +11,19 @@ class TestTwitterCommunication(TestCase):
         self.Runner = CompRunnerNow()
         self.Runner.Stop()
 
-    def testSendQuotes(self):
+    def testSendTweet(self):
         tc = TwitterCommunication()
+        tc.SendTweet("Im back")
+        assert True is True
+
+    def testSendQuotes(self):
+
+        tc = TwitterListener()
         tc.SendQuotes()
         assert True is True
 
     def testGetTimeLine(self):
-        tc = TwitterCommunication()
+        tc = TwitterListener()
         tc.GetTimeLine()
         pass
 
