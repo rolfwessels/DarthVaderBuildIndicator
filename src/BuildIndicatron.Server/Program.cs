@@ -1,8 +1,12 @@
 ﻿using System;
-using System.IO;
+using System.Net;
+using System.Net.Sockets;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using BuildIndicatron.Shared;
-using Nancy.Hosting.Self;
+using Microsoft.Owin.Hosting;
+using Owin;
 using log4net;
 using log4net.Config;
 
@@ -18,22 +22,62 @@ namespace BuildIndicatron.Server
 	        {
 		        XmlConfigurator.Configure();
 		        _log.Info("Start");
-		        Console.Out.WriteLine("Hello");
-//		        var nancyHost = new NancyHost(new Uri(ApiPaths.LocalHost));
-//		        nancyHost.Start();
-//		        Console.WriteLine("Nancy now listening - navigating to {0}. Press enter to stop", ApiPaths.LocalHost);
-//		        Console.ReadKey();
-//		        nancyHost.Stop();
-//		        Console.WriteLine("Stopped. Good bye!");
+		        //StartNancy();
+//				GetValue();
+				Owin();
 		        _log.Info("Closing");
 	        }
 	        catch (Exception e)
 	        {
+		        Console.Out.WriteLine(e.Message);
 		        _log.Error(e.Message, e);
 	        }
         }
 
+	    private static void Owin()
+	    {
+		    var options = new StartOptions
+			    {
+				    ServerFactory = "Nowin",
+				    Port = 8080
+			    };
 
-       
+		    using (WebApp.Start<Startup>(options))
+		    {
+			    string localIp = "?";
+				IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+				foreach (IPAddress ip in host.AddressList)
+				{
+					if (ip.AddressFamily == AddressFamily.InterNetwork)
+					{
+						localIp = ip.ToString();
+					}
+				}	
+				Console.WriteLine(string.Format("Running a http server on port http://{0}:{1}",localIp, options.Port));
+				while (true)
+				{
+					Thread.Sleep(1000);
+				}
+		    }
+	    }
+
     }
+
+	public class Startup
+	{
+		public void Configuration(IAppBuilder app)
+		{
+			app.Run(context =>
+			{
+				if (context.Request.Path.Value == "/")
+				{
+					context.Response.ContentType = "text/plain";
+					return context.Response.WriteAsync("Hello World!");
+				}
+
+				context.Response.StatusCode = 404;
+				return Task.Delay(0);
+			});
+		}
+	}
 }
