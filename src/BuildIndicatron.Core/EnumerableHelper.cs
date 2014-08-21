@@ -16,7 +16,7 @@ namespace BuildIndicatron.Core
             return list.Skip(_random.Next(0, count-1)).FirstOrDefault();
         }
 
-        public static string StringJoin<T>(this IEnumerable<T> enumerable,string join)
+        public static string StringJoin<T>(this IEnumerable<T> enumerable,string join = ", ")
         {
             return enumerable != null ? string.Join(@join, enumerable.Select(x => x.ToString()).ToArray()) : null;
         }
