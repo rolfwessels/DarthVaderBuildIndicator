@@ -24,16 +24,10 @@ namespace BuildIndicatron.Core.Processes
 
 		public void PlayFile(string fileName)
 		{
-			var fullPath = Path.GetFullPath(fileName);
+			var fullPath = Path.GetFullPath(fileName).AsPath();
 			_log.Info("Player: "+string.Format(_player, fullPath).Replace("|"," "));
 			var playerCommand = _player.Split('|');
-			var startInfo = new ProcessStartInfo(playerCommand[0])
-				{
-					WindowStyle = ProcessWindowStyle.Minimized,
-					Arguments = string.Format(playerCommand[1], fullPath)
-				};
-			var process = Process.Start(startInfo);
-			process.WaitForExit(30000);
+			ProcessHelper.Run(playerCommand[0], string.Format(playerCommand[1], fullPath));
 		}
 
 		#endregion

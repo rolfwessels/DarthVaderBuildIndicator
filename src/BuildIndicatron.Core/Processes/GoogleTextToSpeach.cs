@@ -26,6 +26,11 @@ namespace BuildIndicatron.Core.Processes
 
 		public void Play(string text)
 		{
+			Play(text, _mp3Player);
+		}
+
+		public void Play(string text, IMp3Player voiceEnhancer)
+		{
 			var stringToSends = Split(text).ToArray();
 			var tasks = stringToSends.Select(stringToSend => Task.Run(() =>
 				{
@@ -36,8 +41,9 @@ namespace BuildIndicatron.Core.Processes
 
 			foreach (var task in tasks)
 			{
-				_mp3Player.PlayFile(task.Result);
+				voiceEnhancer.PlayFile(task.Result);
 			}
+		
 		}
 
 		#endregion

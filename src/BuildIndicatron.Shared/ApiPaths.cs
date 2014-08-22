@@ -7,6 +7,7 @@
         public static string FileUploadUpload = "/fileUpload/";
         public static string Ping = "/ping";
         public const string TextToSpeech = "/texttospeech/{text}";
+		public const string TextToSpeechEnhanceSpeech = "/texttospeech/{text}/EnhanceSpeech";
         public const string PlayMp3File = "/SoundPlayer/{fileName}";
 		public const string GetClips = "/SoundPlayer";
         public const string SetupGpIo = "/setupgpio/{pin}/{direction}";

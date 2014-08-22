@@ -1,13 +1,10 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using Autofac;
 using Autofac.Integration.WebApi;
 using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.Processes;
-using BuildIndicatron.Server.Controllers;
 using BuildIndicatron.Server.Fakes;
 using BuildIndicatron.Server.Properties;
-using log4net;
 
 namespace BuildIndicatron.Server.Setup
 {
@@ -46,14 +43,13 @@ namespace BuildIndicatron.Server.Setup
 			}
 		}
 
+		#region Private Methods
+
 		private static void SetupTools(ContainerBuilder builder)
 		{
-			builder.RegisterType<DownloadToFile>().As<IDownloadToFile>().WithParameter("tempPath",Settings.Default.SpeachTempFileLocation);
-		}
-		private static void SetupConcrete(ContainerBuilder builder)
-		{
-			builder.RegisterType<Mp3Player>().As<IMp3Player>();
-			builder.RegisterType<GoogleTextToSpeach>().As<ITextToSpeech>();
+			builder.RegisterType<DownloadToFile>()
+			       .As<IDownloadToFile>()
+			       .WithParameter("tempPath", Settings.Default.SpeachTempFileLocation);
 		}
 
 		private static void RegisterControllers(ContainerBuilder builder)
@@ -61,11 +57,21 @@ namespace BuildIndicatron.Server.Setup
 			builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 		}
 
+		private static void SetupConcrete(ContainerBuilder builder)
+		{
+			builder.RegisterType<Mp3Player>().As<IMp3Player>();
+			builder.RegisterType<GoogleTextToSpeach>().As<ITextToSpeech>();
+			builder.Register(t => new VoiceEnhancer(@"resources/text2speach/Star-Wars-1391.mp3", "speed 0.65 echo 0.8 0.88 6.0 0.4"))
+			       .As<IVoiceEnhancer>();
+		}
+
 		private static void SetupFakes(ContainerBuilder builder)
 		{
 			builder.RegisterType<FakePlayer>().As<IMp3Player>();
 			builder.RegisterType<FakeTextToSpeech>().As<ITextToSpeech>();
+			builder.RegisterType<FakePlayer>().As<IVoiceEnhancer>();
 		}
-	}
 
+		#endregion
+	}
 }

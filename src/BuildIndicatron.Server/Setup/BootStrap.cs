@@ -67,6 +67,12 @@ namespace BuildIndicatron.Server.Setup
 				routeTemplate: "api/{controller}/{id}",
 				defaults: new { id = RouteParameter.Optional, action = "get" }
 				);
+			
+			config.Routes.MapHttpRoute(
+				name: "Default api call with id and action",
+				routeTemplate: "api/TextToSpeech/{id}/{action}",
+				defaults: new { id = "test", action = "EnhanceSpeech", controller = "TextToSpeech" }
+				);
 
 			config.Routes.MapHttpRoute(
 				name: "Playmp3file with file name",
