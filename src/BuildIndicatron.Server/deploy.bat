@@ -1,1 +1,1 @@
-﻿pscp -pw ***REMOVED*** *.* pi@192.168.1.242:/home/pi/buildIndicatron.server
+﻿pscp -pw xxxxxxxx *.* xxxxxxxx@192.168.1.242:/home/xxxxxxxx/buildIndicatron.server

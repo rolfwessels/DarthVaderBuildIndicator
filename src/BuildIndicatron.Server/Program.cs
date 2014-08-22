@@ -3,10 +3,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Threading;
-using System.Threading.Tasks;
 using BuildIndicatron.Shared;
 using Microsoft.Owin.Hosting;
-using Owin;
 using log4net;
 using log4net.Config;
 
@@ -21,9 +19,7 @@ namespace BuildIndicatron.Server
 	        try
 	        {
 		        XmlConfigurator.Configure();
-		        _log.Info("Start");
-		        //StartNancy();
-//				GetValue();
+		        _log.Info("Start server");
 				Owin();
 		        _log.Info("Closing");
 	        }
@@ -62,22 +58,4 @@ namespace BuildIndicatron.Server
 	    }
 
     }
-
-	public class Startup
-	{
-		public void Configuration(IAppBuilder app)
-		{
-			app.Run(context =>
-			{
-				if (context.Request.Path.Value == "/")
-				{
-					context.Response.ContentType = "text/plain";
-					return context.Response.WriteAsync("Hello World!");
-				}
-
-				context.Response.StatusCode = 404;
-				return Task.Delay(0);
-			});
-		}
-	}
 }

@@ -21,21 +21,7 @@ namespace BuildIndicatron.Core.Api
 
         #region IRobotApi Members
 
-        public Task<FileUploadHasFileInArchiveResponse> HasFileInArchive(string inputFile)
-        {
-            RestRequest restRequest = GetRestRequest(ApiPaths.FileUploadHasFileInArchive, Method.GET);
-            restRequest.AddUrlSegment("filename", Path.GetFileName(inputFile));
-            return ProcessDefaultRequest<FileUploadHasFileInArchiveResponse>(restRequest);
-        }
-
-        public Task<FileUploadUploadResponse> UploadFile(string inputFile)
-        {
-            RestRequest restRequest = GetRestRequest(ApiPaths.FileUploadUpload, Method.POST);
-
-            restRequest.AddHeader("Content-Type", "multipart/form-data");
-            AddFile(inputFile, restRequest);
-            return ProcessDefaultRequest<FileUploadUploadResponse>(restRequest);
-        }
+       
 
         public Task<PingResponse> Ping()
         {
@@ -104,7 +90,21 @@ namespace BuildIndicatron.Core.Api
             return ProcessDefaultRequest<GetClipsResponse>(restRequest);
         }
 
+		public Task<FileUploadHasFileInArchiveResponse> HasFileInArchive(string inputFile)
+		{
+			RestRequest restRequest = GetRestRequest(ApiPaths.FileUploadHasFileInArchive, Method.GET);
+			restRequest.AddUrlSegment("filename", Path.GetFileName(inputFile));
+			return ProcessDefaultRequest<FileUploadHasFileInArchiveResponse>(restRequest);
+		}
 
+		public Task<FileUploadUploadResponse> UploadFile(string inputFile)
+		{
+			RestRequest restRequest = GetRestRequest(ApiPaths.FileUploadUpload, Method.POST);
+
+			restRequest.AddHeader("Content-Type", "multipart/form-data");
+			AddFile(inputFile, restRequest);
+			return ProcessDefaultRequest<FileUploadUploadResponse>(restRequest);
+		}
         #endregion
     }
 }

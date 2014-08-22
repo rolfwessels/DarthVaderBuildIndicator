@@ -90,6 +90,7 @@
     <Compile Include="JenkensTextConverter.cs" />
     <Compile Include="Media\WavPlayer.cs" />
     <Compile Include="MimeHelper.cs" />
+    <Compile Include="Processes\IMp3Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

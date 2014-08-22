@@ -46,8 +46,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
         {
             var result = await _robotApi.Ping();
             result.Should().NotBeNull();
-            result.Success.Should().BeTrue();
-            result.ErrorMessage.Should().BeNullOrEmpty();
+            
+            
         }
 
         [Test]
@@ -55,8 +55,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
         {
             var result = await _robotApi.PlayMp3File("Funny");
             result.Should().NotBeNull();
-            result.Success.Should().BeTrue();
-            result.ErrorMessage.Should().BeNullOrEmpty();
+            
+            
         }
 
         [Test]
@@ -64,8 +64,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
         {
             var result = await _robotApi.PlayMp3File("Start");
             result.Should().NotBeNull();
-            result.Success.Should().BeTrue();
-            result.ErrorMessage.Should().BeNullOrEmpty();
+            
+            
         }
 
         [Test]
@@ -73,8 +73,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
         {
             var result = await _robotApi.TextToSpeech("Well that is not bad");
             result.Should().NotBeNull();
-            result.Success.Should().BeTrue();
-            result.ErrorMessage.Should().BeNullOrEmpty();
+            
+            
         }
 
         [Test]
@@ -82,8 +82,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
         {
             var result = await _robotApi.GpIoSetup(25,Gpio.Out);
             result.Should().NotBeNull();
-            result.ErrorMessage.Should().BeNullOrEmpty();
-            result.Success.Should().BeTrue();
+            
+            
         }
 
         [Test]
@@ -91,8 +91,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
         {
             var result = await _robotApi.GpIoOutput(24, false);
             result.Should().NotBeNull();
-            result.ErrorMessage.Should().BeNullOrEmpty();
-            result.Success.Should().BeTrue();
+            
+            
         }
 
         [Test]
@@ -100,8 +100,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
         {
             var result = await _robotApi.GpIoOutput(17, true);
             result.Should().NotBeNull();
-            result.ErrorMessage.Should().BeNullOrEmpty();
-            result.Success.Should().BeTrue();
+            
+            
         }
 
         [Test]
@@ -109,8 +109,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
         {
             var result = await _robotApi.PassiveProcess();
             result.Should().NotBeNull();
-            result.Success.Should().BeTrue();
-            result.ErrorMessage.Should().BeNullOrEmpty();
+            
+            
         }
 
         [Test]
@@ -150,8 +150,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
                 }
             });
             result.Should().NotBeNull();
-            result.Success.Should().BeTrue();
-            result.ErrorMessage.Should().BeNullOrEmpty();
+            
+            
         }
 
         [Test]
@@ -169,8 +169,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
                 }
             });
             result.Should().NotBeNull();
-            result.Success.Should().BeTrue();
-            result.ErrorMessage.Should().BeNullOrEmpty();
+            
+            
         }
 
          [Test]
@@ -202,8 +202,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
                 }
             });
             result.Should().NotBeNull();
-            result.Success.Should().BeTrue();
-            result.ErrorMessage.Should().BeNullOrEmpty();
+            
+            
         }
 
 
@@ -225,8 +225,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
                 }
             });
             result.Should().NotBeNull();
-            result.Success.Should().BeTrue();
-            result.ErrorMessage.Should().BeNullOrEmpty();
+            
+            
         }
 
         [Test]
@@ -247,8 +247,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
                 }
             });
             result.Should().NotBeNull();
-            result.Success.Should().BeTrue();
-            result.ErrorMessage.Should().BeNullOrEmpty();
+            
+            
         }
 
         [Test]
@@ -263,8 +263,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
 
 
             result.Should().NotBeNull();
-            result.Success.Should().BeTrue();
-            result.ErrorMessage.Should().BeNullOrEmpty();
+            
+            
         }
 
         [Test]
@@ -285,8 +285,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
 
 
             result.Should().NotBeNull();
-            result.Success.Should().BeTrue();
-            result.ErrorMessage.Should().BeNullOrEmpty();
+            
+            
         }
 
         [Test]
@@ -298,8 +298,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
             });
 
             result.Should().NotBeNull();
-            result.Success.Should().BeTrue();
-            result.ErrorMessage.Should().BeNullOrEmpty();
+            
+            
 
         }
 
@@ -312,8 +312,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
             });
 
             result.Should().NotBeNull();
-            result.Success.Should().BeTrue();
-            result.ErrorMessage.Should().BeNullOrEmpty();
+            
+            
 
         }
 
@@ -322,8 +322,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
         {
             var result = await _robotApi.GetClips();
             result.Should().NotBeNull();
-            result.Success.Should().BeTrue();
-            result.ErrorMessage.Should().BeNullOrEmpty();
+            
+            
             result.Folders.Count.Should().BeGreaterOrEqualTo(4);
             result.Folders.First().Files.Count.Should().BeGreaterOrEqualTo(2);
         }
@@ -343,8 +343,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
                 }
             });
             result.Should().NotBeNull();
-            result.Success.Should().BeTrue();
-            result.ErrorMessage.Should().BeNullOrEmpty();
+            
+            
         }
 
 
