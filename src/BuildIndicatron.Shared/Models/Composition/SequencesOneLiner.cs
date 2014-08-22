@@ -2,8 +2,10 @@
 {
     public class SequencesOneLiner : Sequences
     {
-        public SequencesOneLiner()
-            : base("oneliner")
+	    public const string TypeName = "oneliner";
+
+	    public SequencesOneLiner()
+            : base(TypeName)
         {
         }
 

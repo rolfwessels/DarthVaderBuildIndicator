@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using BuildIndicatron.Server.Tests.Base;
+using BuildIndicatron.Shared.Models.Composition;
 using FluentAssertions;
 using NUnit.Framework;
 using Renci.SshNet;
@@ -114,6 +115,25 @@ namespace BuildIndicatron.Server.Tests
 			result.Should().NotBeNull();
 		}
 
+		[Test]
+		public void Enqueue_GivenSoundsThenText_ShouldPlayBoth()
+		{
+			// arrange
+			Setup();
+			// action
+			var choreography = new Choreography();
+			choreography.Sequences.Add(new SequencesPlaySound() { BeginTime = 0, File = "Start" });
+//			choreography.Sequences.Add(new SequencesText2Speech() { BeginTime = 0, Text = "Mhaha", DisableTransform = false });
+//			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 0, IsOn = true, Target = SequencesGpIo.Pins.MainLightGreen });
+//			choreography.Sequences.Add(new SequencesInsult() { BeginTime = 0 });
+//			choreography.Sequences.Add(new SequencesOneLiner() { BeginTime = 0 });
+//			choreography.Sequences.Add(new SequencesQuotes() { BeginTime = 0 });
+//			choreography.Sequences.Add(new SequencesTweet() { BeginTime = 0, Text = "Tweeeet" });
+			var result = BuildIndicatorApi.Enqueue(choreography).Result;
+			// assert
+			result.Should().NotBeNull();
+			result.QueueSize.Should().Be(1);
+		}
 		[TestFixtureTearDown]
 		public void FixtureTearDown()
 		{

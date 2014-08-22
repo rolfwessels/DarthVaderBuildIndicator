@@ -2,8 +2,10 @@
 {
     public class SequencesQuotes : Sequences
     {
-        public SequencesQuotes()
-            : base("Quotes")
+	    public const string TypeName = "Quotes";
+
+	    public SequencesQuotes()
+            : base(TypeName)
         {
         }
 

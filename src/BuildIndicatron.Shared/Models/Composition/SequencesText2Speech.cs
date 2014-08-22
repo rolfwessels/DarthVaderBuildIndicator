@@ -5,10 +5,11 @@ namespace BuildIndicatron.Shared.Models.Composition
 {
     public class SequencesText2Speech : Sequences
     {
-        private string _text;
+	    public const string TypeName = "Text2Speech";
+	    private string _text;
         private static IDictionary<string, string> _replace;
 
-        public SequencesText2Speech() : base("Text2Speech")
+        public SequencesText2Speech() : base(TypeName)
         {
         }
 
@@ -35,5 +36,7 @@ namespace BuildIndicatron.Shared.Models.Composition
         }
 
         public bool DisableTransform { get; set; }
+
+	    
     }
 }

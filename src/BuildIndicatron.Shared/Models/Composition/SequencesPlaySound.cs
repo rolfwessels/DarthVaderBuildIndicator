@@ -2,7 +2,9 @@
 {
     public class SequencesPlaySound : Sequences
     {
-        public SequencesPlaySound() : base("playsound")
+	    public const string TypeName = "playsound";
+
+	    public SequencesPlaySound() : base(TypeName)
         {
         }
 

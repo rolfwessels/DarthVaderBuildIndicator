@@ -4,6 +4,11 @@ namespace BuildIndicatron.Shared.Models.Composition
 {
     public class Choreography
     {
-        public List<Sequences> Sequences { get; set; }
+	    public Choreography()
+	    {
+			Sequences= new List<Sequences>();
+	    }
+
+	    public List<Sequences> Sequences { get; set; }
     }
 }

@@ -2,8 +2,10 @@
 {
     public class SequencesGpIo : Sequences
     {
-        public SequencesGpIo()
-            : base("GpIO")
+	    public const string TypeName = "GpIO";
+
+	    public SequencesGpIo()
+            : base(TypeName)
         {
         }
 
@@ -16,5 +18,19 @@
         public int Pin { get; set; }
 
         public bool IsOn { get; set; }
+
+		public Pins Target { get; set; }
+
+	    public enum Pins
+	    {
+		    MainLightGreen,
+		    MainLightRed,
+		    MainLightBlue,
+		    SecondaryLightGreen,
+			SecondaryLightRed,
+			SecondaryLightBlue,
+			Spinner,
+			Fire,
+	    }
     }
 }

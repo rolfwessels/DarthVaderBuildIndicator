@@ -1,8 +1,9 @@
-﻿using System;
+﻿using System.Collections;
 using System.Reflection;
 using System.Web.Http;
 using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Shared.Models.ApiResponses;
+using BuildIndicatron.Shared.Models.Composition;
 using log4net;
 
 namespace BuildIndicatron.Server.Controllers
