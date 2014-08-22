@@ -71,7 +71,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         [Test]
         public async Task TextToSpeech_Call_ValidResponse()
         {
-            var result = await _robotApi.TextToSpeech("Well that is not bad","");
+            var result = await _robotApi.TextToSpeech("Well that is not bad");
             result.Should().NotBeNull();
         }
 

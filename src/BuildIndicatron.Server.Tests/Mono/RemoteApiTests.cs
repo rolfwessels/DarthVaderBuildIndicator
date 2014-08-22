@@ -102,6 +102,17 @@ namespace BuildIndicatron.Server.Tests
 			//assert
 			result.Should().NotBeNull();
 		}
+		
+		[Test]
+		public void TextToSpeech_GivenModification_ShouldPlayAudio()
+		{
+			// arrange
+			Setup();
+			// action
+			var result = BuildIndicatorApi.TextToSpeechEnhanceSpeech("Luke I am your father").Result;
+			// assert
+			result.Should().NotBeNull();
+		}
 
 		[TestFixtureTearDown]
 		public void FixtureTearDown()

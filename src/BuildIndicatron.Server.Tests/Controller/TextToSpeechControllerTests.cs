@@ -12,19 +12,24 @@ namespace BuildIndicatron.Server.Tests.Controller
 
 		private TextToSpeechController _textToSpeechController;
 		private Mock<ITextToSpeech> _mockITextToSpeech;
+		private Mock<IVoiceEnhancer> _mockIVoiceEnhancer;
 
 		#region Setup/Teardown
 
 		public void Setup()
 		{
 			_mockITextToSpeech = new Mock<ITextToSpeech>(MockBehavior.Strict);
-			_textToSpeechController = new TextToSpeechController(_mockITextToSpeech.Object);
+			_mockIVoiceEnhancer = new Mock<IVoiceEnhancer>(MockBehavior.Strict);
+			
+			
+			_textToSpeechController = new TextToSpeechController(_mockITextToSpeech.Object, _mockIVoiceEnhancer.Object);
 		}
 
 		[TearDown]
 		public void TearDown()
 		{
 			_mockITextToSpeech.VerifyAll();
+			_mockIVoiceEnhancer.VerifyAll();
 		}
 
 		#endregion

@@ -35,12 +35,17 @@ namespace BuildIndicatron.Core.Api
             restRequest.AddUrlSegment("fileName", fileName);
             return ProcessDefaultRequest<PlayMp3FileResponse>(restRequest);
         }
+		public Task<TextToSpeechResponse> TextToSpeechEnhanceSpeech(string text)
+		{
+			RestRequest restRequest = GetRestRequest(ApiPaths.TextToSpeechEnhanceSpeech, Method.GET);
+			restRequest.AddUrlSegment("text", text);
 
-        public Task<TextToSpeechResponse> TextToSpeech(string text, string type = "")
+			return ProcessDefaultRequest<TextToSpeechResponse>(restRequest);
+		}
+        public Task<TextToSpeechResponse> TextToSpeech(string text)
         {
             RestRequest restRequest = GetRestRequest(ApiPaths.TextToSpeech, Method.GET);
             restRequest.AddUrlSegment("text", text);
-			restRequest.AddUrlSegment("type", type);
 
             return ProcessDefaultRequest<TextToSpeechResponse>(restRequest);
         }
@@ -108,5 +113,7 @@ namespace BuildIndicatron.Core.Api
 			return ProcessDefaultRequest<FileUploadUploadResponse>(restRequest);
 		}
         #endregion
+
+	   
     }
 }

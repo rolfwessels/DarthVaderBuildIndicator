@@ -130,7 +130,7 @@ namespace BuildIndicatron.Server.Tests.Integration
 			// arrange
 			Setup();
 			// action
-			var result = BuildIndicatorApi.TextToSpeech("Luke I am your father","deepvoice").Result;
+			var result = BuildIndicatorApi.TextToSpeechEnhanceSpeech("Luke I am your father").Result;
 			// assert
 			result.Should().NotBeNull();
 		}
