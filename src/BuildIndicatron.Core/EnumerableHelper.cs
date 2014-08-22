@@ -20,5 +20,10 @@ namespace BuildIndicatron.Core
         {
             return enumerable != null ? string.Join(@join, enumerable.Select(x => x.ToString()).ToArray()) : null;
         }
+
+	    public static int LastCharInRange(this string text, char c, int maxLength)
+	    {
+		    return text.Substring(0, maxLength).LastIndexOf(c);
+	    }
     }
 }

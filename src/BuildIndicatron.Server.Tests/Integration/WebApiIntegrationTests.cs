@@ -113,5 +113,27 @@ namespace BuildIndicatron.Server.Tests.Integration
 			result.Folders.SelectMany(x => x.Files).Should().Contain("darthvader_yesmaster.wav");
 		}
 
+		[Test]
+		public void TextToSpeech_GivenSample_ShouldPlayAudio()
+		{
+			// arrange
+			Setup();
+			// action
+			var result = BuildIndicatorApi.TextToSpeech("Luke I am your father").Result;
+			// assert
+			result.Should().NotBeNull();
+		}
+
+		[Test]
+		public void TextToSpeech_GivenModification_ShouldPlayAudio()
+		{
+			// arrange
+			Setup();
+			// action
+			var result = BuildIndicatorApi.TextToSpeech("Luke I am your father","deepvoice").Result;
+			// assert
+			result.Should().NotBeNull();
+		}
+
 	}
 }

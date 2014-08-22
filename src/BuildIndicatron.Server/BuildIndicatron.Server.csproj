@@ -84,13 +84,9 @@
   <ItemGroup>
     <Compile Include="Controllers\SoundPlayerController.cs" />
     <Compile Include="Controllers\PingController.cs" />
+    <Compile Include="Controllers\TextToSpeechController.cs" />
     <Compile Include="Fakes\FakePlayer.cs" />
     <Compile Include="LoggingErrorHandler.cs" />
-    <Compile Include="MainSettings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>MainSettings.settings</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modules\FileUpload.cs" />
@@ -107,10 +103,6 @@
     <None Include="App.config" />
     <None Include="deploy.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="MainSettings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>MainSettings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="Resources\Sounds\Start\darthvader_yesmaster.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -142,9 +134,12 @@
       <Name>BuildIndicatron.Shared</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Process\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>pscp -r -pw C0ntr0l3 $(TargetDir)*.* pi@192.168.1.242:/home/pi/buildIndicatron.server</PostBuildEvent>
+    <PostBuildEvent>rem pscp -r -pw C0ntr0l3 $(TargetDir)*.* pi@192.168.1.242:/home/pi/buildIndicatron.server</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

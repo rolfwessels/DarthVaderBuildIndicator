@@ -87,10 +87,16 @@
     <Compile Include="Api\Model\Job.cs" />
     <Compile Include="Api\RobotApi.cs" />
     <Compile Include="EnumerableHelper.cs" />
+    <Compile Include="Helpers\PlatformHelper.cs" />
     <Compile Include="JenkensTextConverter.cs" />
     <Compile Include="Media\WavPlayer.cs" />
     <Compile Include="MimeHelper.cs" />
+    <Compile Include="Processes\DownloadToFile.cs" />
+    <Compile Include="Processes\GoogleTextToSpeach.cs" />
+    <Compile Include="Processes\IDownloadToFile.cs" />
     <Compile Include="Processes\IMp3Player.cs" />
+    <Compile Include="Processes\ITextToSpeech.cs" />
+    <Compile Include="Processes\Mp3Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

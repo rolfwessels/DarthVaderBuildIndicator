@@ -7,10 +7,10 @@ using FluentAssertions;
 namespace BuildIndicatron.Server.Tests.Controller
 {
 	[TestFixture]
-	public class PlayMp3FileControllerTests
+	public class SoundPlayerControllerTests
 	{
 
-		private SoundPlayerController _pingController;
+		private SoundPlayerController _soundPlayerController;
 		private Mock<IMp3Player> _mockIMp3Player;
 
 		#region Setup/Teardown
@@ -18,9 +18,7 @@ namespace BuildIndicatron.Server.Tests.Controller
 		public void Setup()
 		{
 			_mockIMp3Player = new Mock<IMp3Player>(MockBehavior.Strict);
-			
-			
-			_pingController = new SoundPlayerController(_mockIMp3Player.Object);
+			_soundPlayerController = new SoundPlayerController(_mockIMp3Player.Object);
 		}
 
 		[TearDown]
@@ -37,7 +35,7 @@ namespace BuildIndicatron.Server.Tests.Controller
 			// arrange
 			Setup();
 			// assert
-			_pingController.Should().NotBeNull();
+			_soundPlayerController.Should().NotBeNull();
 		}
 
 
@@ -48,7 +46,7 @@ namespace BuildIndicatron.Server.Tests.Controller
 			Setup();
 			
 			// action
-			var playMp3FileResponse = _pingController.Get();
+			var playMp3FileResponse = _soundPlayerController.Get();
 			// assert
 			playMp3FileResponse.Should().NotBeNull();
 			playMp3FileResponse.Folders.Count.Should().BeGreaterOrEqualTo(1);
@@ -62,7 +60,7 @@ namespace BuildIndicatron.Server.Tests.Controller
 			Setup();
 			_mockIMp3Player.Setup(mc => mc.PlayFile(It.IsAny<string>()));
 			// action
-			var playMp3FileResponse = _pingController.Get(@"Start\Force.mp3");
+			var playMp3FileResponse = _soundPlayerController.Get(@"Start\Force.mp3");
 			// assert
 			playMp3FileResponse.Should().NotBeNull();
 		}
@@ -74,7 +72,7 @@ namespace BuildIndicatron.Server.Tests.Controller
 			Setup();
 			_mockIMp3Player.Setup(mc => mc.PlayFile(It.IsAny<string>()));
 			// action
-			var playMp3FileResponse = _pingController.Get("Start","Force.mp3");
+			var playMp3FileResponse = _soundPlayerController.Get("Start","Force.mp3");
 			// assert
 			playMp3FileResponse.Should().NotBeNull();
 		}
@@ -87,7 +85,7 @@ namespace BuildIndicatron.Server.Tests.Controller
 			Setup();
 			_mockIMp3Player.Setup(mc => mc.PlayFile(It.IsAny<string>()));
 			// action
-			var playMp3FileResponse = _pingController.Get(@"Start");
+			var playMp3FileResponse = _soundPlayerController.Get(@"Start");
 			// assert
 			playMp3FileResponse.Should().NotBeNull();
 		}

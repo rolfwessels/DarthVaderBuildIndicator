@@ -34,7 +34,7 @@ namespace BuildIndicatron.Server.Tests
 		[TestFixtureSetUp]
 		public void FixtureSetup()
 		{
-			//CopyTheLatestSourceFiles();
+			CopyTheLatestSourceFiles();
 			BeginService();
 			CreateClient(BaseApiUri);
 		}
@@ -67,7 +67,6 @@ namespace BuildIndicatron.Server.Tests
 		}
 
 		[Test]
-	
 		public void Ping_WhenCalled_ShouldContainHelloWorld()
 		{
 			// arrange
@@ -81,14 +80,26 @@ namespace BuildIndicatron.Server.Tests
 
 
 		[Test]
-	
 		public void PlayMp3File_GivenFolder_ResultShouldPlayFile()
 		{
 			// arrange
 			Setup();
 			// action
-			var result = BuildIndicatorApi.PlayMp3File("Start").Result;
+			var result = BuildIndicatorApi.PlayMp3File("Fail").Result;
 			// assert
+			result.Should().NotBeNull();
+		}
+
+
+		[Test]
+		public void TextToSpeech_GivenSample_ShouldPlayAudio()
+		{
+			// arrange
+			Setup();
+			// action
+//			var result = BuildIndicatorApi.TextToSpeech("This is some very long text , that just goes on and on. and on. and on. and on. and on. and on. and on. and on. Wow that was boring !").Result;
+			var result = BuildIndicatorApi.TextToSpeech("Luke I am your father").Result;
+			//assert
 			result.Should().NotBeNull();
 		}
 

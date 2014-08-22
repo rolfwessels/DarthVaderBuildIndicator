@@ -36,13 +36,15 @@ namespace BuildIndicatron.Core.Api
             return ProcessDefaultRequest<PlayMp3FileResponse>(restRequest);
         }
 
-        public Task<TextToSpeechResponse> TextToSpeech(string text)
+        public Task<TextToSpeechResponse> TextToSpeech(string text, string type = "")
         {
             RestRequest restRequest = GetRestRequest(ApiPaths.TextToSpeech, Method.GET);
             restRequest.AddUrlSegment("text", text);
+			restRequest.AddUrlSegment("type", type);
 
             return ProcessDefaultRequest<TextToSpeechResponse>(restRequest);
         }
+		
 
         public Task<SetupGpIoResponse> GpIoSetup(int pin, Gpio direction)
         {
