@@ -17,7 +17,7 @@ namespace BuildIndicatron.Core.Api
         Task<FileUploadUploadResponse> UploadFile(string inputFile);
         Task<PingResponse> Ping();
         Task<PlayMp3FileResponse> PlayMp3File(string fileName);
-        Task<TextToSpeechResponse> TextToSpeech(string text);
+        Task<TextToSpeechResponse> TextToSpeech(string text, string type);
         Task<SetupGpIoResponse> GpIoSetup(int pin, Gpio direction);
         Task<GpIoOutputResponse> GpIoOutput(int pin, bool isOn);
         Task<PassiveProcessResponse> PassiveProcess();

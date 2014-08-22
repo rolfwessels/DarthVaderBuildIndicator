@@ -31,5 +31,14 @@ namespace BuildIndicatron.Server.Properties {
                 return ((string)(this["SoundFileLocation"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("resources/text2speach")]
+        public string SpeachTempFileLocation {
+            get {
+                return ((string)(this["SpeachTempFileLocation"]));
+            }
+        }
     }
 }

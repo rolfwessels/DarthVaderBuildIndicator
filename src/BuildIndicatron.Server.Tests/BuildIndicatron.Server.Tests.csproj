@@ -77,8 +77,9 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Base\BaseIntegrationTests.cs" />
-    <Compile Include="Controller\PlayMp3FileControllerTests.cs" />
+    <Compile Include="Controller\SoundPlayerControllerTests.cs" />
     <Compile Include="Controller\PingControllerTests.cs" />
+    <Compile Include="Controller\TextToSpeechControllerTests.cs" />
     <Compile Include="Integration\WebApiIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Mono\RemoteApiTests.cs" />

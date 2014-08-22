@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Reflection;
 using System.Web.Http;
 using BuildIndicatron.Core;
+using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Server.Properties;
 using BuildIndicatron.Shared.Models.ApiResponses;
@@ -70,27 +70,7 @@ namespace BuildIndicatron.Server.Controllers
 				_mp3Player.PlayFile(random);
 				return new PlayMp3FileResponse() {FileName = random};
 			}
-			throw new HttpResponseException(HttpStatusCode.BadRequest);
-		}
-	}
-
-	public static class PlatformHelper
-	{
-		public static string AsPath(this string getFullPath)
-		{
-			return IsLinux ? getFullPath.Replace("\\", "/") : getFullPath.Replace("/", "\\");
-		}
-
-		public static string CurrentPlatform
-		{
-			get { return Environment.OSVersion.Platform.ToString(); }
-			
-		}
-
-		public static bool IsLinux
-		{
-			get { return Environment.OSVersion.Platform == PlatformID.Unix; }
-			
+			throw new HttpResponseException(HttpStatusCode.NotFound);
 		}
 	}
 }
