@@ -1,7 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using System.Reflection;
+using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
 using Autofac.Integration.WebApi;
 using Owin;
+using log4net;
 
 namespace BuildIndicatron.Server.Setup
 {
@@ -28,6 +32,7 @@ namespace BuildIndicatron.Server.Setup
 		private static void ConfigureWebApi(IAppBuilder app)
 		{
 			var config = new HttpConfiguration();
+			config.Services.Add(typeof(IExceptionLogger), new TraceExceptionLogger());
 			ConfigureRoutes(config);
 			ConfigureTheDependencyInjection(config);
 			app.UseWebApi(config);
@@ -82,5 +87,16 @@ namespace BuildIndicatron.Server.Setup
 		}
 
 		#endregion
+
+		public class TraceExceptionLogger : ExceptionLogger
+		{
+			private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+			public override void Log(ExceptionLoggerContext context)
+			{
+				_log.Error(context.ExceptionContext.Exception.Message, context.ExceptionContext.Exception);
+			}
+		}
 	}
+
+	
 }

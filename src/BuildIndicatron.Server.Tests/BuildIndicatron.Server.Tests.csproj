@@ -50,6 +50,10 @@
     <Reference Include="Moq">
       <HintPath>..\..\lib\Moq.4.2.1408.0717\lib\net40\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\lib\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
@@ -77,6 +81,7 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Base\BaseIntegrationTests.cs" />
+    <Compile Include="Controller\EnqueueControllerTests.cs" />
     <Compile Include="Controller\SoundPlayerControllerTests.cs" />
     <Compile Include="Controller\PingControllerTests.cs" />
     <Compile Include="Controller\TextToSpeechControllerTests.cs" />

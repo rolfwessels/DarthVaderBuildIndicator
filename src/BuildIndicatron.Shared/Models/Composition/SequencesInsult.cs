@@ -2,8 +2,10 @@
 {
     public class SequencesInsult : Sequences
     {
-        public SequencesInsult()
-            : base("Insult")
+	    public const string TypeName = "Insult";
+
+	    public SequencesInsult()
+            : base(TypeName)
         {
         }
 

@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\EnqueueController.cs" />
     <Compile Include="Controllers\SoundPlayerController.cs" />
     <Compile Include="Controllers\PingController.cs" />
     <Compile Include="Controllers\TextToSpeechController.cs" />

@@ -50,6 +50,8 @@ namespace BuildIndicatron.Server.Setup
 			builder.RegisterType<DownloadToFile>()
 			       .As<IDownloadToFile>()
 			       .WithParameter("tempPath", Settings.Default.SpeachTempFileLocation);
+			builder.RegisterType<Stage>().As<IStage>();
+			builder.RegisterType<SequencesFactory>();
 		}
 
 		private static void RegisterControllers(ContainerBuilder builder)

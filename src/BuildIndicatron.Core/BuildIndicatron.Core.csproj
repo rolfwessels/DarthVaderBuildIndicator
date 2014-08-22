@@ -58,6 +58,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\lib\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp">
       <HintPath>..\..\lib\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
     </Reference>
@@ -87,6 +91,7 @@
     <Compile Include="Api\Model\Job.cs" />
     <Compile Include="Api\RobotApi.cs" />
     <Compile Include="EnumerableHelper.cs" />
+    <Compile Include="Helpers\DebugHelper.cs" />
     <Compile Include="Helpers\PlatformHelper.cs" />
     <Compile Include="Helpers\ProcessHelper.cs" />
     <Compile Include="JenkensTextConverter.cs" />
@@ -96,9 +101,12 @@
     <Compile Include="Processes\GoogleTextToSpeach.cs" />
     <Compile Include="Processes\IDownloadToFile.cs" />
     <Compile Include="Processes\IMp3Player.cs" />
+    <Compile Include="Processes\IStage.cs" />
     <Compile Include="Processes\ITextToSpeech.cs" />
     <Compile Include="Processes\IVoiceEnhancer.cs" />
     <Compile Include="Processes\Mp3Player.cs" />
+    <Compile Include="Processes\SequencesFactory.cs" />
+    <Compile Include="Processes\Stage.cs" />
     <Compile Include="Processes\VoiceEnhancer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
