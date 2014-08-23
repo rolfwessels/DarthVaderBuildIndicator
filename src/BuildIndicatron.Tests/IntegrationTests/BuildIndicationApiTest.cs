@@ -12,6 +12,7 @@ using FluentAssertions;
 namespace BuildIndicatron.Tests.IntegrationTests
 {
     [TestFixture]
+	[Explicit]
     public class BuildIndicationApiTest
     {
         private IRobotApi _robotApi;

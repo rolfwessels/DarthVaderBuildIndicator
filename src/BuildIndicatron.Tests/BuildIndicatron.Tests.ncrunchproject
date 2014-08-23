@@ -19,15 +19,4 @@
   <UseCPUArchitecture>AutoDetect</UseCPUArchitecture>
   <MSTestThreadApartmentState>STA</MSTestThreadApartmentState>
   <BuildProcessArchitecture>x86</BuildProcessArchitecture>
-  <IgnoredTests>
-    <RegexTestSelector>
-      <RegularExpression>BuildIndicatron\.Tests\.IntegrationTests\.LocalIntegrationTests\..*</RegularExpression>
-    </RegexTestSelector>
-    <RegexTestSelector>
-      <RegularExpression>BuildIndicatron\.Tests\.IntegrationTests\.JenkensApiTests\..*</RegularExpression>
-    </RegexTestSelector>
-    <RegexTestSelector>
-      <RegularExpression>BuildIndicatron\.Tests\.IntegrationTests\.BuildIndicationApiTest\..*</RegularExpression>
-    </RegexTestSelector>
-  </IgnoredTests>
 </ProjectConfiguration>
