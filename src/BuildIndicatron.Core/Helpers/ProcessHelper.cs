@@ -10,7 +10,9 @@ namespace BuildIndicatron.Core.Helpers
 			var startInfo = new ProcessStartInfo(fileName)
 				{
 					WindowStyle = ProcessWindowStyle.Minimized,
-					Arguments = arguments
+					Arguments = arguments,
+					RedirectStandardError = true,
+					UseShellExecute = false
 				};
 			var process = Process.Start(startInfo);
 			process.WaitForExit(30000);

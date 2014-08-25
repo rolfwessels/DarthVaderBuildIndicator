@@ -62,6 +62,12 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\lib\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Raspberry.IO.GeneralPurpose">
+      <HintPath>..\..\lib\Raspberry.IO.GeneralPurpose.2.0.1\lib\net40\Raspberry.IO.GeneralPurpose.dll</HintPath>
+    </Reference>
+    <Reference Include="Raspberry.System">
+      <HintPath>..\..\lib\Raspberry.System.1.2.0\lib\net40\Raspberry.System.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp">
       <HintPath>..\..\lib\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
     </Reference>
@@ -69,6 +75,7 @@
       <HintPath>..\..\lib\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -94,18 +101,26 @@
     <Compile Include="Helpers\DebugHelper.cs" />
     <Compile Include="Helpers\PlatformHelper.cs" />
     <Compile Include="Helpers\ProcessHelper.cs" />
+    <Compile Include="Helpers\RandomTextHelper.cs" />
     <Compile Include="JenkensTextConverter.cs" />
     <Compile Include="Media\WavPlayer.cs" />
     <Compile Include="MimeHelper.cs" />
     <Compile Include="Processes\DownloadToFile.cs" />
     <Compile Include="Processes\GoogleTextToSpeach.cs" />
+    <Compile Include="Processes\GpioConfiguration.cs" />
     <Compile Include="Processes\IDownloadToFile.cs" />
     <Compile Include="Processes\IMp3Player.cs" />
+    <Compile Include="Processes\IPinManager.cs" />
+    <Compile Include="Processes\ISequencePlayer.cs" />
+    <Compile Include="Processes\ISoundFilePicker.cs" />
     <Compile Include="Processes\IStage.cs" />
     <Compile Include="Processes\ITextToSpeech.cs" />
     <Compile Include="Processes\IVoiceEnhancer.cs" />
     <Compile Include="Processes\Mp3Player.cs" />
+    <Compile Include="Processes\PinManager.cs" />
+    <Compile Include="Processes\SequencePlayer.cs" />
     <Compile Include="Processes\SequencesFactory.cs" />
+    <Compile Include="Processes\SoundFilePicker.cs" />
     <Compile Include="Processes\Stage.cs" />
     <Compile Include="Processes\VoiceEnhancer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

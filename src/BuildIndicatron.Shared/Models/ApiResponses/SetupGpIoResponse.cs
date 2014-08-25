@@ -5,7 +5,7 @@
     }
 
 
-    public enum Gpio
+    public enum GpioDirection
     {
         Out,
         In

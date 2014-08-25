@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiPaths.cs" />
+    <Compile Include="Enums\GpIO.cs" />
+    <Compile Include="Enums\PinName.cs" />
     <Compile Include="Models\ApiResponses\BaseResponse.cs" />
     <Compile Include="Models\ApiResponses\EnqueueResponse.cs" />
     <Compile Include="Models\ApiResponses\FileUploadHasFileInArchiveResponse.cs" />
@@ -63,6 +65,9 @@
     <Compile Include="Models\Composition\SequencesText2Speech.cs" />
     <Compile Include="Models\Composition\SequencesTweet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Enum\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

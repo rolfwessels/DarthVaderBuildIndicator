@@ -69,28 +69,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="test_wolframalphaLookup.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_wolframalphaLookup.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_voiceRecognition.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_voiceRecognition.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="backgroundProcess.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backgroundProcess.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -166,10 +144,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jokes.json" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="jokes.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/jokes.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="4" selection-start="5" selection-end="3852" vertical-scroll-proportion="0.073913045">
+            <state line="2" column="4" selection-start="5" selection-end="3852" vertical-scroll-proportion="-1.3076923">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_gpio.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_gpio.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="29" selection-start="603" selection-end="603" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pins.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pins.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="13" selection-start="137" selection-end="138" vertical-scroll-proportion="0.32692307">
               <folding />
             </state>
           </provider>
@@ -689,23 +685,9 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Install.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="41" selection-start="1463" selection-end="1469" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/soundrecorder2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_gpio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="19" selection-start="1026" selection-end="1026" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -818,7 +800,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/jokes.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="4" selection-start="5" selection-end="3852" vertical-scroll-proportion="0.073913045">
+        <state line="2" column="4" selection-start="5" selection-end="3852" vertical-scroll-proportion="-1.3076923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_gpio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="29" selection-start="603" selection-end="603" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="13" selection-start="137" selection-end="138" vertical-scroll-proportion="0.32692307">
           <folding />
         </state>
       </provider>

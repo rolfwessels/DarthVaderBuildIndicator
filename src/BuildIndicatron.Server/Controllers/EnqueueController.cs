@@ -17,6 +17,11 @@ namespace BuildIndicatron.Server.Controllers
 		{
 			_stage = stage;
 		}
+		
+		public EnqueueResponse Get()
+		{
+			return new EnqueueResponse() { QueueSize = _stage.Count };
+		}
 
 		public EnqueueResponse Post(ChoreographyModel choreography)
 		{
@@ -25,6 +30,7 @@ namespace BuildIndicatron.Server.Controllers
 			{
 				_stage.Enqueue(sequencese);
 			}
+			_stage.Play();
 			return new EnqueueResponse() { QueueSize = _stage.Count };
 		}
 

@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Threading;
 using BuildIndicatron.Server.Tests.Base;
+using BuildIndicatron.Shared.Enums;
 using BuildIndicatron.Shared.Models.ApiResponses;
 using BuildIndicatron.Shared.Models.Composition;
 using FizzWare.NBuilder.Generators;
@@ -135,6 +136,28 @@ namespace BuildIndicatron.Server.Tests.Integration
 			// assert
 			result.Should().NotBeNull();
 		}
+
+		[Test]
+		public void GpIoOutput_GivenPinId_ShouldPlayAudio()
+		{
+			// arrange
+			Setup();
+			// action
+			var result = BuildIndicatorApi.GpIoOutput(12,true).Result;
+			// assert
+			result.Should().NotBeNull();
+		}
+		
+		[Test]
+		public void GpIoOutput_GivenPinName_ShouldPlayAudio()
+		{
+			// arrange
+			Setup();
+			// action
+			var result = BuildIndicatorApi.GpIoOutput(PinName.SecondaryLightBlue, true).Result;
+			// assert
+			result.Should().NotBeNull();
+		}
 		
 		[Test]
 		public void Enqueue_GivenSoundsThenText_ShouldPlayBoth()
@@ -143,17 +166,19 @@ namespace BuildIndicatron.Server.Tests.Integration
 			Setup();
 			// action
 			var choreography = new Choreography();
-			choreography.Sequences.Add(new SequencesPlaySound() { BeginTime = 0 , File = "Startup" });
-			choreography.Sequences.Add(new SequencesText2Speech() { BeginTime = 0 , Text = "Mhaha" , DisableTransform = false});
-			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 0, IsOn = true, Target = SequencesGpIo.Pins.MainLightGreen});
-			choreography.Sequences.Add(new SequencesInsult() { BeginTime = 0 });
-			choreography.Sequences.Add(new SequencesOneLiner() { BeginTime = 0 });
-			choreography.Sequences.Add(new SequencesQuotes() { BeginTime = 0 });
-			choreography.Sequences.Add(new SequencesTweet() { BeginTime = 0 , Text = "Tweeeet"});
+			choreography.Sequences.Add(new SequencesPlaySound() { BeginTime = 0 , File = "Start" });
+//			choreography.Sequences.Add(new SequencesText2Speech() { BeginTime = 0 , Text = "Mhaha" , DisableTransform = false});
+//			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 0, IsOn = true, PinName = PinName.MainLightGreen});
+//			choreography.Sequences.Add(new SequencesInsult() { BeginTime = 0 });
+//			choreography.Sequences.Add(new SequencesOneLiner() { BeginTime = 0 });
+//			choreography.Sequences.Add(new SequencesQuotes() { BeginTime = 0 });
+//			choreography.Sequences.Add(new SequencesTweet() { BeginTime = 0 , Text = "Tweeeet"});
 			var result = BuildIndicatorApi.Enqueue(choreography).Result;
 			// assert
 			result.Should().NotBeNull();
 		}
+
+
 
 	}
 }

@@ -1,11 +1,10 @@
 ﻿using System.Diagnostics;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using Autofac.Integration.WebApi;
+using BuildIndicatron.Server.Setup.Filters;
 using Owin;
-using log4net;
 
 namespace BuildIndicatron.Server.Setup
 {
@@ -33,6 +32,8 @@ namespace BuildIndicatron.Server.Setup
 		{
 			var config = new HttpConfiguration();
 			config.Services.Add(typeof(IExceptionLogger), new TraceExceptionLogger());
+			config.Filters.Add(new CacheControl());
+
 			ConfigureRoutes(config);
 			ConfigureTheDependencyInjection(config);
 			app.UseWebApi(config);
@@ -61,6 +62,8 @@ namespace BuildIndicatron.Server.Setup
 
 		private static void ConfigureRoutes(HttpConfiguration config)
 		{
+			config.MapHttpAttributeRoutes();
+
 			config.Routes.MapHttpRoute(
 				name: "Default api",
 				routeTemplate: "api/{controller}",
@@ -84,19 +87,18 @@ namespace BuildIndicatron.Server.Setup
 				routeTemplate: "api/soundplayer/{folder}/{file}",
 				defaults: new { id = RouteParameter.Optional, action = "Get", controller = "SoundPlayer" }
 				);
+			
+//			config.Routes.MapHttpRoute(
+//				name: "OutputGpio with pin and ison",
+//				routeTemplate: "api/ouputgpio/{pin}/{ison}",
+//				defaults: new { id = RouteParameter.Optional, action = "Get", controller = "OutputGpio" }
+//				);
+//			
+//			
 		}
 
 		#endregion
 
-		public class TraceExceptionLogger : ExceptionLogger
-		{
-			private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-			public override void Log(ExceptionLoggerContext context)
-			{
-				_log.Error(context.ExceptionContext.Exception.Message, context.ExceptionContext.Exception);
-			}
-		}
+		
 	}
-
-	
 }

@@ -3,8 +3,10 @@ using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Threading;
+using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Shared;
 using Microsoft.Owin.Hosting;
+using Raspberry.IO.GeneralPurpose;
 using log4net;
 using log4net.Config;
 
@@ -20,6 +22,22 @@ namespace BuildIndicatron.Server
 	        {
 		        XmlConfigurator.Configure();
 		        _log.Info("Start server");
+
+				if (args.Length > 0)
+				{
+
+					var line = "Exit";
+					while (line != "")
+					{
+						System.Console.Out.WriteLine("Enter pin details:");
+						//line = System.Console.In.ReadLine();
+
+						PinManager.RunSample(ConnectorPin.P1Pin22);
+					}
+					System.Console.Out.WriteLine("Done");
+					return;
+				}
+
 				Owin();
 		        _log.Info("Closing");
 	        }

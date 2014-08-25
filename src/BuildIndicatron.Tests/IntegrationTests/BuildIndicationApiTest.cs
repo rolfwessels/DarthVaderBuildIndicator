@@ -79,7 +79,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         [Test]
         public async Task SetupGpIo_Call_ValidResponse()
         {
-            var result = await _robotApi.GpIoSetup(25,Gpio.Out);
+            var result = await _robotApi.GpIoSetup(25,GpioDirection.Out);
             result.Should().NotBeNull();
             
             

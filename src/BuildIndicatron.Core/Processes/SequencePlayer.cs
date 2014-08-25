@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using BuildIndicatron.Core.Helpers;
+using BuildIndicatron.Shared.Enums;
 using BuildIndicatron.Shared.Models.Composition;
 using log4net;
 
@@ -13,13 +14,15 @@ namespace BuildIndicatron.Core.Processes
 		private readonly ITextToSpeech _textToSpeech;
 		private readonly IVoiceEnhancer _voiceEnhancer;
 		private readonly ISoundFilePicker _soundFilePicker;
+		private readonly IPinManager _pinManager;
 
-		public SequencePlayer(ITextToSpeech textToSpeech, IMp3Player mp3Player, IVoiceEnhancer voiceEnhancer, ISoundFilePicker soundFilePicker)
+		public SequencePlayer(ITextToSpeech textToSpeech, IMp3Player mp3Player, IVoiceEnhancer voiceEnhancer, ISoundFilePicker soundFilePicker, IPinManager pinManager)
 		{
 			_textToSpeech = textToSpeech;
 			_mp3Player = mp3Player;
 			_voiceEnhancer = voiceEnhancer;
 			_soundFilePicker = soundFilePicker;
+			_pinManager = pinManager;
 		}
 
 		#region Implementation of ISequencePlayer
@@ -64,6 +67,14 @@ namespace BuildIndicatron.Core.Processes
 		{
 			if (sequences == null) throw new ArgumentNullException("sequences");
 			_log.Info("Running: " + sequences.Dump(false));
+			if (sequences.PinName != PinName.None)
+			{
+				_pinManager.SetPin(sequences.PinName, sequences.IsOn);
+			}
+			else
+			{
+				_pinManager.SetPin(sequences.Pin, sequences.IsOn);
+			}
 		}
 
 

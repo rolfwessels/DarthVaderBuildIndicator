@@ -5,9 +5,9 @@ namespace BuildIndicatron.Core.Helpers
 {
 	public static class DebugHelper
 	{
-		public static String Dump(this object choreography)
+		public static String Dump(this object choreography, bool format = true)
 		{
-			return JsonConvert.SerializeObject(choreography, Formatting.Indented);
+			return JsonConvert.SerializeObject(choreography, format?Formatting.Indented:Formatting.None);
 		}
 		
 		public static dynamic ToDynamic(this object choreography)
