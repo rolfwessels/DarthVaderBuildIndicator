@@ -1,5 +1,7 @@
-﻿using BuildIndicatron.Core.Processes;
+﻿using System.Threading.Tasks;
+using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Server.Controllers;
+using BuildIndicatron.Shared.Enums;
 using BuildIndicatron.Shared.Models.Composition;
 using Moq;
 using NUnit.Framework;
@@ -47,11 +49,12 @@ namespace BuildIndicatron.Server.Tests.Controller
 			Setup();
 			_mockIStage.Setup(mc => mc.Enqueue(It.IsAny<object>()));
 			_mockIStage.Setup(mc => mc.Count).Returns(7);
+			_mockIStage.Setup(mc => mc.Play()).Returns(Task.FromResult(true));
 			// action
 			var choreography = new Choreography();
 			choreography.Sequences.Add(new SequencesPlaySound() { BeginTime = 0, File = "Startup" });
 			choreography.Sequences.Add(new SequencesText2Speech() { BeginTime = 0, Text = "Mhaha", DisableTransform = false });
-			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 0, IsOn = true, Target = SequencesGpIo.Pins.MainLightGreen });
+			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 0, IsOn = true, PinName = PinName.MainLightGreen });
 			choreography.Sequences.Add(new SequencesInsult() { BeginTime = 0 });
 			choreography.Sequences.Add(new SequencesOneLiner() { BeginTime = 0 });
 			choreography.Sequences.Add(new SequencesQuotes() { BeginTime = 0 });

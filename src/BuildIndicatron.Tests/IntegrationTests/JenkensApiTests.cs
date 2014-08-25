@@ -12,6 +12,7 @@ using log4net;
 namespace BuildIndicatron.Tests.IntegrationTests
 {
     [TestFixture]
+	[Explicit]
     public class JenkensApiTests
     {
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);

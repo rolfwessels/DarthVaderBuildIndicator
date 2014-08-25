@@ -25,7 +25,7 @@ namespace BuildIndicatron.App
 
         private void OnConnectTap(object sender, GestureEventArgs e)
         {
-            var robotApi = new RobotApi(string.Format("http://{0}:{1}/", Host.Text, Port.Text));
+            var robotApi = new RobotApi(string.Format("http://{0}:{1}/api", Host.Text, Port.Text));
             ConnectButton.IsEnabled = false;
             robotApi.Ping().ContinueWith(Result);
         }

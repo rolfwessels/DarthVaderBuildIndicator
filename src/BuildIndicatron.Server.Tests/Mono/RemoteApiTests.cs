@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using BuildIndicatron.Server.Tests.Base;
+using BuildIndicatron.Shared.Enums;
 using BuildIndicatron.Shared.Models.Composition;
 using FluentAssertions;
 using NUnit.Framework;
@@ -115,6 +117,19 @@ namespace BuildIndicatron.Server.Tests
 			result.Should().NotBeNull();
 		}
 
+
+		[Test]
+		public void GpIoOutput_GivenPinId_ShouldPlayAudio()
+		{
+			// arrange
+			Setup();
+			// action
+			var result = BuildIndicatorApi.GpIoOutput(PinName.MainLightGreen, true).Result;
+			// assert
+			result.Should().NotBeNull();
+		}
+
+
 		[Test]
 		public void Enqueue_GivenSoundsThenText_ShouldPlayBoth()
 		{
@@ -122,17 +137,45 @@ namespace BuildIndicatron.Server.Tests
 			Setup();
 			// action
 			var choreography = new Choreography();
-			choreography.Sequences.Add(new SequencesPlaySound() { BeginTime = 0, File = "Start" });
-//			choreography.Sequences.Add(new SequencesText2Speech() { BeginTime = 0, Text = "Mhaha", DisableTransform = false });
-//			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 0, IsOn = true, Target = SequencesGpIo.Pins.MainLightGreen });
-//			choreography.Sequences.Add(new SequencesInsult() { BeginTime = 0 });
-//			choreography.Sequences.Add(new SequencesOneLiner() { BeginTime = 0 });
-//			choreography.Sequences.Add(new SequencesQuotes() { BeginTime = 0 });
+			choreography.Sequences.Add(new SequencesPlaySound() { BeginTime = 50, File = "Start" });
+
+			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 50, PinName = PinName.MainLightBlue, IsOn = true });
+			choreography.Sequences.Add(new SequencesText2Speech() { BeginTime = 50, Text = "Main Blue" });
+			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 50, PinName = PinName.MainLightBlue, IsOn = false});
+
+			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 50, PinName = PinName.MainLightGreen, IsOn = true });
+			choreography.Sequences.Add(new SequencesText2Speech() { BeginTime = 50, Text = "Main Green" });
+			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 50, PinName = PinName.MainLightGreen, IsOn = false });
+
+			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 50, PinName = PinName.MainLightRed, IsOn = true });
+			choreography.Sequences.Add(new SequencesText2Speech() { BeginTime = 50, Text = "Main Red" });
+			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 50, PinName = PinName.MainLightRed, IsOn = false });
+
+			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 50, PinName = PinName.SecondaryLightGreen, IsOn = true });
+			choreography.Sequences.Add(new SequencesText2Speech() { BeginTime = 50, Text = "Secondary Green" });
+			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 50, PinName = PinName.SecondaryLightGreen, IsOn = false });
+
+			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 50, PinName = PinName.SecondaryLightRed, IsOn = true });
+			choreography.Sequences.Add(new SequencesText2Speech() { BeginTime = 50, Text = "Secondary Red" });
+			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 50, PinName = PinName.SecondaryLightRed, IsOn = false });
+
+			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 50, PinName = PinName.MainLightBlue, IsOn = true });
+			choreography.Sequences.Add(new SequencesInsult() { BeginTime = 0 });
+			choreography.Sequences.Add(new SequencesOneLiner() { BeginTime = 0 });
+			choreography.Sequences.Add(new SequencesQuotes() { BeginTime = 0 });
+			choreography.Sequences.Add(new SequencesGpIo() { BeginTime = 50, PinName = PinName.MainLightBlue, IsOn = false });
 //			choreography.Sequences.Add(new SequencesTweet() { BeginTime = 0, Text = "Tweeeet" });
 			var result = BuildIndicatorApi.Enqueue(choreography).Result;
 			// assert
 			result.Should().NotBeNull();
-			result.QueueSize.Should().Be(1);
+			var size = result.QueueSize;
+			size.Should().Be(choreography.Sequences.Count);
+			while (size > 0)
+			{
+				var queueSize = BuildIndicatorApi.GetQueueSize();
+				size = queueSize.Result.QueueSize;
+				Thread.Sleep(1000);
+			}
 		}
 		[TestFixtureTearDown]
 		public void FixtureTearDown()
@@ -161,7 +204,7 @@ namespace BuildIndicatron.Server.Tests
 			_client = new SshClient(Host, UserName, Password);
 			_client.Connect();
 			var call = string.Format("cd {0}", _homePiBuildindicatronServer);
-			const string commandText = "mono BuildIndicatron.Server.exe";
+			const string commandText = "sudo mono BuildIndicatron.Server.exe";
 			var text = call + " && " + commandText;
 			_log.Info("Starting command:" + text);
 			_runCommand = _client.CreateCommand(text);
@@ -194,7 +237,7 @@ namespace BuildIndicatron.Server.Tests
 
 		private void EndService()
 		{
-			_client.RunCommand("pkill mono");
+			_client.RunCommand("sudo pkill mono");
 			_client.Disconnect();
 			Console.Out.WriteLine("Disconnect");
 		}

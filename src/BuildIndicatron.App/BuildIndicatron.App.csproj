@@ -77,6 +77,12 @@
     <Compile Include="..\BuildIndicatron.Shared\ApiPaths.cs">
       <Link>Api\ApiPaths.cs</Link>
     </Compile>
+    <Compile Include="..\BuildIndicatron.Shared\Enums\GpIO.cs">
+      <Link>Api\Model\GpIO.cs</Link>
+    </Compile>
+    <Compile Include="..\BuildIndicatron.Shared\Enums\PinName.cs">
+      <Link>Api\Model\PinName.cs</Link>
+    </Compile>
     <Compile Include="..\BuildIndicatron.Shared\Models\ApiResponses\BaseResponse.cs">
       <Link>Api\Model\BaseResponse.cs</Link>
     </Compile>

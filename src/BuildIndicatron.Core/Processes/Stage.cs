@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Shared.Models.Composition;
 using log4net;
 
@@ -51,13 +53,24 @@ namespace BuildIndicatron.Core.Processes
 			while (_queue.Any())
 			{
 				var sequences = _queue.Dequeue();
-				_log.Info("Dequeue sequence: " + sequences.Type);
-				if (sequences.BeginTime > 0)
+				try
 				{
-					_log.Info("Sleeping: " + sequences.BeginTime);
-					Task.Delay(sequences.BeginTime).Wait();
+					_log.Info("Dequeue sequence: " + sequences.Type);
+					if (sequences.BeginTime > 0)
+					{
+						_log.Info("Sleeping: " + sequences.BeginTime);
+						Task.Delay(sequences.BeginTime).Wait();
+					}
+					_log.Info("Starting sequence");
+					_sequencePlayer.Play(sequences);
+					_log.Info("Stopping sequence");
 				}
-				_sequencePlayer.Play(sequences);
+				catch (Exception e)
+				{
+					_log.Info("sequences:" + sequences.Dump());
+					_log.Error(e.Message, e);
+				}
+				_log.Info(string.Format("Items in queue [{0}]", _queue.Count));
 			}
 			_currentPlayer = null;
 			_log.Debug("Done with queue");

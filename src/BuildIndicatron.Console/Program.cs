@@ -17,7 +17,7 @@ namespace BuildIndicatron.Console
         private static int Main(string[] args)
         {
             SetupLog4Net();
-            try
+	        try
             {
                 var commands = GetCommands();
                 ConsoleCommandDispatcher.DispatchCommand(commands, args, System.Console.Out);

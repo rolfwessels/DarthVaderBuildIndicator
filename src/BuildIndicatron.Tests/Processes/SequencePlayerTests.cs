@@ -1,4 +1,5 @@
 ﻿using BuildIndicatron.Core.Processes;
+using BuildIndicatron.Shared.Enums;
 using BuildIndicatron.Shared.Models.Composition;
 using Moq;
 using NUnit.Framework;
@@ -15,6 +16,7 @@ namespace BuildIndicatron.Tests.Processes
 		private Mock<IVoiceEnhancer> _mockIVoiceEnhancer;
 		private Mock<IMp3Player> _mockIMp3Player;
 		private Mock<ISoundFilePicker> _mockISoundFilePicker;
+		private Mock<IPinManager> _mockIPinManager;
 
 		#region Setup/Teardown
 
@@ -24,9 +26,11 @@ namespace BuildIndicatron.Tests.Processes
 			_mockIVoiceEnhancer = new Mock<IVoiceEnhancer>(MockBehavior.Strict);
 			_mockIMp3Player = new Mock<IMp3Player>(MockBehavior.Strict);
 			_mockISoundFilePicker = new Mock<ISoundFilePicker>(MockBehavior.Strict);
+			_mockIPinManager = new Mock<IPinManager>(MockBehavior.Strict);
 			
 			
-			_sequencePlayerTests = new SequencePlayer(_mockITextToSpeech.Object, _mockIMp3Player.Object, _mockIVoiceEnhancer.Object, _mockISoundFilePicker.Object);
+
+			_sequencePlayerTests = new SequencePlayer(_mockITextToSpeech.Object, _mockIMp3Player.Object, _mockIVoiceEnhancer.Object, _mockISoundFilePicker.Object, _mockIPinManager.Object);
 		}
 
 		[TearDown]
@@ -36,6 +40,7 @@ namespace BuildIndicatron.Tests.Processes
 			_mockIMp3Player.VerifyAll();
 			_mockIVoiceEnhancer.VerifyAll();
 			_mockISoundFilePicker.VerifyAll();
+			_mockIPinManager.VerifyAll();
 		}
 
 		#endregion
@@ -79,7 +84,20 @@ namespace BuildIndicatron.Tests.Processes
 		{
 			// arrange
 			Setup();
-			var sequences = new SequencesGpIo();
+			_mockIPinManager.Setup(mc => mc.SetPin(123,true));
+			var sequences = new SequencesGpIo() { IsOn = true, Pin = 123} ;
+			// action
+			_sequencePlayerTests.Play(sequences);
+			// assert
+		}
+
+		[Test]
+		public void Play_GivenSequencesGpIoAndTarget_ShouldSequencesGpIo()
+		{
+			// arrange
+			Setup();
+			_mockIPinManager.Setup(mc => mc.SetPin(PinName.MainLightGreen, true));
+			var sequences = new SequencesGpIo() { IsOn = true, PinName = PinName.MainLightGreen} ;
 			// action
 			_sequencePlayerTests.Play(sequences);
 			// assert

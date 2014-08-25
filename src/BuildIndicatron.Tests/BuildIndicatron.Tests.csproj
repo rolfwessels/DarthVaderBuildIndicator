@@ -92,6 +92,8 @@
     <Compile Include="Processes\DownloadToFileTests.cs" />
     <Compile Include="Processes\GoogleTextToSpeachTests.cs" />
     <Compile Include="Processes\Mp3PlayerTests.cs" />
+    <Compile Include="Processes\PinMangerTests.cs" />
+    <Compile Include="Processes\SequencePlayerTests.cs" />
     <Compile Include="Processes\StageTests.cs" />
     <Compile Include="Processes\VoiceEnhancerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

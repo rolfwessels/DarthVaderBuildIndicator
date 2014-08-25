@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.IO;
 using BuildIndicatron.Shared;
+using BuildIndicatron.Shared.Enums;
 using BuildIndicatron.Shared.Models;
 using BuildIndicatron.Shared.Models.ApiResponses;
 using BuildIndicatron.Shared.Models.Composition;
@@ -51,7 +52,15 @@ namespace BuildIndicatron.Core.Api
         }
 		
 
-        public Task<SetupGpIoResponse> GpIoSetup(int pin, Gpio direction)
+        public Task<SetupGpIoResponse> GpIoSetup(int pin, GpioDirection direction)
+        {
+            RestRequest restRequest = GetRestRequest(ApiPaths.SetupGpIo, Method.GET);
+            restRequest.AddUrlSegment("pin", pin.ToString(CultureInfo.InvariantCulture));
+            restRequest.AddUrlSegment("direction", direction.ToString());
+            return ProcessDefaultRequest<SetupGpIoResponse>(restRequest);
+        }
+
+		public Task<SetupGpIoResponse> GpIoSetup(PinName pin, GpioDirection direction)
         {
             RestRequest restRequest = GetRestRequest(ApiPaths.SetupGpIo, Method.GET);
             restRequest.AddUrlSegment("pin", pin.ToString(CultureInfo.InvariantCulture));
@@ -60,6 +69,14 @@ namespace BuildIndicatron.Core.Api
         }
 
         public Task<GpIoOutputResponse> GpIoOutput(int pin, bool isOn)
+        {
+			RestRequest restRequest = GetRestRequest(ApiPaths.GpIoOutput, Method.GET);
+            restRequest.AddUrlSegment("pin", pin.ToString(CultureInfo.InvariantCulture));
+            restRequest.AddUrlSegment("ison", isOn.ToString());
+            return ProcessDefaultRequest<GpIoOutputResponse>(restRequest);
+        }
+
+		public Task<GpIoOutputResponse> GpIoOutput(PinName pin, bool isOn)
         {
             RestRequest restRequest = GetRestRequest(ApiPaths.GpIoOutput, Method.GET);
             restRequest.AddUrlSegment("pin", pin.ToString(CultureInfo.InvariantCulture));
@@ -78,6 +95,12 @@ namespace BuildIndicatron.Core.Api
             RestRequest restRequest = GetRestRequest(ApiPaths.PassiveProcess, Method.POST, passive);
             return ProcessDefaultRequest<PassiveProcessResponse>(restRequest);
         }
+
+		public Task<EnqueueResponse> GetQueueSize()
+		{
+			var restRequest = GetRestRequest(ApiPaths.Enqueue, Method.GET);
+			return ProcessDefaultRequest<EnqueueResponse>(restRequest);
+		}
 
         public Task<EnqueueResponse> Enqueue(Choreography choreography)
         {
@@ -114,6 +137,6 @@ namespace BuildIndicatron.Core.Api
 		}
         #endregion
 
-	   
+	    
     }
 }

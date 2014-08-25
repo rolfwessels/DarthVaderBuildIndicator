@@ -80,7 +80,6 @@ namespace BuildIndicatron.Tests.Processes
 			_mockISequencePlayer.Verify(mc => mc.Play(It.IsAny<SequencesGpIo>()),Times.Exactly(2));
 		}
 
-
 		[Test]
 		public void Play_WhenCalledTwice_ShouldReturnSameTask()
 		{

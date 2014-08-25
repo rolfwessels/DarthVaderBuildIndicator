@@ -1,4 +1,6 @@
-﻿namespace BuildIndicatron.Shared.Models.Composition
+﻿using BuildIndicatron.Shared.Enums;
+
+namespace BuildIndicatron.Shared.Models.Composition
 {
     public class SequencesGpIo : Sequences
     {
@@ -9,28 +11,35 @@
         {
         }
 
-        public SequencesGpIo(int pin, bool isOn) : this()
+		public SequencesGpIo(GpIO pin, bool isOn)
+			: this()
+        {
+            Pin = (int) pin;
+            IsOn = isOn;
+        }
+
+		public SequencesGpIo(PinName pin, bool isOn)
+			: this()
+        {
+			PinName = pin;
+            IsOn = isOn;
+        }
+		public SequencesGpIo(int pin, bool isOn)
+			: this()
         {
             Pin = pin;
             IsOn = isOn;
         }
 
-        public int Pin { get; set; }
+		public int Pin { get; set; }
 
-        public bool IsOn { get; set; }
-
-		public Pins Target { get; set; }
-
-	    public enum Pins
+	    public GpIO GpIO()
 	    {
-		    MainLightGreen,
-		    MainLightRed,
-		    MainLightBlue,
-		    SecondaryLightGreen,
-			SecondaryLightRed,
-			SecondaryLightBlue,
-			Spinner,
-			Fire,
+		    return (GpIO) Pin;
 	    }
+
+	    public bool IsOn { get; set; }
+
+		public PinName PinName { get; set; }
     }
 }

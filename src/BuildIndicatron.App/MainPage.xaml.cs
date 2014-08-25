@@ -7,6 +7,7 @@ using System.Windows.Shapes;
 using BuildIndicatron.App.Core.Task;
 using BuildIndicatron.App.ViewModels;
 using BuildIndicatron.Core.Api;
+using BuildIndicatron.Shared.Enums;
 using BuildIndicatron.Shared.Models.ApiResponses;
 using BuildIndicatron.Shared.Models.Composition;
 
@@ -14,12 +15,7 @@ namespace BuildIndicatron.App
 {
     public partial class MainPage
     {
-        private const int PinRed = 11;
-        private const int PinGreen = 25;
-        private const int PinBlue = 9;
-        
-        private const int GRed = 7;
-        private const int GGreen = 8;
+  
         private readonly string _hostApi;
         private readonly List<object> _isOn;
         private readonly MainViewModel _mainViewModel;
@@ -31,7 +27,7 @@ namespace BuildIndicatron.App
 
             // Set the data context of the list box control to the sample data
             _mainViewModel = new MainViewModel();
-            _hostApi = string.Format("http://{0}:{1}/", Settings.Instance.Host, Settings.Instance.Port);
+            _hostApi = string.Format("http://{0}:{1}/api/", Settings.Instance.Host, Settings.Instance.Port);
             _robotApi = new RobotApi(_hostApi);
             DataContext = _mainViewModel;
             Loaded += OnLoaded;
@@ -80,23 +76,23 @@ namespace BuildIndicatron.App
         {
             if (sender == LsRed)
             {
-                _robotApi.GpIoOutput(PinRed, Switch(LsRed));
+				_robotApi.GpIoOutput(PinName.MainLightRed, Switch(LsRed));
             }
             else if (sender == LsGreen)
             {
-                _robotApi.GpIoOutput(PinGreen, Switch(LsGreen));
+				_robotApi.GpIoOutput(PinName.MainLightGreen, Switch(LsGreen));
             }
             else if (sender == LsBlue)
             {
-                _robotApi.GpIoOutput(PinBlue, Switch(LsBlue));
+				_robotApi.GpIoOutput(PinName.MainLightBlue, Switch(LsBlue));
             }
             else if (sender == GlGreen)
             {
-                _robotApi.GpIoOutput(GGreen, Switch(GlGreen));
+				_robotApi.GpIoOutput(PinName.SecondaryLightGreen, Switch(GlGreen));
             }
             else if (sender == GlRed)
             {
-                _robotApi.GpIoOutput(GRed, Switch(GlRed));
+				_robotApi.GpIoOutput(PinName.SecondaryLightRed, Switch(GlRed));
             }
         }
 
@@ -124,10 +120,10 @@ namespace BuildIndicatron.App
                 {
                     Sequences = new List<Sequences>
                         {
-                            new SequencesGpIo(PinBlue, true),
+                            new SequencesGpIo(PinName.MainLightBlue, true),
                             new SequencesOneLiner(),
                             new SequencesPlaySound {File = "Stop/jabba_laugh.wav"},
-                            new SequencesGpIo(PinBlue, false),
+                            new SequencesGpIo(PinName.MainLightBlue, false),
                         }
                 });
         }
@@ -138,9 +134,9 @@ namespace BuildIndicatron.App
             {
                 Sequences = new List<Sequences>
                         {
-                            new SequencesGpIo(PinBlue, true),
+                            new SequencesGpIo(PinName.MainLightBlue, true),
                             new SequencesQuotes(),
-                            new SequencesGpIo(PinBlue, false),
+                            new SequencesGpIo(PinName.MainLightBlue, false),
                         }
             });
         }
@@ -151,16 +147,16 @@ namespace BuildIndicatron.App
             {
                 Sequences = new List<Sequences>
                         {
-                            new SequencesGpIo(PinBlue, true),
+                            new SequencesGpIo(PinName.MainLightBlue, true),
                             new SequencesInsult(),
-                            new SequencesGpIo(PinBlue, false),
+                            new SequencesGpIo(PinName.MainLightBlue, false),
                         }
             });
         }
 
         private IEnumerable<Sequences> SequencesText2Speeches(bool disableTransform)
         {
-            yield return new SequencesGpIo(PinBlue, true);
+            yield return new SequencesGpIo(PinName.MainLightBlue, true);
             foreach (
                 string s in
                     new[] {_mainViewModel.Text1, _mainViewModel.Text2, _mainViewModel.Text3}.Where(
@@ -168,7 +164,7 @@ namespace BuildIndicatron.App
             {
                 yield return new SequencesText2Speech {Text = s, DisableTransform = disableTransform};
             }
-            yield return new SequencesGpIo(PinBlue, false) {BeginTime = 1000};
+            yield return new SequencesGpIo(PinName.MainLightBlue, false) {BeginTime = 1000};
         }
 
 
@@ -183,7 +179,7 @@ namespace BuildIndicatron.App
 
         private IEnumerable<Sequences> SequencesTweet()
         {
-            yield return new SequencesGpIo(PinBlue, true);
+            yield return new SequencesGpIo(PinName.MainLightBlue, true);
             foreach (
                 string s in
                     new[] { _mainViewModel.Text1, _mainViewModel.Text2, _mainViewModel.Text3 }.Where(
@@ -191,7 +187,7 @@ namespace BuildIndicatron.App
             {
                 yield return new SequencesTweet() { Text = s };
             }
-            yield return new SequencesGpIo(PinBlue, false) { BeginTime = 1000 };
+            yield return new SequencesGpIo(PinName.MainLightBlue, false) { BeginTime = 1000 };
         }
 
         
