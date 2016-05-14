@@ -44,7 +44,7 @@ namespace BuildIndicatron.Server.Tests.Integration
 			}
 			catch (Exception e)
 			{
-				_log.Warn("WebApiIntegrationTests:SetupFixture value");
+				_log.Warn("WebApiIntegrationTests:SetupFixture "+e);
 			}
 		}
 

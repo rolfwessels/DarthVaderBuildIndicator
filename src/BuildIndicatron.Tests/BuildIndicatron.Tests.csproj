@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -91,6 +91,7 @@
     <Compile Include="IntegrationTests\BuildIndicationApiTest.cs" />
     <Compile Include="Processes\DownloadToFileTests.cs" />
     <Compile Include="Processes\GoogleTextToSpeachTests.cs" />
+    <Compile Include="Processes\VoiceRssTests.cs" />
     <Compile Include="Processes\Mp3PlayerTests.cs" />
     <Compile Include="Processes\PinMangerTests.cs" />
     <Compile Include="Processes\SequencePlayerTests.cs" />

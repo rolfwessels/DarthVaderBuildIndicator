@@ -9,15 +9,16 @@ using BuildIndicatron.Server.Tests.Base;
 using BuildIndicatron.Shared.Enums;
 using BuildIndicatron.Shared.Models.Composition;
 using FluentAssertions;
+using log4net;
 using NUnit.Framework;
 using Renci.SshNet;
 using RestSharp;
-using log4net;
 
-namespace BuildIndicatron.Server.Tests
+namespace BuildIndicatron.Server.Tests.Mono
 {
 	[TestFixture]
 	[Explicit]
+    [Timeout(300000)]
 	public class RemoteApiTests : BaseIntegrationTests
 	{
 		private const string Host = "192.168.1.242";
@@ -54,8 +55,7 @@ namespace BuildIndicatron.Server.Tests
 
 		#endregion
 
-		[Test]
-		
+        [Test]
 		public void HomePage_WhenCalled_ShouldContainHelloWorld()
 		{
 			// arrange
@@ -112,7 +112,7 @@ namespace BuildIndicatron.Server.Tests
 			// arrange
 			Setup();
 			// action
-			var result = BuildIndicatorApi.TextToSpeechEnhanceSpeech("Luke I am your father").Result;
+			var result = BuildIndicatorApi.TextToSpeechEnhanceSpeech("What are you talking about").Result;
 			// assert
 			result.Should().NotBeNull();
 		}
@@ -124,7 +124,7 @@ namespace BuildIndicatron.Server.Tests
 			// arrange
 			Setup();
 			// action
-			var result = BuildIndicatorApi.GpIoOutput(PinName.MainLightGreen, true).Result;
+			var result = BuildIndicatorApi.GpIoOutput(PinName.SecondaryLightBlue, true).Result;
 			// assert
 			result.Should().NotBeNull();
 		}
@@ -177,6 +177,7 @@ namespace BuildIndicatron.Server.Tests
 				Thread.Sleep(1000);
 			}
 		}
+
 		[TestFixtureTearDown]
 		public void FixtureTearDown()
 		{
@@ -203,6 +204,7 @@ namespace BuildIndicatron.Server.Tests
 		{
 			_client = new SshClient(Host, UserName, Password);
 			_client.Connect();
+            _client.RunCommand("sudo pkill mono");
 			var call = string.Format("cd {0}", _homePiBuildindicatronServer);
 			const string commandText = "sudo mono BuildIndicatron.Server.exe";
 			var text = call + " && " + commandText;
@@ -220,7 +222,7 @@ namespace BuildIndicatron.Server.Tests
 				Directory.GetFiles(currentDirectory, "BuildIndicatron*.*", SearchOption.AllDirectories)
 				         .Union(Directory.GetFiles(currentDirectory, "*.html", SearchOption.AllDirectories));
 			ConnectionInfo connectionInfo = new PasswordConnectionInfo(Host, UserName, Password);
-
+            
 			var scpClient = new ScpClient(connectionInfo);
 			scpClient.Connect();
 			_log.Info(string.Format("Copy {0} files", directoryInfo.Count()));
@@ -237,7 +239,7 @@ namespace BuildIndicatron.Server.Tests
 
 		private void EndService()
 		{
-			_client.RunCommand("sudo pkill mono");
+			
 			_client.Disconnect();
 			Console.Out.WriteLine("Disconnect");
 		}

@@ -21,8 +21,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
         public BuildIndicationApiTest()
         {
             log4net.Config.XmlConfigurator.Configure(new FileInfo("Log4Net.config"));
-            //_hostApi = Config.Url;
-            _hostApi = "http://192.168.1.243:5000/";
+            _hostApi = Config.Url;
+            //_hostApi = "http://192.168.1.242:5000/";
         }
 
         #region Setup/Teardown
@@ -47,8 +47,6 @@ namespace BuildIndicatron.Tests.IntegrationTests
         {
             var result = await _robotApi.Ping();
             result.Should().NotBeNull();
-            
-            
         }
 
         [Test]
@@ -56,8 +54,6 @@ namespace BuildIndicatron.Tests.IntegrationTests
         {
             var result = await _robotApi.PlayMp3File("Funny");
             result.Should().NotBeNull();
-            
-            
         }
 
         [Test]

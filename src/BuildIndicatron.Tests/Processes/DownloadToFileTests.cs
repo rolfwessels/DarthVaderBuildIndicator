@@ -27,19 +27,19 @@ namespace BuildIndicatron.Server.Process
 		}
 
 		#endregion
-
-		[Test]
-		public void DownloadToTempFile_GivenUri_ShouldCreateCorrectFileName()
-		{
-			// arrange
-			Setup();
-			var uri = new Uri(string.Format(GoogleTextToSpeach.UriToDownload, Uri.EscapeUriString(Text)));
-			// action
-			var fileName = _downloadToFile.DownloadToTempFile(uri,Text);
-			// assert
-			fileName.Should().Be(fileName);
-		}
-		
+//
+//		[Test]
+//		public void DownloadToTempFile_GivenUri_ShouldCreateCorrectFileName()
+//		{
+//			// arrange
+//			Setup();
+//			var uri = new Uri(string.Format(GoogleTextToSpeach.UriToDownload, Uri.EscapeUriString(Text)));
+//			// action
+//			var fileName = _downloadToFile.DownloadToTempFile(uri,Text);
+//			// assert
+//			fileName.Should().Be(fileName);
+//		}
+//		
 		[Test]
 		[Explicit]
 		public void DownloadToTempFile_GivenUri_ShouldDownloadTheItemToAFile()
