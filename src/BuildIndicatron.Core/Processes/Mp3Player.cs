@@ -16,7 +16,7 @@ namespace BuildIndicatron.Core.Processes
 		{
 			_player = PlatformHelper.IsLinux
 						  ? @"/usr/bin/mpg321|-q ""{0}"""
-						  : @"C:\Program Files (x86)\VideoLAN\VLC\vlc.exe|""{0}""  vlc:quit";
+						  : @"C:\Program Files\VideoLAN\VLC\vlc.exe|""{0}""  vlc:quit";
 			
 		}
 

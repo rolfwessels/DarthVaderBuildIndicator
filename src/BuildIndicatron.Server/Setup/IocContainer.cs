@@ -66,7 +66,7 @@ namespace BuildIndicatron.Server.Setup
 		private static void SetupConcrete(ContainerBuilder builder)
 		{
 			builder.RegisterType<Mp3Player>().As<IMp3Player>();
-			builder.RegisterType<GoogleTextToSpeach>().As<ITextToSpeech>();
+			builder.RegisterType<VoiceRss>().As<ITextToSpeech>();
 			builder.Register(t => new VoiceEnhancer(@"resources/text2speach/Star-Wars-1391.mp3", "speed 0.7 echo 0.8 0.88 6.0 0.4"))
 			       .As<IVoiceEnhancer>();
 			builder.RegisterType<PinManager>()

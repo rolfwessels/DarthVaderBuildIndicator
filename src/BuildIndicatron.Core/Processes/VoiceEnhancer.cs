@@ -18,10 +18,10 @@ namespace BuildIndicatron.Core.Processes
 			_backgroundFile = Path.GetFullPath(backgroundFile).AsPath();
 			_player = PlatformHelper.IsLinux
 						  ? @"play|-q -m ""{1}"" -v 5 ""{0}"" " + speedEcho
-						  : @"C:\Program Files (x86)\VideoLAN\VLC\vlc.exe| ""{1}"" ""{0}"" ";
+						  : @"C:\Program Files\VideoLAN\VLC\vlc.exe| ""{1}"" ""{0}"" ";
 			_convert = PlatformHelper.IsLinux
 						  ? @"sox|-v 0.4 ""{0}"" -r 16000 ""{1}"""
-						  : @"C:\Program Files (x86)\VideoLAN\VLC\vlc.exe| ""{0}"" ";
+						  : @"C:\Program Files\VideoLAN\VLC\vlc.exe| ""{0}"" ";
 		
 		}
 		
