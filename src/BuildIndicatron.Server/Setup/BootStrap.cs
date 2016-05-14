@@ -22,11 +22,13 @@ namespace BuildIndicatron.Server.Setup
 					_isInitialized = true;
 					ConfigureWebApi(app);
 					ConfigureIndexResponse(app);
+				    SlackBotServer.Init(app);
 				}
 			}
 		}
 
-		#region Private Methods
+	  
+	    #region Private Methods
 
 		private static void ConfigureWebApi(IAppBuilder app)
 		{
