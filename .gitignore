@@ -8,3 +8,4 @@ obj/
 /lib/
 /src/BuildIndicatron.App/*.ncrunchproject
 /src/BuildIndicatron.Console/*.ncrunchproject
+/src/_NCrunch_BuildIndicatron/StoredText

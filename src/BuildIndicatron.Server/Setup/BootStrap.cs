@@ -1,19 +1,26 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.Net;
+using System.Net.Sockets;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using Autofac.Integration.WebApi;
 using BuildIndicatron.Server.Setup.Filters;
+using log4net;
 using Owin;
 
 namespace BuildIndicatron.Server.Setup
 {
 	public static class BootStrap
 	{
+	    private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 		private static bool _isInitialized;
 		private static readonly object _locker = new object();
+	    private static SlackBotServer _slackBotServer;
 
-		public static void Initialize(IAppBuilder app)
+	    public static void Initialize(IAppBuilder app)
 		{
 			lock (_locker)
 			{
@@ -22,11 +29,28 @@ namespace BuildIndicatron.Server.Setup
 					_isInitialized = true;
 					ConfigureWebApi(app);
 					ConfigureIndexResponse(app);
-				    SlackBotServer.Init(app);
+				    _slackBotServer = new SlackBotServer("xoxb-42965609527-M9RP4uNdgHAftOhkysFNms4S");
+                    _slackBotServer.ContinueslyTryToConnect().ContinueWith(task =>
+                    {
+                        var localIpAddress = GetLocalIPAddress();
+                        if (localIpAddress != "192.168.1.12")
+                        _slackBotServer.SayTo("@rolf", "I'm on " + localIpAddress);
+                    });
 				}
 			}
 		}
-
+        public static string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("Local IP Address Not Found!");
+        }
 	  
 	    #region Private Methods
 
@@ -58,7 +82,7 @@ namespace BuildIndicatron.Server.Setup
 
 		private static void ConfigureTheDependencyInjection(HttpConfiguration config)
 		{
-			var resolver = new AutofacWebApiDependencyResolver(IocContainer.Initialize);
+			var resolver = new AutofacWebApiDependencyResolver(IocContainer.Instance);
 			config.DependencyResolver = resolver;
 		}
 

@@ -1,102 +1,132 @@
 using System;
+using System.Linq;
 using System.Net;
-using System.Net.Security;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading;
 using System.Threading.Tasks;
+using Autofac;
+using BuildIndicatron.Core;
+using BuildIndicatron.Core.Chat;
+using BuildIndicatron.Core.Helpers;
 using log4net;
-using Owin;
+using SlackConnector;
+using SlackConnector.Models;
 
 namespace BuildIndicatron.Server.Setup
 {
     public class SlackBotServer
     {
-        private const string _apiToken = "xoxb-42965609527-M9RP4uNdgHAftOhkysFNms4S";
+        private static string _apiToken;
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-    
-        public static async Task Init(IAppBuilder app)
+        private readonly ISlackConnector _connector;
+        private ISlackConnection _connection;
+        private IChatBot _chatBot;
+
+        public  SlackBotServer(string apiToken)
+        {
+            _apiToken = apiToken;
+            _connector = new SlackConnector.SlackConnector();
+            _chatBot = IocContainer.Instance.Resolve<IChatBot>();
+        }
+
+        public  async Task<bool> ContinueslyTryToConnect()
+        {
+            bool connected = false;
+            int wait = 0;
+            while (!connected)
+            {
+                await Task.Delay(wait);
+                connected = await Connect();
+                wait = (wait*2).MinMax(2000, 160000);
+            }
+            return true;
+        }
+
+        public async Task<bool> Connect()
         {
             ServicePointManager.ServerCertificateValidationCallback +=
                 (sender, certificate, chain, policyErrors) => { return true; };
-            for (int i = 0; i < 10; i++)
+            try
             {
-                try
-                {
-//                    ServicePointManager.ServerCertificateValidationCallback +=
-//                (sender, certificate, chain, policyErrors) => { return true; };
-                    _log.Info("Connecting");
-                    _log.Info("Send");
-                    break;
-                }
-                catch (Exception e)
-                {
-                    _log.Error("Error connecting to slackbot:" + e.Message, e);
-                    Thread.Sleep(1000);
-                }
-            }
-        }
-
-        #region Private Methods
-
-        private static bool RemoteCertificateValidationCallback(object sender, X509Certificate certificate,
-            X509Chain chain, SslPolicyErrors sslPolicyErrors)
-        {
-            //Return true if the server certificate is ok
-            if (sslPolicyErrors == SslPolicyErrors.None)
+                _log.Info("Slackbot:Connecting");
+                if (_connection != null && _connection.IsConnected) return true;
+                _connection = await _connector.Connect(_apiToken);
+                _connection.OnMessageReceived += MessageReceived;
+                _connection.OnDisconnect += ConnectionStatusChanged;
+                _log.Info("Slackbot:Send");
                 return true;
-
-            bool acceptCertificate = true;
-            string msg = "The server could not be validated for the following reason(s):\r\n";
-
-            //The server did not present a certificate
-            if ((sslPolicyErrors &
-                 SslPolicyErrors.RemoteCertificateNotAvailable) == SslPolicyErrors.RemoteCertificateNotAvailable)
-            {
-                msg = msg + "\r\n    -The server did not present a certificate.\r\n";
-                acceptCertificate = false;
             }
-            else
+            catch (Exception e)
             {
-                //The certificate does not match the server name
-                if ((sslPolicyErrors &
-                     SslPolicyErrors.RemoteCertificateNameMismatch) == SslPolicyErrors.RemoteCertificateNameMismatch)
-                {
-                    msg = msg + "\r\n    -The certificate name does not match the authenticated name.\r\n";
-                    acceptCertificate = false;
-                }
-
-                //There is some other problem with the certificate
-                if ((sslPolicyErrors &
-                     SslPolicyErrors.RemoteCertificateChainErrors) == SslPolicyErrors.RemoteCertificateChainErrors)
-                {
-                    foreach (X509ChainStatus item in chain.ChainStatus)
-                    {
-                        if (item.Status != X509ChainStatusFlags.RevocationStatusUnknown &&
-                            item.Status != X509ChainStatusFlags.OfflineRevocation)
-                            break;
-
-                        if (item.Status != X509ChainStatusFlags.NoError)
-                        {
-                            msg = msg + "\r\n    -" + item.StatusInformation;
-                            acceptCertificate = false;
-                        }
-                    }
-                }
+                _log.Error("Error connecting to slackbot:" + e.Message, e);
             }
-
-            //If Validation failed, present message box
-            if (acceptCertificate == false)
-            {
-                msg = msg + "\r\nDo you wish to override the security check?";
-//          if (MessageBox.Show(msg, "Security Alert: Server could not be validated",
-//                       MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                acceptCertificate = true;
-            }
-
-            return acceptCertificate;
+            return false;
         }
 
-        #endregion
+        private Task MessageReceived(SlackMessage message)
+        {
+            
+            _log.Info(string.Format("Chathub {0} Text:{1}",message.ChatHub.Name, message.Text ));
+            _log.Info(string.Format("Chathub {0} ",message.Dump() ));
+            _chatBot.Process(new SlackBotMessageContext(this, message) { Text = message.Text });
+            return Task.Delay(1);
+        }
+
+        private void ConnectionStatusChanged()
+        {
+            _log.Error("Slackbot: disconnected");
+            Disconnect();
+            _log.Info("Slackbot: trying to connect again");
+            ContinueslyTryToConnect().ContinueWith(task => _log.Info("reconnected"));
+        }
+
+        private void Disconnect()
+        {
+            if (_connection != null)
+            {
+                _connection.OnMessageReceived -= MessageReceived;
+                _connection.OnDisconnect -= ConnectionStatusChanged;
+                _connection.Disconnect();
+            }
+        }
+
+        public Task SayTo(string userName , string message)
+        {
+
+            var chatHub = _connection.ConnectedHubs.Where(x => x.Value.Name.ToLower() == userName.ToLower()).Select(x=>x.Value).FirstOrDefault();
+            if (chatHub == null)
+                _log.Warn(string.Format("Could not find user {0} in {1}", userName,
+                    _connection.ConnectedHubs.Select(x => x.Value.Name).StringJoin()));
+            return SayTo(chatHub, message);
+        }
+
+        public async Task SayTo(SlackChatHub chatHub, string message)
+        {
+            await ContinueslyTryToConnect();
+            if (chatHub != null)
+            await _connection.Say(new BotMessage() {ChatHub = chatHub, Text = message});
+        }
+    }
+
+    internal class SlackBotMessageContext : IMessageContext
+    {
+        private readonly SlackBotServer _slackBotServer;
+        private readonly SlackMessage _message;
+
+        public SlackBotMessageContext(SlackBotServer slackBotServer, SlackMessage message)
+        {
+            _slackBotServer = slackBotServer;
+            _message = message;
+        }
+
+        public string Text { get; set; }
+        public bool IsDirectedAtMe {
+            get { return _message.MentionsBot || _message.ChatHub.Type == SlackChatHubType.DM; }
+        }
+
+        public Task Respond(string message)
+        {
+
+            return _slackBotServer.SayTo(_message.ChatHub, message);
+        }
     }
 }
