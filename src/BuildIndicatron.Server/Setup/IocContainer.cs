@@ -2,6 +2,7 @@
 using System.Reflection;
 using Autofac;
 using Autofac.Integration.WebApi;
+using BuildIndicatron.Core.Chat;
 using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Server.Fakes;
@@ -16,7 +17,7 @@ namespace BuildIndicatron.Server.Setup
 		private static readonly object _locker = new object();
 		private static IContainer _container;
 
-		public static IContainer Initialize
+		public static IContainer Instance
 		{
 			get
 			{
@@ -54,6 +55,7 @@ namespace BuildIndicatron.Server.Setup
 			       .WithParameter("tempPath", Settings.Default.SpeachTempFileLocation);
 			builder.RegisterType<Stage>().As<IStage>().SingleInstance();
 			builder.RegisterType<SequencesFactory>();
+            builder.RegisterType<ChatBot>().As<IChatBot>();
 			builder.RegisterType<SequencePlayer>().As<ISequencePlayer>();
 			builder.Register((t) => new SoundFilePicker(Settings.Default.SoundFileLocation)).As<ISoundFilePicker>();
 		}

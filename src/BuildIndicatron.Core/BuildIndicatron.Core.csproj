@@ -96,8 +96,12 @@
     <Compile Include="Api\Model\JenkensProjectsResult.cs" />
     <Compile Include="Api\Model\Job.cs" />
     <Compile Include="Api\RobotApi.cs" />
+    <Compile Include="Chat\ChatBot.cs" />
+    <Compile Include="Chat\IChatBot.cs" />
+    <Compile Include="Chat\IMessageContext.cs" />
     <Compile Include="EnumerableHelper.cs" />
     <Compile Include="Helpers\DebugHelper.cs" />
+    <Compile Include="Helpers\IntegegerHelper.cs" />
     <Compile Include="Helpers\PlatformHelper.cs" />
     <Compile Include="Helpers\ProcessHelper.cs" />
     <Compile Include="Helpers\RandomTextHelper.cs" />
@@ -150,6 +154,9 @@
       <Project>{A5B3824B-DE19-4A94-A7DA-5D1BBC6CBD95}</Project>
       <Name>BuildIndicatron.Shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ChatBot\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
