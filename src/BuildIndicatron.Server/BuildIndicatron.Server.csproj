@@ -108,9 +108,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Setup\AutofacInjector.cs" />
     <Compile Include="Setup\BootStrap.cs" />
     <Compile Include="Setup\Filters\CacheControl.cs" />
     <Compile Include="Setup\Filters\TraceExceptionLogger.cs" />
+    <Compile Include="Setup\SlackBotMessageContext.cs" />
     <Compile Include="Setup\SlackBotServer.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Setup\IocContainer.cs" />
