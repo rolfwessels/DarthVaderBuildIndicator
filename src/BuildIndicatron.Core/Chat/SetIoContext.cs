@@ -87,7 +87,17 @@ namespace BuildIndicatron.Core.Chat
                     pin.Set(context.Text, _pinManager);
                 }
                 var allOn = _lights.Where(x => x.ContainsSection(context.Text) && x.IsOn(context.Text)).ToArray();
-                context.Respond(string.Format("{0} {1} lights are not on", allOn.Select(x => x.Section).Distinct().StringJoin(), allOn.Select(x => x.Color).Distinct().StringJoin()));
+                if (!allOn.Select(x => x.Color).Any())
+                {
+                    context.Respond(string.Format("{0} lights are now off",
+                        _lights.Where(x => x.ContainsSection(context.Text)).Select(x => x.Section).Distinct().StringJoin()));
+                }
+                else
+                {
+                    context.Respond(string.Format("{0} {1} lights are now on",
+                        allOn.Select(x => x.Section).Distinct().StringJoin(),
+                        allOn.Select(x => x.Color).Distinct().StringJoin()));
+                }
             });
         }
 
