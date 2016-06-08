@@ -14,6 +14,7 @@ namespace BuildIndicatron.Core.Chat
                 .ListenTo<SaySomething>()
                 .ListenTo<SayContext>()
                 .ListenTo<HelpContext>()
+                .ListenTo<AboutContext>()
                 .ListenTo<RandomJokeResponse>();
         }
 

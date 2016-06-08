@@ -106,6 +106,7 @@
     <Compile Include="Core\Chat\SetIoContextTests.cs" />
     <Compile Include="Core\Chat\ChatBotTestsBase.cs" />
     <Compile Include="Core\Chat\SayContextTests.cs" />
+    <Compile Include="Core\Chat\AboutContextTests.cs" />
     <Compile Include="Core\Chat\SaySomethingTests.cs" />
     <Compile Include="Core\Chat\SetVolumeContextTests.cs" />
     <Compile Include="IntegrationTests\Config.cs" />
