@@ -155,7 +155,7 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>pscp -r -pw ***REMOVED*** $(TargetDir)*.* pi@192.168.1.242:/home/pi/buildIndicatron.server</PostBuildEvent>
+    <PostBuildEvent>rem pscp -r -pw ***REMOVED*** $(TargetDir)*.* pi@192.168.1.242:/home/pi/buildIndicatron.server</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
