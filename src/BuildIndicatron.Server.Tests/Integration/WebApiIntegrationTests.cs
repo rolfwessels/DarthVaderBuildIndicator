@@ -39,7 +39,7 @@ namespace BuildIndicatron.Server.Tests.Integration
 			CreateClient(baseUri);
 
 
-            TestHelper.WaitFor(this, (t) => EnsureConnected(), 5000);
+            this.WaitFor((t) => EnsureConnected(), 10000);
 		}
 
 	    private static bool EnsureConnected()

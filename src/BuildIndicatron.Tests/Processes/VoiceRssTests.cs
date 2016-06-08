@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using System.Threading.Tasks;
 using BuildIndicatron.Core.Processes;
 using log4net;
 using Moq;
@@ -41,7 +42,7 @@ namespace BuildIndicatron.Tests.Processes
 			Setup();
 			_mockIDownloadToFile.Setup(mc => mc.DownloadToTempFile(It.IsAny<Uri>(), "your mother"))
 			 .Returns("file.file");
-			_mockIMp3Player.Setup(mc => mc.PlayFile("file.file"));
+            _mockIMp3Player.Setup(mc => mc.PlayFile("file.file")).Returns(Task.FromResult(true)); ;
 			// action
             _voiceRss.Play("your mother").Wait();
 			// assert
@@ -53,7 +54,7 @@ namespace BuildIndicatron.Tests.Processes
 			// arrange
 			Setup();
 			_mockIDownloadToFile.Setup(mc => mc.DownloadToTempFile(It.IsAny<Uri>(), It.IsAny<string>())).Returns("file.file");
-			_mockIMp3Player.Setup(mc => mc.PlayFile("file.file"));
+            _mockIMp3Player.Setup(mc => mc.PlayFile("file.file")).Returns(Task.FromResult(true)); ;
 			// action
 			_voiceRss.Play(_longString).Wait();
 			// assert

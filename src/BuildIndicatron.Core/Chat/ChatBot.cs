@@ -9,7 +9,9 @@ namespace BuildIndicatron.Core.Chat
         public ChatBot(IFactory injector)
         {
             _chatContextHolder = new ChatContextHolder(injector)
+                .ListenTo<SetVolumeContext>()
                 .ListenTo<SetIoContext>()
+                .ListenTo<SaySomething>()
                 .ListenTo<SayContext>()
                 .ListenTo<HelpContext>()
                 .ListenTo<RandomJokeResponse>();
