@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using BuildIndicatron.Shared.Enums;
+using BuildIndicatron.Tests.Core.Chat;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -18,10 +19,10 @@ namespace BuildIndicatron.Tests.Chat
             _mockIPinManager.Setup(mc => mc.SetPin(PinName.MainLightGreen, false));
             _mockIPinManager.Setup(mc => mc.SetPin(PinName.MainLightRed, false));
             // action
-            var sampleMessage = new SampleMessage("set main light blue", true);
+            var sampleMessage = new MessageContext("set main light blue");
             await _chatBot.Process(sampleMessage);
             // assert
-            sampleMessage.Responses.Should().Contain(x => x.Contains("lights set")).And.HaveCount(1);
+            sampleMessage.LastMessages.Should().Contain(x => x.Contains("lights set")).And.HaveCount(1);
         }
 
         [Test]
@@ -33,10 +34,10 @@ namespace BuildIndicatron.Tests.Chat
             _mockIPinManager.Setup(mc => mc.SetPin(PinName.MainLightGreen, true));
             _mockIPinManager.Setup(mc => mc.SetPin(PinName.MainLightRed, false));
             // action
-            var sampleMessage = new SampleMessage("set main light blue green", true);
+            var sampleMessage = new MessageContext("set main light blue green");
             await _chatBot.Process(sampleMessage);
             // assert
-            sampleMessage.Responses.Should().Contain(x => x.Contains("lights set")).And.HaveCount(1);
+            sampleMessage.LastMessages.Should().Contain(x => x.Contains("lights set")).And.HaveCount(1);
         }
 
     }

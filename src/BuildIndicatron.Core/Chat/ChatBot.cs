@@ -6,10 +6,11 @@ namespace BuildIndicatron.Core.Chat
     {
         private readonly ChatContextHolder _chatContextHolder;
 
-        public ChatBot(IInjector injector)
+        public ChatBot(IFactory injector)
         {
             _chatContextHolder = new ChatContextHolder(injector)
                 .ListenTo<SetIoContext>()
+                .ListenTo<SayContext>()
                 .ListenTo<HelpContext>()
                 .ListenTo<RandomJokeResponse>();
         }

@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using Autofac;
 using Autofac.Integration.WebApi;
+using BuildIndicatron.Core;
 using BuildIndicatron.Core.Chat;
 using BuildIndicatron.Server.Setup.Filters;
 using log4net;

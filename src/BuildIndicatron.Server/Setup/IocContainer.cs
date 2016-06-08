@@ -62,7 +62,7 @@ namespace BuildIndicatron.Server.Setup
                    .AsSelf().SingleInstance();
 			builder.RegisterType<SequencesFactory>();
             builder.RegisterType<ChatBot>().As<IChatBot>();
-            builder.Register(context => new AutofacInjector(_container)).As<IInjector>().SingleInstance();
+            builder.Register(context => new AutofacInjector(_container)).As<IFactory>().SingleInstance();
             SetAllContexts(builder);
 			builder.RegisterType<SequencePlayer>().As<ISequencePlayer>();
 			builder.Register((t) => new SoundFilePicker(Settings.Default.SoundFileLocation)).As<ISoundFilePicker>();

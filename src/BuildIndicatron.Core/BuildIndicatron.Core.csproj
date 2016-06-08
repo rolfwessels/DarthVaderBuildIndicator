@@ -102,11 +102,11 @@
     <Compile Include="Chat\IChatBot.cs" />
     <Compile Include="Chat\IFactory.cs" />
     <Compile Include="Chat\IFlowHelp.cs" />
-    <Compile Include="Chat\IInjector.cs" />
     <Compile Include="Chat\IMessageContext.cs" />
     <Compile Include="Chat\IReposonseFlow.cs" />
     <Compile Include="Chat\RandomJokeResponse.cs" />
     <Compile Include="Chat\ReposonseFlowBase.cs" />
+    <Compile Include="Chat\SayContext.cs" />
     <Compile Include="Chat\SetIoContext.cs" />
     <Compile Include="EnumerableHelper.cs" />
     <Compile Include="Helpers\DebugHelper.cs" />
