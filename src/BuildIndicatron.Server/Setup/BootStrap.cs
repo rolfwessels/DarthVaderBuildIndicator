@@ -12,6 +12,7 @@ using Autofac;
 using Autofac.Integration.WebApi;
 using BuildIndicatron.Core;
 using BuildIndicatron.Core.Chat;
+using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Server.Setup.Filters;
 using log4net;
 using Owin;
@@ -38,7 +39,7 @@ namespace BuildIndicatron.Server.Setup
 //                    _slackBotServer = new SlackBotServer("xoxb-44517262306-1Sgod52dMAcPi0lyl0suoQxY");
                     _slackBotServer.ContinueslyTryToConnect().ContinueWith(task =>
                     {
-                        var localIpAddress = GetLocalIpAddresses().ToArray();
+                        var localIpAddress = IpAddressHelper.GetLocalIpAddresses().ToArray();
                         if (!localIpAddress.Any(x => x.Contains("192.168.1")))
                         _slackBotServer.SayTo("@rolf", "I'm on " + localIpAddress.StringJoin(" or "));
                     });
@@ -47,18 +48,6 @@ namespace BuildIndicatron.Server.Setup
 			}
 		}
 
-        public static IEnumerable<string> GetLocalIpAddresses()
-        {
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    yield return ip.ToString();
-                }
-            }
-        }
-	  
 	    #region Private Methods
 
 		private static void ConfigureWebApi(IAppBuilder app)

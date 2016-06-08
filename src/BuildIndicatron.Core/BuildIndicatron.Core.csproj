@@ -108,12 +108,14 @@
     <Compile Include="Chat\RandomJokeResponse.cs" />
     <Compile Include="Chat\ReposonseFlowBase.cs" />
     <Compile Include="Chat\SayContext.cs" />
+    <Compile Include="Chat\AboutContext.cs" />
     <Compile Include="Chat\SaySomething.cs" />
     <Compile Include="Chat\SetVolumeContext.cs" />
     <Compile Include="Chat\SetIoContext.cs" />
     <Compile Include="EnumerableHelper.cs" />
     <Compile Include="Helpers\DebugHelper.cs" />
     <Compile Include="Helpers\IntegegerHelper.cs" />
+    <Compile Include="Helpers\IpAddressHelper.cs" />
     <Compile Include="Helpers\PlatformHelper.cs" />
     <Compile Include="Helpers\ProcessHelper.cs" />
     <Compile Include="Helpers\RandomTextHelper.cs" />
