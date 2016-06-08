@@ -4,7 +4,7 @@ namespace BuildIndicatron.Core.Processes
 {
 	public interface ITextToSpeech
 	{
-		void Play(string text);
-		void Play(string text, IMp3Player voiceEnhancer);
+		Task Play(string text);
+		Task Play(string text, IMp3Player voiceEnhancer);
 	}
 }

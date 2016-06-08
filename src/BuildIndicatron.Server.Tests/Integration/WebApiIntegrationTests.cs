@@ -38,17 +38,26 @@ namespace BuildIndicatron.Server.Tests.Integration
 			_log.Info("Started");
 			
 			CreateClient(baseUri);
-			try
-			{
-				BuildIndicatorApi.Ping().Wait();
-			}
-			catch (Exception e)
-			{
-				_log.Warn("WebApiIntegrationTests:SetupFixture "+e);
-			}
+
+
+            TestHelper.WaitFor(this, (t) => EnsureConnected(), 5000);
 		}
 
-		public void Setup()
+	    private static bool EnsureConnected()
+	    {
+	        try
+	        {
+	            BuildIndicatorApi.Ping().Wait();
+	            return true;
+	        }
+	        catch (Exception e)
+	        {
+	            _log.Warn("WebApiIntegrationTests:SetupFixture " + e);
+	        }
+	        return false;
+	    }
+
+	    public void Setup()
 		{
 
 		}
@@ -181,4 +190,28 @@ namespace BuildIndicatron.Server.Tests.Integration
 
 
 	}
+
+    public static class TestHelper
+    {
+        public static bool WaitFor<T>(this T webApiIntegrationTests, Func<T, bool> func, int value = 1000)
+        {
+            return WaitFor(webApiIntegrationTests, func, b => b, value);
+        }
+
+        public static TType WaitFor<T, TType>(this T webApiIntegrationTests, Func<T, TType> func, Func<TType, bool> result, int value = 1000)
+        {
+            var dateTime = DateTime.Now.Add(TimeSpan.FromMilliseconds(value));
+            TType type;
+            do
+            {
+                type = func(webApiIntegrationTests);
+                if (result(type))
+                {
+                    return type;
+                }
+                Thread.Sleep(200);
+            } while (DateTime.Now < dateTime);
+            return type;
+        }
+    }
 }

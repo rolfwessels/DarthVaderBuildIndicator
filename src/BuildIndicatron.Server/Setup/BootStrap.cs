@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
@@ -7,6 +9,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using Autofac.Integration.WebApi;
+using BuildIndicatron.Core;
 using BuildIndicatron.Server.Setup.Filters;
 using log4net;
 using Owin;
@@ -30,26 +33,28 @@ namespace BuildIndicatron.Server.Setup
 					ConfigureWebApi(app);
 					ConfigureIndexResponse(app);
 				    _slackBotServer = new SlackBotServer("xoxb-42965609527-M9RP4uNdgHAftOhkysFNms4S");
+//                    _slackBotServer = new SlackBotServer("xoxb-44517262306-1Sgod52dMAcPi0lyl0suoQxY");
                     _slackBotServer.ContinueslyTryToConnect().ContinueWith(task =>
                     {
-                        var localIpAddress = GetLocalIPAddress();
-                        if (localIpAddress != "192.168.1.12")
-                        _slackBotServer.SayTo("@rolf", "I'm on " + localIpAddress);
+                        var localIpAddress = GetLocalIpAddresses().ToArray();
+                        if (!localIpAddress.Any(x => x.Contains("192.168.1")))
+                        _slackBotServer.SayTo("@rolf", "I'm on " + localIpAddress.StringJoin(" or "));
                     });
+                    
 				}
 			}
 		}
-        public static string GetLocalIPAddress()
+
+        public static IEnumerable<string> GetLocalIpAddresses()
         {
             var host = Dns.GetHostEntry(Dns.GetHostName());
             foreach (var ip in host.AddressList)
             {
                 if (ip.AddressFamily == AddressFamily.InterNetwork)
                 {
-                    return ip.ToString();
+                    yield return ip.ToString();
                 }
             }
-            throw new Exception("Local IP Address Not Found!");
         }
 	  
 	    #region Private Methods

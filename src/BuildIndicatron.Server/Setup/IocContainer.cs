@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Autofac;
 using Autofac.Integration.WebApi;
@@ -54,6 +55,11 @@ namespace BuildIndicatron.Server.Setup
 			       .As<IDownloadToFile>()
 			       .WithParameter("tempPath", Settings.Default.SpeachTempFileLocation);
 			builder.RegisterType<Stage>().As<IStage>().SingleInstance();
+            builder.Register(context => new Factory(Instance)).As<IFactory>().SingleInstance();
+            builder.RegisterAssemblyTypes(typeof(IFactory).Assembly)
+                   .Where(t => t.GetInterfaces()
+                    .Any(i => i.IsAssignableFrom(typeof(IReposonseFlow))))
+                   .AsSelf().SingleInstance();
 			builder.RegisterType<SequencesFactory>();
             builder.RegisterType<ChatBot>().As<IChatBot>();
 			builder.RegisterType<SequencePlayer>().As<ISequencePlayer>();
@@ -146,5 +152,26 @@ namespace BuildIndicatron.Server.Setup
 		}
 
 		#endregion
+
+        public class Factory: IFactory
+        {
+            private readonly IContainer _container;
+
+            public Factory(IContainer container)
+            {
+                _container = container;
+            }
+
+            #region Implementation of IFactory
+
+            public T Resolve<T>()
+            {
+                return _container.Resolve<T>();
+            }
+
+            #endregion
+        }
 	}
+
+    
 }

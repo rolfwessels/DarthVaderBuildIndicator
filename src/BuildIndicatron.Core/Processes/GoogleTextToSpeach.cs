@@ -23,12 +23,12 @@ namespace BuildIndicatron.Core.Processes
 
 		#region Implementation of ITextToSpeech
 
-		public void Play(string text)
+		public Task Play(string text)
 		{
-			Play(text, _mp3Player);
+			return Play(text, _mp3Player);
 		}
 
-		public void Play(string text, IMp3Player voiceEnhancer)
+		public async Task Play(string text, IMp3Player voiceEnhancer)
 		{
 			var stringToSends = Split(text).ToArray();
 			var tasks = stringToSends.Select(stringToSend => Task.Run(() =>
@@ -37,7 +37,7 @@ namespace BuildIndicatron.Core.Processes
 					_log.Debug(string.Format("GoogleTextToSpeach:Play Download [{0}]", uri));
 					return _downloader.DownloadToTempFile(uri, stringToSend);
 				})).ToList();
-
+            await Task.WhenAny(tasks);
 			foreach (var task in tasks)
 			{
 				voiceEnhancer.PlayFile(task.Result);

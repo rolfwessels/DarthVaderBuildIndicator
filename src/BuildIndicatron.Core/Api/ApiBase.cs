@@ -3,42 +3,37 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.NetworkInformation;
 using System.Reflection;
-
-
 using RestSharp;
-
 #if WINDOWS_PHONE
 using BuildIndicatron.App.Core.Log;
 using BuildIndicatron.App.Core.Task;
 #else
 using log4net;
 using System.Threading.Tasks;
-#endif
 
+#endif
 
 namespace BuildIndicatron.Core.Api
 {
     public class ApiBase
     {
+        private const string ApplicationJson = "application/json";
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         protected readonly RestClient Client;
-        private const string ApplicationJson = "application/json";
 
         public ApiBase(string hostApi, string username = null, string password = null)
         {
-            
             Client = new RestClient(hostApi);
             if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
                 Client.Authenticator = new HttpBasicAuthenticator(username, password);
         }
 
 
-        protected RestRequest GetRestRequest(string uri,  Method method , object requestObject = null)
+        protected RestRequest GetRestRequest(string uri, Method method, object requestObject = null)
         {
-            var request = new RestRequest(uri, method) { RequestFormat = DataFormat.Json };
-            
+            var request = new RestRequest(uri, method) {RequestFormat = DataFormat.Json};
+
             request.AddHeader("Accept", ApplicationJson);
             //add post information
             if (method == Method.POST)
@@ -50,65 +45,69 @@ namespace BuildIndicatron.Core.Api
                 }
             }
             return request;
-            
         }
 
-        
 
         protected Task<T> ProcessDefaultRequest<T>(IRestRequest request)
-            where T :  new()
+            where T : new()
         {
             var stopwatch = new Stopwatch();
-            var buildUri = Client.BuildUri(request);
-            _log.Debug(string.Format("ApiBase:ProcessDefaultRequest {0} {1} [{2}]", request.Method, buildUri, request.Parameters.FirstOrDefault(x=>x.Name == ApplicationJson)));
+            Uri buildUri = Client.BuildUri(request);
+            _log.Debug(string.Format("ApiBase:ProcessDefaultRequest {0} {1} [{2}]", request.Method, buildUri,
+                request.Parameters.FirstOrDefault(x => x.Name == ApplicationJson)));
             stopwatch.Start();
             var taskCompletionSource = new TaskCompletionSource<T>();
-            
-            RestClientExtensions.ExecuteAsync<T>(Client, request, response =>
+
+            Client.ExecuteAsync<T>(request, response =>
+            {
+                Exception errorException = null;
+                try
                 {
-                    Exception errorException = null;
-                    try
+                    stopwatch.Stop();
+                    _log.Debug(string.Format("ApiBase:ProcessDefaultRequest Content {0} [RequestTime:{1}] [{2}]",
+                        buildUri, stopwatch.ElapsedMilliseconds, response.Content));
+                    if (response.ErrorException == null && response.StatusCode == HttpStatusCode.OK)
                     {
-                        stopwatch.Stop();
-                        _log.Debug(string.Format("ApiBase:ProcessDefaultRequest Content {0} [RequestTime:{1}] [{2}]", buildUri, stopwatch.ElapsedMilliseconds, response.Content));
-                        if (response.ErrorException == null && response.StatusCode == HttpStatusCode.OK)
-                        {
-                            var result = response.Data;
-                            taskCompletionSource.SetResult(result);
-                        }
+                        T result = response.Data;
+                        taskCompletionSource.SetResult(result);
+                    }
+                    else
+                    {
+                        if (response.ErrorException != null) errorException = response.ErrorException;
+                        else if (!string.IsNullOrEmpty(response.ErrorMessage))
+                            throw new Exception(response.ErrorMessage);
                         else
-                        {
-                            if (response.ErrorException != null) errorException = response.ErrorException;
-                            else if (!string.IsNullOrEmpty(response.ErrorMessage)) throw new Exception(response.ErrorMessage);
-                            else
-                                throw new Exception(string.Format("Status code returned = [{0} {1}]", (int) response.StatusCode, response.StatusCode));
-                        }
+                            throw new Exception(string.Format("Status code returned = [{0} {1}]",
+                                (int) response.StatusCode, response.StatusCode));
                     }
-                    catch (Exception exception)
+                }
+                catch (Exception exception)
+                {
+                    errorException = exception;
+                }
+                finally
+                {
+                    if (errorException != null)
                     {
-                        errorException = exception;
-                    
+                        _log.Warn("ApiBase:ProcessDefaultRequest " + errorException.Message, errorException);
+                        taskCompletionSource.TrySetException(errorException);
                     }
-                    finally
-                    {
-                        if (errorException != null)
-                        {
-                            _log.Warn("ApiBase:ProcessDefaultRequest " + errorException.Message, errorException);
-                            taskCompletionSource.TrySetException(errorException);
-                        }
-                    }
-                });
+                }
+            });
             return taskCompletionSource.Task;
         }
 
         protected void AddFile(string inputFile, RestRequest restRequest)
         {
-            restRequest.AddFile(Path.GetFileNameWithoutExtension(inputFile), (byte[]) ReadToEnd(inputFile), Path.GetFileName(inputFile), MimeHelper.GetMimeType(Path.GetExtension(inputFile)));
+            restRequest.AddFile(Path.GetFileNameWithoutExtension(inputFile), ReadToEnd(inputFile),
+                Path.GetFileName(inputFile), MimeHelper.GetMimeType(Path.GetExtension(inputFile)));
         }
+
+        #region Private Methods
 
         private byte[] ReadToEnd(string fileName)
         {
-            using (var stream = File.OpenRead(fileName))
+            using (FileStream stream = File.OpenRead(fileName))
             {
                 var readBuffer = new byte[4096];
                 int totalBytesRead = 0;
@@ -123,9 +122,9 @@ namespace BuildIndicatron.Core.Api
                         int nextByte = stream.ReadByte();
                         if (nextByte != -1)
                         {
-                            var temp = new byte[readBuffer.Length * 2];
+                            var temp = new byte[readBuffer.Length*2];
                             Buffer.BlockCopy(readBuffer, 0, temp, 0, readBuffer.Length);
-                            Buffer.SetByte(temp, totalBytesRead, (byte)nextByte);
+                            Buffer.SetByte(temp, totalBytesRead, (byte) nextByte);
                             readBuffer = temp;
                             totalBytesRead++;
                         }
@@ -141,5 +140,7 @@ namespace BuildIndicatron.Core.Api
                 return buffer;
             }
         }
+
+        #endregion
     }
 }

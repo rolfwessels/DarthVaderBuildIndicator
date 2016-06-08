@@ -1,4 +1,5 @@
-﻿using BuildIndicatron.Core.Processes;
+﻿using System.Threading.Tasks;
+using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Shared.Enums;
 using BuildIndicatron.Shared.Models.Composition;
 using Moq;
@@ -59,7 +60,7 @@ namespace BuildIndicatron.Tests.Processes
 		{
 			// arrange
 			Setup();
-			_mockITextToSpeech.Setup(mc => mc.Play("Help" ,_mockIVoiceEnhancer.Object));
+            _mockITextToSpeech.Setup(mc => mc.Play("Help", _mockIVoiceEnhancer.Object)).Returns(Task.FromResult(true));
 			var sequences = new SequencesText2Speech() { Text = "Help"};
 			// action
 			_sequencePlayerTests.Play(sequences);
@@ -71,7 +72,7 @@ namespace BuildIndicatron.Tests.Processes
 		{
 			// arrange
 			Setup();
-			_mockITextToSpeech.Setup(mc => mc.Play("Help"));
+            _mockITextToSpeech.Setup(mc => mc.Play("Help")).Returns(Task.FromResult(true));
 			var sequences = new SequencesText2Speech() { Text = "Help" ,DisableTransform = true};
 			// action
 			_sequencePlayerTests.Play(sequences);
@@ -109,7 +110,7 @@ namespace BuildIndicatron.Tests.Processes
 			// arrange
 			Setup();
 			var sequences = new SequencesInsult();
-			_mockITextToSpeech.Setup(mc => mc.Play(It.IsAny<string>(), _mockIVoiceEnhancer.Object));
+            _mockITextToSpeech.Setup(mc => mc.Play(It.IsAny<string>(), _mockIVoiceEnhancer.Object)).Returns(Task.FromResult(true));
 			// action
 			_sequencePlayerTests.Play(sequences);
 			// assert
@@ -120,7 +121,7 @@ namespace BuildIndicatron.Tests.Processes
 		{
 			// arrange
 			Setup();
-			_mockITextToSpeech.Setup(mc => mc.Play(It.IsAny<string>(), _mockIVoiceEnhancer.Object));
+			_mockITextToSpeech.Setup(mc => mc.Play(It.IsAny<string>(), _mockIVoiceEnhancer.Object)).Returns(Task.FromResult(true));
 			var sequences = new SequencesOneLiner();
 			// action
 			_sequencePlayerTests.Play(sequences);
@@ -145,7 +146,7 @@ namespace BuildIndicatron.Tests.Processes
 			// arrange
 			Setup();
 			var sequences = new SequencesQuotes();
-			_mockITextToSpeech.Setup(mc => mc.Play(It.IsAny<string>(), _mockIVoiceEnhancer.Object));
+            _mockITextToSpeech.Setup(mc => mc.Play(It.IsAny<string>(), _mockIVoiceEnhancer.Object)).Returns(Task.FromResult(true));
 			// action
 			_sequencePlayerTests.Play(sequences);
 			// assert
