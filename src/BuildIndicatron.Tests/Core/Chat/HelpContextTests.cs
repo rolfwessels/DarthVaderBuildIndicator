@@ -1,9 +1,8 @@
 ﻿using System.Threading.Tasks;
-using BuildIndicatron.Tests.Core.Chat;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace BuildIndicatron.Tests.Chat
+namespace BuildIndicatron.Tests.Core.Chat
 {
     [TestFixture]
     public class HelpContextTests : ChatBotTestsBase
