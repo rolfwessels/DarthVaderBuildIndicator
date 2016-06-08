@@ -1,4 +1,3 @@
-using System.ComponentModel;
 using System.Threading.Tasks;
 
 namespace BuildIndicatron.Core.Chat
@@ -7,11 +6,10 @@ namespace BuildIndicatron.Core.Chat
     {
         private readonly ChatContextHolder _chatContextHolder;
 
-        public ChatBot(IFactory factory)
+        public ChatBot(IInjector injector)
         {
-            _chatContextHolder = new ChatContextHolder(factory)
-                .ListenTo<LightsContext>()
-                .ListenTo<SayContext>()
+            _chatContextHolder = new ChatContextHolder(injector)
+                .ListenTo<SetIoContext>()
                 .ListenTo<HelpContext>()
                 .ListenTo<RandomJokeResponse>();
         }
