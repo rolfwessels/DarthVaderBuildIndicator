@@ -8,8 +8,9 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
+using Autofac;
 using Autofac.Integration.WebApi;
-using BuildIndicatron.Core;
+using BuildIndicatron.Core.Chat;
 using BuildIndicatron.Server.Setup.Filters;
 using log4net;
 using Owin;
@@ -129,7 +130,5 @@ namespace BuildIndicatron.Server.Setup
 		}
 
 		#endregion
-
-		
 	}
 }

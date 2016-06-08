@@ -1,35 +1,35 @@
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Threading.Tasks;
 
 namespace BuildIndicatron.Core.Chat
 {
     public class ChatContextHolder
     {
-        private readonly IFactory _factory;
+        private readonly IInjector _injector;
         private readonly List<IReposonseFlow> _responseFlows = new List<IReposonseFlow>();
 
-        public ChatContextHolder(IFactory factory)
+        public ChatContextHolder(IInjector injector)
         {
-            _factory = factory;
+            _injector = injector;
         }
 
-        public ChatContextHolder ListenTo<T>() where T : IReposonseFlow
+        public ChatContextHolder ListenTo<T>() 
         {
-            
-            _responseFlows.Add(_factory.Resolve<T>());
+            _responseFlows.Add( (IReposonseFlow) _injector.Resolve<T>());
             return this;
         }
 
         public async Task MessageIn(IMessageContext context)
         {
-            foreach (IReposonseFlow reposonseFlow in _responseFlows)
+            foreach (var reposonseFlow in _responseFlows)
             {
                 if (await reposonseFlow.CanRespond(context))
                 {
-                    await reposonseFlow.Respond(this, context);
+                    await reposonseFlow.Respond(this,context);
+                    break;
                 }
             }
+            
         }
     }
 }

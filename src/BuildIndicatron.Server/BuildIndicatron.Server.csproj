@@ -109,6 +109,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Setup\AutofacInjector.cs" />
     <Compile Include="Setup\BootStrap.cs" />
     <Compile Include="Setup\Filters\CacheControl.cs" />
     <Compile Include="Setup\Filters\TraceExceptionLogger.cs" />

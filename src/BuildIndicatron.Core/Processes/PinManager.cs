@@ -40,8 +40,7 @@ namespace BuildIndicatron.Core.Processes
 			}
 
 			foreach (var target in gpioConfiguration.Buttons)
-			{
-				
+			{	
 				var processorPin = GetPin(target.Pin);
 				_pins.Add(PinName.MainButton, processorPin);
 				_log.Info(string.Format("Add pin Input {0}", PinName.MainButton));

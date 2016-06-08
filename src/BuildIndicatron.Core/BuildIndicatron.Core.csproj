@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BuildIndicatron.Core</RootNamespace>
     <AssemblyName>BuildIndicatron.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -101,12 +101,13 @@
     <Compile Include="Chat\HelpContext.cs" />
     <Compile Include="Chat\IChatBot.cs" />
     <Compile Include="Chat\IFactory.cs" />
+    <Compile Include="Chat\IFlowHelp.cs" />
+    <Compile Include="Chat\IInjector.cs" />
     <Compile Include="Chat\IMessageContext.cs" />
     <Compile Include="Chat\IReposonseFlow.cs" />
     <Compile Include="Chat\RandomJokeResponse.cs" />
     <Compile Include="Chat\ReposonseFlowBase.cs" />
-    <Compile Include="Chat\SayContext.cs" />
-    <Compile Include="Chat\LightsContext.cs" />
+    <Compile Include="Chat\SetIoContext.cs" />
     <Compile Include="EnumerableHelper.cs" />
     <Compile Include="Helpers\DebugHelper.cs" />
     <Compile Include="Helpers\IntegegerHelper.cs" />
@@ -155,6 +156,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
