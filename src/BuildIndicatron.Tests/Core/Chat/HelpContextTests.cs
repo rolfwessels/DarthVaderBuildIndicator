@@ -1,29 +1,26 @@
 ﻿using System.Threading.Tasks;
-using BuildIndicatron.Core.Chat;
-using BuildIndicatron.Server.Setup;
+using BuildIndicatron.Tests.Core.Chat;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace BuildIndicatron.Tests.Core.Chat
+namespace BuildIndicatron.Tests.Chat
 {
     [TestFixture]
     public class HelpContextTests : ChatBotTestsBase
     {
-        #region Setup/Teardown
 
-        #endregion
-        
+
         [Test]
-        public async Task Process_GivenHelpMessage_ShouldProcessMessage()
+        public async Task Process_GivenMessage_ShouldRespond()
         {
             // arrange
             Setup();
-            var messageContext = new MessageContext("help me out");
             // action
-            await _chatBot.Process(messageContext);
+            var sampleMessage = new MessageContext("help me out");
+            await _chatBot.Process(sampleMessage);
             // assert
-            messageContext.LastMessages.Should().Contain("helping you now");
+            sampleMessage.LastMessages.Should().Contain(x => x.Contains("help"));
         }
-        
+
     }
 }

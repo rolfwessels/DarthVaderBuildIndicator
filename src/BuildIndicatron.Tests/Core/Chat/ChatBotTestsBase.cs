@@ -16,7 +16,7 @@ namespace BuildIndicatron.Tests.Core.Chat
         protected ChatBot _chatBot;
         private IContainer _container;
         protected Mock<ITextToSpeech> _mockITextToSpeech;
-        private Mock<IPinManager> _mockIPinManager;
+        protected Mock<IPinManager> _mockIPinManager;
 
         public virtual void Setup()
         {

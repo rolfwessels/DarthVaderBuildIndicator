@@ -102,10 +102,11 @@
     <Compile Include="..\BuildIndicatron.Console\Properties\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Chat\ChatBotTests.cs" />
-    <Compile Include="Chat\ChatBotTestsBase.cs" />
-    <Compile Include="Chat\HelpContextTests.cs" />
-    <Compile Include="Chat\SetIoContextTests.cs" />
+    <Compile Include="Core\Chat\HelpContextTests.cs" />
+    <Compile Include="Core\Chat\SetIoContextTests.cs" />
+    <Compile Include="Core\Chat\ChatBotTestsBase.cs" />
+    <Compile Include="Core\Chat\LightsContextTests.cs" />
+    <Compile Include="Core\Chat\SayContextTests.cs" />
     <Compile Include="IntegrationTests\Config.cs" />
     <Compile Include="IntegrationTests\JenkensApiTests.cs" />
     <Compile Include="IntegrationTests\BuildIndicationApiTest.cs" />

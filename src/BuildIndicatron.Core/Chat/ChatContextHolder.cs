@@ -5,17 +5,17 @@ namespace BuildIndicatron.Core.Chat
 {
     public class ChatContextHolder
     {
-        private readonly IInjector _injector;
+        private readonly IFactory _injector;
         private readonly List<IReposonseFlow> _responseFlows = new List<IReposonseFlow>();
 
-        public ChatContextHolder(IInjector injector)
+        public ChatContextHolder(IFactory injector)
         {
             _injector = injector;
         }
 
-        public ChatContextHolder ListenTo<T>() 
+        public ChatContextHolder ListenTo<T>() where T : IReposonseFlow
         {
-            _responseFlows.Add( (IReposonseFlow) _injector.Resolve<T>());
+            _responseFlows.Add(_injector.Resolve<T>());
             return this;
         }
 

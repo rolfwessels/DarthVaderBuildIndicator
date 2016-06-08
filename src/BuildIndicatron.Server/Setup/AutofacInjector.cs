@@ -3,7 +3,7 @@ using BuildIndicatron.Core.Chat;
 
 namespace BuildIndicatron.Server.Setup
 {
-    public class AutofacInjector : IInjector
+    public class AutofacInjector : IFactory
     {
         private readonly IContainer _build;
 
