@@ -134,7 +134,7 @@ namespace BuildIndicatron.Tests.Processes
 			Setup();
 			_mockISoundFilePicker.Setup(mc => mc.PickFile("Test"))
 			 .Returns("file");
-			_mockIMp3Player.Setup(mc => mc.PlayFile("file"));
+            _mockIMp3Player.Setup(mc => mc.PlayFile("file")).Returns(Task.FromResult(true)); ;
 			var sequences = new SequencesPlaySound() { File = "Test" };
 			// action
 			_sequencePlayerTests.Play(sequences);

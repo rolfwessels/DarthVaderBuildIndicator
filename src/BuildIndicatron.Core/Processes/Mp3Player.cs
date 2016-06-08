@@ -1,7 +1,6 @@
-﻿using System.Diagnostics;
-using System.IO;
-using System.Media;
+﻿using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 using BuildIndicatron.Core.Helpers;
 using log4net;
 
@@ -22,12 +21,15 @@ namespace BuildIndicatron.Core.Processes
 
 		#region Implementation of IMp3Player
 
-		public void PlayFile(string fileName)
+		public Task PlayFile(string fileName)
 		{
-			var fullPath = Path.GetFullPath(fileName).AsPath();
-			_log.Info("Player: "+string.Format(_player, fullPath).Replace("|"," "));
-			var playerCommand = _player.Split('|');
-			ProcessHelper.Run(playerCommand[0], string.Format(playerCommand[1], fullPath));
+			return Task.Run(() =>
+			{
+			    var fullPath = Path.GetFullPath(fileName).AsPath();
+			    _log.Info("Player: "+string.Format(_player, fullPath).Replace("|"," "));
+			    var playerCommand = _player.Split('|');
+			    ProcessHelper.Run(playerCommand[0], string.Format(playerCommand[1], fullPath));
+			});
 		}
 
 		#endregion

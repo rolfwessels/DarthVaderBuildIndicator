@@ -11,9 +11,12 @@ namespace BuildIndicatron.Server.Fakes
 
         #region Implementation of IMp3Player
 
-        public void PlayFile(string fileName)
+        public Task PlayFile(string fileName)
         {
-            _log.Info(string.Format("PLAYING: {0}", fileName));
+            return Task.Run(() =>
+            {
+                _log.Info(string.Format("PLAYING: {0}", fileName));
+            });
         }
 
         #endregion

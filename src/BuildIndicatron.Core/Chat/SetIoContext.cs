@@ -1,10 +1,12 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Shared.Enums;
 
 namespace BuildIndicatron.Core.Chat
 {
-    public class SetIoContext : ReposonseFlowBase, IReposonseFlow, IFlowHelp
+    public class SetIoContext : ReposonseFlowBase, IReposonseFlow, IWithHelpText
     {
         private readonly LightPin[] _lights;
         private readonly IPinManager _pinManager;
@@ -40,11 +42,30 @@ namespace BuildIndicatron.Core.Chat
 
             public void Set(string text, IPinManager c)
             {
-                text = text.ToLower();
-                if (text.Contains(_section))
+                if (ContainsSection(text))
                 {
-                    c.SetPin(_pin, text.Contains(_color));
+                    c.SetPin(_pin, IsOn(text));
                 }
+            }
+
+            public bool IsOn(string text)
+            {
+                return text.ToLower().Contains(_color);
+            }
+
+            public bool ContainsSection(string text)
+            {
+                return text.ToLower().Contains(_section);
+            }
+
+            public string Section
+            {
+                get { return _section; }
+            }
+
+            public string Color
+            {
+                get { return _color; }
             }
         }
 
@@ -54,7 +75,7 @@ namespace BuildIndicatron.Core.Chat
 
         public Task<bool> CanRespond(IMessageContext context)
         {
-            return Task.FromResult(IsDirectedAtMe(context) && ContainsText(context, "set"));
+            return Task.FromResult(IsDirectedAtMe(context) && ContainsText(context, "set") && ContainsText(context, "light"));
         }
 
         public Task Respond(ChatContextHolder chatContextHolder, IMessageContext context)
@@ -65,17 +86,19 @@ namespace BuildIndicatron.Core.Chat
                 {
                     pin.Set(context.Text, _pinManager);
                 }
-                context.Respond("lights set");
+                var allOn = _lights.Where(x => x.ContainsSection(context.Text) && x.IsOn(context.Text)).ToArray();
+                context.Respond(string.Format("{0} {1} lights are not on", allOn.Select(x => x.Section).Distinct().StringJoin(), allOn.Select(x => x.Color).Distinct().StringJoin()));
             });
         }
 
         #endregion
 
-        #region Implementation of IFlowHelp
+     
+        #region Implementation of IWithHelpText
 
-        public string GetHelp()
+        public IEnumerable<HelpMessage> GetHelp()
         {
-            return "'set' '{section,secondary}' light '{green,red,blue,off}'";
+            yield return new HelpMessage() { Call = "set *{main,secondary}* light *{green,red,blue,off}*", Description = "Allow robot light up." };
         }
 
         #endregion

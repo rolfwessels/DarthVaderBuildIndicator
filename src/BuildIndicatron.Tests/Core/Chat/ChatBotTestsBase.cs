@@ -17,6 +17,8 @@ namespace BuildIndicatron.Tests.Core.Chat
         private IContainer _container;
         protected Mock<ITextToSpeech> _mockITextToSpeech;
         protected Mock<IPinManager> _mockIPinManager;
+        protected Mock<IMp3Player> _mockIMp3Player;
+        protected Mock<ISoundFilePicker> _mockISoundFilePicker;
 
         public virtual void Setup()
         {
@@ -34,8 +36,15 @@ namespace BuildIndicatron.Tests.Core.Chat
         {
             _mockITextToSpeech = new Mock<ITextToSpeech>();
             _mockIPinManager = new Mock<IPinManager>();
+            _mockIMp3Player = new Mock<IMp3Player>();
+            _mockISoundFilePicker = new Mock<ISoundFilePicker>(MockBehavior.Strict);
+            
+         
+            
             builder.Register(context => _mockITextToSpeech.Object).As<ITextToSpeech>();
             builder.Register(context => _mockIPinManager.Object).As<IPinManager>();
+            builder.Register(context => _mockIMp3Player.Object).As<IMp3Player>();
+            builder.Register(context => _mockISoundFilePicker.Object).As<ISoundFilePicker>();
         }
 
         private void DefaultRegsters(ContainerBuilder builder)
@@ -54,6 +63,8 @@ namespace BuildIndicatron.Tests.Core.Chat
         {
             _mockITextToSpeech.VerifyAll();
             _mockIPinManager.VerifyAll();
+            _mockIMp3Player.VerifyAll();
+            _mockISoundFilePicker.VerifyAll();
         }
 
         public class MessageContext : IMessageContext

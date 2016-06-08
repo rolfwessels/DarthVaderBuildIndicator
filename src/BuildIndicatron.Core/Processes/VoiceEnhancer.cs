@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 using BuildIndicatron.Core.Helpers;
 using log4net;
 
@@ -27,27 +28,31 @@ namespace BuildIndicatron.Core.Processes
 		
 		#region Implementation of IMp3Player
 
-		public void PlayFile(string fileName)
-		{
-			var fullPath = Path.GetFullPath(fileName).AsPath();
-			var backgroundFile = CreateBackgroundFile(_backgroundFile);
-			var replace = string.Format(_player, fullPath, backgroundFile);
-			_log.Info("Player: " + replace.Replace("|", " "));
-			ProcessHelper.Run(replace);
-		}
+	    public async Task PlayFile(string fileName)
+	    {
+	        var fullPath = Path.GetFullPath(fileName).AsPath();
+	        var backgroundFile = await CreateBackgroundFile(_backgroundFile);
+	        var replace = string.Format(_player, fullPath, backgroundFile);
+	        _log.Info("Player: " + replace.Replace("|", " "));
+	        ProcessHelper.Run(replace);
+	    }
 
-		#endregion
+	    #endregion
 
-		private string CreateBackgroundFile(string backgroundFile)
+		private Task<string> CreateBackgroundFile(string backgroundFile)
 		{
-			var newFile = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(backgroundFile),"background.mp3")).AsPath();
-			if (!File.Exists(newFile))
-			{
-				var replace = string.Format(_convert, backgroundFile, newFile);
-				_log.Info("Convert: " + replace.Replace("|", " "));
-				ProcessHelper.Run(replace);
-			}
-			return newFile;
+		    return Task.Run(() =>
+		    {
+		        var newFile = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(backgroundFile),"background.mp3")).AsPath();
+		        if (!File.Exists(newFile))
+		        {
+		            var replace = string.Format(_convert, backgroundFile, newFile);
+		            _log.Info("Convert: " + replace.Replace("|", " "));
+		            ProcessHelper.Run(replace);
+		        }
+		        return newFile;
+		    });
+
 		}
 	}
 }

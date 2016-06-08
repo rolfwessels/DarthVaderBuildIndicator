@@ -12,7 +12,7 @@ namespace BuildIndicatron.Tests.Core.Chat
         #endregion
         
         [Test]
-        public async Task Process_GivenHelpMessage_ShouldProcessMessage()
+        public async Task Process_GivenSayContext_ShouldResondWithSayContext()
         {
             // arrange
             Setup();

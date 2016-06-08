@@ -1,4 +1,5 @@
-﻿using BuildIndicatron.Core.Processes;
+﻿using System.Threading.Tasks;
+using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Server.Controllers;
 using BuildIndicatron.Server.Properties;
 using Moq;
@@ -59,7 +60,7 @@ namespace BuildIndicatron.Server.Tests.Controller
 		{
 			// arrange
 			Setup();
-			_mockIMp3Player.Setup(mc => mc.PlayFile(It.IsAny<string>()));
+			_mockIMp3Player.Setup(mc => mc.PlayFile(It.IsAny<string>())).Returns(Task.FromResult("ample"));
 			// action
 			var playMp3FileResponse = _soundPlayerController.Get(@"Start\Force.mp3");
 			// assert
@@ -71,7 +72,7 @@ namespace BuildIndicatron.Server.Tests.Controller
 		{
 			// arrange
 			Setup();
-			_mockIMp3Player.Setup(mc => mc.PlayFile(It.IsAny<string>()));
+            _mockIMp3Player.Setup(mc => mc.PlayFile(It.IsAny<string>())).Returns(Task.FromResult("ample")); ;
 			// action
 			var playMp3FileResponse = _soundPlayerController.Get("Start","Force.mp3");
 			// assert
@@ -84,7 +85,7 @@ namespace BuildIndicatron.Server.Tests.Controller
 		{
 			// arrange
 			Setup();
-			_mockIMp3Player.Setup(mc => mc.PlayFile(It.IsAny<string>()));
+            _mockIMp3Player.Setup(mc => mc.PlayFile(It.IsAny<string>())).Returns(Task.FromResult("ample")); ;
 			// action
 			var playMp3FileResponse = _soundPlayerController.Get(@"Start");
 			// assert

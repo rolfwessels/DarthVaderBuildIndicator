@@ -13,6 +13,10 @@ namespace BuildIndicatron.Core.Chat
             _injector = injector;
         }
 
+        public List<IReposonseFlow> All {
+            get { return _responseFlows; }
+        }
+
         public ChatContextHolder ListenTo<T>() where T : IReposonseFlow
         {
             _responseFlows.Add(_injector.Resolve<T>());
