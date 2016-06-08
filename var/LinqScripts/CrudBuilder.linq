@@ -5,8 +5,8 @@
 </Query>
 
 string  _location = @"..\..\src";
-string  _template = @"Config";
-string  _toName = @"Queue";
+string  _template = @"SayContext";
+string  _toName = @"LightsContext";
 string  _filter = "Man";
 string[]  _fileTypes = new [] { @".cs",".js",".html",".txt"};
 string[]  _exclude = new [] { @"bower_components" ,".OAuth2.","RequestClientDetailsHelper","Mappers\\MapClient.cs" , "Enums\\","node_modules","Configuration","Attribute"};

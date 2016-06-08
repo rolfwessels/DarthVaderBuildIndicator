@@ -23,4 +23,9 @@
   <UseCPUArchitecture>AutoDetect</UseCPUArchitecture>
   <MSTestThreadApartmentState>STA</MSTestThreadApartmentState>
   <BuildProcessArchitecture>x86</BuildProcessArchitecture>
+  <IgnoredTests>
+    <FixtureTestSelector>
+      <FixtureName>BuildIndicatron.Server.Tests.Integration.WebApiIntegrationTests</FixtureName>
+    </FixtureTestSelector>
+  </IgnoredTests>
 </ProjectConfiguration>

@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using log4net;
@@ -25,19 +23,20 @@ namespace BuildIndicatron.Core.Processes
 
 		#region Implementation of ITextToSpeech
 
-		public void Play(string text)
+		public Task Play(string text)
 		{
-			Play(text, _mp3Player);
+			return Play(text, _mp3Player);
 		}
 
-		public void Play(string text, IMp3Player voiceEnhancer)
+        public Task Play(string text, IMp3Player voiceEnhancer)
 		{
-
-            var uri = new Uri(string.Format(UriToDownload, _key, Uri.EscapeUriString(text)));
-            _log.Debug(string.Format("VoiceRss:Play Download [{0}]", uri));
-		    var downloadToTempFile = _downloader.DownloadToTempFile(uri, text);
-            voiceEnhancer.PlayFile(downloadToTempFile);
-		
+            return Task.Run(() =>
+            {
+                var uri = new Uri(string.Format(UriToDownload, _key, Uri.EscapeUriString(text)));
+                _log.Debug(string.Format("VoiceRss:Play Download [{0}]", uri));
+                var downloadToTempFile = _downloader.DownloadToTempFile(uri, text);
+                voiceEnhancer.PlayFile(downloadToTempFile);
+            });
 		}
 
 		#endregion

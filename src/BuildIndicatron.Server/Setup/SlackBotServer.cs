@@ -23,11 +23,12 @@ namespace BuildIndicatron.Server.Setup
 
         public  SlackBotServer(string apiToken)
         {
+
             _apiToken = apiToken;
             _connector = new SlackConnector.SlackConnector();
             _chatBot = IocContainer.Instance.Resolve<IChatBot>();
         }
-
+        
         public  async Task<bool> ContinueslyTryToConnect()
         {
             bool connected = false;
@@ -41,7 +42,7 @@ namespace BuildIndicatron.Server.Setup
             return true;
         }
 
-        public async Task<bool> Connect()
+        public async Task<bool> Connect()   
         {
             ServicePointManager.ServerCertificateValidationCallback +=
                 (sender, certificate, chain, policyErrors) => { return true; };
@@ -104,29 +105,6 @@ namespace BuildIndicatron.Server.Setup
             await ContinueslyTryToConnect();
             if (chatHub != null)
             await _connection.Say(new BotMessage() {ChatHub = chatHub, Text = message});
-        }
-    }
-
-    internal class SlackBotMessageContext : IMessageContext
-    {
-        private readonly SlackBotServer _slackBotServer;
-        private readonly SlackMessage _message;
-
-        public SlackBotMessageContext(SlackBotServer slackBotServer, SlackMessage message)
-        {
-            _slackBotServer = slackBotServer;
-            _message = message;
-        }
-
-        public string Text { get; set; }
-        public bool IsDirectedAtMe {
-            get { return _message.MentionsBot || _message.ChatHub.Type == SlackChatHubType.DM; }
-        }
-
-        public Task Respond(string message)
-        {
-
-            return _slackBotServer.SayTo(_message.ChatHub, message);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using BuildIndicatron.Core.Api;
-using RestSharp;
 using log4net;
 
 namespace BuildIndicatron.Server.Tests.Base

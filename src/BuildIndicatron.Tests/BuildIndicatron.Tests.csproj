@@ -55,6 +55,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FluentAssertions, Version=3.1.229.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\FluentAssertions.3.1.229\lib\net45\FluentAssertions.dll</HintPath>
@@ -74,11 +78,20 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Raspberry.IO.GeneralPurpose, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\Raspberry.IO.GeneralPurpose.2.0.1\lib\net40\Raspberry.IO.GeneralPurpose.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Raspberry.System, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\Raspberry.System.1.2.0\lib\net40\Raspberry.System.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="RestSharp, Version=104.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -90,6 +103,10 @@
     <Compile Include="..\BuildIndicatron.Console\Properties\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Core\Chat\HelpContextTests.cs" />
+    <Compile Include="Core\Chat\ChatBotTestsBase.cs" />
+    <Compile Include="Core\Chat\SayContextTests.cs" />
+    <Compile Include="Core\Chat\LightsContextTests.cs" />
     <Compile Include="IntegrationTests\Config.cs" />
     <Compile Include="IntegrationTests\JenkensApiTests.cs" />
     <Compile Include="IntegrationTests\BuildIndicationApiTest.cs" />
@@ -108,6 +125,10 @@
     <ProjectReference Include="..\BuildIndicatron.Core\BuildIndicatron.Core.csproj">
       <Project>{3AD64C9F-AF4A-4382-BFCF-D8A48BEEE090}</Project>
       <Name>BuildIndicatron.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BuildIndicatron.Server\BuildIndicatron.Server.csproj">
+      <Project>{4B9E1B5D-4095-4B31-B91C-E79155A534A2}</Project>
+      <Name>BuildIndicatron.Server</Name>
     </ProjectReference>
     <ProjectReference Include="..\BuildIndicatron.Shared\BuildIndicatron.Shared.csproj">
       <Project>{A5B3824B-DE19-4A94-A7DA-5D1BBC6CBD95}</Project>

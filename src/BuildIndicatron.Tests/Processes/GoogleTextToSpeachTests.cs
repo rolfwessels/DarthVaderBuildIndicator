@@ -45,7 +45,7 @@ namespace BuildIndicatron.Server.Process
 			 .Returns("file.file");
 			_mockIMp3Player.Setup(mc => mc.PlayFile("file.file"));
 			// action
-			_googleTextToSpeach.Play("your mother");
+            _googleTextToSpeach.Play("your mother").Wait();
 			// assert
 		}
 		
@@ -55,9 +55,9 @@ namespace BuildIndicatron.Server.Process
 			// arrange
 			Setup();
 			_mockIDownloadToFile.Setup(mc => mc.DownloadToTempFile(It.IsAny<Uri>(), It.IsAny<string>())).Returns("file.file");
-			_mockIMp3Player.Setup(mc => mc.PlayFile("file.file"));
+            _mockIMp3Player.Setup(mc => mc.PlayFile("file.file"));
 			// action
-			_googleTextToSpeach.Play(_longString);
+			_googleTextToSpeach.Play(_longString).Wait();
 			// assert
 			_mockIDownloadToFile.Verify(mc => mc.DownloadToTempFile(It.IsAny<Uri>(), It.IsAny<string>()),Times.Exactly(3));
 		}

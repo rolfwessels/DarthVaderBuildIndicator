@@ -123,11 +123,11 @@ namespace BuildIndicatron.Core.Processes
 		{
 			if (!disableTransform)
 			{
-				_textToSpeech.Play(text, _voiceEnhancer);
+				_textToSpeech.Play(text, _voiceEnhancer).Wait();
 			}
 			else
 			{
-				_textToSpeech.Play(text);
+                _textToSpeech.Play(text).Wait();
 			}
 		}
 	}
