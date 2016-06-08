@@ -1,13 +1,11 @@
 using System;
-using System.Linq;
 using System.Reflection;
 using BuildIndicatron.Core.Processes;
-using FluentAssertions;
+using log4net;
 using Moq;
 using NUnit.Framework;
-using log4net;
 
-namespace BuildIndicatron.Server.Process
+namespace BuildIndicatron.Tests.Processes
 {
 	[TestFixture]
 	public class VoiceRssTests

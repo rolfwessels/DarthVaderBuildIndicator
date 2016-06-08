@@ -4,7 +4,7 @@ using BuildIndicatron.Core.Processes;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace BuildIndicatron.Server.Process
+namespace BuildIndicatron.Tests.Processes
 {
 	[TestFixture]
 	public class DownloadToFileTests
