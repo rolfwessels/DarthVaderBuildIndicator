@@ -22,4 +22,6 @@ namespace BuildIndicatron.Core.Chat
             return context.IsDirectedAtMe;
         }
     }
+
+    
 }
