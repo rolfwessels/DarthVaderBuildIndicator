@@ -1,13 +1,15 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Core.Settings;
+using BuildIndicatron.Core.SimpleTextSplit;
 
 namespace BuildIndicatron.Core.Chat
 {
-    public class SetSettingsContext : ReposonseFlowBase, IReposonseFlow, IWithHelpText
+
+    public class SetSettingsContext : TextSplitterContextBase<SetSettingsContext.SettingChange>, IReposonseFlow, IWithHelpText
     {
         private readonly ISettingsManager _settingsContext;
+        private TextSplitter<SettingChange> _textSplitter;
 
 
         public SetSettingsContext(ISettingsManager settingsContext)
@@ -17,16 +19,37 @@ namespace BuildIndicatron.Core.Chat
 
         #region Implementation of IReposonseFlow
 
-        public Task<bool> CanRespond(IMessageContext context)
+        protected override void Apply(TextSplitter<SettingChange> textSplitter)
         {
-            return Task.FromResult(IsDirectedAtMe(context) && StartsWith(context, "set setting"));
+            textSplitter
+                .Map(@"set setting (?<key>WORD) (?<value>ANYTHING)")
+                .Map(@"set setting (?<key>WORD)")
+                .Map(@"set setting"); 
         }
-
-        public Task Respond(ChatContextHolder chatContextHolder, IMessageContext context)
+        
+        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, SettingChange settingChange)
         {
-            var extractStartsWith = ExtractStartsWith(context, "say");
-            
-            return context.Respond(extractStartsWith);
+            if (string.IsNullOrEmpty(settingChange.Key))
+            {
+                await context.Respond("what is the key?");
+                var quickTextSplitterContext = new QuickTextSplitterContext<SettingChange>(settingChange,
+                    x => x.Map(@"(?<key>WORD)"),Response);
+                chatContextHolder.AddOneTime(quickTextSplitterContext);
+            }
+            else if (string.IsNullOrEmpty(settingChange.Value))
+            {
+                await context.Respond("what is the value?");
+
+                chatContextHolder.AddOneTime(new QuickTextSplitterContext<SettingChange>(settingChange,
+                    x => x.Map(@"(?<value>ANYTHING)"), Response));
+            }
+            else
+            {
+                _settingsContext.Set(settingChange.Key, settingChange.Value);
+                await
+                    context.Respond(string.Format("setting *{0}* to *{1}*", settingChange.Key,
+                        settingChange.Value));
+            }
         }
 
         #endregion
@@ -39,5 +62,13 @@ namespace BuildIndicatron.Core.Chat
         }
 
         #endregion
+
+        public class SettingChange
+        {
+            public string Key { get; set; }
+            public string Value { get; set; }
+        }
     }
+
+    
 }

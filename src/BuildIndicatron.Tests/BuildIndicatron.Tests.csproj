@@ -111,7 +111,7 @@
     <Compile Include="Core\Chat\SaySomethingTests.cs" />
     <Compile Include="Core\Chat\SetVolumeContextTests.cs" />
     <Compile Include="Core\Settings\SettingsManagerTests.cs" />
-    <Compile Include="Core\SimpleTextSplit\SimpleTextSplitter.cs" />
+    <Compile Include="Core\SimpleTextSplit\SimpleTextSplitterTests.cs" />
     <Compile Include="IntegrationTests\Config.cs" />
     <Compile Include="IntegrationTests\JenkensApiTests.cs" />
     <Compile Include="IntegrationTests\BuildIndicationApiTest.cs" />

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace BuildIndicatron.Core.Chat
@@ -17,12 +18,15 @@ namespace BuildIndicatron.Core.Chat
                 .ListenTo<HelpContext>()
                 .ListenTo<AboutContext>()
                 .ListenTo<RandomJokeResponse>();
+            
         }
 
+        
         #region Implementation of IChatBot
 
         public Task Process(IMessageContext context)
         {
+            
             return _chatContextHolder.MessageIn(context);
         }
 
