@@ -19,12 +19,25 @@ namespace BuildIndicatron.Core.Chat
             _response = response;
         }
 
+        public T Value { get; set; }
+
         #region Overrides of TextSplitterContextBase<T>
 
         protected override void Apply(TextSplitter<T> textSplitter)
         {
             _apply(textSplitter);
         }
+
+        #region Overrides of TextSplitterContextBase<T>
+
+        public override Task Respond(ChatContextHolder chatContextHolder, IMessageContext context)
+        {
+
+            _textSplitter.Value.Process(context.Text, Value);
+            return Response(chatContextHolder, context, Value);
+        }
+
+        #endregion
 
         protected override Task Response(ChatContextHolder chatContextHolder, IMessageContext context, T value)
         {

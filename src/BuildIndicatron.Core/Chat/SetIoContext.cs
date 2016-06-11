@@ -40,6 +40,16 @@ namespace BuildIndicatron.Core.Chat
                 _pin = pin;
             }
 
+            public string Section
+            {
+                get { return _section; }
+            }
+
+            public string Color
+            {
+                get { return _color; }
+            }
+
             public void Set(string text, IPinManager c)
             {
                 if (ContainsSection(text))
@@ -57,16 +67,6 @@ namespace BuildIndicatron.Core.Chat
             {
                 return text.ToLower().Contains(_section);
             }
-
-            public string Section
-            {
-                get { return _section; }
-            }
-
-            public string Color
-            {
-                get { return _color; }
-            }
         }
 
         #endregion
@@ -75,7 +75,9 @@ namespace BuildIndicatron.Core.Chat
 
         public Task<bool> CanRespond(IMessageContext context)
         {
-            return Task.FromResult(IsDirectedAtMe(context) && ContainsText(context, "set") && ContainsText(context, "light"));
+            return
+                Task.FromResult(IsDirectedAtMe(context) && ContainsText(context, "set") &&
+                                ContainsText(context, "light"));
         }
 
         public Task Respond(ChatContextHolder chatContextHolder, IMessageContext context)
@@ -86,11 +88,14 @@ namespace BuildIndicatron.Core.Chat
                 {
                     pin.Set(context.Text, _pinManager);
                 }
-                var allOn = _lights.Where(x => x.ContainsSection(context.Text) && x.IsOn(context.Text)).ToArray();
+                LightPin[] allOn = _lights.Where(x => x.ContainsSection(context.Text) && x.IsOn(context.Text)).ToArray();
                 if (!allOn.Select(x => x.Color).Any())
                 {
                     context.Respond(string.Format("{0} lights are now off",
-                        _lights.Where(x => x.ContainsSection(context.Text)).Select(x => x.Section).Distinct().StringJoin()));
+                        _lights.Where(x => x.ContainsSection(context.Text))
+                            .Select(x => x.Section)
+                            .Distinct()
+                            .StringJoin()));
                 }
                 else
                 {
@@ -103,12 +108,16 @@ namespace BuildIndicatron.Core.Chat
 
         #endregion
 
-     
         #region Implementation of IWithHelpText
 
         public IEnumerable<HelpMessage> GetHelp()
         {
-            yield return new HelpMessage() { Call = "set *{main,secondary}* light *{green,red,blue,off}*", Description = "Allow robot light up." };
+            yield return
+                new HelpMessage
+                {
+                    Call = "set *{main,secondary}* light *{green,red,blue,off}*",
+                    Description = "Allow robot light up."
+                };
         }
 
         #endregion

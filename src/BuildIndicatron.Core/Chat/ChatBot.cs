@@ -11,6 +11,7 @@ namespace BuildIndicatron.Core.Chat
         {
             _chatContextHolder = new ChatContextHolder(injector)
                 .ListenTo<SetVolumeContext>()
+                .ListenTo<GetSettingsContext>()
                 .ListenTo<SetSettingsContext>()
                 .ListenTo<SetIoContext>()
                 .ListenTo<SaySomething>()
