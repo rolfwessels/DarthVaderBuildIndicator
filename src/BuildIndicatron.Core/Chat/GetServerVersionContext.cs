@@ -13,11 +13,11 @@ namespace BuildIndicatron.Core.Chat
 
     public class GetServerVersionContext : TextSplitterContextBase<GetServerVersionContext.Server>, IWithHelpText
     {
-        private Server[] servers;
+        private readonly Server[] _servers;
 
         public GetServerVersionContext()
         {
-            servers = new[] { 
+            _servers = new[] { 
 		        new Server() { Name = "API", Uri = "https://api.22seven.com/heartbeat" , ScanCount = 10 },
                 new Server() { Name = "TEST", Uri = "https://test.22seven.com/heartbeat" , ScanCount = 1 },
 	        };
@@ -36,7 +36,7 @@ namespace BuildIndicatron.Core.Chat
             
             await
                 context.Respond(string.Format("I will have a look, give me a minute."));
-            foreach (var link in servers)
+            foreach (var link in _servers)
             {
                 var list = new List<string>();
 

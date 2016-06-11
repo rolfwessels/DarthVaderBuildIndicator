@@ -27,8 +27,15 @@ namespace BuildIndicatron.Core.Settings
 
         public string Get(string key, string defaultValue = null)
         {
-            return _dictionary.ContainsKey(key) ? _dictionary[key] : defaultValue;
+            if (_dictionary.ContainsKey(key)) 
+            return _dictionary[key];
+            if (defaultValue != null)
+            {
+                Set(key, defaultValue);
+            }
+            return defaultValue;
         }
+
 
         public IDictionary<string, string> Get()
         {

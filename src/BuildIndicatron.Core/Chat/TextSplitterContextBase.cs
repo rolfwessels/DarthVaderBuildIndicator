@@ -7,7 +7,6 @@ namespace BuildIndicatron.Core.Chat
     public abstract class TextSplitterContextBase<T> : ReposonseFlowBase, IReposonseFlow where T:class
     {
         protected readonly Lazy<TextSplitter<T>> _textSplitter;
-        private bool _hasBeenApplied;
 
         protected TextSplitterContextBase()
         {
