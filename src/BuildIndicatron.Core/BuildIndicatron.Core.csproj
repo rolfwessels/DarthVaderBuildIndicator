@@ -108,12 +108,14 @@
     <Compile Include="Chat\RandomJokeResponse.cs" />
     <Compile Include="Chat\ReposonseFlowBase.cs" />
     <Compile Include="Chat\SayContext.cs" />
+    <Compile Include="Chat\SetSettingsContext.cs" />
     <Compile Include="Chat\AboutContext.cs" />
     <Compile Include="Chat\SaySomething.cs" />
     <Compile Include="Chat\SetVolumeContext.cs" />
     <Compile Include="Chat\SetIoContext.cs" />
     <Compile Include="EnumerableHelper.cs" />
     <Compile Include="Helpers\DebugHelper.cs" />
+    <Compile Include="Helpers\DictionaryHelper.cs" />
     <Compile Include="Helpers\IntegegerHelper.cs" />
     <Compile Include="Helpers\IpAddressHelper.cs" />
     <Compile Include="Helpers\PlatformHelper.cs" />
@@ -142,6 +144,9 @@
     <Compile Include="Processes\Stage.cs" />
     <Compile Include="Processes\VoiceEnhancer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\ISettingsManager.cs" />
+    <Compile Include="Settings\SettingsManager.cs" />
+    <Compile Include="SimpleTextSplit\SimpleTextSplitter.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

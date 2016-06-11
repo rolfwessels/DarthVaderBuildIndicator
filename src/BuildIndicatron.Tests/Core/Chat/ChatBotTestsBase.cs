@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 using Autofac;
 using BuildIndicatron.Core.Chat;
 using BuildIndicatron.Core.Processes;
+using BuildIndicatron.Core.Settings;
 using BuildIndicatron.Server.Setup;
 using Moq;
 using NUnit.Framework;
-using Raspberry.IO.GeneralPurpose;
 
 namespace BuildIndicatron.Tests.Core.Chat
 {
@@ -19,6 +19,7 @@ namespace BuildIndicatron.Tests.Core.Chat
         protected Mock<IPinManager> _mockIPinManager;
         protected Mock<IMp3Player> _mockIMp3Player;
         protected Mock<ISoundFilePicker> _mockISoundFilePicker;
+        protected Mock<ISettingsManager> _mockISettingsManager;
 
         public virtual void Setup()
         {
@@ -38,13 +39,13 @@ namespace BuildIndicatron.Tests.Core.Chat
             _mockIPinManager = new Mock<IPinManager>();
             _mockIMp3Player = new Mock<IMp3Player>();
             _mockISoundFilePicker = new Mock<ISoundFilePicker>(MockBehavior.Strict);
-            
-         
-            
+            _mockISettingsManager = new Mock<ISettingsManager>(MockBehavior.Strict);
+
             builder.Register(context => _mockITextToSpeech.Object).As<ITextToSpeech>();
             builder.Register(context => _mockIPinManager.Object).As<IPinManager>();
             builder.Register(context => _mockIMp3Player.Object).As<IMp3Player>();
             builder.Register(context => _mockISoundFilePicker.Object).As<ISoundFilePicker>();
+            builder.Register(context => _mockISettingsManager.Object).As<ISettingsManager>();
         }
 
         private void DefaultRegsters(ContainerBuilder builder)
@@ -65,6 +66,8 @@ namespace BuildIndicatron.Tests.Core.Chat
             _mockIPinManager.VerifyAll();
             _mockIMp3Player.VerifyAll();
             _mockISoundFilePicker.VerifyAll();
+            _mockISettingsManager.VerifyAll();
+          
         }
 
         public class MessageContext : IMessageContext
