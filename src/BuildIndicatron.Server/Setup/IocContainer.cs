@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Autofac;
 using Autofac.Integration.WebApi;
+using BuildIndicatron.Core.Api;
 using BuildIndicatron.Core.Chat;
 using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.Processes;
@@ -65,10 +66,21 @@ namespace BuildIndicatron.Server.Setup
 			builder.RegisterType<SequencesFactory>();
             builder.RegisterType<ChatBot>().As<IChatBot>();
             builder.Register(context => new SettingsManager(SettingFile())).As<ISettingsManager>().SingleInstance();
+            builder.Register(OnDelegate).As<IJenkensApi>().SingleInstance();
             builder.Register(context => new AutofacInjector(_container)).As<IFactory>().SingleInstance();
 			builder.RegisterType<SequencePlayer>().As<ISequencePlayer>();
 			builder.Register((t) => new SoundFilePicker(Settings.Default.SoundFileLocation)).As<ISoundFilePicker>();
 		}
+
+	    private static JenkensApi OnDelegate(IComponentContext context)
+	    {
+	        var settingsManager = context.Resolve<ISettingsManager>();
+            return new JenkensApi(
+                    settingsManager.Get("jenkins_host", "http://fulliautomatix:8080"),
+                    settingsManager.Get("jenkins_user",null),
+                    settingsManager.Get("jenkins_password",null)
+                );
+	    }
 
 	    private static string SettingFile()
 	    {

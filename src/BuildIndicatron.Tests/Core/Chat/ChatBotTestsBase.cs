@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
+using BuildIndicatron.Core.Api;
 using BuildIndicatron.Core.Chat;
 using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Core.Settings;
@@ -20,6 +21,7 @@ namespace BuildIndicatron.Tests.Core.Chat
         protected Mock<IMp3Player> _mockIMp3Player;
         protected Mock<ISoundFilePicker> _mockISoundFilePicker;
         protected Mock<ISettingsManager> _mockISettingsManager;
+        protected Mock<IJenkensApi> _mockIJenkensApi;
 
         public virtual void Setup()
         {
@@ -40,12 +42,13 @@ namespace BuildIndicatron.Tests.Core.Chat
             _mockIMp3Player = new Mock<IMp3Player>();
             _mockISoundFilePicker = new Mock<ISoundFilePicker>(MockBehavior.Strict);
             _mockISettingsManager = new Mock<ISettingsManager>(MockBehavior.Strict);
-
+            _mockIJenkensApi = new Mock<IJenkensApi>(MockBehavior.Strict);
             builder.Register(context => _mockITextToSpeech.Object).As<ITextToSpeech>();
             builder.Register(context => _mockIPinManager.Object).As<IPinManager>();
             builder.Register(context => _mockIMp3Player.Object).As<IMp3Player>();
             builder.Register(context => _mockISoundFilePicker.Object).As<ISoundFilePicker>();
             builder.Register(context => _mockISettingsManager.Object).As<ISettingsManager>();
+            builder.Register(context => _mockIJenkensApi.Object).As<IJenkensApi>();
         }
 
         private void DefaultRegsters(ContainerBuilder builder)
@@ -67,6 +70,9 @@ namespace BuildIndicatron.Tests.Core.Chat
             _mockIMp3Player.VerifyAll();
             _mockISoundFilePicker.VerifyAll();
             _mockISettingsManager.VerifyAll();
+
+            _mockIJenkensApi.VerifyAll();
+         
           
         }
 

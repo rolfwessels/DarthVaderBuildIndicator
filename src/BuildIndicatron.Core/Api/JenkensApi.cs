@@ -13,16 +13,14 @@ namespace BuildIndicatron.Core.Api
 {
     /// <summary>
     /// </summary>
-    public class JenkensApi : ApiBase
+    public class JenkensApi : ApiBase, IJenkensApi
     {
         public JenkensApi(string hostApi = "http://fulliautomatix:8080", string jenkenUsername = null, string jenkenPassword = null)
             : base(hostApi, jenkenUsername, jenkenPassword)
         {
-            
+            Url = hostApi;
         }
-
-      
-
+        
         public Task<JenkensProjectsResult> GetAllProjects()
         {
             var restRequest = GetRestRequest("api/json", Method.GET);
@@ -33,6 +31,7 @@ namespace BuildIndicatron.Core.Api
             return ProcessDefaultRequest<JenkensProjectsResult>(restRequest);
         }
 
+        public string Url { get; private set; }
     }
 
 }
