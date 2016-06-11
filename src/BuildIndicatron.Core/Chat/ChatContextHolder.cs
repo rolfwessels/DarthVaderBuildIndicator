@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using log4net;
 
 namespace BuildIndicatron.Core.Chat
 {
     public class ChatContextHolder
     {
+        private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly IFactory _injector;
         private readonly List<IReposonseFlow> _responseFlows = new List<IReposonseFlow>();
         private readonly List<IReposonseFlow> _oneTimeFlow = new List<IReposonseFlow>();
@@ -27,6 +30,7 @@ namespace BuildIndicatron.Core.Chat
 
         public async Task MessageIn(IMessageContext context)
         {
+            _log.Debug("in:" + context.Text);
             var reposonseFlows = _oneTimeFlow.ToArray();
             _oneTimeFlow.Clear();
             foreach (var reposonseFlow in reposonseFlows)

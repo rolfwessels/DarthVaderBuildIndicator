@@ -42,6 +42,8 @@ namespace BuildIndicatron.Core.Chat
             }
             else
             {
+                if (server.Value.StartsWith("<") && server.Value.EndsWith(">"))
+                    server.Value = server.Value.Substring(1, server.Value.Length - 2);
                 _settingsContext.Set(server.Key, server.Value);
                 await
                     context.Respond(string.Format("setting *{0}* to *{1}*", server.Key,

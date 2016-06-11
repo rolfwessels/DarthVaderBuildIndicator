@@ -1,15 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using BuildIndicatron.Core.Api;
+using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.SimpleTextSplit;
+using log4net;
 
 namespace BuildIndicatron.Core.Chat
 {
 
     public class JenkinsStatusContext : TextSplitterContextBase<JenkinsStatusContext.Request>, IWithHelpText
     {
+        private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly IFactory _factory;
 
         public JenkinsStatusContext(IFactory factory)
@@ -21,19 +25,25 @@ namespace BuildIndicatron.Core.Chat
 
         protected override void Apply(TextSplitter<Request> textSplitter)
         {
-            textSplitter
-                .Map(@"(ANYTHING)(jenkins) (status)")
-                ; 
+            textSplitter.Map(@"(ANYTHING)(jenkins) (status)");
         }
-        
+
+       
+
         protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, Request server)
         {
             var jenkensApi = _factory.Resolve<IJenkensApi>();
             try
-            {   
+            {
+                await context.Respond(string.Format("Connecting to {0}.", jenkensApi.Url));
                 var allProjects = await jenkensApi.GetAllProjects();
+                _log.Info("allProjects:" + allProjects.Dump());
                 var jenkensTextConverter = new JenkensTextConverter();
-                await context.Respond(jenkensTextConverter.ToSummary(allProjects));
+                foreach (var value in jenkensTextConverter.ToSummaryList(allProjects))
+                {
+                    await context.Respond(value);
+                }
+                
             }
             catch (Exception)
             {

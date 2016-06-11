@@ -40,6 +40,18 @@ namespace BuildIndicatron.Tests.Core.Chat
         }
 
         [Test]
+        public async Task Process_GivenSetSettingsWithSpaceBrackets_ShouldResondWithSetSettingsContext()
+        {
+            // arrange
+            Setup();
+            _mockISettingsManager.Setup(mc => mc.Set("monitor_channel_jenkins", "http://therig:9999"));
+            var messageContext = new MessageContext("set setting monitor_channel_jenkins <http://therig:9999>");
+            // action
+            await _chatBot.Process(messageContext);
+            // assert
+        }
+
+        [Test]
         public async Task Process_GivenSetSettingsWithNoKey_ShouldAskForKey()
         {
             // arrange

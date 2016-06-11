@@ -42,6 +42,7 @@ namespace BuildIndicatron.Server.Setup
                         var localIpAddress = IpAddressHelper.GetLocalIpAddresses().ToArray();
                         if (!localIpAddress.Any(x => x.Contains("192.168.1")))
                         _slackBotServer.SayTo("@rolf", "I'm on " + localIpAddress.StringJoin(" or "));
+                        _log.Info("I'm on " + localIpAddress.StringJoin(" or "));
                     });
                     
 				}

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using RestSharp;
+using RestSharp.Authenticators;
 #if WINDOWS_PHONE
 using BuildIndicatron.App.Core.Log;
 using BuildIndicatron.App.Core.Task;

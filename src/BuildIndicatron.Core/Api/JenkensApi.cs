@@ -15,7 +15,7 @@ namespace BuildIndicatron.Core.Api
     /// </summary>
     public class JenkensApi : ApiBase, IJenkensApi
     {
-        public JenkensApi(string hostApi = "http://fulliautomatix:8080", string jenkenUsername = null, string jenkenPassword = null)
+        public JenkensApi(string hostApi = "http://therig:9999", string jenkenUsername = null, string jenkenPassword = null)
             : base(hostApi, jenkenUsername, jenkenPassword)
         {
             Url = hostApi;
