@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace BuildIndicatron.Core.Helpers
 {
-	public class ProcessHelper
+	public class ProcessHelper 
 	{
 		public static void Run(string fileName, string arguments)
 		{

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using Autofac;
@@ -6,6 +7,7 @@ using Autofac.Integration.WebApi;
 using BuildIndicatron.Core.Chat;
 using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.Processes;
+using BuildIndicatron.Core.Settings;
 using BuildIndicatron.Server.Fakes;
 using BuildIndicatron.Server.Properties;
 using BuildIndicatron.Shared.Enums;
@@ -62,12 +64,18 @@ namespace BuildIndicatron.Server.Setup
                    .AsSelf().SingleInstance();
 			builder.RegisterType<SequencesFactory>();
             builder.RegisterType<ChatBot>().As<IChatBot>();
+            builder.Register(context => new SettingsManager(SettingFile())).As<ISettingsManager>();
             builder.Register(context => new AutofacInjector(_container)).As<IFactory>().SingleInstance();
 			builder.RegisterType<SequencePlayer>().As<ISequencePlayer>();
 			builder.Register((t) => new SoundFilePicker(Settings.Default.SoundFileLocation)).As<ISoundFilePicker>();
 		}
 
-		private static void RegisterControllers(ContainerBuilder builder)
+	    private static string SettingFile()
+	    {
+            return Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)??"","setting.json");
+	    }
+
+	    private static void RegisterControllers(ContainerBuilder builder)
 		{
 			builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 		}
