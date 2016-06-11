@@ -6,7 +6,7 @@ namespace BuildIndicatron.Core.Chat
 {
     public abstract class TextSplitterContextBase<T> : ReposonseFlowBase, IReposonseFlow where T:class
     {
-        private readonly Lazy<TextSplitter<T>> _textSplitter;
+        protected readonly Lazy<TextSplitter<T>> _textSplitter;
         private bool _hasBeenApplied;
 
         protected TextSplitterContextBase()
@@ -31,12 +31,10 @@ namespace BuildIndicatron.Core.Chat
 
         public virtual Task Respond(ChatContextHolder chatContextHolder, IMessageContext context)
         {
-            Value = Value ?? Activator.CreateInstance<T>();
-            _textSplitter.Value.Process(context.Text, Value);
-            return Response(chatContextHolder, context, Value);
+            var value = Activator.CreateInstance<T>();
+            _textSplitter.Value.Process(context.Text, value);
+            return Response(chatContextHolder, context, value);
         }
-
-        public T Value { get; set; }
 
         protected abstract Task Response(ChatContextHolder chatContextHolder, IMessageContext context, T value);
 

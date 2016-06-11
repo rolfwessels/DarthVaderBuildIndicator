@@ -30,6 +30,19 @@ namespace BuildIndicatron.Tests.Core.SimpleTextSplit
             result.IsMatch.Should().BeTrue();
         }
 
+        [Test]
+        public void Given_GivenMultipleOptions_ShouldReturnValue()
+        {
+            // arrange
+            Setup();
+            var lookup = SimpleTextSplitter.ApplyTo<Result>().Map(@"set (setting|settings) (?<key>WORD)");
+            // action
+            lookup.Process("set setting test").IsMatch.Should().Be(true);
+            lookup.Process("set settings test").IsMatch.Should().Be(true);
+            // assert
+            
+        }
+
  
         [Test]
         public void Given_GivenSimpleStringLookup_ShouldReturnValue()

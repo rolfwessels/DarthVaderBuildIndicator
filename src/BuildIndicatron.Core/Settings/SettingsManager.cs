@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using BuildIndicatron.Core.Helpers;
 using Newtonsoft.Json;
 
@@ -27,6 +28,11 @@ namespace BuildIndicatron.Core.Settings
         public string Get(string key, string defaultValue = null)
         {
             return _dictionary.ContainsKey(key) ? _dictionary[key] : defaultValue;
+        }
+
+        public IDictionary<string, string> Get()
+        {
+            return _dictionary.ToDictionary(x=>x.Key,x=>x.Value);
         }
 
         #region Private Methods

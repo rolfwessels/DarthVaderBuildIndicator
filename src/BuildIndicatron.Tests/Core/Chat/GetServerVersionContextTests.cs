@@ -6,14 +6,14 @@ using NUnit.Framework;
 namespace BuildIndicatron.Tests.Core.Chat
 {
     [TestFixture]
-    public class SetSettingsContextTests : ChatBotTestsBase
+    public class GetServerVersionContextTests : ChatBotTestsBase
     {
         #region Setup/Teardown
 
         #endregion
         
         [Test]
-        public async Task Process_GivenSetSettingsContext_ShouldResondWithSetSettingsContext()
+        public async Task Process_GivenGetServerVersionContext_ShouldResondWithGetServerVersionContext()
         {
             // arrange
             Setup();
@@ -26,7 +26,7 @@ namespace BuildIndicatron.Tests.Core.Chat
 
 
         [Test]
-        public async Task Process_GivenSetSettingsWithSpace_ShouldResondWithSetSettingsContext()
+        public async Task Process_GivenSetSettingsWithSpace_ShouldResondWithGetServerVersionContext()
         {
             // arrange
             Setup();
