@@ -39,9 +39,9 @@ namespace BuildIndicatron.Core.Chat
 
         #endregion
 
-        protected override Task Response(ChatContextHolder chatContextHolder, IMessageContext context, T value)
+        protected override Task Response(ChatContextHolder chatContextHolder, IMessageContext context, T server)
         {
-            return _response(chatContextHolder, context, value);
+            return _response(chatContextHolder, context, server);
         }
 
         #endregion

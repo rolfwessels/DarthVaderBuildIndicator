@@ -25,27 +25,27 @@ namespace BuildIndicatron.Core.Chat
                 .Map(@"set (setting|settings)"); 
         }
         
-        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, SettingChange settingChange)
+        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, SettingChange server)
         {
-            if (string.IsNullOrEmpty(settingChange.Key))
+            if (string.IsNullOrEmpty(server.Key))
             {
                 await context.Respond("what is the key?");
-                var quickTextSplitterContext = new QuickTextSplitterContext<SettingChange>(settingChange,
+                var quickTextSplitterContext = new QuickTextSplitterContext<SettingChange>(server,
                     x => x.Map(@"(?<key>WORD)"),Response);
                 chatContextHolder.AddOneTime(quickTextSplitterContext);
             }
-            else if (string.IsNullOrEmpty(settingChange.Value))
+            else if (string.IsNullOrEmpty(server.Value))
             {
                 await context.Respond("what is the value?");
-                chatContextHolder.AddOneTime(new QuickTextSplitterContext<SettingChange>(settingChange,
+                chatContextHolder.AddOneTime(new QuickTextSplitterContext<SettingChange>(server,
                     x => x.Map(@"(?<value>ANYTHING)"), Response));
             }
             else
             {
-                _settingsContext.Set(settingChange.Key, settingChange.Value);
+                _settingsContext.Set(server.Key, server.Value);
                 await
-                    context.Respond(string.Format("setting *{0}* to *{1}*", settingChange.Key,
-                        settingChange.Value));
+                    context.Respond(string.Format("setting *{0}* to *{1}*", server.Key,
+                        server.Value));
             }
         }
 

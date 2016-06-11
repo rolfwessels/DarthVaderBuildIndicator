@@ -6,6 +6,7 @@ using BuildIndicatron.Server.Tests.Base;
 using BuildIndicatron.Shared.Enums;
 using BuildIndicatron.Shared.Models.ApiResponses;
 using BuildIndicatron.Shared.Models.Composition;
+using BuildIndicatron.Tests.Helpers;
 using FizzWare.NBuilder.Generators;
 using FluentAssertions;
 using Microsoft.Owin.Hosting;
@@ -37,7 +38,6 @@ namespace BuildIndicatron.Server.Tests.Integration
 			_log.Info("Started");
 			
 			CreateClient(baseUri);
-
 
             this.WaitFor((t) => EnsureConnected(), 10000);
 		}

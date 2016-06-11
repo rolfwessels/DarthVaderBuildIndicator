@@ -36,7 +36,7 @@ namespace BuildIndicatron.Core.Chat
             return Response(chatContextHolder, context, value);
         }
 
-        protected abstract Task Response(ChatContextHolder chatContextHolder, IMessageContext context, T value);
+        protected abstract Task Response(ChatContextHolder chatContextHolder, IMessageContext context, T server);
 
         #endregion
 
