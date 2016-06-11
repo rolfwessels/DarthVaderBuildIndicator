@@ -24,21 +24,21 @@ namespace BuildIndicatron.Core.Chat
                 .Map(@"get (setting|settings)"); 
         }
         
-        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, SettingChange settingChange)
+        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, SettingChange server)
         {
-            if (string.IsNullOrEmpty(settingChange.Key))
+            if (string.IsNullOrEmpty(server.Key))
             {
                 await context.Respond("I have the following: ");
                 foreach (var key in _settingsContext.Get().Keys)
                 {
                     await context.Respond(key);
                 }
-                chatContextHolder.AddOneTime(new QuickTextSplitterContext<SettingChange>(settingChange,
+                chatContextHolder.AddOneTime(new QuickTextSplitterContext<SettingChange>(server,
                     x => x.Map(@"(?<key>WORD)"), Response));
             }
             else
             {
-                var s = _settingsContext.Get(settingChange.Key);
+                var s = _settingsContext.Get(server.Key);
                 await
                     context.Respond(s);
             }

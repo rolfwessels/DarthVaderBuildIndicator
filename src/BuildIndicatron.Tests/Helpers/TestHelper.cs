@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace BuildIndicatron.Server.Tests.Integration
+namespace BuildIndicatron.Tests.Helpers
 {
     public static class TestHelper
     {
