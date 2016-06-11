@@ -34,6 +34,8 @@ namespace BuildIndicatron.Tests.Core.Chat
         {
             // arrange
             Setup();
+            _mockIJenkensApi.Setup(mc => mc.Url)
+               .Returns("Test");
             var jobs  = Builder<Job>.CreateListOfSize(2).Build();
             _mockIJenkensApi.Setup(mc => mc.GetAllProjects())
                 .Returns(Task.FromResult(new JenkensProjectsResult() { Jobs = jobs.ToList()}));

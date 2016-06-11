@@ -40,12 +40,14 @@ namespace BuildIndicatron.Core.Processes
             await Task.WhenAny(tasks);
 			foreach (var task in tasks)
 			{
+#pragma warning disable 4014
 				voiceEnhancer.PlayFile(task.Result);
+#pragma warning restore 4014
 			}
 		
 		}
 
-		#endregion
+	    #endregion
 
 		public IEnumerable<string> Split(string text)
 		{	

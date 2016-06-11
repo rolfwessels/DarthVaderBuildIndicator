@@ -25,7 +25,7 @@ namespace BuildIndicatron.Server.Tests.Mono
 		private const string UserName = "pi";
 		private const string Password = "C0ntr0l3";
 		private const string _homePiBuildindicatronServer = "/home/pi/buildIndicatron.server/";
-		private const string BaseUri = "http://" + Host + ":8080/";
+		private const string BaseUri = "http://" + Host + ":8081/";
 		private const string BaseApiUri = BaseUri+"api";
 		private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 		private IAsyncResult _beginExecute;

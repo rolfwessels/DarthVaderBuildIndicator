@@ -2,14 +2,12 @@
 using System.IO;
 using BuildIndicatron.Shared;
 using BuildIndicatron.Shared.Enums;
-using BuildIndicatron.Shared.Models;
 using BuildIndicatron.Shared.Models.ApiResponses;
 using BuildIndicatron.Shared.Models.Composition;
 using RestSharp;
 #if WINDOWS_PHONE
 using BuildIndicatron.App.Core.Task;
 #else
-using log4net;
 using System.Threading.Tasks;
 #endif
 namespace BuildIndicatron.Core.Api
@@ -63,7 +61,7 @@ namespace BuildIndicatron.Core.Api
 		public Task<SetupGpIoResponse> GpIoSetup(PinName pin, GpioDirection direction)
         {
             RestRequest restRequest = GetRestRequest(ApiPaths.SetupGpIo, Method.GET);
-            restRequest.AddUrlSegment("pin", pin.ToString(CultureInfo.InvariantCulture));
+            restRequest.AddUrlSegment("pin", pin.ToString());
             restRequest.AddUrlSegment("direction", direction.ToString());
             return ProcessDefaultRequest<SetupGpIoResponse>(restRequest);
         }
@@ -79,7 +77,7 @@ namespace BuildIndicatron.Core.Api
 		public Task<GpIoOutputResponse> GpIoOutput(PinName pin, bool isOn)
         {
             RestRequest restRequest = GetRestRequest(ApiPaths.GpIoOutput, Method.GET);
-            restRequest.AddUrlSegment("pin", pin.ToString(CultureInfo.InvariantCulture));
+            restRequest.AddUrlSegment("pin", pin.ToString());
             restRequest.AddUrlSegment("ison", isOn.ToString());
             return ProcessDefaultRequest<GpIoOutputResponse>(restRequest);
         }

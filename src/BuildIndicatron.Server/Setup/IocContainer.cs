@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -12,6 +13,7 @@ using BuildIndicatron.Core.Settings;
 using BuildIndicatron.Server.Fakes;
 using BuildIndicatron.Server.Properties;
 using BuildIndicatron.Shared.Enums;
+using log4net;
 
 namespace BuildIndicatron.Server.Setup
 {
@@ -176,6 +178,7 @@ namespace BuildIndicatron.Server.Setup
 
         public class Factory: IFactory
         {
+            private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
             private readonly IContainer _container;
 
             public Factory(IContainer container)
@@ -187,7 +190,15 @@ namespace BuildIndicatron.Server.Setup
 
             public T Resolve<T>()
             {
-                return _container.Resolve<T>();
+                try
+                {
+                    return _container.Resolve<T>();
+                }
+                catch (Exception e)
+                {
+                    _log.Error(e.Message, e);
+                    throw ;
+                }
             }
 
             #endregion

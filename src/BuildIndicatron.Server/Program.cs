@@ -34,7 +34,7 @@ namespace BuildIndicatron.Server
 
 						PinManager.RunSample(ConnectorPin.P1Pin22);
 					}
-					System.Console.Out.WriteLine("Done");
+					Console.Out.WriteLine("Done");
 					return;
 				}
 
@@ -53,7 +53,7 @@ namespace BuildIndicatron.Server
 		    var options = new StartOptions
 			    {
 				    ServerFactory = "Nowin",
-				    Port = 8080
+				    Port = 8081
 			    };
 
 		    using (WebApp.Start<Startup>(options))

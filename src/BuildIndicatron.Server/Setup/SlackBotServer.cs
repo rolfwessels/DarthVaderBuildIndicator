@@ -20,6 +20,7 @@ namespace BuildIndicatron.Server.Setup
         private readonly ISlackConnector _connector;
         private ISlackConnection _connection;
         private IChatBot _chatBot;
+        private bool _isConnected;
 
         public  SlackBotServer(string apiToken)
         {
@@ -27,19 +28,21 @@ namespace BuildIndicatron.Server.Setup
             _apiToken = apiToken;
             _connector = new SlackConnector.SlackConnector();
             _chatBot = IocContainer.Instance.Resolve<IChatBot>();
+            _isConnected = false;
         }
         
         public  async Task<bool> ContinueslyTryToConnect()
         {
-            bool connected = false;
+            if (_isConnected) return true;
             int wait = 0;
-            while (!connected)
+            while (true)
             {
                 await Task.Delay(wait);
-                connected = await Connect();
+                var task = Task.Run(() => Connect());
+                bool connected = await task;
+                if (connected) return true;
                 wait = (wait*2).MinMax(2000, 160000);
             }
-            return true;
         }
 
         public async Task<bool> Connect()   
@@ -48,12 +51,14 @@ namespace BuildIndicatron.Server.Setup
                 (sender, certificate, chain, policyErrors) => { return true; };
             try
             {
+                Disconnect();
                 _log.Info("Slackbot:Connecting");
                 if (_connection != null && _connection.IsConnected) return true;
                 _connection = await _connector.Connect(_apiToken);
                 _connection.OnMessageReceived += MessageReceived;
                 _connection.OnDisconnect += ConnectionStatusChanged;
-                _log.Info("Slackbot:Send");
+                _log.Info("Slackbot:Connected");
+                _isConnected = true;
                 return true;
             }
             catch (Exception e)
@@ -68,12 +73,21 @@ namespace BuildIndicatron.Server.Setup
             
             _log.Info(string.Format("Chathub {0} Text:{1}",message.ChatHub.Name, message.Text ));
             _log.Info(string.Format("Chathub {0} ",message.Dump() ));
-            _chatBot.Process(new SlackBotMessageContext(this, message) { Text = message.Text });
+            _chatBot.Process(new SlackBotMessageContext(this, message) { Text = message.Text }).ContinueWith(ContinuationAction);
             return Task.Delay(1);
+        }
+
+        private void ContinuationAction(Task task)
+        {
+            if (task.Exception != null)
+            {
+                _log.Error(string.Format("Slackbot error {0}", task.Exception.Message), task.Exception);
+            }
         }
 
         private void ConnectionStatusChanged()
         {
+            _isConnected = false;
             _log.Error("Slackbot: disconnected");
             Disconnect();
             _log.Info("Slackbot: trying to connect again");
@@ -87,6 +101,7 @@ namespace BuildIndicatron.Server.Setup
                 _connection.OnMessageReceived -= MessageReceived;
                 _connection.OnDisconnect -= ConnectionStatusChanged;
                 _connection.Disconnect();
+                _connection = null;
             }
         }
 
