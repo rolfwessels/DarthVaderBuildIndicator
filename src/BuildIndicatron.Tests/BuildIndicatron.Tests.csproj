@@ -113,6 +113,7 @@
     <Compile Include="Core\Chat\ChatBotTestsBase.cs" />
     <Compile Include="Core\Chat\SayContextTests.cs" />
     <Compile Include="Core\Chat\SetSettingsContextTests.cs" />
+    <Compile Include="Core\Chat\DeployCoreContextTests.cs" />
     <Compile Include="Core\Chat\GreetingsContextTests.cs" />
     <Compile Include="Core\Chat\JenkinsStatusContextTests.cs" />
     <Compile Include="Core\Chat\GetServerVersionContextTests.cs" />

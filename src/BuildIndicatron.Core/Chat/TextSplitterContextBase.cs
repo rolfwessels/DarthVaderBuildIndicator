@@ -1,11 +1,15 @@
 using System;
+using System.Reflection;
 using System.Threading.Tasks;
+using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.SimpleTextSplit;
+using log4net;
 
 namespace BuildIndicatron.Core.Chat
 {
     public abstract class TextSplitterContextBase<T> : ReposonseFlowBase, IReposonseFlow where T:class
     {
+        private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         protected readonly Lazy<TextSplitter<T>> _textSplitter;
 
         protected TextSplitterContextBase()
@@ -28,12 +32,21 @@ namespace BuildIndicatron.Core.Chat
             return Task.FromResult(IsDirectedAtMe(context) && _textSplitter.Value.IsMatch(context.Text));
         }
 
-        public virtual Task Respond(ChatContextHolder chatContextHolder, IMessageContext context)
+        public virtual async Task Respond(ChatContextHolder chatContextHolder, IMessageContext context)
         {
-            var value = Activator.CreateInstance<T>();
-            _textSplitter.Value.Process(context.Text, value);
-            return Response(chatContextHolder, context, value);
+            try
+            {
+                var value = Activator.CreateInstance<T>();
+                _textSplitter.Value.Process(context.Text, value);
+                await Response(chatContextHolder, context, value);
+            }
+            catch (Exception e)
+            {
+                context.Respond("Ooops, something has gone wrong... check the logs for more information").FireAndForgetWithLogging();
+                _log.Error(e.Message, e);
+            }
         }
+
 
         protected abstract Task Response(ChatContextHolder chatContextHolder, IMessageContext context, T server);
 

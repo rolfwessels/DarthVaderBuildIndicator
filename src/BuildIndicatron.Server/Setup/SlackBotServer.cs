@@ -73,16 +73,8 @@ namespace BuildIndicatron.Server.Setup
             
             _log.Info(string.Format("Chathub {0} Text:{1}",message.ChatHub.Name, message.Text ));
             _log.Info(string.Format("Chathub {0} ",message.Dump() ));
-            _chatBot.Process(new SlackBotMessageContext(this, message) { Text = message.Text }).ContinueWith(ContinuationAction);
+            _chatBot.Process(new SlackBotMessageContext(this, message) { Text = message.Text }).FireAndForgetWithLogging();
             return Task.Delay(1);
-        }
-
-        private void ContinuationAction(Task task)
-        {
-            if (task.Exception != null)
-            {
-                _log.Error(string.Format("Slackbot error {0}", task.Exception.Message), task.Exception);
-            }
         }
 
         private void ConnectionStatusChanged()

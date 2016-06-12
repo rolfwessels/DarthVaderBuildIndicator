@@ -7,6 +7,7 @@ namespace BuildIndicatron.Core.Api.Model
     {
         public string Name { get; set; }
         public string Color { get; set; }
+        public string Url { get; set; }
         public List<Health> HealthReport { get; set; }
         public List<Build> Builds { get; set; }
         

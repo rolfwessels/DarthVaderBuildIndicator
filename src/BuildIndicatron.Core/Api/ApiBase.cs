@@ -67,7 +67,7 @@ namespace BuildIndicatron.Core.Api
                     stopwatch.Stop();
                     _log.Debug(string.Format("ApiBase:ProcessDefaultRequest Content {0} [RequestTime:{1}] [{2}]",
                         buildUri, stopwatch.ElapsedMilliseconds, response.Content));
-                    if (response.ErrorException == null && response.StatusCode == HttpStatusCode.OK)
+                    if (response.ErrorException == null && (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created) )
                     {
                         T result = response.Data;
                         taskCompletionSource.SetResult(result);
