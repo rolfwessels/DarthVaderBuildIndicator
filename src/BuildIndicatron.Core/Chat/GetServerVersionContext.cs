@@ -1,25 +1,26 @@
 using System;
 using System.Collections.Generic;
-using System.Net;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using BuildIndicatron.Core.Settings;
+using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.SimpleTextSplit;
 using Humanizer;
-using RestSharp;
 
 namespace BuildIndicatron.Core.Chat
 {
 
     public class GetServerVersionContext : TextSplitterContextBase<GetServerVersionContext.Server>, IWithHelpText
     {
-        private readonly Server[] _servers;
+        private readonly IHttpLookup _lookup;
+        protected readonly Server[] _servers;
 
-        public GetServerVersionContext()
+        public GetServerVersionContext(IHttpLookup lookup)
         {
+            _lookup = lookup;
             _servers = new[] { 
-		        new Server() { Name = "API", Uri = "https://api.22seven.com/heartbeat" , ScanCount = 10 },
-                new Server() { Name = "TEST", Uri = "https://test.22seven.com/heartbeat" , ScanCount = 1 },
+		        new Server() { Name = "staging", Uri = "https://api.22seven.com/heartbeat" , ScanCount = 10 },
+                new Server() { Name = "prod", Uri = "https://test.22seven.com/heartbeat" , ScanCount = 1 },
 	        };
         }
 
@@ -28,61 +29,89 @@ namespace BuildIndicatron.Core.Chat
         protected override void Apply(TextSplitter<Server> textSplitter)
         {
             textSplitter
-                .Map(@"(what|whats)(ANYTHING)version(ANYTHING)"); 
+                .Map(@"(what|whats)(ANYTHING)(?<name>staging|prod)(ANYTHING)version(ANYTHING)")
+                .Map(@"(what|whats)(ANYTHING)version(ANYTHING)(?<name>staging|prod)(ANYTHING)")
+                .Map(@"(what|whats)(ANYTHING)version(ANYTHING)")
+                ; 
         }
         
         protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, Server server)
         {
-            
-            await
-                context.Respond(string.Format("I will have a look, give me a minute."));
-            foreach (var link in _servers)
+            if (string.IsNullOrEmpty(server.Name))
             {
-                var list = new List<string>();
-
-                for (int i = 0; i < link.ScanCount; i++)
-                {
-                    var restClient = new RestClient(link.Uri) { Timeout = 5000 };
-                    try
-                    {
-                        var restResponse = await restClient.ExecuteGetTaskAsync(new RestRequest());
-                        if (!restResponse.Content.Contains("fine.."))
-                        {
-                            await context.Respond(string.Format("Oops, seems that {0} is not fine.", link.Uri));
-                            break;
-                        }
-                        var line = Regex.Match(restResponse.Content, @"(.*?),(.*?),(.*?),(.*?)!");
-                        var serverName = line.Groups[2].Value.Trim();
-                        var version = line.Groups[3].Value.Trim();
-                        var date = DateTime.Now - DateTime.Parse(line.Groups[4].Value.Trim());
-                        if (!list.Contains(serverName))
-                        {
-                            list.Add(serverName);
-                            await context.Respond(string.Format("{0} is on version {1}, released {2} ago.", serverName, version, date.Humanize()));
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        context.Respond(string.Format("Oops, seems that {0} is offline.", link.Uri));
-                        break;
-                    }
-
-                }
+                await
+                    context.Respond(string.Format("I will have a look, give me a minute."));
+            }
+            else
+            {
+                await
+                    context.Respond(string.Format("Checking {0} servers, give me a minute.", server.Name));
+            }
+            foreach (var serverLink in ForKey(_servers, server.Name))
+            {
+                await ScanServer(context, serverLink);
 
             }
             await context.Respond("Those are all the version that I could find.");
+        }
+
+        public async Task ScanServer(IMessageContext context, Server link)
+        {
+            var list = new List<string>();
+            for (int i = 0; i < link.ScanCount; i++)
+            {
+                var serverVersion = await GetVerionForLink(link);
+
+                if (serverVersion == null || list.Contains(serverVersion.ServerName)) continue;
+                list.Add(serverVersion.ServerName);
+                await
+                    context.Respond(string.Format("{0} is on version {1}, released {2} ago.",
+                        serverVersion.ServerName, serverVersion.Version,
+                        serverVersion.Date.Humanize()));
+            }
+            if (!list.Any())
+            {
+                await context.Respond(string.Format("Oops, {0} seems to be down.", link.Uri));
+            }
+        }
+
+        protected async Task<ServerVersion> GetVerionForLink(Server link)
+        {
+            try
+            {
+                var restResponse = await _lookup.Download(link.Uri);
+                if (!restResponse.Content.Contains("fine.."))
+                {
+                    return null;
+                }
+                var line = Regex.Match(restResponse.Content, @"(.*?),(.*?),(.*?),(.*?)!");
+                var serverName = line.Groups[2].Value.Trim();
+                var version = line.Groups[3].Value.Trim();
+                var date = DateTime.Now - DateTime.Parse(line.Groups[4].Value.Trim());
+                return new ServerVersion(serverName, version, date);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         #endregion
 
         #region Implementation of IWithHelpText
 
-        public IEnumerable<HelpMessage> GetHelp()
+        public virtual IEnumerable<HelpMessage>  GetHelp()
         {
-            yield return new HelpMessage() {Call = "what version are we on",Description = "Returns the server versions."};
+            yield return new HelpMessage() {Call = "what version are we on?",Description = "Returns the server versions."};
+            yield return new HelpMessage() {Call = "what version is prod on?",Description = "Returns production version numbers."};
         }
 
         #endregion
+
+        public IEnumerable<Server> ForKey(IEnumerable<Server> servers, string name)
+        {
+            return servers.Where(x =>string.IsNullOrEmpty(name) ||  x.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).ToArray();
+        }
 
         public class Server
         {
@@ -93,5 +122,32 @@ namespace BuildIndicatron.Core.Chat
         }
     }
 
-    
+    public class ServerVersion
+    {
+        private readonly string _serverName;
+        private readonly string _version;
+        private readonly TimeSpan _date;
+
+        public ServerVersion(string serverName, string version, TimeSpan date)
+        {
+            _serverName = serverName;
+            _version = version;
+            _date = date;
+        }
+
+        public string ServerName
+        {
+            get { return _serverName; }
+        }
+
+        public string Version
+        {
+            get { return _version; }
+        }
+
+        public TimeSpan Date
+        {
+            get { return _date; }
+        }
+    }
 }

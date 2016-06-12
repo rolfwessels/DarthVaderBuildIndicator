@@ -10,10 +10,12 @@ namespace BuildIndicatron.Core.Chat
         public ChatBot(IFactory injector)
         {
             _chatContextHolder = new ChatContextHolder(injector)
+                .ListenTo<DeployCoreContext>()
                 .ListenTo<GreetingsContext>()
                 .ListenTo<JenkinsStatusContext>()
                 .ListenTo<SetVolumeContext>()
                 .ListenTo<GetServerVersionContext>()
+                .ListenTo<MonitorServerVersionChanges>()
                 .ListenTo<GetSettingsContext>()
                 .ListenTo<SetSettingsContext>()
                 .ListenTo<SetIoContext>()

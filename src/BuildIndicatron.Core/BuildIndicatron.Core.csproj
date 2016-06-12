@@ -114,6 +114,7 @@
     <Compile Include="Chat\IMessageContext.cs" />
     <Compile Include="Chat\IReposonseFlow.cs" />
     <Compile Include="Chat\IWithHelpText.cs" />
+    <Compile Include="Chat\MonitorServerVersionChanges.cs" />
     <Compile Include="Chat\QuickQuickTextMatch.cs" />
     <Compile Include="Chat\RandomJokeResponse.cs" />
     <Compile Include="Chat\ReposonseFlowBase.cs" />
@@ -133,12 +134,15 @@
     <Compile Include="EnumerableHelper.cs" />
     <Compile Include="Helpers\DebugHelper.cs" />
     <Compile Include="Helpers\DictionaryHelper.cs" />
+    <Compile Include="Helpers\HttpLookup.cs" />
+    <Compile Include="Helpers\IHttpLookup.cs" />
     <Compile Include="Helpers\IntegegerHelper.cs" />
     <Compile Include="Helpers\IpAddressHelper.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Helpers\PlatformHelper.cs" />
     <Compile Include="Helpers\ProcessHelper.cs" />
     <Compile Include="Helpers\RandomTextHelper.cs" />
+    <Compile Include="Helpers\TestHelper.cs" />
     <Compile Include="JenkensTextConverter.cs" />
     <Compile Include="Media\WavPlayer.cs" />
     <Compile Include="MimeHelper.cs" />

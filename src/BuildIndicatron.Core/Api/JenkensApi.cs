@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using BuildIndicatron.Core.Api.Model;
 using BuildIndicatron.Core.Helpers;
+using BuildIndicatron.Core.Settings;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -59,6 +60,24 @@ namespace BuildIndicatron.Core.Api
         {
             var request = GetRestRequest("crumbIssuer/api/json",Method.GET);
             return ProcessDefaultRequest<CrumbResult>(request);
+        }
+
+        public static JenkensApi OnJenkinsDeloyer(ISettingsManager resolve)
+        {
+            return new JenkensApi(
+                resolve.Get("jenkins_deployer_host", "http://therig1231:9999"),
+                resolve.Get("jenkins_deployer_user",null),
+                resolve.Get("jenkins_deployer_password",null)
+                );
+        }
+
+        public static JenkensApi GetJenkins(ISettingsManager resolve)
+        {
+            return new JenkensApi(
+                resolve.Get("jenkins_host", "http://therig:9999"),
+                resolve.Get("jenkins_user",null),
+                resolve.Get("jenkins_password",null)
+                );
         }
     }
 

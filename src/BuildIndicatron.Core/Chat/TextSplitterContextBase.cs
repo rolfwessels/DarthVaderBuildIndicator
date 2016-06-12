@@ -42,7 +42,7 @@ namespace BuildIndicatron.Core.Chat
             }
             catch (Exception e)
             {
-                context.Respond("Ooops, something has gone wrong... check the logs for more information").FireAndForgetWithLogging();
+                context.Respond(string.Format("Ooops, something has gone wrong...'`{0}`' check the logs for more information", e.Message)).FireAndForgetWithLogging();
                 _log.Error(e.Message, e);
             }
         }
