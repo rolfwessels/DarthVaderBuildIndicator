@@ -160,7 +160,23 @@
 			"The force is with you, young Skywalker, but you are not a Jedi yet.",
 			"What is thy bidding, my master?", "When I left you I was but the learner. Now I am the master."};
 
-		#endregion
+        private static string[] _greetings = new[] {"Hi",
+            "Good morning",
+            "Morning!",
+            "Hey",
+            "What's up?",
+            "Sup?",
+            "How's it going?",
+            "Howdy",
+            "Well hello!",
+            "Why hello there.",
+            "Yo.",
+            "Greetings!",
+            "Look who it is!",
+            "Look what the cat dragged in!",
+            };
+
+	    #endregion
 
 		public static string Quotes
 		{
@@ -183,6 +199,14 @@
 			get
 			{
 				return (_oneLiners).Random();
+			}
+		}
+        
+        public static string Greetings
+		{
+			get
+			{
+				return (_greetings).Random();
 			}
 		}
 	}

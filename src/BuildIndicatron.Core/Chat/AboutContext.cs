@@ -1,39 +1,33 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using BuildIndicatron.Core.Helpers;
-using BuildIndicatron.Core.Processes;
+using BuildIndicatron.Core.SimpleTextSplit;
 
 namespace BuildIndicatron.Core.Chat
 {
 
 
-    public class AboutContext : ReposonseFlowBase, IReposonseFlow, IWithHelpText
+    public class AboutContext : TextSplitterContextBase<GreetingsContext.Meta>
     {
-        
-
-        
         #region Implementation of IReposonseFlow
 
-        public Task<bool> CanRespond(IMessageContext context)
+        protected override void Apply(TextSplitter<GreetingsContext.Meta> textSplitter)
         {
-            return Task.FromResult(IsDirectedAtMe(context) && StartsWith(context, "who are you"));
+            textSplitter.Map(@"(who)(ANYTHING)(you|this)(ANYTHING)")
+                .Map(@"(where are you)(ANYTHING)")
+                .Map(@"(what)(ANYTHING)(ip)(ANYTHING)")
+                ;
         }
 
-        public Task Respond(ChatContextHolder chatContextHolder, IMessageContext context)
+        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, GreetingsContext.Meta server)
         {
-
-            return context.Respond(string.Format("I am @r2d2, Im currently running on {0}", IpAddressHelper.GetLocalIpAddresses().StringJoin(" or ")));
-        }
-
-        #endregion
-
-        #region Implementation of IWithHelpText
-
-        public IEnumerable<HelpMessage> GetHelp()
-        {
-            yield return new HelpMessage() { Call = "who are you", Description = "More about the bot and location." };
+            await context.Respond(string.Format("{1}, I'm @r2d2... working from home today at {0}.", IpAddressHelper.GetLocalIpAddresses().StringJoin(" or "), RandomTextHelper.Greetings));
         }
 
         #endregion
+
+        private class Meta
+        {
+
+        }
     }
-}
+}   
