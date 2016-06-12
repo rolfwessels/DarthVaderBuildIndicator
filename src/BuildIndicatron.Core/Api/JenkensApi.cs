@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
 using BuildIndicatron.Core.Api.Model;
+using BuildIndicatron.Core.Helpers;
+using Newtonsoft.Json;
 using RestSharp;
 
 #if WINDOWS_PHONE
@@ -27,11 +29,37 @@ namespace BuildIndicatron.Core.Api
             //restRequest.AddParameter("pretty", "true");
             restRequest.RequestFormat = DataFormat.Json;
             restRequest.AddParameter("depth", "2");
-            restRequest.AddParameter("tree", "jobs[name,color,healthReport[score],builds[duration,result],lastFailedBuild[number,timestamp,changeSet[items[author[fullName]]]]]");
+            restRequest.AddParameter("tree", "jobs[name,color,url,healthReport[score],builds[duration,result],lastFailedBuild[number,timestamp,changeSet[items[author[fullName]]]]]");
             return ProcessDefaultRequest<JenkensProjectsResult>(restRequest);
         }
 
         public string Url { get; private set; }
+
+        public async Task<JenkensProjectsResult> BuildProject(string url)
+        {
+            var crumbResult = await GetCrumb();
+
+            var restRequest = GetRestRequest(url.Replace(Url, "") + "/build", Method.POST);
+            restRequest.AddHeader("Jenkins-Crumb", crumbResult.Crumb);
+            restRequest.RequestFormat = DataFormat.Json;
+            return await ProcessDefaultRequest<JenkensProjectsResult>(restRequest);
+        }
+
+        public async Task<JenkensProjectsResult> BuildProject(string url,JenkensProjectsBuildRequest param)
+        {
+            var crumbResult = await GetCrumb();
+            var restRequest = GetRestRequest(url.Replace(Url, "") + "/build", Method.POST);
+            restRequest.AddHeader("Jenkins-Crumb", crumbResult.Crumb);
+            restRequest.AddParameter("json", JsonConvert.SerializeObject(param));
+            restRequest.RequestFormat = DataFormat.Json;
+            return await ProcessDefaultRequest<JenkensProjectsResult>(restRequest);
+        }
+
+        public Task<CrumbResult> GetCrumb()
+        {
+            var request = GetRestRequest("crumbIssuer/api/json",Method.GET);
+            return ProcessDefaultRequest<CrumbResult>(request);
+        }
     }
 
 }

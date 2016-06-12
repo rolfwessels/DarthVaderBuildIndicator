@@ -30,7 +30,6 @@ namespace BuildIndicatron.Core.Chat
 
         public async Task MessageIn(IMessageContext context)
         {
-            _log.Debug("in:" + context.Text);
             var reposonseFlows = _oneTimeFlow.ToArray();
             _oneTimeFlow.Clear();
             foreach (var reposonseFlow in reposonseFlows)

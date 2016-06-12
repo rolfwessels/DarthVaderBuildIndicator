@@ -2,6 +2,9 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
+using Autofac;
+using BuildIndicatron.Core.Api;
+using BuildIndicatron.Server.Setup;
 using BuildIndicatron.Server.Tests.Base;
 using BuildIndicatron.Shared.Enums;
 using BuildIndicatron.Shared.Models.ApiResponses;

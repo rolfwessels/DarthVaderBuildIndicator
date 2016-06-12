@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using System.Web.Http;
-using BuildIndicatron.Server.Setup;
+﻿using BuildIndicatron.Server.Setup;
 using Owin;
 
 namespace BuildIndicatron.Server
@@ -9,6 +7,7 @@ namespace BuildIndicatron.Server
 	{
 		public void Configuration(IAppBuilder app)
 		{
+            
 			BootStrap.Initialize(app);
 			
 		}

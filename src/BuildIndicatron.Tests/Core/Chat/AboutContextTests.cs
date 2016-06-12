@@ -7,9 +7,6 @@ namespace BuildIndicatron.Tests.Core.Chat
     [TestFixture]
     public class AboutContextTests : ChatBotTestsBase
     {
-        #region Setup/Teardown
-
-        #endregion
         
         [Test]
         public async Task Process_GivenAboutContext_ShouldResondWithAboutContext()

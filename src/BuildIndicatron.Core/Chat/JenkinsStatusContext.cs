@@ -13,12 +13,12 @@ namespace BuildIndicatron.Core.Chat
 
     public class JenkinsStatusContext : TextSplitterContextBase<JenkinsStatusContext.Request>, IWithHelpText
     {
+        private readonly Func<IJenkensApi> _apiFactory;
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        private readonly IFactory _factory;
 
-        public JenkinsStatusContext(IFactory factory)
+        public JenkinsStatusContext(Func<IJenkensApi> apiFactory)
         {
-            _factory = factory;
+            _apiFactory = apiFactory;
         }
 
         #region Implementation of IReposonseFlow
@@ -32,7 +32,7 @@ namespace BuildIndicatron.Core.Chat
 
         protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, Request server)
         {
-            var jenkensApi = _factory.Resolve<IJenkensApi>();
+            var jenkensApi = _apiFactory();
             try
             {
                 await context.Respond(string.Format("Connecting to {0}.", jenkensApi.Url));

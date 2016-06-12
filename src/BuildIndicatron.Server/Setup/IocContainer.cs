@@ -45,7 +45,8 @@ namespace BuildIndicatron.Server.Setup
 						SetupTools(builder);
 						RegisterControllers(builder);
 
-						return _container = builder.Build();
+					    var container = builder.Build();
+					    return _container = container;
 					}
 					return _container;
 				}
@@ -60,23 +61,23 @@ namespace BuildIndicatron.Server.Setup
 			       .As<IDownloadToFile>()
 			       .WithParameter("tempPath", Settings.Default.SpeachTempFileLocation);
 			builder.RegisterType<Stage>().As<IStage>().SingleInstance();
-            builder.Register(context => new Factory(Instance)).As<IFactory>().SingleInstance();
+            
             builder.RegisterAssemblyTypes(typeof(IFactory).Assembly)
                    .Where(t => t.GetInterfaces()
                     .Any(i => i.IsAssignableFrom(typeof(IReposonseFlow))))
                    .AsSelf().SingleInstance();
 			builder.RegisterType<SequencesFactory>();
             builder.RegisterType<ChatBot>().As<IChatBot>();
-            builder.Register(context => new SettingsManager(SettingFile())).As<ISettingsManager>().SingleInstance();
+            builder.Register(context => new SettingsManager(SettingFile())).As<ISettingsManager>();
             builder.Register(OnDelegate).As<IJenkensApi>();
-            builder.Register(context => new AutofacInjector(_container)).As<IFactory>().SingleInstance();
+            builder.Register(context => new AutofacInjector(_container)).As<IFactory>();
 			builder.RegisterType<SequencePlayer>().As<ISequencePlayer>();
 			builder.Register((t) => new SoundFilePicker(Settings.Default.SoundFileLocation)).As<ISoundFilePicker>();
 		}
 
 	    private static JenkensApi OnDelegate(IComponentContext context)
 	    {
-	        var settingsManager = context.Resolve<ISettingsManager>();
+            var settingsManager = _container.Resolve<ISettingsManager>();
             return new JenkensApi(
                     settingsManager.Get("jenkins_host", "http://fulliautomatix:8080"),
                     settingsManager.Get("jenkins_user",null),
@@ -176,33 +177,6 @@ namespace BuildIndicatron.Server.Setup
 
 		#endregion
 
-        public class Factory: IFactory
-        {
-            private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-            private readonly IContainer _container;
-
-            public Factory(IContainer container)
-            {
-                _container = container;
-            }
-
-            #region Implementation of IFactory
-
-            public T Resolve<T>()
-            {
-                try
-                {
-                    return _container.Resolve<T>();
-                }
-                catch (Exception e)
-                {
-                    _log.Error(e.Message, e);
-                    throw ;
-                }
-            }
-
-            #endregion
-        }
 
 	   
 	}

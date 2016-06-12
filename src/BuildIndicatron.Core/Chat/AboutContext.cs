@@ -21,6 +21,7 @@ namespace BuildIndicatron.Core.Chat
         protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, GreetingsContext.Meta server)
         {
             await context.Respond(string.Format("{1}, I'm @r2d2... working from home today at {0}.", IpAddressHelper.GetLocalIpAddresses().StringJoin(" or "), RandomTextHelper.Greetings));
+            await context.Respond(string.Format("Im locate at {0}.", this.GetType().Assembly.Location));
         }
 
         #endregion
