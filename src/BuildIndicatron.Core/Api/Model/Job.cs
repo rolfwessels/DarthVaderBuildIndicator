@@ -12,6 +12,11 @@ namespace BuildIndicatron.Core.Api.Model
         public List<Build> Builds { get; set; }
         
         public LastFailedBuild LastFailedBuild { get; set; }
+
+        public bool IsProcessing()
+        {
+            return Color.Contains("_anime");
+        }
     }
 
     public class Build

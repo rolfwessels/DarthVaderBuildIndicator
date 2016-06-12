@@ -44,8 +44,8 @@ namespace BuildIndicatron.Server.Setup
 						}
 						SetupTools(builder);
 						RegisterControllers(builder);
-
 					    var container = builder.Build();
+                        
 					    return _container = container;
 					}
 					return _container;
@@ -67,23 +67,15 @@ namespace BuildIndicatron.Server.Setup
                     .Any(i => i.IsAssignableFrom(typeof(IReposonseFlow))))
                    .AsSelf().SingleInstance();
 			builder.RegisterType<SequencesFactory>();
+            builder.Register(context => new DeployCoreContext(context.Resolve<ISettingsManager>()));
             builder.RegisterType<ChatBot>().As<IChatBot>();
-            builder.Register(context => new SettingsManager(SettingFile())).As<ISettingsManager>();
-            builder.Register(OnDelegate).As<IJenkensApi>();
+            builder.RegisterType<HttpLookup>().As<IHttpLookup>();
+            builder.Register(context => new SettingsManager(SettingFile())).As<ISettingsManager>().SingleInstance();
+            builder.Register(context => JenkensApi.GetJenkins(context.Resolve<ISettingsManager>())).As<IJenkensApi>();
             builder.Register(context => new AutofacInjector(_container)).As<IFactory>();
 			builder.RegisterType<SequencePlayer>().As<ISequencePlayer>();
 			builder.Register((t) => new SoundFilePicker(Settings.Default.SoundFileLocation)).As<ISoundFilePicker>();
 		}
-
-	    private static JenkensApi OnDelegate(IComponentContext context)
-	    {
-            var settingsManager = _container.Resolve<ISettingsManager>();
-            return new JenkensApi(
-                    settingsManager.Get("jenkins_host", "http://fulliautomatix:8080"),
-                    settingsManager.Get("jenkins_user",null),
-                    settingsManager.Get("jenkins_password",null)
-                );
-	    }
 
 	    private static string SettingFile()
 	    {

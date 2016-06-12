@@ -1,54 +1,155 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using BuildIndicatron.Core.Api;
+using BuildIndicatron.Core.Api.Model;
+using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.Settings;
 using BuildIndicatron.Core.SimpleTextSplit;
 
 namespace BuildIndicatron.Core.Chat
 {
 
-    public class DeployCoreContext : TextSplitterContextBase<DeployCoreContext.SettingChange>, IWithHelpText
+    public class DeployCoreContext : TextSplitterContextBase<DeployCoreContext.Meta>, IWithHelpText
     {
-        private readonly ISettingsManager _settingsContext;
+        private readonly Func<IJenkensApi> _deployer;
+        private readonly ISettingsManager _settingsManager;
+        private IJenkensApi _setApi;
         
-        public DeployCoreContext(ISettingsManager settingsContext)
+        
+
+        public DeployCoreContext(ISettingsManager settingsManager)
         {
-            _settingsContext = settingsContext;
+            _deployer = () => JenkensApi.OnJenkinsDeloyer(settingsManager);
+            _settingsManager = settingsManager;
+        }
+
+        public IJenkensApi JenkinsApi
+        {
+            get { return _setApi ?? _deployer(); }
+            set { _setApi = value; }
         }
 
         #region Implementation of IReposonseFlow
 
-        protected override void Apply(TextSplitter<SettingChange> textSplitter)
+        protected override void Apply(TextSplitter<Meta> textSplitter)
         {
             textSplitter
-                .Map(@"set (setting|settings) (?<key>WORD) (?<value>ANYTHING)")
-                .Map(@"set (setting|settings) (?<key>WORD)")
-                .Map(@"set (setting|settings)"); 
+                .Map(@"deploy (?<State>WORD)")
+                .Map(@"deploy"); 
         }
-        
-        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, SettingChange server)
+
+        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, Meta server)
         {
-            if (string.IsNullOrEmpty(server.Key))
+            var jenkensProjectsResult = await JenkinsApi.GetAllProjects();
+
+           
+            server.State = server.State ?? States.Staging;
+            var missingProject = await EnsureCorrectDeployProjects(context, server, jenkensProjectsResult);
+            if (missingProject) return;
+
+            switch (server.State)
             {
-                await context.Respond("what is the key?");
-                var quickTextSplitterContext = new QuickTextSplitterContext<SettingChange>(server,
-                    x => x.Map(@"(?<key>WORD)"),Response);
-                chatContextHolder.AddOneTime(quickTextSplitterContext);
+                case States.Staging:
+                    await context.Respond("Starting the staging builds.");
+                    foreach (var jobName in server.StagingBuilds )
+                    {
+                        var isDeployed = await Deploy(context, jenkensProjectsResult, jobName);
+                        if (!isDeployed) return;
+                    }
+                    await context.Respond("Let me know if I can `monitor the staging versions` .");
+                    break;
+                case States.Prod:
+                    await context.Respond("Starting the Prod builds.");
+                    foreach (var jobName in server.ProdBuild)
+                    {
+                        var isDeployed = await Deploy(context, jenkensProjectsResult, jobName);
+                        if (!isDeployed) return;
+                    }
+                    await context.Respond("Let me know if I can `monitor the production versions` .");
+                    break;
+                    
+                default:
+                    await context.Respond(string.Format("Oops, I dont know that state '{0}'.", server.State));
+                    break;
             }
-            else if (string.IsNullOrEmpty(server.Value))
+            
+        }
+
+        private async Task<bool> EnsureCorrectDeployProjects(IMessageContext context, Meta server,
+            JenkensProjectsResult jenkensProjectsResult)
+        {
+            server.StagingBuilds = _settingsManager.Get("deployer_staging_builds", "ProjectName").Split(',');
+            server.ProdBuild = _settingsManager.Get("deployer_prod_builds", "ProjectName").Split(',');
+
+
+            var missingProject =
+                await EnsureValidProjects(context, jenkensProjectsResult, server.StagingBuilds, "deployer_staging_builds", "Staging");
+            missingProject = missingProject ||
+                             await
+                                 EnsureValidProjects(context, jenkensProjectsResult, server.ProdBuild, "deployer_prod_builds",
+                                     "Prod");
+            return missingProject;
+        }
+
+        private async Task<bool> Deploy(IMessageContext context, JenkensProjectsResult jenkensProjectsResult, string jobName)
+        {
+            var jenkinsJob = jenkensProjectsResult.Jobs.First(job => IsMatch(job, jobName));
+            await context.Respond(string.Format("*{0}* - status {1}", jenkinsJob.Name, jenkinsJob.Color));
+            if (jenkinsJob.IsProcessing())
             {
-                await context.Respond("what is the value?");
-                chatContextHolder.AddOneTime(new QuickTextSplitterContext<SettingChange>(server,
-                    x => x.Map(@"(?<value>ANYTHING)"), Response));
+                await context.Respond("Oops, looks like this job is already running. Wait for it to stop before continuing.");
+                return false;
             }
-            else
+            await JenkinsApi.BuildProject(jenkinsJob.Url);
+            await context.Respond("Waiting for the job to start.");
+            jenkinsJob = await WaitFor(jobName, result => result.IsProcessing(), TimeSpan.FromMinutes(2));
+            if (!jenkinsJob.IsProcessing())
             {
-                if (server.Value.StartsWith("<") && server.Value.EndsWith(">"))
-                    server.Value = server.Value.Substring(1, server.Value.Length - 2);
-                _settingsContext.Set(server.Key, server.Value);
-                await
-                    context.Respond(string.Format("setting *{0}* to *{1}*", server.Key,
-                        server.Value));
+                await context.Respond("Oops, looks like this did not start in time.");
+                return false;
             }
+            await context.Respond("Waiting for the job to finish.");
+            jenkinsJob = await WaitFor(jobName, result => !result.IsProcessing(), TimeSpan.FromMinutes(_settingsManager.Get("build_processing_timeout_minutes",10)));
+            if (jenkinsJob.IsProcessing())
+            {
+                await context.Respond("Oops, looks like this did not finish in time.");
+                return false;
+            }
+            return true;
+        }
+
+        private async Task<Job> WaitFor(string jobName, Func<Job, bool> func, TimeSpan fromMinutes)
+        {
+            return await
+                JenkinsApi.AwaitAsync(x => x.GetAllProjects().Result.Jobs.First(job => IsMatch(job, jobName)),
+                    func, (int)fromMinutes.TotalMilliseconds, 5000);
+        }
+
+        private static bool IsMatch(Job job , string jobName)
+        {
+            return job.Name.ToLower() == jobName.Trim().ToLower();
+        }
+
+        private static async Task<bool> EnsureValidProjects(IMessageContext context,
+            JenkensProjectsResult jenkensProjectsResult, string[] build, string configName, string prod)
+        {
+            var notFound =
+                build.Where(jobName => jenkensProjectsResult.Jobs.All(job => !IsMatch(job,jobName)))
+                    .ToArray();
+            if (notFound.Any())
+            {
+                foreach (var jobName in notFound.Take(1))
+                {
+                    await
+                        context.Respond(
+                            string.Format(
+                                "Please specify a project name for {3} deploy, '{0}' could not be found. You can change this by typing `set settings {1} {2}`",
+                                jobName, configName, jenkensProjectsResult.Jobs.Random().Name, prod));
+                }
+            }
+            return notFound.Any();
         }
 
         #endregion
@@ -62,11 +163,19 @@ namespace BuildIndicatron.Core.Chat
 
         #endregion
 
-        public class SettingChange
+        public class Meta
         {
-            public string Key { get; set; }
-            public string Value { get; set; }
+            public string[] StagingBuilds { get; set; }
+            public string[] ProdBuild { get; set; }
+            public string State { get; set; }
         }
+
+        public class States
+        {
+            public const string Staging = "staging";
+            public const string Prod = "prod";
+        }
+        
     }
 
     

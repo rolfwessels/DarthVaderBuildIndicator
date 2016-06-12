@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Autofac;
 using BuildIndicatron.Core.Api;
 using BuildIndicatron.Core.Chat;
+using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Core.Settings;
 using BuildIndicatron.Server.Setup;
@@ -15,13 +16,14 @@ namespace BuildIndicatron.Tests.Core.Chat
     public class ChatBotTestsBase
     {
         protected ChatBot _chatBot;
-        private IContainer _container;
+        public IContainer _container;
         protected Mock<ITextToSpeech> _mockITextToSpeech;
         protected Mock<IPinManager> _mockIPinManager;
         protected Mock<IMp3Player> _mockIMp3Player;
         protected Mock<ISoundFilePicker> _mockISoundFilePicker;
         protected Mock<ISettingsManager> _mockISettingsManager;
         protected Mock<IJenkensApi> _mockIJenkensApi;
+        protected Mock<IHttpLookup> _mockIHttpLookup;
 
         public virtual void Setup()
         {
@@ -43,12 +45,16 @@ namespace BuildIndicatron.Tests.Core.Chat
             _mockISoundFilePicker = new Mock<ISoundFilePicker>(MockBehavior.Strict);
             _mockISettingsManager = new Mock<ISettingsManager>(MockBehavior.Strict);
             _mockIJenkensApi = new Mock<IJenkensApi>(MockBehavior.Strict);
+            _mockIHttpLookup = new Mock<IHttpLookup>();
+            
+          
             builder.Register(context => _mockITextToSpeech.Object).As<ITextToSpeech>();
             builder.Register(context => _mockIPinManager.Object).As<IPinManager>();
             builder.Register(context => _mockIMp3Player.Object).As<IMp3Player>();
             builder.Register(context => _mockISoundFilePicker.Object).As<ISoundFilePicker>();
             builder.Register(context => _mockISettingsManager.Object).As<ISettingsManager>();
             builder.Register(context => _mockIJenkensApi.Object).As<IJenkensApi>();
+            builder.Register(context => _mockIHttpLookup.Object).As<IHttpLookup>();
         }
 
         private void DefaultRegsters(ContainerBuilder builder)
@@ -59,6 +65,15 @@ namespace BuildIndicatron.Tests.Core.Chat
                     .Any(i => i.IsAssignableFrom(typeof (IReposonseFlow))))
                 .AsSelf().SingleInstance();
             builder.RegisterType<SequencesFactory>();
+            builder.Register(
+                delegate(IComponentContext context)
+                {
+                    var deployCoreContext = new DeployCoreContext(context.Resolve<ISettingsManager>())
+                    {
+                        JenkinsApi = _mockIJenkensApi.Object
+                    };
+                    return deployCoreContext;
+                });
             builder.RegisterType<ChatBot>().As<IChatBot>();
         }
 
@@ -72,6 +87,7 @@ namespace BuildIndicatron.Tests.Core.Chat
             _mockISettingsManager.VerifyAll();
 
             _mockIJenkensApi.VerifyAll();
+            _mockIHttpLookup.VerifyAll();
          
           
         }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using BuildIndicatron.Core.Helpers;
@@ -32,6 +33,17 @@ namespace BuildIndicatron.Core.Settings
             if (defaultValue != null)
             {
                 Set(key, defaultValue);
+            }
+            return defaultValue;
+        }
+
+        public int Get(string buildProcessingTimeout, int defaultValue)
+        {
+            var stringValue = Get(buildProcessingTimeout,defaultValue.ToString(CultureInfo.InvariantCulture));
+            int intValue;
+            if (int.TryParse(stringValue, out intValue))
+            {
+                return intValue;
             }
             return defaultValue;
         }

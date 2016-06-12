@@ -25,7 +25,9 @@ namespace BuildIndicatron.Core.Chat
 
         protected override void Apply(TextSplitter<Request> textSplitter)
         {
-            textSplitter.Map(@"(ANYTHING)(jenkins) (status)");
+            textSplitter
+                .Map(@"(ANYTHING)(jenkins) (status)");
+
         }
 
        
