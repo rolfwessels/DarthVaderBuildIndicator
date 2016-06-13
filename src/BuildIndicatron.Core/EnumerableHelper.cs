@@ -13,7 +13,7 @@ namespace BuildIndicatron.Core
             var count = list.Count();
             if (count <= 1)
                 return list.FirstOrDefault();
-            return list.Skip(_random.Next(0, count-1)).FirstOrDefault();
+            return list.Skip(_random.Next(0, count)).FirstOrDefault();
         }
 
         public static string StringJoin<T>(this IEnumerable<T> enumerable,string join = ", ")

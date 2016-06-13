@@ -28,6 +28,7 @@ namespace BuildIndicatron.Core.Chat
                 .ListenTo<TellMeAJokeContext>()
                 .ListenTo<TellMeAInsultContext>()
                 .ListenTo<TellMeAQuotesContext>()
+                .ListenTo<FailedToRespondContext>()
                 .ListenTo<RandomJokeResponse>();
             
         }

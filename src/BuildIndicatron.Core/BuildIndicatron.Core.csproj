@@ -134,6 +134,7 @@
     <Compile Include="Chat\AboutContext.cs" />
     <Compile Include="Chat\SaySomethingContext.cs" />
     <Compile Include="Chat\TellMeAJokeContext.cs" />
+    <Compile Include="Chat\FailedToRespondContext.cs" />
     <Compile Include="Chat\TellMeAQuotesContext.cs" />
     <Compile Include="Chat\TellMeAInsultContext.cs" />
     <Compile Include="Chat\SetVolumeContext.cs" />

@@ -125,6 +125,7 @@
     <Compile Include="Core\Chat\AboutContextTests.cs" />
     <Compile Include="Core\Chat\SetVolumeContextTests.cs" />
     <Compile Include="Core\Chat\TellMeAJokeContextTests.cs" />
+    <Compile Include="Core\Chat\FailedToRespondContextTests.cs" />
     <Compile Include="Core\Chat\TellMeAQuotesContextTests.cs" />
     <Compile Include="Core\Chat\TellMeAInsultContextTests.cs" />
     <Compile Include="Core\Settings\SettingsManagerTests.cs" />

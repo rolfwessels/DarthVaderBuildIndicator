@@ -176,6 +176,17 @@
             "Look what the cat dragged in!",
             };
 
+        private static string[] _dontUnderStand = new[] {"I beg your pardon?",
+            "I beg your pardon, but I don't quite understand.",
+            "I'm not quite sure I know what you mean.",
+            "I'm not quite sure I follow you.",
+            "I don't quite see what you mean.",
+            "I'm not sure I got your point.",
+            "Sorry, I didn't quite hear what you said.",
+            "Sorry, I didn't get your point.",
+            "I don't quite see what you're getting at."
+            };
+
 	    #endregion
 
 		public static string Quotes
@@ -207,6 +218,14 @@
 			get
 			{
 				return (_greetings).Random();
+			}
+		}
+        
+        public static string DontUnderstand
+		{
+			get
+			{
+				return (_dontUnderStand).Random();
 			}
 		}
 	}
