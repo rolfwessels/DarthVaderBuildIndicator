@@ -1,9 +1,7 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using BuildIndicatron.Core.Api;
 using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.Settings;
-using BuildIndicatron.Core.SimpleTextSplit;
 
 namespace BuildIndicatron.Core.Chat
 {

@@ -20,7 +20,7 @@ namespace BuildIndicatron.Core.Chat
                 .ListenTo<GetSettingsContext>()
                 .ListenTo<SetSettingsContext>()
                 .ListenTo<SetIoContext>()
-                .ListenTo<SaySomething>()
+                .ListenTo<SaySomethingContext>()
                 .ListenTo<SayContext>()
                 .ListenTo<HelpContext>()
                 .ListenTo<AboutContext>()
