@@ -5,6 +5,11 @@ namespace BuildIndicatron.Core.Api.Model
 {
     public class Job
     {
+        public const string FailInColor = "red_anime";
+        public const string FailColor = "red";
+        public const string SuccessColor = "blue";
+        
+
         public string Name { get; set; }
         public string Color { get; set; }
         public string Url { get; set; }
@@ -20,12 +25,12 @@ namespace BuildIndicatron.Core.Api.Model
 
         public bool IsPassed()
         {
-            return Color.Contains("blue");
+            return Color.Contains(SuccessColor);
         }
 
         public bool IsFailed()
         {
-            return Color.Contains("red") || Color.Contains("yellow") ;
+            return Color.Contains(FailColor) || Color.Contains("yellow");
         }
     }
 

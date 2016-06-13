@@ -1,0 +1,40 @@
+using System.Linq;
+using System.Threading.Tasks;
+using BuildIndicatron.Core.Helpers;
+using BuildIndicatron.Core.Processes;
+using BuildIndicatron.Core.Settings;
+using BuildIndicatron.Shared.Enums;
+using Raspberry.IO.GeneralPurpose;
+
+namespace BuildIndicatron.Core.Api
+{
+    public class MonitorJenkins : IMonitorJenkins
+    {
+        private readonly IJenkinsFactory _jenkinsFactory;
+        private readonly IPinManager _pinManager;
+        private readonly ISettingsManager _settingsManager;
+
+        public MonitorJenkins(IJenkinsFactory jenkinsFactory, IPinManager pinManager, ISettingsManager settingsManager)
+        {
+            _jenkinsFactory = jenkinsFactory;
+            _pinManager = pinManager;
+            _settingsManager = settingsManager;
+        }
+
+        #region Implementation of IMonitorJenkins
+
+        public async Task Check()
+        {
+
+            var allProjects = await _jenkinsFactory.GetBuilder().GetAllProjects();
+            _pinManager.SetPin(PinName.SecondaryLightRed, allProjects.Jobs.Any(x=>x.IsFailed()));
+            _pinManager.SetPin(PinName.SecondaryLightGreen, allProjects.Jobs.All(x => x.IsPassed()));
+            var allProjects2 = _settingsManager.GetMyBuildingJobs(allProjects).ToArray();
+            _pinManager.SetPin(PinName.MainLightRed, allProjects2.Any(x => x.IsFailed()));
+            _pinManager.SetPin(PinName.MainLightBlue, allProjects2.Any(x => x.IsProcessing()));
+            _pinManager.SetPin(PinName.MainLightGreen, allProjects2.All(x => x.IsPassed()));
+        }
+
+        #endregion
+    }
+}

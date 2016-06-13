@@ -11,6 +11,7 @@ namespace BuildIndicatron.Core.Chat
         {
             _chatContextHolder = new ChatContextHolder(injector)
                 .ListenTo<DeployCoreContext>()
+                .ListenTo<JenkinsMonitorContext>()
                 .ListenTo<GreetingsContext>()
                 .ListenTo<JenkinsStatusContext>()
                 .ListenTo<SetVolumeContext>()
@@ -23,6 +24,7 @@ namespace BuildIndicatron.Core.Chat
                 .ListenTo<SayContext>()
                 .ListenTo<HelpContext>()
                 .ListenTo<AboutContext>()
+                .ListenTo<RunJenkinsMonitorOnBotChatContext>()
                 .ListenTo<RandomJokeResponse>();
             
         }

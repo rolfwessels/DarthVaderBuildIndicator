@@ -6,6 +6,9 @@ namespace BuildIndicatron.Core.Chat
     {
         string Text { get;  }
         bool IsDirectedAtMe { get; }
+        bool IsBotMessage { get; }
+        string FromChatHub { get; }
+        string FromUser  { get; }
         Task Respond(string message);
     }
 }
