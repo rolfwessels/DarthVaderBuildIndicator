@@ -19,7 +19,7 @@ namespace BuildIndicatron.Tests.Core.Chat
         public IContainer _container;
         protected Mock<IHttpLookup> _mockIHttpLookup;
         protected Mock<IJenkensApi> _mockIJenkensApi;
-        private Mock<IMonitorJenkins> _mockIMonitorJenkins;
+        protected Mock<IMonitorJenkins> _mockIMonitorJenkins;
         protected Mock<IMp3Player> _mockIMp3Player;
         protected Mock<IPinManager> _mockIPinManager;
         protected Mock<ISettingsManager> _mockISettingsManager;
@@ -144,7 +144,7 @@ namespace BuildIndicatron.Tests.Core.Chat
             public string Text { get; set; }
             public bool IsDirectedAtMe { get; set; }
             public bool IsBotMessage { get; set; }
-            public string FromChatHub { get; private set; }
+            public string FromChatHub { get; set; }
             public string FromUser { get; set; }
 
             public Task Respond(string message)

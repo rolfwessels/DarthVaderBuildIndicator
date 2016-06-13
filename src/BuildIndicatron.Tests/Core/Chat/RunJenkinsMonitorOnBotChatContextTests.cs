@@ -17,30 +17,32 @@ namespace BuildIndicatron.Tests.Core.Chat
         {
             // arrange
             Setup();
-            _mockISettingsManager.Setup(mc => mc.Get("jenkins_monitor_channel", It.IsAny<string>())).Returns("jenkins_monitor_channel");
-            _mockISettingsManager.Setup(mc => mc.Get("jenkins_monitor_builds", It.IsAny<string>())).Returns("jenkins_monitor_builds");
-            var messageContext = new MessageContext("where are you monitoring jenkins?");
+
+            _mockISettingsManager.Setup(mc => mc.Get("jenkins_monitor_channel", "#builds"))
+                .Returns("#builds");
+            _mockIMonitorJenkins.Setup(mc => mc.Check()).Returns(Task.FromResult(true));
+            var messageContext = new MessageContext("balbal") { FromUser = "jenkins", FromChatHub = "#builds" };
             // action
             await _chatBot.Process(messageContext);
             // assert
-            messageContext.LastMessages.Should().Contain(x => x.Contains("Im currently monitoring jenkins"));
         }
 
 
-         
+
         [Test]
-        public async Task Process_GivenCheck_ShouldScanJenkins()
+        public async Task Process_GivenIncorrectChannel_ShouldResondWithRunJenkinsMonitorOnBotChatContext()
         {
             // arrange
             Setup();
-            _mockISettingsManager.Setup(mc => mc.Get("jenkins_monitor_channel", It.IsAny<string>())).Returns("jenkins_monitor_channel");
-            _mockISettingsManager.Setup(mc => mc.Get("jenkins_monitor_builds", It.IsAny<string>())).Returns("jenkins_monitor_builds");
-            var messageContext = new MessageContext("check jenkins now?");
+
+            _mockISettingsManager.Setup(mc => mc.Get("jenkins_monitor_channel", "#builds"))
+                .Returns("#builds");
+            var messageContext = new MessageContext("balbal") { FromUser = "jenkins" };
             // action
             await _chatBot.Process(messageContext);
             // assert
-            messageContext.LastMessages.Should().Contain(x => x.Contains("Checking jenkins now."));
         }
+
 
 
         

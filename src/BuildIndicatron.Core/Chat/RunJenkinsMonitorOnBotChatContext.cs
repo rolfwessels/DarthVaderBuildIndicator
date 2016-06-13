@@ -20,9 +20,8 @@ namespace BuildIndicatron.Core.Chat
 
         public Task<bool> CanRespond(IMessageContext context)
         {
-            var buildChannel = _settingsContext.GetBuildChannel();
-            context.Respond("User:" + context.FromUser);
-            return Task.FromResult(context.FromChatHub == buildChannel && context.FromUser.ToLower().Contains("jenkins"));
+            var isJenkinsBot = context.FromUser != null && context.FromUser.ToLower().Contains("jenkins");
+            return Task.FromResult(isJenkinsBot && context.FromChatHub == _settingsContext.GetBuildChannel());
         }
 
         public async Task Respond(ChatContextHolder chatContextHolder, IMessageContext context)
