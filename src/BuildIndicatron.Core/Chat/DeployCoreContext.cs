@@ -11,7 +11,7 @@ using BuildIndicatron.Core.SimpleTextSplit;
 namespace BuildIndicatron.Core.Chat
 {
    
-    public class DeployCoreContext : TextSplitterContextBase<DeployCoreContext.Meta>, IWithHelpText
+    public class DeployCoreContext : TextSplitterContextBase<DeployCoreContext.Meta>
     {
         private readonly ISettingsManager _settingsManager;
         private readonly IJenkensApi _jenkensApi;
@@ -151,7 +151,7 @@ namespace BuildIndicatron.Core.Chat
 
         public IEnumerable<HelpMessage> GetHelp()
         {
-            yield return new HelpMessage() {Call = "set setting [key] [value]",Description = "Set some settings."};
+            yield return new HelpMessage() {Call = "deploy",Description = "Set some settings."};
         }
 
         #endregion
