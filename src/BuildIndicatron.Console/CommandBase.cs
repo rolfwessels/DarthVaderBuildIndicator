@@ -113,7 +113,7 @@ namespace BuildIndicatron.Console
                 }).ToArray();
 
             BuildIndicationApi.SetButtonChoreography(choreography).Wait();
-            var failed = allProjects.Result.Jobs.Any(x => x.Color == JenkensTextConverter.FailColor);
+            var failed = allProjects.Result.Jobs.Any(x => x.IsFailed());
             var glow = new Choreography()
             {
                 Sequences = new List<Sequences>

@@ -70,6 +70,7 @@ namespace BuildIndicatron.Server.Setup
             builder.RegisterType<DeployCoreContext>();
             builder.RegisterType<ChatBot>().As<IChatBot>();
             builder.RegisterType<JenkinsFactory>().As<IJenkinsFactory>();
+            builder.RegisterType<MonitorJenkins>().As<IMonitorJenkins>();
             builder.RegisterType<HttpLookup>().As<IHttpLookup>();
             builder.RegisterType<VolumeSetter>().As<IVolumeSetter>();
             builder.Register(context => new SettingsManager(SettingFile())).As<ISettingsManager>().SingleInstance();

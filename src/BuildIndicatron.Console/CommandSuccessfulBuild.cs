@@ -93,12 +93,12 @@ namespace BuildIndicatron.Console
             var coreProjects = GetCoreProjects().ToArray();
             foreach (var coreProject in coreProjects.Where(x => x.Name.ToUpper() == projectName))
             {
-                coreProject.Color = isSuccess ? JenkensTextConverter.SuccessColor : JenkensTextConverter.FailColor;
+                coreProject.Color = isSuccess ? Job.SuccessColor : Job.FailColor;
             }
             Log.Info("Core projects stats for " + string.Join(",",coreProjects.Select(x => x.Name).ToArray()));
             Log.Info("Core projects stats for " + string.Join(",", coreProjects.Select(x => x.Color).ToArray()));
             const int beginTime = 10000;
-            if (coreProjects.Any(x => x.Color == JenkensTextConverter.FailColor))
+            if (coreProjects.Any(x => x.IsFailed()))
             {
                 Log.Info("Found atleast one core project that failed");
                 choreography.Sequences.AddRange(SwitchOnPin(beginTime, AppSettings.Default.LsRedPin));

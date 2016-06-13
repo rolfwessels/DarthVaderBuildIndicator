@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -97,6 +97,7 @@
     <Compile Include="Api\ApiBase.cs" />
     <Compile Include="Api\IJenkinsFactory.cs" />
     <Compile Include="Api\IJenkensApi.cs" />
+    <Compile Include="Api\IMonitorJenkins.cs" />
     <Compile Include="Api\IRobotApi.cs" />
     <Compile Include="Api\JenkensApi.cs" />
     <Compile Include="Api\JenkinsFactory.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Api\Model\LastFailedBuild.cs" />
     <Compile Include="Api\Model\JenkensProjectsResult.cs" />
     <Compile Include="Api\Model\Job.cs" />
+    <Compile Include="Api\MonitorJenkins.cs" />
     <Compile Include="Api\RobotApi.cs" />
     <Compile Include="Chat\ChatBot.cs" />
     <Compile Include="Chat\ChatContextHolder.cs" />
@@ -122,6 +124,8 @@
     <Compile Include="Chat\ReposonseFlowBase.cs" />
     <Compile Include="Chat\SayContext.cs" />
     <Compile Include="Chat\SetSettingsContext.cs" />
+    <Compile Include="Chat\JenkinsMonitorContext.cs" />
+    <Compile Include="Chat\RunJenkinsMonitorOnBotChatContext.cs" />
     <Compile Include="Chat\DeployCoreContext.cs" />
     <Compile Include="Chat\GreetingsContext.cs" />
     <Compile Include="Chat\JenkinsStatusContext.cs" />

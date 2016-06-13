@@ -17,13 +17,14 @@ namespace BuildIndicatron.Tests.Core.Chat
     {
         protected ChatBot _chatBot;
         public IContainer _container;
-        protected Mock<ITextToSpeech> _mockITextToSpeech;
-        protected Mock<IPinManager> _mockIPinManager;
-        protected Mock<IMp3Player> _mockIMp3Player;
-        protected Mock<ISoundFilePicker> _mockISoundFilePicker;
-        protected Mock<ISettingsManager> _mockISettingsManager;
-        protected Mock<IJenkensApi> _mockIJenkensApi;
         protected Mock<IHttpLookup> _mockIHttpLookup;
+        protected Mock<IJenkensApi> _mockIJenkensApi;
+        private Mock<IMonitorJenkins> _mockIMonitorJenkins;
+        protected Mock<IMp3Player> _mockIMp3Player;
+        protected Mock<IPinManager> _mockIPinManager;
+        protected Mock<ISettingsManager> _mockISettingsManager;
+        protected Mock<ISoundFilePicker> _mockISoundFilePicker;
+        protected Mock<ITextToSpeech> _mockITextToSpeech;
         protected Mock<IVoiceEnhancer> _mockIVoiceEnhancer;
         protected Mock<IVolumeSetter> _mockIVolumeSetter;
 
@@ -35,8 +36,24 @@ namespace BuildIndicatron.Tests.Core.Chat
 
             _container = builder.Build();
             _chatBot = new ChatBot(_container.Resolve<IFactory>());
-
         }
+
+        [TearDown]
+        public virtual void TearDown()
+        {
+            _mockIVolumeSetter.VerifyAll();
+            _mockIMonitorJenkins.VerifyAll();
+            _mockITextToSpeech.VerifyAll();
+            _mockIPinManager.VerifyAll();
+            _mockIMp3Player.VerifyAll();
+            _mockISoundFilePicker.VerifyAll();
+            _mockISettingsManager.VerifyAll();
+            _mockIVoiceEnhancer.VerifyAll();
+            _mockIJenkensApi.VerifyAll();
+            _mockIHttpLookup.VerifyAll();
+        }
+
+        #region Private Methods
 
         private void MockRegisters(ContainerBuilder builder)
         {
@@ -48,10 +65,12 @@ namespace BuildIndicatron.Tests.Core.Chat
             _mockIJenkensApi = new Mock<IJenkensApi>(MockBehavior.Strict);
             _mockIHttpLookup = new Mock<IHttpLookup>();
             _mockIVoiceEnhancer = new Mock<IVoiceEnhancer>(MockBehavior.Strict);
+            _mockIMonitorJenkins = new Mock<IMonitorJenkins>(MockBehavior.Strict);
+
 
             _mockIVolumeSetter = new Mock<IVolumeSetter>(MockBehavior.Strict);
-            
-          
+
+
             builder.Register(context => _mockITextToSpeech.Object).As<ITextToSpeech>();
             builder.Register(context => _mockIPinManager.Object).As<IPinManager>();
             builder.Register(context => _mockIMp3Player.Object).As<IMp3Player>();
@@ -62,9 +81,25 @@ namespace BuildIndicatron.Tests.Core.Chat
             builder.Register(context => _mockIVoiceEnhancer.Object);
             builder.Register(context => _mockIVolumeSetter.Object);
             builder.Register(context => _mockIVolumeSetter.Object);
+            builder.Register(context => _mockIMonitorJenkins.Object);
             builder.Register(context => new FakeJ(_mockIJenkensApi.Object)).As<IJenkinsFactory>();
-           
         }
+
+        private void DefaultRegsters(ContainerBuilder builder)
+        {
+            builder.Register(context => new AutofacInjector(_container)).As<IFactory>().SingleInstance();
+            builder.RegisterAssemblyTypes(typeof (IFactory).Assembly)
+                .Where(t => t.GetInterfaces()
+                    .Any(i => i.IsAssignableFrom(typeof (IReposonseFlow))))
+                .AsSelf().SingleInstance();
+            builder.RegisterType<SequencesFactory>();
+
+            builder.RegisterType<ChatBot>().As<IChatBot>();
+        }
+
+        #endregion
+
+        #region Nested type: FakeJ
 
         private class FakeJ : IJenkinsFactory
         {
@@ -90,34 +125,9 @@ namespace BuildIndicatron.Tests.Core.Chat
             #endregion
         }
 
-        private void DefaultRegsters(ContainerBuilder builder)
-        {
-            builder.Register(context => new AutofacInjector(_container)).As<IFactory>().SingleInstance();
-            builder.RegisterAssemblyTypes(typeof (IFactory).Assembly)
-                .Where(t => t.GetInterfaces()
-                    .Any(i => i.IsAssignableFrom(typeof (IReposonseFlow))))
-                .AsSelf().SingleInstance();
-            builder.RegisterType<SequencesFactory>();
-            
-            builder.RegisterType<ChatBot>().As<IChatBot>();
-        }
+        #endregion
 
-        [TearDown]
-        public virtual void TearDown()
-        {
-            _mockIVolumeSetter.VerifyAll();
-          
-            _mockITextToSpeech.VerifyAll();
-            _mockIPinManager.VerifyAll();
-            _mockIMp3Player.VerifyAll();
-            _mockISoundFilePicker.VerifyAll();
-            _mockISettingsManager.VerifyAll();
-            _mockIVoiceEnhancer.VerifyAll();
-            _mockIJenkensApi.VerifyAll();
-            _mockIHttpLookup.VerifyAll();
-         
-          
-        }
+        #region Nested type: MessageContext
 
         public class MessageContext : IMessageContext
         {
@@ -130,9 +140,12 @@ namespace BuildIndicatron.Tests.Core.Chat
 
             #region Implementation of IMessageContext
 
+            public List<string> LastMessages { get; private set; }
             public string Text { get; set; }
             public bool IsDirectedAtMe { get; set; }
-            public List<string> LastMessages { get; private set; }
+            public bool IsBotMessage { get; set; }
+            public string FromChatHub { get; private set; }
+            public string FromUser { get; set; }
 
             public Task Respond(string message)
             {
@@ -143,5 +156,6 @@ namespace BuildIndicatron.Tests.Core.Chat
             #endregion
         }
 
+        #endregion
     }
 }

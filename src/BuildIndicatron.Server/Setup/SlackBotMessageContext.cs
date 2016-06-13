@@ -16,9 +16,21 @@ namespace BuildIndicatron.Server.Setup
         }
 
         public string Text { get; set; }
+
         public bool IsDirectedAtMe {
             get { return _message.MentionsBot || _message.ChatHub.Type == SlackChatHubType.DM; }
         }
+
+        public bool IsBotMessage {
+            get { return true; }
+        }
+
+        public string FromChatHub
+        {
+            get { return _message.ChatHub.Name; }
+        }
+
+        public string FromUser { get { return _message.User.Name??""; } }
 
         public Task Respond(string message)
         {

@@ -47,8 +47,8 @@ namespace BuildIndicatron.Core.Chat
                 {
                     await context.Respond(value);
                 }
-                var jobNames = _settingsManager.MyBuildingJobs();
-                foreach (var value in allProjects.Jobs.Where(x => jobNames.Any(jobName=> x.Name.Equals(jobName,StringComparison.InvariantCultureIgnoreCase))))
+                var myBuildingJobs = _settingsManager.GetMyBuildingJobs(allProjects);
+                foreach (var value in myBuildingJobs)
                 {
                     await context.Respond(string.Format("{0} {1}", value.Name, MapColor(value)));
                 }
