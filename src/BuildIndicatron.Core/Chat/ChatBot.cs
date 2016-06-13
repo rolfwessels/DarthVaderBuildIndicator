@@ -25,6 +25,7 @@ namespace BuildIndicatron.Core.Chat
                 .ListenTo<HelpContext>()
                 .ListenTo<AboutContext>()
                 .ListenTo<RunJenkinsMonitorOnBotChatContext>()
+                .ListenTo<TellMeAJokeContext>()
                 .ListenTo<RandomJokeResponse>();
             
         }

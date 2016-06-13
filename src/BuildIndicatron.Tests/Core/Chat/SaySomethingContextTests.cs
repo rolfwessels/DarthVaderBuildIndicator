@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace BuildIndicatron.Tests.Core.Chat
 {
     [TestFixture]
-    public class SaySomethingTests : ChatBotTestsBase, IWithHelpText
+    public class SaySomethingContextTests : ChatBotTestsBase, IWithHelpText
     {
         #region Setup/Teardown
 
