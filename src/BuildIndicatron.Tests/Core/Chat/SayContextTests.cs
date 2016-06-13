@@ -1,5 +1,7 @@
 using System.Threading.Tasks;
+using BuildIndicatron.Core.Processes;
 using FluentAssertions;
+using Moq;
 using NUnit.Framework;
 
 namespace BuildIndicatron.Tests.Core.Chat
@@ -16,7 +18,7 @@ namespace BuildIndicatron.Tests.Core.Chat
         {
             // arrange
             Setup();
-            _mockITextToSpeech.Setup(mc => mc.Play("Hello loser!")).Returns(Task.FromResult(true));
+            _mockITextToSpeech.Setup(mc => mc.Play("Hello loser!",It.IsAny<IVoiceEnhancer>())).Returns(Task.FromResult(true));
             var messageContext = new MessageContext("say Hello loser!");
             // action
             await _chatBot.Process(messageContext);

@@ -35,7 +35,7 @@ namespace BuildIndicatron.Tests.Core.Chat
             // action
             await _chatBot.Process(messageContext);
             // assert
-            messageContext.LastMessages.Should().Contain(x=>x.Contains("Please specify a project name for UAT deploy, 'SampleUat' could not be found."));
+            messageContext.LastMessages.Should().Contain(x => x.Contains("Please specify a project name for Staging deploy, 'SampleUat'"));
         }
 
         [Test]
@@ -77,13 +77,13 @@ namespace BuildIndicatron.Tests.Core.Chat
             // action
             _chatBot.Process(messageContext);
             // assert
-            WaitFor(messageContext.LastMessages, "Starting the UAT builds.");
+            WaitFor(messageContext.LastMessages, "Starting the staging builds.");
             WaitFor(messageContext.LastMessages, "*Name1* - status Color1");
             WaitFor(messageContext.LastMessages, "Waiting for the job to start.");
             jobs.First().Color = "blue_anime";
             WaitFor(messageContext.LastMessages, "Waiting for the job to finish.");
             jobs.First().Color = "blue";
-            WaitFor(messageContext.LastMessages, "Done.");
+            WaitFor(messageContext.LastMessages, "Let me know if I can `monitor");
 
         }
 

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.Processes;
 
 namespace BuildIndicatron.Core.Chat
@@ -9,10 +10,12 @@ namespace BuildIndicatron.Core.Chat
     public class SetVolumeContext : ReposonseFlowBase, IReposonseFlow
     {
         private readonly ITextToSpeech _textToSpeech;
+        private readonly IVolumeSetter _volumeSetter;
 
-        public SetVolumeContext(ITextToSpeech textToSpeech)
+        public SetVolumeContext(ITextToSpeech textToSpeech, IVolumeSetter volumeSetter)
         {
             _textToSpeech = textToSpeech;
+            _volumeSetter = volumeSetter;
         }
 
         #region Implementation of IReposonseFlow
@@ -24,9 +27,10 @@ namespace BuildIndicatron.Core.Chat
 
         public Task Respond(ChatContextHolder chatContextHolder, IMessageContext context)
         {
-            var extractStartsWith = ValueConverterHelper.ToInt(ExtractStartsWith(context, "set volume"),10);
-            var result = string.Format("volume set to {0}", extractStartsWith);
+            var volumeLevel = ValueConverterHelper.ToInt(ExtractStartsWith(context, "set volume"),10);
+            var result = string.Format("volume set to {0}", volumeLevel);
             _textToSpeech.Play(result);
+            _volumeSetter.SetVolume(volumeLevel);
             return context.Respond(result);
         }
 

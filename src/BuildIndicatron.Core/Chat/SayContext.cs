@@ -9,10 +9,12 @@ namespace BuildIndicatron.Core.Chat
     public class SayContext : ReposonseFlowBase, IReposonseFlow, IWithHelpText
     {
         private readonly ITextToSpeech _textToSpeech;
+        private readonly IVoiceEnhancer _voiceEnhancer;
 
-        public SayContext(ITextToSpeech textToSpeech)
+        public SayContext(ITextToSpeech textToSpeech, IVoiceEnhancer voiceEnhancer)
         {
             _textToSpeech = textToSpeech;
+            _voiceEnhancer = voiceEnhancer;
         }
 
         #region Implementation of IReposonseFlow
@@ -25,7 +27,7 @@ namespace BuildIndicatron.Core.Chat
         public Task Respond(ChatContextHolder chatContextHolder, IMessageContext context)
         {
             var extractStartsWith = ExtractStartsWith(context, "say");
-            _textToSpeech.Play(extractStartsWith);
+            _textToSpeech.Play(extractStartsWith, _voiceEnhancer);
             return context.Respond(extractStartsWith);
         }
 
