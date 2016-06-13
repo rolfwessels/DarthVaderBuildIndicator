@@ -24,6 +24,8 @@ namespace BuildIndicatron.Tests.Core.Chat
         protected Mock<ISettingsManager> _mockISettingsManager;
         protected Mock<IJenkensApi> _mockIJenkensApi;
         protected Mock<IHttpLookup> _mockIHttpLookup;
+        protected Mock<IVoiceEnhancer> _mockIVoiceEnhancer;
+        protected Mock<IVolumeSetter> _mockIVolumeSetter;
 
         public virtual void Setup()
         {
@@ -32,7 +34,6 @@ namespace BuildIndicatron.Tests.Core.Chat
             MockRegisters(builder);
 
             _container = builder.Build();
-            
             _chatBot = new ChatBot(_container.Resolve<IFactory>());
 
         }
@@ -46,6 +47,9 @@ namespace BuildIndicatron.Tests.Core.Chat
             _mockISettingsManager = new Mock<ISettingsManager>(MockBehavior.Strict);
             _mockIJenkensApi = new Mock<IJenkensApi>(MockBehavior.Strict);
             _mockIHttpLookup = new Mock<IHttpLookup>();
+            _mockIVoiceEnhancer = new Mock<IVoiceEnhancer>(MockBehavior.Strict);
+
+            _mockIVolumeSetter = new Mock<IVolumeSetter>(MockBehavior.Strict);
             
           
             builder.Register(context => _mockITextToSpeech.Object).As<ITextToSpeech>();
@@ -55,6 +59,8 @@ namespace BuildIndicatron.Tests.Core.Chat
             builder.Register(context => _mockISettingsManager.Object).As<ISettingsManager>();
             builder.Register(context => _mockIJenkensApi.Object).As<IJenkensApi>();
             builder.Register(context => _mockIHttpLookup.Object).As<IHttpLookup>();
+            builder.Register(context => _mockIVoiceEnhancer.Object);
+            builder.Register(context => _mockIVolumeSetter.Object);
         }
 
         private void DefaultRegsters(ContainerBuilder builder)
@@ -80,12 +86,14 @@ namespace BuildIndicatron.Tests.Core.Chat
         [TearDown]
         public virtual void TearDown()
         {
+            _mockIVolumeSetter.VerifyAll();
+          
             _mockITextToSpeech.VerifyAll();
             _mockIPinManager.VerifyAll();
             _mockIMp3Player.VerifyAll();
             _mockISoundFilePicker.VerifyAll();
             _mockISettingsManager.VerifyAll();
-
+            _mockIVoiceEnhancer.VerifyAll();
             _mockIJenkensApi.VerifyAll();
             _mockIHttpLookup.VerifyAll();
          

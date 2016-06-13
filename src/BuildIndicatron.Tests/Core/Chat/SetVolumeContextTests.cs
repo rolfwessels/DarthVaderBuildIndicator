@@ -16,7 +16,7 @@ namespace BuildIndicatron.Tests.Core.Chat
         {
             // arrange
             Setup();
-            
+            _mockIVolumeSetter.Setup(mc => mc.SetVolume(10));
             var messageContext = new MessageContext("set volume 10");
             // action
             await _chatBot.Process(messageContext);
@@ -29,7 +29,7 @@ namespace BuildIndicatron.Tests.Core.Chat
         {
             // arrange
             Setup();
-            
+            _mockIVolumeSetter.Setup(mc => mc.SetVolume(10));
             var messageContext = new MessageContext("set volume 100");
             // action
             await _chatBot.Process(messageContext);

@@ -138,11 +138,13 @@
     <Compile Include="Helpers\IHttpLookup.cs" />
     <Compile Include="Helpers\IntegegerHelper.cs" />
     <Compile Include="Helpers\IpAddressHelper.cs" />
+    <Compile Include="Helpers\IVolumeSetter.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Helpers\PlatformHelper.cs" />
     <Compile Include="Helpers\ProcessHelper.cs" />
     <Compile Include="Helpers\RandomTextHelper.cs" />
     <Compile Include="Helpers\TestHelper.cs" />
+    <Compile Include="Helpers\VolumeSetter.cs" />
     <Compile Include="JenkensTextConverter.cs" />
     <Compile Include="Media\WavPlayer.cs" />
     <Compile Include="MimeHelper.cs" />

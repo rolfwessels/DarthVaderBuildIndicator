@@ -1,20 +1,12 @@
 ﻿using System;
-using System.Net;
-using System.Net.Sockets;
 using System.Reflection;
-using Autofac;
-using BuildIndicatron.Core.Api;
 using BuildIndicatron.Core.Helpers;
-using BuildIndicatron.Server.Setup;
 using BuildIndicatron.Server.Tests.Base;
 using BuildIndicatron.Shared.Enums;
-using BuildIndicatron.Shared.Models.ApiResponses;
-using BuildIndicatron.Shared.Models.Composition;
 using FizzWare.NBuilder.Generators;
 using FluentAssertions;
 using Microsoft.Owin.Hosting;
 using NUnit.Framework;
-using RestSharp;
 using log4net;
 using System.Linq;
 
