@@ -45,11 +45,9 @@ namespace BuildIndicatron.Core.Api
         {
             RestRequest restRequest = GetRestRequest(ApiPaths.TextToSpeech, Method.GET);
             restRequest.AddUrlSegment("text", text);
-
             return ProcessDefaultRequest<TextToSpeechResponse>(restRequest);
         }
 		
-
         public Task<SetupGpIoResponse> GpIoSetup(int pin, GpioDirection direction)
         {
             RestRequest restRequest = GetRestRequest(ApiPaths.SetupGpIo, Method.GET);

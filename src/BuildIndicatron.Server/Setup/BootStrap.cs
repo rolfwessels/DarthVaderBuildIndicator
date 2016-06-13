@@ -35,8 +35,8 @@ namespace BuildIndicatron.Server.Setup
 					_isInitialized = true;
 					ConfigureWebApi(app);
 					ConfigureIndexResponse(app);
-				    _slackBotServer = new SlackBotServer("xoxb-42965609527-M9RP4uNdgHAftOhkysFNms4S");
-//                    _slackBotServer = new SlackBotServer("xoxb-44517262306-1Sgod52dMAcPi0lyl0suoQxY");
+//				    _slackBotServer = new SlackBotServer("xoxb-42965609527-M9RP4uNdgHAftOhkysFNms4S");
+                    _slackBotServer = new SlackBotServer("xoxb-44517262306-1Sgod52dMAcPi0lyl0suoQxY");
                     _slackBotServer.ContinueslyTryToConnect().ContinueWith(task =>
                     {
                         var localIpAddress = IpAddressHelper.GetLocalIpAddresses().ToArray();
