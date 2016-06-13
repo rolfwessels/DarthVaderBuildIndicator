@@ -94,7 +94,8 @@ namespace BuildIndicatron.Server.Setup
 		{
 			builder.RegisterType<Mp3Player>().As<IMp3Player>();
 			builder.RegisterType<VoiceRss>().As<ITextToSpeech>();
-			builder.Register(t => new VoiceEnhancer(@"resources/text2speach/Star-Wars-1391.mp3", "speed 0.7 echo 0.8 0.88 6.0 0.4"))
+//            builder.Register(t => new VoiceEnhancer(@"resources/sounds/Funny/R2D2c.wav", "speed 1.3 echo 0.8 0.88 6.0 0.4"))
+            builder.Register(t => new VoiceEnhancer(@"resources/sounds/Funny/R2D2c.wav", "speed 1"))
 			       .As<IVoiceEnhancer>();
 			builder.RegisterType<PinManager>()
 				.WithParameter("configuration", ConfigurationRobot)

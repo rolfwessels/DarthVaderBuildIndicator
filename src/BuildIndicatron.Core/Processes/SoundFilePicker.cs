@@ -39,10 +39,10 @@ namespace BuildIndicatron.Core.Processes
 			{
 				return fileName;
 			}
-			bool isDirectory = Directory.Exists(fileName);
-			if (isDirectory)
+		    var folder = Directory.GetDirectories(_baseDir).OrderByDescending(x => (Path.GetFileName(x)??"").ToLower() == id.ToLower()).ToList();
+            if (folder.Any())
 			{
-				string[] strings = Directory.GetFiles(fileName, "*.*");
+                string[] strings = Directory.GetFiles(folder.First(), "*.*");
 				string random = strings.Random();
 				return random;
 			}
