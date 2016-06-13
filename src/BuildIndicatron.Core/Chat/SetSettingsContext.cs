@@ -6,7 +6,7 @@ using BuildIndicatron.Core.SimpleTextSplit;
 namespace BuildIndicatron.Core.Chat
 {
 
-    public class SetSettingsContext : TextSplitterContextBase<SetSettingsContext.SettingChange>, IWithHelpText
+    public class SetSettingsContext : TextSplitterContextBase<SetSettingsContext.SettingChange>
     {
         private readonly ISettingsManager _settingsContext;
         

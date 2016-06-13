@@ -10,27 +10,20 @@ using BuildIndicatron.Core.SimpleTextSplit;
 
 namespace BuildIndicatron.Core.Chat
 {
-
+   
     public class DeployCoreContext : TextSplitterContextBase<DeployCoreContext.Meta>, IWithHelpText
     {
-        private readonly Func<IJenkensApi> _deployer;
         private readonly ISettingsManager _settingsManager;
-        private IJenkensApi _setApi;
-        
-        
+        private readonly IJenkensApi _jenkensApi;
 
-        public DeployCoreContext(ISettingsManager settingsManager)
+
+        public DeployCoreContext(ISettingsManager settingsManager, IJenkinsFactory jenkinsFactory)
         {
-            _deployer = () => JenkensApi.OnJenkinsDeloyer(settingsManager);
             _settingsManager = settingsManager;
+            _jenkensApi = jenkinsFactory.GetDeployer();
         }
 
-        public IJenkensApi JenkinsApi
-        {
-            get { return _setApi ?? _deployer(); }
-            set { _setApi = value; }
-        }
-
+       
         #region Implementation of IReposonseFlow
 
         protected override void Apply(TextSplitter<Meta> textSplitter)
@@ -42,7 +35,7 @@ namespace BuildIndicatron.Core.Chat
 
         protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, Meta server)
         {
-            var jenkensProjectsResult = await JenkinsApi.GetAllProjects();
+            var jenkensProjectsResult = await _jenkensApi.GetAllProjects();
 
            
             server.State = server.State ?? States.Staging;
@@ -80,8 +73,8 @@ namespace BuildIndicatron.Core.Chat
         private async Task<bool> EnsureCorrectDeployProjects(IMessageContext context, Meta server,
             JenkensProjectsResult jenkensProjectsResult)
         {
-            server.StagingBuilds = _settingsManager.Get("deployer_staging_builds", "ProjectName").Split(',');
-            server.ProdBuild = _settingsManager.Get("deployer_prod_builds", "ProjectName").Split(',');
+            server.StagingBuilds = _settingsManager.GetStagingBuilds();
+            server.ProdBuild = _settingsManager.GetProdBuilds();
 
 
             var missingProject =
@@ -102,7 +95,7 @@ namespace BuildIndicatron.Core.Chat
                 await context.Respond("Oops, looks like this job is already running. Wait for it to stop before continuing.");
                 return false;
             }
-            await JenkinsApi.BuildProject(jenkinsJob.Url);
+            await _jenkensApi.BuildProject(jenkinsJob.Url);
             await context.Respond("Waiting for the job to start.");
             jenkinsJob = await WaitFor(jobName, result => result.IsProcessing(), TimeSpan.FromMinutes(2));
             if (!jenkinsJob.IsProcessing())
@@ -123,7 +116,7 @@ namespace BuildIndicatron.Core.Chat
         private async Task<Job> WaitFor(string jobName, Func<Job, bool> func, TimeSpan fromMinutes)
         {
             return await
-                JenkinsApi.AwaitAsync(x => x.GetAllProjects().Result.Jobs.First(job => IsMatch(job, jobName)),
+                _jenkensApi.AwaitAsync(x => x.GetAllProjects().Result.Jobs.First(job => IsMatch(job, jobName)),
                     func, (int)fromMinutes.TotalMilliseconds, 5000);
         }
 

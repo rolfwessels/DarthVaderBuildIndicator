@@ -83,8 +83,6 @@ namespace BuildIndicatron.Tests.Core.Chat
             jobs.First().Color = "blue_anime";
             WaitFor(messageContext.LastMessages, "Waiting for the job to finish.");
             jobs.First().Color = "blue";
-            WaitFor(messageContext.LastMessages, "Let me know if I can `monitor");
-
         }
 
         [Test]

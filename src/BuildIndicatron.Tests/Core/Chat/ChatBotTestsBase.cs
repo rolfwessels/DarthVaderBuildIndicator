@@ -61,6 +61,33 @@ namespace BuildIndicatron.Tests.Core.Chat
             builder.Register(context => _mockIHttpLookup.Object).As<IHttpLookup>();
             builder.Register(context => _mockIVoiceEnhancer.Object);
             builder.Register(context => _mockIVolumeSetter.Object);
+            builder.Register(context => _mockIVolumeSetter.Object);
+            builder.Register(context => new FakeJ(_mockIJenkensApi.Object)).As<IJenkinsFactory>();
+           
+        }
+
+        private class FakeJ : IJenkinsFactory
+        {
+            private readonly IJenkensApi _jenkensApi;
+
+            public FakeJ(IJenkensApi jenkensApi)
+            {
+                _jenkensApi = jenkensApi;
+            }
+
+            #region Implementation of IJenkinsFactory
+
+            public IJenkensApi GetDeployer()
+            {
+                return _jenkensApi;
+            }
+
+            public IJenkensApi GetBuilder()
+            {
+                return _jenkensApi;
+            }
+
+            #endregion
         }
 
         private void DefaultRegsters(ContainerBuilder builder)
@@ -71,15 +98,7 @@ namespace BuildIndicatron.Tests.Core.Chat
                     .Any(i => i.IsAssignableFrom(typeof (IReposonseFlow))))
                 .AsSelf().SingleInstance();
             builder.RegisterType<SequencesFactory>();
-            builder.Register(
-                delegate(IComponentContext context)
-                {
-                    var deployCoreContext = new DeployCoreContext(context.Resolve<ISettingsManager>())
-                    {
-                        JenkinsApi = _mockIJenkensApi.Object
-                    };
-                    return deployCoreContext;
-                });
+            
             builder.RegisterType<ChatBot>().As<IChatBot>();
         }
 

@@ -43,7 +43,7 @@ namespace BuildIndicatron.Core.Processes
 		{
 		    return Task.Run(() =>
 		    {
-		        var newFile = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(backgroundFile),"background.mp3")).AsPath();
+		        var newFile = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(backgroundFile)??"","background.mp3")).AsPath();
 		        if (!File.Exists(newFile))
 		        {
 		            var replace = string.Format(_convert, backgroundFile, newFile);
