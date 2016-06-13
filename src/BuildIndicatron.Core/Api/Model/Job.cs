@@ -17,6 +17,16 @@ namespace BuildIndicatron.Core.Api.Model
         {
             return Color.Contains("_anime");
         }
+
+        public bool IsPassed()
+        {
+            return Color.Contains("blue");
+        }
+
+        public bool IsFailed()
+        {
+            return Color.Contains("red") || Color.Contains("yellow") ;
+        }
     }
 
     public class Build

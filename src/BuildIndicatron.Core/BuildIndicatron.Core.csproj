@@ -95,9 +95,11 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Api\ApiBase.cs" />
+    <Compile Include="Api\IJenkinsFactory.cs" />
     <Compile Include="Api\IJenkensApi.cs" />
     <Compile Include="Api\IRobotApi.cs" />
     <Compile Include="Api\JenkensApi.cs" />
+    <Compile Include="Api\JenkinsFactory.cs" />
     <Compile Include="Api\Model\ChangeSet.cs" />
     <Compile Include="Api\Model\CrumbResult.cs" />
     <Compile Include="Api\Model\JenkensProjectsBuildRequest.cs" />
@@ -143,6 +145,7 @@
     <Compile Include="Helpers\PlatformHelper.cs" />
     <Compile Include="Helpers\ProcessHelper.cs" />
     <Compile Include="Helpers\RandomTextHelper.cs" />
+    <Compile Include="Helpers\SettingsHelper.cs" />
     <Compile Include="Helpers\TestHelper.cs" />
     <Compile Include="Helpers\VolumeSetter.cs" />
     <Compile Include="JenkensTextConverter.cs" />

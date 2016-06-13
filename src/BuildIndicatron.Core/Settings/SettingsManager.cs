@@ -22,7 +22,7 @@ namespace BuildIndicatron.Core.Settings
 
         public void Set(string key, string value)
         {
-            _dictionary.AddOrUpdate(key, value);
+            _dictionary.AddOrUpdate(key, value== null?null: value.Trim());
             Save();
         }
 

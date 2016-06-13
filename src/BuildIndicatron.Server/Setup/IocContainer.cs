@@ -67,9 +67,11 @@ namespace BuildIndicatron.Server.Setup
                     .Any(i => i.IsAssignableFrom(typeof(IReposonseFlow))))
                    .AsSelf().SingleInstance();
 			builder.RegisterType<SequencesFactory>();
-            builder.Register(context => new DeployCoreContext(context.Resolve<ISettingsManager>()));
+            builder.RegisterType<DeployCoreContext>();
             builder.RegisterType<ChatBot>().As<IChatBot>();
+            builder.RegisterType<JenkinsFactory>().As<IJenkinsFactory>();
             builder.RegisterType<HttpLookup>().As<IHttpLookup>();
+            builder.RegisterType<VolumeSetter>().As<IVolumeSetter>();
             builder.Register(context => new SettingsManager(SettingFile())).As<ISettingsManager>().SingleInstance();
             builder.Register(context => JenkensApi.GetJenkins(context.Resolve<ISettingsManager>())).As<IJenkensApi>();
             builder.Register(context => new AutofacInjector(_container)).As<IFactory>();
@@ -114,6 +116,7 @@ namespace BuildIndicatron.Server.Setup
 				return new GpioConfiguration(
 					new GpioConfiguration.Target(PinName.SecondaryLightRed, GpIO.GPIO7, true),
 					new GpioConfiguration.Target(PinName.SecondaryLightGreen, GpIO.GPIO8, true),
+//					new GpioConfiguration.Target(PinName.SecondaryLightBlue, GpIO.GPIO24, true),
 					new GpioConfiguration.Target(PinName.MainLightRed, GpIO.GPIO11, true),
 					new GpioConfiguration.Target(PinName.MainLightGreen, GpIO.GPIO25, true),
 					new GpioConfiguration.Target(PinName.MainLightBlue, GpIO.GPIO9, true),
