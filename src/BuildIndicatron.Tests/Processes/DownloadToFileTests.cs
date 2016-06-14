@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IO;
 using BuildIndicatron.Core.Processes;
+using BuildIndicatron.Core.Settings;
 using FluentAssertions;
+using Moq;
 using NUnit.Framework;
 
 namespace BuildIndicatron.Tests.Processes
@@ -12,18 +14,22 @@ namespace BuildIndicatron.Tests.Processes
 		const string Text = "Luke i am your father";
 		const string FileName = @".\Luke_i_am_your.47188592.mp3";
 		private DownloadToFile _downloadToFile;
+	  private Mock<ISettingsManager> _mockISettingsManager;
 
-		#region Setup/Teardown
+	  #region Setup/Teardown
 
 		public void Setup()
 		{
-			_downloadToFile = new DownloadToFile("./");
+		  _mockISettingsManager = new Mock<ISettingsManager>(MockBehavior.Strict);
+		  
+		  
+      _downloadToFile = new DownloadToFile("./", _mockISettingsManager.Object);
 		}
 
 		[TearDown]
 		public void TearDown()
 		{
-			
+      _mockISettingsManager.VerifyAll();
 		}
 
 		#endregion

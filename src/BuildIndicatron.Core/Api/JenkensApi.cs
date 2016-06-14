@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Net;
+using System.Reflection;
 using BuildIndicatron.Core.Api.Model;
 using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.Settings;
@@ -18,13 +20,22 @@ namespace BuildIndicatron.Core.Api
     /// </summary>
     public class JenkensApi : ApiBase, IJenkensApi
     {
-        public JenkensApi(string hostApi = "http://therig:9999", string jenkenUsername = null, string jenkenPassword = null)
+        private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+      public JenkensApi(string hostApi = "http://therig:9999", string jenkenUsername = null, string jenkenPassword = null)
             : base(hostApi, jenkenUsername, jenkenPassword)
         {
-            Url = hostApi;
+          Url = hostApi;
+          _log.Info(string.Format("Connecting to : '{0}' '{1}' '{2}'", hostApi, jenkenUsername, jenkenPassword));
         }
-        
-        public Task<JenkensProjectsResult> GetAllProjects()
+
+      public IWebProxy Proxy
+      {
+        get { return Client.Proxy; }
+        set { Client.Proxy = value; }
+      }
+
+      public Task<JenkensProjectsResult> GetAllProjects()
         {
             var restRequest = GetRestRequest("api/json", Method.GET);
             //restRequest.AddParameter("pretty", "true");
@@ -62,23 +73,34 @@ namespace BuildIndicatron.Core.Api
             return ProcessDefaultRequest<CrumbResult>(request);
         }
 
-        public static JenkensApi OnJenkinsDeloyer(ISettingsManager resolve)
+        public static JenkensApi OnJenkinsDeloyer(ISettingsManager settings)
         {
-            return new JenkensApi(
-                resolve.Get("jenkins_deployer_host", "http://therig1231:9999"),
-                resolve.Get("jenkins_deployer_user",null),
-                resolve.Get("jenkins_deployer_password",null)
-                );
+          var api = new JenkensApi(
+            settings.Get("jenkins_deployer_host", "http://therig1231:9999"),
+            settings.Get("jenkins_deployer_user",null),
+            settings.Get("jenkins_deployer_password",null)
+            );
+          if (!string.IsNullOrEmpty(settings.GetDefaultProxy()))
+          {
+            api.Proxy = new WebProxy(new Uri(settings.GetDefaultProxy()));
+          }
+          return api;
         }
 
-        public static JenkensApi GetJenkins(ISettingsManager resolve)
+      public static JenkensApi GetJenkins(ISettingsManager settings)
         {
-            return new JenkensApi(
-                resolve.Get("jenkins_host", "http://therig:9999"),
-                resolve.Get("jenkins_user",null),
-                resolve.Get("jenkins_password",null)
-                );
+          var api = new JenkensApi(
+            settings.Get("jenkins_host", "http://therig:9999"),
+            settings.Get("jenkins_user",null),
+            settings.Get("jenkins_password",null)
+            );
+          if (!string.IsNullOrEmpty(settings.GetDefaultProxy()))
+          {
+            api.Proxy = new WebProxy(new Uri(settings.GetDefaultProxy()));
+          }
+          return api;
         }
+
     }
 
 }

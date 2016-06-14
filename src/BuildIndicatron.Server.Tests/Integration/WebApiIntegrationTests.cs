@@ -13,6 +13,8 @@ using System.Linq;
 namespace BuildIndicatron.Server.Tests.Integration
 {
 	[TestFixture]
+  [Category("Integration")]
+  [Explicit]
 	public class WebApiIntegrationTests : BaseIntegrationTests
 	{
 		private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);

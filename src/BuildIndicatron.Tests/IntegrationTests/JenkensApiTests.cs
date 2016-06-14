@@ -13,7 +13,7 @@ using log4net;
 namespace BuildIndicatron.Tests.IntegrationTests
 {
     [TestFixture]
-    [Explicit]
+    //[Explicit]
     public class JenkensApiTests
     {
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
@@ -28,7 +28,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
 
         static JenkensApiTests()
         {
-            _hostApi = "http://localhost:9999";
+          _hostApi = "https://jenkins.my227.net";
 //            _hostApi = "http://192.168.1.15:5000/";
         }
 
@@ -36,7 +36,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
 
         public void Setup()
         {
-            _jenkensApi = new JenkensApi(_hostApi);
+            _jenkensApi = new JenkensApi(_hostApi,"rolfw","C0ntr0l4");
         }
 
         [TearDown]
@@ -80,6 +80,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         }
 
         [Test]
+        [Explicit]
         public async Task RunAProject_WhenCalled_ShouldExecuteProject()
         {
             // arrange

@@ -21,7 +21,7 @@ namespace BuildIndicatron.Server.Tests.Mono
     [Timeout(300000)]
 	public class RemoteApiTests : BaseIntegrationTests
 	{
-		private const string Host = "192.168.1.20";
+    private const string Host = "192.168.2.124";
 		private const string UserName = "pi";
 		private const string Password = "C0ntr0l3";
 		private const string _homePiBuildindicatronServer = "/home/pi/buildIndicatron.server/";

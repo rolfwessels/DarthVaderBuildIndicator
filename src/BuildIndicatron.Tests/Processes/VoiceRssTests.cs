@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using System.Threading.Tasks;
 using BuildIndicatron.Core.Processes;
+using BuildIndicatron.Core.Settings;
 using log4net;
 using Moq;
 using NUnit.Framework;
@@ -23,7 +24,7 @@ namespace BuildIndicatron.Tests.Processes
 		{
 			_mockIDownloadToFile = new Mock<IDownloadToFile>(MockBehavior.Strict);
 			_mockIMp3Player = new Mock<IMp3Player>(MockBehavior.Strict);	
-			_voiceRss = new VoiceRss(_mockIDownloadToFile.Object, _mockIMp3Player.Object);
+      _voiceRss = new VoiceRss(_mockIDownloadToFile.Object, _mockIMp3Player.Object);
 		}
 
 		[TearDown]
@@ -67,9 +68,9 @@ namespace BuildIndicatron.Tests.Processes
 		{
 			Setup();
 			// arrange
-			_voiceRss = new VoiceRss(new DownloadToFile("./"), new Mp3Player());
+			_voiceRss = new VoiceRss(new DownloadToFile("./",new SettingsManager("settings.json")), new Mp3Player());
 			// action
-			_voiceRss.Play("Luke why am i not your father.");
+			_voiceRss.Play("Luke why am i not your father12.");
 		}
 
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BuildIndicatron.Core.Helpers;
 
 namespace BuildIndicatron.Core.Api.Model
 {
@@ -10,9 +11,15 @@ namespace BuildIndicatron.Core.Api.Model
         public string Timestamp { get; set; }
         public ChangeSet ChangeSet { get; set; }
         public DateTime DateTime {
-            get {
+            get
+            {
                 var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-                return epoch.AddMilliseconds(Convert.ToDouble(Timestamp));
+                double value;
+                if (double.TryParse(Timestamp, out value))
+                {
+                    
+                }
+                return epoch.AddMilliseconds(value);
             }
         }
 
