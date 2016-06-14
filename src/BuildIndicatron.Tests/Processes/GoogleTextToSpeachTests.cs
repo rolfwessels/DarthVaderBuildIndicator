@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using BuildIndicatron.Core.Processes;
+using BuildIndicatron.Core.Settings;
 using FluentAssertions;
 using log4net;
 using Moq;
@@ -108,7 +109,7 @@ namespace BuildIndicatron.Tests.Processes
 		{
 			Setup();
 			// arrange
-			_googleTextToSpeach = new GoogleTextToSpeach(new DownloadToFile("./"), new Mp3Player());
+			_googleTextToSpeach = new GoogleTextToSpeach(new DownloadToFile("./",new SettingsManager("settings.json")), new Mp3Player());
 			// action
 			_googleTextToSpeach.Play(_longString);
 		}

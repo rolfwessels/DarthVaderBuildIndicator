@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using BuildIndicatron.Core;
 using BuildIndicatron.Core.Api.Model;
+using BuildIndicatron.Core.Helpers;
 using FluentAssertions;
 using NUnit.Framework;
 using RestSharp;
@@ -235,58 +236,10 @@ namespace BuildIndicatron.Tests
         [Test]
         public void GetLastModifiedDateString_Month()
         {
-            var lastModifiedDateString = _jenkensTextConverter.GetLastModifiedDateString(new LastFailedBuild() { Timestamp = DateTime.Now.AddDays(-32).ToEpochTimeStamp() });
+            var lastModifiedDateString = _jenkensTextConverter.GetLastModifiedDateString(new LastFailedBuild() { Timestamp = DateTime.Now.AddDays(-32).ToEpochTimeStamp().Dump("1") });
             lastModifiedDateString.Should().Be("1 month ago");
         }
 
-        [Test]
-        public void GetLastModifiedDateString_1DayAgo()
-        {
-            var lastModifiedDateString = _jenkensTextConverter.GetLastModifiedDateString(new LastFailedBuild() { Timestamp = DateTime.Now.AddDays(-1.1).ToEpochTimeStamp()});
-            lastModifiedDateString.Should().Be("1 day ago");
-        }
-
-        [Test]
-        public void GetLastModifiedDateString_Days()
-        {
-            var lastModifiedDateString = _jenkensTextConverter.GetLastModifiedDateString(new LastFailedBuild() { Timestamp = DateTime.Now.AddDays(-2.1).ToEpochTimeStamp() });
-            lastModifiedDateString.Should().Be("2 days ago");
-        }
-
-        [Test]
-        public void GetLastModifiedDateString_HourAgo()
-        {
-            var lastModifiedDateString = _jenkensTextConverter.GetLastModifiedDateString(new LastFailedBuild() { Timestamp = DateTime.Now.AddHours(-1.2).ToEpochTimeStamp() });
-            lastModifiedDateString.Should().Be("1 hour ago");
-        }
-
-        [Test]
-        public void GetLastModifiedDateString_HoursAgos()
-        {
-            var lastModifiedDateString = _jenkensTextConverter.GetLastModifiedDateString(new LastFailedBuild() { Timestamp = DateTime.Now.AddHours(-3.1).ToEpochTimeStamp() });
-            lastModifiedDateString.Should().Be("3 hours ago");
-        }
-
-        [Test]
-        public void GetLastModifiedDateString_Minutes()
-        {
-            var lastModifiedDateString = _jenkensTextConverter.GetLastModifiedDateString(new LastFailedBuild() { Timestamp = DateTime.Now.AddMinutes(-30.1).ToEpochTimeStamp() });
-            lastModifiedDateString.Should().Be("30 minutes ago");
-        }
-
-        [Test]
-        public void GetLastModifiedDateString_Minute()
-        {
-            var lastModifiedDateString = _jenkensTextConverter.GetLastModifiedDateString(new LastFailedBuild() { Timestamp = DateTime.Now.AddMinutes(-1.1).ToEpochTimeStamp() });
-            lastModifiedDateString.Should().Be("1 minute ago");
-        }
-
-        [Test]
-        public void GetLastModifiedDateString_Now()
-        {
-            var lastModifiedDateString = _jenkensTextConverter.GetLastModifiedDateString(new LastFailedBuild() { Timestamp = DateTime.Now.AddSeconds(-1).ToEpochTimeStamp() });
-            lastModifiedDateString.Should().Be("just now");
-        }
 
 
         [Test]

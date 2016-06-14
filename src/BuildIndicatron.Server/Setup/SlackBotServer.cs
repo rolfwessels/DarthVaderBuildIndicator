@@ -70,11 +70,10 @@ namespace BuildIndicatron.Server.Setup
 
         private Task MessageReceived(SlackMessage message)
         {
-            
-            _log.Info(string.Format("Chathub {0} Text:{1}",message.ChatHub.Name, message.Text ));
-            _log.Info(string.Format("Chathub {0} ",message.Dump() ));
-            _chatBot.Process(new SlackBotMessageContext(this, message) { Text = message.Text }).FireAndForgetWithLogging();
-            return Task.Delay(1);
+          var slackBotMessageContext = new SlackBotMessageContext(this, message) { Text = message.Text };
+          _log.Info(string.Format("Chathub {0}-{2} Text:{1}", message.ChatHub.Name, message.Text , message.User.Name));
+          _chatBot.Process(slackBotMessageContext).FireAndForgetWithLogging();
+          return Task.Delay(1);
         }
 
         private void ConnectionStatusChanged()

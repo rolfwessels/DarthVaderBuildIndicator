@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using log4net;
@@ -32,10 +33,19 @@ namespace BuildIndicatron.Core.Processes
 		{
             return Task.Run(() =>
             {
-                var uri = new Uri(string.Format(UriToDownload, _key, Uri.EscapeUriString(text)));
+              var uriString = string.Format(UriToDownload, _key, Uri.EscapeUriString(text));
+              var uri = new Uri(uriString);
                 _log.Debug(string.Format("VoiceRss:Play Download [{0}]", uri));
                 var downloadToTempFile = _downloader.DownloadToTempFile(uri, text);
+              var fileInfo = new FileInfo(downloadToTempFile);
+              if (fileInfo.Exists)
+              _log.Debug(string.Format("VoiceRss:Play downloadToTempFile:{0} [{1}]", downloadToTempFile, fileInfo.Length));
+              else
+              {
+                _log.Error("Could not download file.");
+              }
                 voiceEnhancer.PlayFile(downloadToTempFile);
+
             });
 		}
 

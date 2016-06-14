@@ -64,18 +64,17 @@ namespace BuildIndicatron.Core.Chat
         {
             if (color.IsProcessing())
             {
-                return ":bicyclist:";
+                return ":-/";
             }
             if (color.IsPassed())
             {
-                return ":tennis:";
+                return ":-)";
             }
             if (color.IsFailed())
             {
-                return ":red_circle:";
+              return ":scream:";
             }
-
-            return ":volleyball:";
+            return ":-(";
         }
 
         #endregion

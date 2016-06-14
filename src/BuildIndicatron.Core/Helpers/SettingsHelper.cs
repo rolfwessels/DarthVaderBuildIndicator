@@ -27,6 +27,11 @@ namespace BuildIndicatron.Core.Helpers
         {
             return settingsManager.Get("deployer_staging_builds", "ProjectName").Split(',');
         }
+  
+        public static string GetDefaultProxy(this ISettingsManager settingsManager)
+        {
+          return settingsManager.Get("default_proxy", "");
+        }
 
         public static IEnumerable<Job> GetMyBuildingJobs(this ISettingsManager settingsmanager, JenkensProjectsResult allProjects)
         {

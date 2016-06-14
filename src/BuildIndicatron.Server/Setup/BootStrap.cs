@@ -11,6 +11,7 @@ using System.Web.Http.ExceptionHandling;
 using Autofac;
 using Autofac.Integration.WebApi;
 using BuildIndicatron.Core;
+using BuildIndicatron.Core.Api;
 using BuildIndicatron.Core.Chat;
 using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Server.Setup.Filters;
@@ -44,7 +45,8 @@ namespace BuildIndicatron.Server.Setup
                         _slackBotServer.SayTo("@rolf", "I'm on " + localIpAddress.StringJoin(" or "));
                         _log.Info("I'm on " + localIpAddress.StringJoin(" or "));
                     });
-                    
+				    var monitorJenkins = IocContainer.Instance.Resolve<IMonitorJenkins>();
+				    monitorJenkins.StartMonitor(TimeSpan.FromMinutes(4));
 				}
 			}
 		}
