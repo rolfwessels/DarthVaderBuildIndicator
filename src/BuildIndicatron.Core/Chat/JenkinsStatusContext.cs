@@ -64,17 +64,17 @@ namespace BuildIndicatron.Core.Chat
         {
             if (color.IsProcessing())
             {
-                return ":-/";
+                return ":runner:";
             }
             if (color.IsPassed())
             {
-                return ":-)";
+                return ":simple_smile:";
             }
             if (color.IsFailed())
             {
               return ":scream:";
             }
-            return ":-(";
+            return ":disappointed:";
         }
 
         #endregion

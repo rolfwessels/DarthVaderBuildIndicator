@@ -35,10 +35,11 @@ namespace BuildIndicatron.Core.Chat
                 await context.Respond(string.Format("Im currently monitoring jenkins on {0} for projects {1}", buildChannel, buildChannels.StringJoin()));
             if (!string.IsNullOrEmpty(server.Check))
             {
-                await context.Respond(string.Format("Checking jenkins now."));
+                await context.Respond("Checking jenkins now.");
                 await _monitorJenkins.Check();
-                await context.Respond(string.Format("lights set."));
+                await context.Respond("lights set.");
             }
+            
         }
 
         #endregion

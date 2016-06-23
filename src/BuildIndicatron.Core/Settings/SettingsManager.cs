@@ -60,7 +60,7 @@ namespace BuildIndicatron.Core.Settings
         {
             lock (_fileName)
             {
-                File.WriteAllText(_fileName, JsonConvert.SerializeObject(_dictionary));
+                File.WriteAllText(_fileName, JsonConvert.SerializeObject(_dictionary,Formatting.Indented));
             }
         }
 

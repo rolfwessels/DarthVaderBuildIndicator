@@ -31,10 +31,10 @@ namespace BuildIndicatron.Core.Api
         public async Task Check()
         {
             var allProjects = await _jenkinsFactory.GetBuilder().GetAllProjects();
-            _pinManager.SetPin(PinName.SecondaryLightRed, allProjects.Jobs.Any(x => x.IsFailed()));
+            _pinManager.SetPin(PinName.MainLightRed, allProjects.Jobs.Any(x => x.IsFailed()));
             //_pinManager.SetPin(PinName.SecondaryLightGreen, allProjects.Jobs.All(x => !x.IsFailed()));
             var allProjects2 = _settingsManager.GetMyBuildingJobs(allProjects).ToArray();
-            _pinManager.SetPin(PinName.MainLightRed, allProjects2.Any(x => x.IsFailed()));
+            _pinManager.SetPin(PinName.SecondaryLightRed, allProjects2.Any(x => x.IsFailed()));
             _pinManager.SetPin(PinName.MainLightBlue, allProjects2.Any(x => x.IsProcessing()));
             _pinManager.SetPin(PinName.MainLightGreen, allProjects2.All(x => x.IsPassed()));
         }
