@@ -1,18 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using BuildIndicatron.Core.Api;
 using BuildIndicatron.Core.Api.Model;
 using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.Settings;
 using BuildIndicatron.Core.SimpleTextSplit;
+using log4net;
 
 namespace BuildIndicatron.Core.Chat
 {
-   
+
     public class DeployCoreContext : TextSplitterContextBase<DeployCoreContext.Meta>
     {
+        private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly ISettingsManager _settingsManager;
         private readonly IJenkensApi _jenkensApi;
 
@@ -35,10 +38,9 @@ namespace BuildIndicatron.Core.Chat
 
         protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, Meta server)
         {
-            var jenkensProjectsResult = await _jenkensApi.GetAllProjects();
-
-           
             server.State = server.State ?? States.Staging;
+            await context.Respond("Ok let me check jenkins for the correct builds.");
+            var jenkensProjectsResult = await _jenkensApi.GetAllProjects();
             var missingProject = await EnsureCorrectDeployProjects(context, server, jenkensProjectsResult);
             if (missingProject) return;
 
@@ -95,7 +97,15 @@ namespace BuildIndicatron.Core.Chat
                 await context.Respond("Oops, looks like this job is already running. Wait for it to stop before continuing.");
                 return false;
             }
-            await _jenkensApi.BuildProject(jenkinsJob.Url);
+            try
+            {
+                await _jenkensApi.BuildProject(jenkinsJob.Url);
+            }
+            catch (Exception e)
+            {
+                _log.Error(e.Message, e);
+                context.Respond("Err, I think that it has started ... ").Wait();
+            }
             await context.Respond("Waiting for the job to start.");
             jenkinsJob = await WaitFor(jobName, result => result.IsProcessing(), TimeSpan.FromMinutes(2));
             if (!jenkinsJob.IsProcessing())

@@ -46,7 +46,7 @@ namespace BuildIndicatron.Server.Setup
                         _log.Info("I'm on " + localIpAddress.StringJoin(" or "));
                     });
 				    var monitorJenkins = IocContainer.Instance.Resolve<IMonitorJenkins>();
-				    monitorJenkins.StartMonitor(TimeSpan.FromMinutes(4));
+				    monitorJenkins.StartMonitor(TimeSpan.FromSeconds(30));
 				}
 			}
 		}

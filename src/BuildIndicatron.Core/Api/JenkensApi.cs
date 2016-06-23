@@ -26,16 +26,20 @@ namespace BuildIndicatron.Core.Api
             : base(hostApi, jenkenUsername, jenkenPassword)
         {
           Url = hostApi;
-          _log.Info(string.Format("Connecting to : '{0}' '{1}' '{2}'", hostApi, jenkenUsername, jenkenPassword));
+          _log.Info(string.Format("Connecting to : '{0}' '{1}' '{2}'", hostApi, jenkenUsername, "*************"));
         }
 
-      public IWebProxy Proxy
+        public IWebProxy Proxy
       {
         get { return Client.Proxy; }
         set { Client.Proxy = value; }
       }
 
-      public Task<JenkensProjectsResult> GetAllProjects()
+        public bool IsCrumbRequired { get; set; }
+
+        public string Url { private set; get; }
+
+        public Task<JenkensProjectsResult> GetAllProjects()
         {
             var restRequest = GetRestRequest("api/json", Method.GET);
             //restRequest.AddParameter("pretty", "true");
@@ -45,10 +49,9 @@ namespace BuildIndicatron.Core.Api
             return ProcessDefaultRequest<JenkensProjectsResult>(restRequest);
         }
 
-        public string Url { get; private set; }
-
         public async Task<JenkensProjectsResult> BuildProject(string url)
         {
+            
             var crumbResult = await GetCrumb();
 
             var restRequest = GetRestRequest(url.Replace(Url, "") + "/build", Method.POST);
@@ -69,6 +72,7 @@ namespace BuildIndicatron.Core.Api
 
         public Task<CrumbResult> GetCrumb()
         {
+            if (!IsCrumbRequired) return Task.FromResult(new CrumbResult() {Crumb = "Abc"});
             var request = GetRestRequest("crumbIssuer/api/json",Method.GET);
             return ProcessDefaultRequest<CrumbResult>(request);
         }
