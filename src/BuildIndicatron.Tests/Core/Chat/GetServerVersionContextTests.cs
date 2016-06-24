@@ -31,8 +31,6 @@ namespace BuildIndicatron.Tests.Core.Chat
             messageContext.WaitFor(x => x.LastMessages, x => x.Contains("API1")).Should().Contain(x => x.Contains("API1"));
         }
 
-
-
         [Test]
         public async Task Process_GivenGetServerVersionContext_ShouldOnlyCheckThat()
         {
@@ -47,6 +45,7 @@ namespace BuildIndicatron.Tests.Core.Chat
 
             messageContext.WaitFor(x => x.LastMessages, x => x.Contains("Checking prod servers, give me a minute."))
                 .Should().Contain("Checking prod servers, give me a minute.");
+            messageContext.WaitFor(x => x.LastMessages, x => x.Contains("API1")).Should().Contain(x => x.Contains("1 week ago"));
             messageContext.WaitFor(x => x.LastMessages, x => x.Contains("API1")).Should().Contain(x => x.Contains("API1"));
         }
  
