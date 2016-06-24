@@ -1,17 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.SimpleTextSplit;
 using Humanizer;
+using log4net;
 
 namespace BuildIndicatron.Core.Chat
 {
 
     public class GetServerVersionContext : TextSplitterContextBase<GetServerVersionContext.Server>, IWithHelpText
     {
+        private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly IHttpLookup _lookup;
         protected readonly Server[] _servers;
 
@@ -19,8 +23,8 @@ namespace BuildIndicatron.Core.Chat
         {
             _lookup = lookup;
             _servers = new[] { 
-		        new Server() { Name = "staging", Uri = "https://api.22seven.com/heartbeat" , ScanCount = 10 },
-                new Server() { Name = "prod", Uri = "https://test.22seven.com/heartbeat" , ScanCount = 1 },
+		        new Server() { Name = "prod", Uri = "https://api.22seven.com/heartbeat" , ScanCount = 10 },
+                new Server() { Name = "staging", Uri = "https://test.22seven.com/heartbeat" , ScanCount = 1 },
 	        };
         }
 
@@ -31,8 +35,7 @@ namespace BuildIndicatron.Core.Chat
             textSplitter
                 .Map(@"(what|whats)(ANYTHING)(?<name>staging|prod)(ANYTHING)version(ANYTHING)")
                 .Map(@"(what|whats)(ANYTHING)version(ANYTHING)(?<name>staging|prod)(ANYTHING)")
-                .Map(@"(what|whats)(ANYTHING)version(ANYTHING)")
-                ; 
+                .Map(@"(what|whats)(ANYTHING)version(ANYTHING)"); 
         }
         
         protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, Server server)
@@ -87,13 +90,27 @@ namespace BuildIndicatron.Core.Chat
                 var line = Regex.Match(restResponse.Content, @"(.*?),(.*?),(.*?),(.*?)!");
                 var serverName = line.Groups[2].Value.Trim();
                 var version = line.Groups[3].Value.Trim();
-                var date = DateTime.Now - DateTime.Parse(line.Groups[4].Value.Trim());
+                var date = DateTime.Now - Parse(line);
                 return new ServerVersion(serverName, version, date);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                _log.Error(e.Message, e);
                 return null;
             }
+        }
+
+        private static DateTime Parse(Match line)
+        {
+            DateTime dateTime;
+            string format = "M/d/yyyy h:mm:ss tt";
+            //6/10/2016 2:44:36 PM
+            if (DateTime.TryParseExact(line.Groups[4].Value.Trim(), format, CultureInfo.InvariantCulture, DateTimeStyles.None, out dateTime))
+            {
+                return dateTime;
+            }
+
+            return DateTime.Now;
         }
 
         #endregion

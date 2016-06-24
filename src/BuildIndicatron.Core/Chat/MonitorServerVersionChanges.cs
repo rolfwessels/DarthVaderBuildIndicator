@@ -69,21 +69,20 @@ namespace BuildIndicatron.Core.Chat
             for (int i = 0; i < link.ScanCount; i++)
             {
                 var serverVersion = await GetVerionForLink(link);
-
                 if (serverVersion == null || list.Contains(serverVersion.ServerName + serverVersion.Version)) continue;
                 list.Add(serverVersion.ServerName + serverVersion.Version);
                 if (report)
                 {
                     await
-                        context.Respond(string.Format("{0} is on version {1}, released {2} ago.",
+                        context.Respond(string.Format("{0} now on a new version {1}, released {2} ago.",
                             serverVersion.ServerName, serverVersion.Version,
                             serverVersion.Date.Humanize()));
                 }
             }
-            if (!list.Any())
-            {
-                await context.Respond(string.Format("Oops, {0} seems to be down.", link.Uri));
-            }
+//            if (!list.Any())
+//            {
+//                await context.Respond(string.Format("Oops, {0} seems to be down.", link.Uri));
+//            }
         }
 
         #endregion

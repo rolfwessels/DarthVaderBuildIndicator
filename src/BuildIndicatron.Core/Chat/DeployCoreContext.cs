@@ -132,7 +132,7 @@ namespace BuildIndicatron.Core.Chat
 
         private static bool IsMatch(Job job , string jobName)
         {
-            return job.Name.ToLower() == jobName.Trim().ToLower();
+            return job.Name.Trim().ToLower() == jobName.Trim().ToLower();
         }
 
         private static async Task<bool> EnsureValidProjects(IMessageContext context,
@@ -150,6 +150,10 @@ namespace BuildIndicatron.Core.Chat
                             string.Format(
                                 "Please specify a project name for {3} deploy, '{0}' could not be found. You can change this by typing `set settings {1} {2}`",
                                 jobName, configName, jenkensProjectsResult.Jobs.Random().Name, prod));
+                    await
+                       context.Respond(
+                           string.Format(
+                               "I could find the following {0}", jenkensProjectsResult.Jobs.Select(x=>string.Format("`{0}`", x.Name)).StringJoin()));
                 }
             }
             return notFound.Any();
