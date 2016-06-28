@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Net;
-using System.Net.Sockets;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -12,8 +8,8 @@ using Autofac;
 using Autofac.Integration.WebApi;
 using BuildIndicatron.Core;
 using BuildIndicatron.Core.Api;
-using BuildIndicatron.Core.Chat;
 using BuildIndicatron.Core.Helpers;
+using BuildIndicatron.Core.Settings;
 using BuildIndicatron.Server.Setup.Filters;
 using log4net;
 using Owin;
@@ -36,8 +32,8 @@ namespace BuildIndicatron.Server.Setup
 					_isInitialized = true;
 					ConfigureWebApi(app);
 					ConfigureIndexResponse(app);
-//				    _slackBotServer = new SlackBotServer("xoxb-42965609527-M9RP4uNdgHAftOhkysFNms4S");
-                    _slackBotServer = new SlackBotServer("xoxb-44517262306-1Sgod52dMAcPi0lyl0suoQxY");
+				    var settings = IocContainer.Instance.Resolve<ISettingsManager>();
+                    _slackBotServer = new SlackBotServer(settings.Get("SlackToken"));
                     _slackBotServer.ContinueslyTryToConnect().ContinueWith(task =>
                     {
                         var localIpAddress = IpAddressHelper.GetLocalIpAddresses().ToArray();
