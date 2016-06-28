@@ -1,4 +1,4 @@
-# DathVaderBuildIndicator
+# DarthVaderBuildIndicator
 
 Hacked darth vader led light used with RaspberryPi for build indicator https://www.youtube.com/watch?v=BnXh99us4-A
 
