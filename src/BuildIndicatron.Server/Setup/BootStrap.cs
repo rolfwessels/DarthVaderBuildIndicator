@@ -33,7 +33,9 @@ namespace BuildIndicatron.Server.Setup
 					ConfigureWebApi(app);
 					ConfigureIndexResponse(app);
 				    var settings = IocContainer.Instance.Resolve<ISettingsManager>();
-                    _slackBotServer = new SlackBotServer(settings.Get("SlackToken"));
+				    var apiToken = settings.Get("slack_token");
+                    _log.Info(string.Format("Token:'{0}'", apiToken));
+				    _slackBotServer = new SlackBotServer(apiToken);
                     _slackBotServer.ContinueslyTryToConnect().ContinueWith(task =>
                     {
                         var localIpAddress = IpAddressHelper.GetLocalIpAddresses().ToArray();
