@@ -1,0 +1,13 @@
+sudo chmod +x ~/buildIndicatron.server/resources/autoexec/buildindicator
+sudo chown  pi:pi ~/buildIndicatron.server/*
+
+~/buildIndicatron.server/resources/autoexec/buildindicator start
+
+sudo cp ~/buildIndicatron.server/resources/autoexec/buildindicator /etc/init.d/buildindicator
+sudo update-rc.d buildindicator defaults
+sudo reboot
+
+sudo /etc/init.d/buildindicator start
+sudo /etc/init.d/buildindicator
+
+sudo ps -A | grep python
