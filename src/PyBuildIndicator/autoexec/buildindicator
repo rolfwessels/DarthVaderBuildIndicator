@@ -21,9 +21,9 @@ case "$1" in
   start)
     echo "Starting !"
     sleep 2s
-    cd /home/pi/PyBuildIndicator
-    echo "Check /home/pi/PyBuildIndicator/runner.log for output"
-    /usr/bin/python -u /home/pi/PyBuildIndicator/serverStart.py >> /home/pi/PyBuildIndicator/runner.log &
+    cd /home/pi/buildIndicatron.server
+    echo "Check /home/pi/buildIndicatron.server/runner.log for output"
+    /usr/bin/python -u /home/pi/buildIndicatron.server/mono  buildIndicatron
     ;;
   stop)
     ;;

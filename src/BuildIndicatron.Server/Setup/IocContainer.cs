@@ -93,9 +93,9 @@ namespace BuildIndicatron.Server.Setup
 		private static void SetupConcrete(ContainerBuilder builder)
 		{
 			builder.RegisterType<Mp3Player>().As<IMp3Player>();
-			builder.RegisterType<VoiceRss>().As<ITextToSpeech>();
+			builder.Register(context => new VoiceRss(context.Resolve<IDownloadToFile>(),context.Resolve<IMp3Player>(), context.Resolve<ISettingsManager>().Get("voice_rss_key")) ).As<ITextToSpeech>();
 //            builder.Register(t => new VoiceEnhancer(@"resources/sounds/Funny/R2D2c.wav", "speed 1.3 echo 0.8 0.88 6.0 0.4"))
-            builder.Register(t => new VoiceEnhancer(@"resources/sounds/Funny/R2D2c.wav", "speed 1"))
+            builder.Register(t => new VoiceEnhancer(t.Resolve<ISettingsManager>().Get("voice_bg_file", @"resources/sounds/Funny/R2D2c.wav"), "speed 1"))
 			       .As<IVoiceEnhancer>();
 			builder.RegisterType<PinManager>()
 				.WithParameter("configuration", ConfigurationRobot)

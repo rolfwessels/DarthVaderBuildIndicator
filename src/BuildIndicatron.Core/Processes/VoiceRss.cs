@@ -15,11 +15,11 @@ namespace BuildIndicatron.Core.Processes
 		private readonly IMp3Player _mp3Player;
 	    private string _key;
 
-	    public VoiceRss(IDownloadToFile downloader , IMp3Player mp3Player)
+	    public VoiceRss(IDownloadToFile downloader , IMp3Player mp3Player, string key)
 		{
 			_downloader = downloader;
 			_mp3Player = mp3Player;
-		    _key = "1fd3734b81574c7d961c5e69f613cdda";
+		    _key = key;
 		}
 
 		#region Implementation of ITextToSpeech
