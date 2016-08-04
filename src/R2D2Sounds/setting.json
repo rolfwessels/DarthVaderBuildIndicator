@@ -1,6 +1,0 @@
-{
-  "slack_token": "xoxb-44517262306-YzBA3LxNNzWJH3N5gwK0hOrp",
-  "default_proxy": "",
-  "jenkins_host": "http://therig:9999",
-  "jenkins_deployer_host": "http://therig1231:9999"
-}
