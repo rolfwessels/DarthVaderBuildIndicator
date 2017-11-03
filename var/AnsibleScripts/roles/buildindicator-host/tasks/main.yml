@@ -1,0 +1,14 @@
+---
+
+- name: main | changing hostname to {{ var_hostname }}
+  hostname:
+    name: "{{ var_hostname }}"
+  register: "hostname_status"
+  become: true
+  when: ansible_hostname != var_hostname
+
+- name: Add git repo
+  apt:
+    name: git
+    state: present
+  become: true

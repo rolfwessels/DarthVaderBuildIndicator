@@ -1,0 +1,40 @@
+language: csharp
+mono: none
+#match on https://www.microsoft.com/net/download/linux
+dotnet: 2.0.0
+sudo: required
+dist: trusty
+
+services:
+  - docker
+
+addons:
+  apt:
+    packages:
+    - gettext
+    - libcurl4-openssl-dev
+    - libicu-dev
+    - libssl-dev
+    - libunwind8
+    - zlib1g
+    - curl
+
+script:
+  - which dotnet
+  - dotnet --info
+  - dotnet restore
+
+after_success:
+  # Add docker images
+  - pushd src/ 
+  - docker pull microsoft/dotnet
+  - dotnet restore
+  - pushd CoreDocker.Api
+  - dotnet publish   --version-suffix $TRAVIS_BUILD_NUMBER -c Release -o bin/publish
+  - popd
+  - docker build -t rolfwessels/coredocker:latest -t rolfwessels/coredocker:v0.0.$TRAVIS_BUILD_NUMBER .
+  - popd
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push rolfwessels/coredocker;
+    fi

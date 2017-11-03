@@ -1,0 +1,8 @@
+---
+- hosts: buildindicator-host
+  remote_user: pi
+  roles:
+    - buildindicator-host
+    - docker
+    - portainer
+
