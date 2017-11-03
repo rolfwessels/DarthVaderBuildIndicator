@@ -31,6 +31,6 @@ after_success:
   - dotnet publish   --version-suffix $TRAVIS_BUILD_NUMBER -c Release -o bin/publish
   - docker build -t rolfwessels/buildindicator:latest  -t rolfwessels/buildindicator:v0.0.$TRAVIS_BUILD_NUMBER -f Dockerfile.arm32 .
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
     docker push rolfwessels/buildindicator;
     fi
