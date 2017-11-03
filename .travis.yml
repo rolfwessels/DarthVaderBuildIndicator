@@ -23,7 +23,6 @@ addons:
 script:
   - which dotnet
   - dotnet --info
-  - dotnet restore
 
 after_success:
   # Add docker images
