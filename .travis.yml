@@ -25,10 +25,11 @@ script:
   - dotnet --info
 
 after_success:
-  # Add docker images
+  # Build
   - pushd src/BuildIndicatron.Server.Core
   - dotnet restore
   - dotnet publish   --version-suffix $TRAVIS_BUILD_NUMBER -c Release -o bin/publish
+  # Add docker images
   - docker build -t rolfwessels/buildindicator:latest  -t rolfwessels/buildindicator:v0.0.$TRAVIS_BUILD_NUMBER -f Dockerfile.arm32 .
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
