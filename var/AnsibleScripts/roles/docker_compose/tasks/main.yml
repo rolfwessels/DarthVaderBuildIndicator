@@ -1,0 +1,21 @@
+---
+- stat: path=/usr/local/bin/docker-compose
+  register: docker_compose_file
+  
+- name: Download docker compose
+  raw: curl -L https://github.com/docker/compose/releases/download/1.7.1/run.sh > /usr/local/bin/docker-compose
+  become: True
+  when: docker_compose_file.stat.exists == False
+
+- name: Download docker compose
+  become: True
+  lineinfile: dest=/usr/local/bin/docker-compose
+              regexp="^IMAGE="
+              line="IMAGE=\"t0rx/rpi-docker-compose:latest\""
+              state=present
+
+- name: Chmod to execute docker compose
+  raw: chmod +x /usr/local/bin/docker-compose
+  become: True
+  when: docker_compose_file.stat.exists == False
+

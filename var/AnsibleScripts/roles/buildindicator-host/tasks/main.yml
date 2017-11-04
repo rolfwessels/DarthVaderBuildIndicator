@@ -7,8 +7,19 @@
   become: true
   when: ansible_hostname != var_hostname
 
+- name: Adding host entry
+  become: true
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^127\.0\.0\.1'
+    line: '127.0.0.1 localhost {{ var_hostname }}'
+    owner: root
+    group: root
+    mode: 0644
+
 - name: Add git repo
   apt:
     name: git
     state: present
   become: true
+

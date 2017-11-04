@@ -1,7 +1,2 @@
 ---
 portainer_version: linux-arm
-portainer_port: 9000
-portainer_admin_pass: admin555
-
-swarm_nodes_group: swarm-nodes
-swarm_managers_group: swarm-managers
