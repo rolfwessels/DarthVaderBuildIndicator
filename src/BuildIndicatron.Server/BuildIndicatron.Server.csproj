@@ -4,14 +4,15 @@
     <OutputType>Exe</OutputType>
     <AssemblyName>CoreDocker.Api</AssemblyName>
     <PackageId>CoreDocker.Api</PackageId>
-    <RuntimeIdentifiers>win10-x64;win81-x64;ubuntu.14.04-x64</RuntimeIdentifiers>
     <TargetFramework>netstandard2.0</TargetFramework>
     <StartupObject>BuildIndicatron.Server.Program</StartupObject>
+    <NoWarn>$(NoWarn);NU1605</NoWarn>
+    <RunCommand>bin\$(Configuration)\netstandard2.0\$(AssemblyName).dll</RunCommand>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.2" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.0" />
-    <PackageReference Include="CustomizedSwagger" Version="1.0.1" />
     <PackageReference Include="log4net" Version="2.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.0.0" />
@@ -25,11 +26,19 @@
     <PackageReference Include="Raspberry.System" Version="2.1" />
     <PackageReference Include="RestSharp.NetCore" Version="105.2.3" />
     <PackageReference Include="SlackConnector" Version="4.1.44" />
-    <PackageReference Include="Swashbuckle" Version="5.6.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="1.0.0" />
     <PackageReference Include="websocket-sharp-with-proxy-support" Version="1.9.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BuildIndicatron.Core\BuildIndicatron.Core.csproj" />
     <ProjectReference Include="..\BuildIndicatron.Shared\BuildIndicatron.Shared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="wwwroot\coreDocker.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\index.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>

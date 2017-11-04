@@ -1,1 +1,0 @@
-﻿pscp -pw xxxxxxxx *.* xxxxxxxx@192.168.1.242:/home/xxxxxxxx/buildIndicatron.server
