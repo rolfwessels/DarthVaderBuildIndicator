@@ -18,7 +18,6 @@ namespace BuildIndicatron.Tests.IntegrationTests
     {
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private static JenkensProjectsResult _allProjects;
-        private static string _hostApi;
         private JenkensApi _jenkensApi;
 
         public JenkensApiTests()
