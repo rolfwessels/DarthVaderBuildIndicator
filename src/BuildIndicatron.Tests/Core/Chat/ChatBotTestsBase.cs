@@ -7,7 +7,6 @@ using BuildIndicatron.Core.Chat;
 using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Core.Settings;
-using BuildIndicatron.Server.Setup;
 using Moq;
 using NUnit.Framework;
 
