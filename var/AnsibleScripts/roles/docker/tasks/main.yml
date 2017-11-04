@@ -12,7 +12,17 @@
 
 - name: Add pi to docker group
   user:
-    name: pi
+    name: '{{ ansible_ssh_user }}'
     groups: docker
     append: yes
   become: True
+
+
+- name: Allow external access to docker
+  become: True
+  lineinfile: dest=/etc/default/docker
+              regexp="^.*DOCKER_OPTS="
+              line="DOCKER_OPTS=\"-H tcp://127.0.0.1:2375\""
+              state=present
+  notify: restart docker
+

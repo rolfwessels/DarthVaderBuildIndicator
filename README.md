@@ -45,3 +45,7 @@ cat ~/.ssh/id_rsa.pub | ssh $newhost 'cat >> .ssh/authorized_keys'
 ssh $newhost 
 ```
 
+```
+Test dotnet capable
+```
+

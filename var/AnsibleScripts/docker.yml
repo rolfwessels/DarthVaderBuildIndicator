@@ -1,10 +1,5 @@
 ---
 - hosts: buildindicator-host
-  #remote_user: pi
-  #gather_facts: false
   roles:
-    - buildindicator-host
     - docker
-    - docker_compose
-    - portainer
     

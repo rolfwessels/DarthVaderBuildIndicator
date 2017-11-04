@@ -1,1 +1,1 @@
-ansible-playbook docker.yml -i hosts 
+ansible-playbook deploy.yml -i hosts 
