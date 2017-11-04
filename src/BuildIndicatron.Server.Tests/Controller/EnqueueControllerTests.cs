@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using BuildIndicatron.Core.Processes;
-using BuildIndicatron.Server.Controllers;
+using BuildIndicatron.Server.Api.Controllers;
 using BuildIndicatron.Shared.Enums;
 using BuildIndicatron.Shared.Models.Composition;
 using Moq;

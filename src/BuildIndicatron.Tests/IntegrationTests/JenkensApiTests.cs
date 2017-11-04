@@ -9,6 +9,7 @@ using BuildIndicatron.Core.Helpers;
 using FluentAssertions;
 using NUnit.Framework;
 using log4net;
+using log4net.Config;
 
 namespace BuildIndicatron.Tests.IntegrationTests
 {
@@ -22,7 +23,8 @@ namespace BuildIndicatron.Tests.IntegrationTests
 
         public JenkensApiTests()
         {
-            log4net.Config.XmlConfigurator.Configure(new FileInfo("Log4Net.config"));
+            var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
         }
 
         static JenkensApiTests()

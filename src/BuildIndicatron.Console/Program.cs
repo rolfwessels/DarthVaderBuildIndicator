@@ -43,8 +43,8 @@ namespace BuildIndicatron.Console
             var directoryName = Path.GetDirectoryName(location);
             if (directoryName != null)
             {
-                string log4NetFile = Path.Combine(directoryName, LogSettingsFile);
-                XmlConfigurator.Configure(new FileInfo(log4NetFile));
+                var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+                XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
             }
         }
 

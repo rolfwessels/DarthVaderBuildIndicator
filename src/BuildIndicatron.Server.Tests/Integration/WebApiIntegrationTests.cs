@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using BuildIndicatron.Core.Helpers;
@@ -7,6 +8,7 @@ using BuildIndicatron.Shared.Enums;
 using FizzWare.NBuilder.Generators;
 using FluentAssertions;
 using log4net;
+using Microsoft.AspNetCore.Hosting;
 using NUnit.Framework;
 
 namespace BuildIndicatron.Server.Tests.Integration
@@ -24,14 +26,18 @@ namespace BuildIndicatron.Server.Tests.Integration
         [OneTimeSetUp]
         public void SetupFixture()
         {
-            var options = new StartOptions
-            {
-                ServerFactory = "Nowin",
-                Port = GetRandom.Int(19000, 19999)
-            };
-            var baseUri = string.Format("http://localhost:{0}/api", options.Port);
+    
+            var baseUri = string.Format("http://localhost:{0}/api", GetRandom.Int(19000, 19999));
             _log.Info(string.Format("Starting api on {0}", baseUri));
-            _disposable = WebApp.Start<Startup>(options);
+
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseUrls(baseUri)
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseStartup<Startup>()
+                .Build();
+            host.Run();
+            _disposable = host;
             _log.Info("Started");
 
             CreateClient(baseUri);

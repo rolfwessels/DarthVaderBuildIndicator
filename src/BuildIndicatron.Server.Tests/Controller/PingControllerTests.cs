@@ -1,6 +1,6 @@
-﻿using BuildIndicatron.Server.Controllers;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using FluentAssertions;
+using BuildIndicatron.Server.Api.Controllers;
 
 namespace BuildIndicatron.Server.Tests.Controller
 {

@@ -1,29 +1,30 @@
 using System;
 using System.Runtime.InteropServices;
-using static System.Console;
 
-public static class Program
+namespace BuildIndicatron.Server.Core
 {
-  public static void Main(string[] args) 
-  {
-        string message = "Dotnet-bot: Welcome to using .NET Core!";
-          
-        if (args.Length > 0) 
+    public static class Program
+    {
+        public static void Main(string[] args) 
         {
-          message = String.Join(" ",args);
+            string message = "Dotnet-bot: Welcome to using .NET Core!";
+          
+            if (args.Length > 0) 
+            {
+                message = String.Join(" ",args);
+            }
+
+            Console.WriteLine(GetBot(message));
+            Console.WriteLine("**Environment**");
+            Console.WriteLine($"Platform: .NET Core 2.0");
+            Console.WriteLine($"OS: {RuntimeInformation.OSDescription}");
+            Console.WriteLine();
         }
 
-        WriteLine(GetBot(message));
-        WriteLine("**Environment**");
-        WriteLine($"Platform: .NET Core 2.0");
-        WriteLine($"OS: {RuntimeInformation.OSDescription}");
-        WriteLine();
-  }
-
-  public static string GetBot(string message) 
-  {
-          string bot = $"\n        {message}";
-          bot += @"
+        public static string GetBot(string message) 
+        {
+            string bot = $"\n        {message}";
+            bot += @"
     __________________
                       \
                        \
@@ -63,6 +64,7 @@ public static class Program
         .....
 
 ";
-  return bot;
-  }
+            return bot;
+        }
+    }
 }

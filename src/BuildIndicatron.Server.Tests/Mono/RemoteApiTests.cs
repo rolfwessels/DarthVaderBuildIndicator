@@ -64,7 +64,7 @@ namespace BuildIndicatron.Server.Tests.Mono
 			var client = new RestClient(BaseUri);
 			var request = new RestRequest("", Method.GET);
 			_log.Info("Placing request to " + client.BuildUri(request));
-			IRestResponse executeTaskAsync = client.Execute(request);
+			IRestResponse executeTaskAsync = client.ExecAsyncGet(request).Result;
 			Console.Out.WriteLine("executeTaskAsync.Content:" + executeTaskAsync.Content);
 			executeTaskAsync.Content.Should().Contain("Hello World!");
 		}

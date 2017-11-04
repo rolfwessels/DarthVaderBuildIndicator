@@ -79,7 +79,8 @@ namespace BuildIndicatron.Console
 
         private static void AddNLogConsoleOutput()
         {
-            var repository = (Hierarchy) LogManager.GetRepository();
+            var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            var repository = (Hierarchy) logRepository;
             var appender = new ConsoleAppender
                 {
                     Layout = new PatternLayout("%date %-5level  [%ndc] - %message%newline")

@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Autofac;
-using Autofac.Integration.WebApi;
 using BuildIndicatron.Core.Api;
 using BuildIndicatron.Core.Chat;
 using BuildIndicatron.Core.Helpers;
@@ -13,7 +12,6 @@ using BuildIndicatron.Core.Settings;
 using BuildIndicatron.Server.Fakes;
 using BuildIndicatron.Server.Properties;
 using BuildIndicatron.Shared.Enums;
-using log4net;
 
 namespace BuildIndicatron.Server.Setup
 {
@@ -52,8 +50,9 @@ namespace BuildIndicatron.Server.Setup
 				}
 			}
 		}
+        
 
-		#region Private Methods
+	    #region Private Methods
 
 		private static void SetupTools(ContainerBuilder builder)
 		{
@@ -87,7 +86,7 @@ namespace BuildIndicatron.Server.Setup
 
 	    private static void RegisterControllers(ContainerBuilder builder)
 		{
-			builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+			//builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 		}
 
 		private static void SetupConcrete(ContainerBuilder builder)

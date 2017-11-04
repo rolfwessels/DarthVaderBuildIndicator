@@ -91,7 +91,7 @@ namespace BuildIndicatron.Server.Setup
             {
                 _connection.OnMessageReceived -= MessageReceived;
                 _connection.OnDisconnect -= ConnectionStatusChanged;
-                _connection.Disconnect();
+                _connection.Close().Wait();
                 _connection = null;
             }
         }
