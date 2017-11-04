@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Server.Tests.Base;
 using BuildIndicatron.Shared.Enums;
 using BuildIndicatron.Shared.Models.Composition;
@@ -21,15 +22,14 @@ namespace BuildIndicatron.Server.Tests.Mono
     [Timeout(300000)]
 	public class RemoteApiTests : BaseIntegrationTests
 	{
-    private const string Host = "192.168.2.124";
-		private const string UserName = "pi";
-        private const string Password = Environment.GetEnvironmentVariable("pssword");
-		private const string _homePiBuildindicatronServer = "/home/pi/buildIndicatron.server/";
-		private const string BaseUri = "http://" + Host + ":8081/";
-		private const string BaseApiUri = BaseUri+"api";
-		private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-		private IAsyncResult _beginExecute;
-		private static SshClient _client;
+        private readonly string Host = EnvSettings.Instance.SshHost;
+		private readonly string UserName = EnvSettings.Instance.SshUser;
+        private readonly string _password = EnvSettings.Instance.SshPassword;
+	    private readonly string BaseUri = "http://" + EnvSettings.Instance.SshHost + ":8081/";
+	    private readonly string BaseApiUri = "http://" + EnvSettings.Instance.SshHost + ":8081/api";
+	    private const string HomePiBuildindicatronServer = "/home/pi/buildIndicatron.server/";
+	    private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+	    private static SshClient _client;
 		private SshCommand _runCommand;
 		private StreamReader streamReader;
 
@@ -202,26 +202,26 @@ namespace BuildIndicatron.Server.Tests.Mono
 
 		private void BeginService()
 		{
-			_client = new SshClient(Host, UserName, Password);
+			_client = new SshClient(Host, UserName, _password);
 			_client.Connect();
             _client.RunCommand("sudo pkill mono");
-			var call = string.Format("cd {0}", _homePiBuildindicatronServer);
+			var call = string.Format("cd {0}", HomePiBuildindicatronServer);
 			const string commandText = "sudo mono BuildIndicatron.Server.exe";
 			var text = call + " && " + commandText;
 			_log.Info("Starting command:" + text);
 			_runCommand = _client.CreateCommand(text);
-			_beginExecute = _runCommand.BeginExecute();
+			_runCommand.BeginExecute();
 			streamReader = new StreamReader(_runCommand.OutputStream);
 			WaitFor("Running", 6000).Wait();
 		}
 
-		private static void CopyTheLatestSourceFiles()
+		private void CopyTheLatestSourceFiles()
 		{
 			string currentDirectory = Directory.GetCurrentDirectory();
 			IEnumerable<string> directoryInfo =
 				Directory.GetFiles(currentDirectory, "BuildIndicatron*.*", SearchOption.AllDirectories)
 				         .Union(Directory.GetFiles(currentDirectory, "*.html", SearchOption.AllDirectories));
-			ConnectionInfo connectionInfo = new PasswordConnectionInfo(Host, UserName, Password);
+			ConnectionInfo connectionInfo = new PasswordConnectionInfo(Host, UserName, _password);
             
 			var scpClient = new ScpClient(connectionInfo);
 			scpClient.Connect();
@@ -229,7 +229,7 @@ namespace BuildIndicatron.Server.Tests.Mono
 			foreach (string source in directoryInfo.Where(x => !x.Contains(".Test.dll")))
 			{
 				string sourceName = source.Replace(currentDirectory + "\\", "");
-				string remoteFileName = Path.Combine(_homePiBuildindicatronServer, sourceName.Replace("\\", "/"));
+				string remoteFileName = Path.Combine(HomePiBuildindicatronServer, sourceName.Replace("\\", "/"));
 				_log.Info(string.Format("Upload:{0} to {1}", sourceName, remoteFileName));
 				scpClient.Upload(new FileInfo(source), remoteFileName);
 			}

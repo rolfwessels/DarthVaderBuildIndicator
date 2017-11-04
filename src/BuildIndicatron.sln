@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{EC7725
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildIndicatron.Server.Core", "BuildIndicatron.Server.Core\BuildIndicatron.Server.Core.csproj", "{7A3A3050-D704-4D22-B8D9-DDF08213F66C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{FFD2B3AA-44D1-40DA-A62E-89D852B24DEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -106,7 +108,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{3AD64C9F-AF4A-4382-BFCF-D8A48BEEE090} = {FFD2B3AA-44D1-40DA-A62E-89D852B24DEA}
 		{14FB0279-985A-4F5B-9975-89A1E9E78770} = {8FFF574C-0344-4B73-A64D-555C621340C3}
+		{A5B3824B-DE19-4A94-A7DA-5D1BBC6CBD95} = {FFD2B3AA-44D1-40DA-A62E-89D852B24DEA}
 		{2D1A3F72-6593-48AE-89F7-700FA9437782} = {8FFF574C-0344-4B73-A64D-555C621340C3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

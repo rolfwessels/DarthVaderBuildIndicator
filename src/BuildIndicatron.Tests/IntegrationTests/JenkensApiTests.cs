@@ -28,15 +28,15 @@ namespace BuildIndicatron.Tests.IntegrationTests
 
         static JenkensApiTests()
         {
-          _hostApi = "https://jenkins.my227.net";
-//            _hostApi = "http://192.168.1.15:5000/";
+         
         }
 
         #region Setup/Teardown
 
         public void Setup()
         {
-            _jenkensApi = new JenkensApi(_hostApi, "rolfw", Environment.GetEnvironmentVariable("pssword"));
+            
+            _jenkensApi = new JenkensApi(EnvSettings.Instance.JenkinsHost, EnvSettings.Instance.JenkinsUser, EnvSettings.Instance.JenkinsPassword);
         }
 
         [TearDown]
@@ -98,5 +98,4 @@ namespace BuildIndicatron.Tests.IntegrationTests
             return _allProjects ?? (_allProjects = await _jenkensApi.GetAllProjects());
         }
     }
-
 }

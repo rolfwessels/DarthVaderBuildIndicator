@@ -144,6 +144,7 @@
     <Compile Include="EnumerableHelper.cs" />
     <Compile Include="Helpers\DebugHelper.cs" />
     <Compile Include="Helpers\DictionaryHelper.cs" />
+    <Compile Include="Helpers\EnvSettings.cs" />
     <Compile Include="Helpers\HttpLookup.cs" />
     <Compile Include="Helpers\IHttpLookup.cs" />
     <Compile Include="Helpers\IntegegerHelper.cs" />
