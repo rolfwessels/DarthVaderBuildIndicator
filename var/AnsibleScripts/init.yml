@@ -1,0 +1,13 @@
+- name: dependency provisioning
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  tasks:
+    - name: apt-get update
+      become: yes
+      raw: sudo apt-get update
+    - name: install python3
+      become: yes
+      raw: sudo apt-get -y install python3
+      

@@ -29,14 +29,19 @@ sudo apt-get install -y mono-complete
 Add ansible (windows bash)
 https://www.jeffgeerling.com/blog/2017/using-ansible-through-windows-10s-subsystem-linux
 ```
+sudo apt-get update -y
+sudo apt-get upgrade -y
 sudo apt-get -y install python-pip python-dev libffi-dev libssl-dev
-pip install ansible --user
+sudo pip install ansible --user
 echo 'PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc
 ```
 
-What to install on the raspberry pi
+Adding a new host SSH access
 ```
-curl -sSL https://get.docker.com | sh
+export newhost=pi@192.168.1.249
+ssh-keygen -t rsa
+ssh $newhost mkdir -p .ssh
+cat ~/.ssh/id_rsa.pub | ssh $newhost 'cat >> .ssh/authorized_keys'
+ssh $newhost 
+```
 
-sudo docker run -d --name=portainer --privileged --restart=unless-stopped -p 9000:9000 -v /data/portainer:/data -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer:linux-arm
-docker run --rm richlander/dotnetapp-prod-arm32 Hello .NET Core from Docker
