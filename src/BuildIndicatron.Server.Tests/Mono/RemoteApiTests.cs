@@ -19,7 +19,7 @@ namespace BuildIndicatron.Server.Tests.Mono
 {
 	[TestFixture]
 	[Explicit]
-    [Timeout(300000)]
+    //[Timeout(300000)]
 	public class RemoteApiTests : BaseIntegrationTests
 	{
         private readonly string Host = EnvSettings.Instance.SshHost;
@@ -35,7 +35,7 @@ namespace BuildIndicatron.Server.Tests.Mono
 
 		#region Setup/Teardown
 
-		[TestFixtureSetUp]
+		[OneTimeTearDown]
 		public void FixtureSetup()
 		{
 			CopyTheLatestSourceFiles();
@@ -178,7 +178,7 @@ namespace BuildIndicatron.Server.Tests.Mono
 			}
 		}
 
-		[TestFixtureTearDown]
+		[OneTimeSetUp]
 		public void FixtureTearDown()
 		{
 			EndService();
