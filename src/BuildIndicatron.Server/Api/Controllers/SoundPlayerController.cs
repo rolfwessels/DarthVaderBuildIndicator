@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Net;
 using System.Reflection;
-using System.Web.Http;
 using Microsoft.AspNetCore.Mvc;
 using BuildIndicatron.Core.Processes;
+using BuildIndicatron.Server.Api.Filters;
 using BuildIndicatron.Shared.Models.ApiResponses;
 using log4net;
 
@@ -41,7 +41,7 @@ namespace BuildIndicatron.Server.Api.Controllers
 			return getClipsResponse;
 		}
 
-        [Microsoft.AspNetCore.Mvc.HttpGet("api/soundplayer/{folder}/{file}")]
+        [HttpGet("api/soundplayer/{folder}/{file}")]
 		public PlayMp3FileResponse Get(string folder,string file)
 		{
 			return Get(Path.Combine(folder,file));
@@ -55,7 +55,7 @@ namespace BuildIndicatron.Server.Api.Controllers
 				_mp3Player.PlayFile(pickFile);
 				return new PlayMp3FileResponse() {FileName = pickFile};
 			}
-			throw new HttpResponseException(HttpStatusCode.NotFound);
+			throw new MyApiException("Nope") {HttpStatusCode = HttpStatusCode.NotFound};
 		}
 	}
 

@@ -4,10 +4,11 @@
     <OutputType>Exe</OutputType>
     <AssemblyName>CoreDocker.Api</AssemblyName>
     <PackageId>CoreDocker.Api</PackageId>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net46;netcoreapp2.0</TargetFrameworks>
     <StartupObject>BuildIndicatron.Server.Program</StartupObject>
     <NoWarn>$(NoWarn);NU1605</NoWarn>
     <RunCommand>bin\$(Configuration)\netstandard2.0\$(AssemblyName).dll</RunCommand>
+    <DependsOnNETStandard>true</DependsOnNETStandard>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,7 +27,7 @@
     <PackageReference Include="Raspberry.System" Version="2.1" />
     <PackageReference Include="RestSharp.NetCore" Version="105.2.3" />
     <PackageReference Include="SlackConnector" Version="4.1.44" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="1.0.0" />
+    <PackageReference Include="Swashbuckle" Version="6.0.0-beta902" />
     <PackageReference Include="websocket-sharp-with-proxy-support" Version="1.9.1" />
   </ItemGroup>
   <ItemGroup>

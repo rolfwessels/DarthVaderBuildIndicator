@@ -19,7 +19,7 @@ namespace BuildIndicatron.Server.Api.Filters
         {
             var exception = context.Exception;
 
-            if (exception is ApiException apiException)
+            if (exception is MyApiException apiException)
                 RespondWithTheExceptionMessage(context, apiException);
             else if (IsSomeSortOfValidationError(exception))
                 RespondWithBadRequest(context, exception);
@@ -40,7 +40,7 @@ namespace BuildIndicatron.Server.Api.Filters
 
         #region Private Methods
 
-        private void RespondWithTheExceptionMessage(ExceptionContext context, ApiException exception)
+        private void RespondWithTheExceptionMessage(ExceptionContext context, MyApiException exception)
         {
             var errorMessage = new ErrorMessage(exception.Message);
             context.Result = CreateResponse(exception.HttpStatusCode, errorMessage);
@@ -91,9 +91,9 @@ namespace BuildIndicatron.Server.Api.Filters
         }
     }
 
-    public class ApiException : Exception
+    public class MyApiException : Exception
     {
-        public ApiException(string message) : base(message)
+        public MyApiException(string message) : base(message)
         {
             HttpStatusCode = HttpStatusCode.BadRequest;
         }
