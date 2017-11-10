@@ -26,8 +26,9 @@ script:
 
 after_success:
   # Build
-  - pushd src/BuildIndicatron.Server.Core
+  - pushd src/
   - dotnet restore
+  - pushd BuildIndicatron.Server.Core
   - dotnet publish   --version-suffix $TRAVIS_BUILD_NUMBER -c Release -o bin/publish
   - popd
   - docker build  -t rolfwessels/buildindicator:v0.0.$TRAVIS_BUILD_NUMBER-beta -f Dockerfile.arm32 .
