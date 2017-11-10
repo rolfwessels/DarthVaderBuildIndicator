@@ -4,8 +4,10 @@ VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0691ABF2-B3C7-43BF-9862-2D8D1299CE58}"
 	ProjectSection(SolutionItems) = preProject
+		..\.travis.yml = ..\.travis.yml
 		..\BuildIndicatron.build = ..\BuildIndicatron.build
 		..\go.bat = ..\go.bat
+		..\readme.md = ..\readme.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8FFF574C-0344-4B73-A64D-555C621340C3}"
@@ -33,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildIndicatron.Server.Core
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{FFD2B3AA-44D1-40DA-A62E-89D852B24DEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildIndicatron.Integration.Raspberry", "BuildIndicatron.Integration.Raspberry\BuildIndicatron.Integration.Raspberry.csproj", "{4D03DB6D-5BC5-4E8C-AEF0-4B07EE75990C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildIndicatron.Integration.Raspberry", "BuildIndicatron.Integration.Raspberry\BuildIndicatron.Integration.Raspberry.csproj", "{4D03DB6D-5BC5-4E8C-AEF0-4B07EE75990C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

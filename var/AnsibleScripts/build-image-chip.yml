@@ -1,5 +1,7 @@
 ---
 - hosts: buildindicator-chip
-  roles:
-    - docker
-    
+  tasks:
+  - name: Copy All files
+    synchronize:
+      src: '../../../'
+      dest: '{{ home_dir }}/buildIndicator'

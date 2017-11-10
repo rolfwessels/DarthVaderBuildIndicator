@@ -26,6 +26,7 @@ sudo apt-get install -y mono-complete
 ```
 
 # helping with deployment
+
 Add ansible (windows bash)
 https://www.jeffgeerling.com/blog/2017/using-ansible-through-windows-10s-subsystem-linux
 ```
@@ -43,9 +44,10 @@ ssh-keygen -t rsa
 ssh $newhost mkdir -p .ssh
 cat ~/.ssh/id_rsa.pub | ssh $newhost 'cat >> .ssh/authorized_keys'
 ssh $newhost 
+
 ```
 
 ```
-Test dotnet capable
+ssh-copy-id chip@192.168.1.248 .. to copy the id to the service
 ```
 
