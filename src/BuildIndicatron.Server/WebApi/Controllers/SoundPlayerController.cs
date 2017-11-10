@@ -4,8 +4,8 @@ using System.Net;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 using BuildIndicatron.Core.Processes;
-using BuildIndicatron.Server.Api.Filters;
 using BuildIndicatron.Shared.Models.ApiResponses;
+using CoreDocker.Api.WebApi.Filters;
 using log4net;
 
 namespace BuildIndicatron.Server.Api.Controllers
@@ -55,7 +55,7 @@ namespace BuildIndicatron.Server.Api.Controllers
 				_mp3Player.PlayFile(pickFile);
 				return new PlayMp3FileResponse() {FileName = pickFile};
 			}
-			throw new MyApiException("Nope") {HttpStatusCode = HttpStatusCode.NotFound};
+			throw new ApiException("Nope") {HttpStatusCode = HttpStatusCode.NotFound};
 		}
 	}
 

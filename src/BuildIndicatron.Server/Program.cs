@@ -1,8 +1,8 @@
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore.Hosting;
 
-namespace BuildIndicatron.Server
+namespace CoreDocker.Api
 {
     public class Program
     {

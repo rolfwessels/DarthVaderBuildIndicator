@@ -8,9 +8,9 @@ using BuildIndicatron.Core.Api;
 using BuildIndicatron.Core.Chat;
 using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.Processes;
+using BuildIndicatron.Server.Properties;
 using BuildIndicatron.Core.Settings;
 using BuildIndicatron.Server.Fakes;
-using BuildIndicatron.Server.Properties;
 using BuildIndicatron.Shared.Enums;
 
 namespace BuildIndicatron.Server.Setup

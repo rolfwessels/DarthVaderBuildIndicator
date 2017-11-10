@@ -1,11 +1,12 @@
 ﻿using System.Linq;
 using System.Reflection;
-using BuildIndicatron.Core;
 using log4net;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.Swagger.Model;
+using BuildIndicatron.Core;
 
-namespace BuildIndicatron.Server.Api
+namespace CoreDocker.Api.Swagger
 {
     public class SwaggerSetup
     {
@@ -33,7 +34,7 @@ namespace BuildIndicatron.Server.Api
         {
 
             services.AddSwaggerGen(
-                options => options.SingleApiVersion(new Swashbuckle.Swagger.Model.Info
+                options => options.SingleApiVersion(new Info
                 {
                     Title = $"CoreDocker API v"+ _informationalVersion,
                     Version = GetVersion()

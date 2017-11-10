@@ -1,26 +1,26 @@
-using System;
-using System.IO;
-using System.Reflection;
+﻿using System;
 using Autofac.Extensions.DependencyInjection;
-using BuildIndicatron.Server.Api;
 using BuildIndicatron.Server.Api.Controllers;
 using BuildIndicatron.Server.Properties;
 using BuildIndicatron.Server.Setup;
-using log4net;
-using log4net.Config;
+using CoreDocker.Api.AppStartup;
+using CoreDocker.Api.Swagger;
+using CoreDocker.Api.WebApi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Serilog;
 
-namespace BuildIndicatron.Server
+namespace CoreDocker.Api
 {
     public class Startup
     {
         public Startup(IHostingEnvironment env)
         {
             Configuration = ReadAppSettings(env);
+            BuildIndicatron.Core.Properties.Settings.Initialize(Configuration);
             Settings.Initialize(Configuration);
         }
 
@@ -29,7 +29,6 @@ namespace BuildIndicatron.Server
         // This method gets called by the runtime. Use this method to add services to the container
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            //IocApi.Populate(services);
             BootStrap.Initialize(services);
             services.AddMvc(options => WebApiSetup.Setup(options));
             SwaggerSetup.Setup(services);
@@ -41,8 +40,16 @@ namespace BuildIndicatron.Server
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(Configuration)
+                .CreateLogger();
+
+            //LogManager.SetLogger(loggerFactory);
+
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+            loggerFactory.AddSerilog();
+
             app.UseMvc();
             SwaggerSetup.AddUi(app);
             SimpleFileServer.Initialize(app);
@@ -55,20 +62,20 @@ namespace BuildIndicatron.Server
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", true, true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true)
-                .AddEnvironmentVariables();
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true);
+
             PingController.Env = env.EnvironmentName;
             if (env.IsEnvironment("Development"))
             {
                 // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
 //                builder.AddApplicationInsightsSettings(true);
             }
-            
+
+
+            builder.AddEnvironmentVariables();
             return builder.Build();
         }
 
         #endregion
     }
-
-   
 }

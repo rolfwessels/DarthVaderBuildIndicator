@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Server.Api.Controllers;
-using BuildIndicatron.Server.Properties;
 using Moq;
 using NUnit.Framework;
 using FluentAssertions;

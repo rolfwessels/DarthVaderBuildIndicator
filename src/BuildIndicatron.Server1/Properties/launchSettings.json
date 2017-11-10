@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://localhost/CoreDocker.Api",
+      "applicationUrl": "http://localhost/BuildIndicatron.Server",
       "sslPort": 0
     },
     "iisExpress": {
@@ -20,7 +20,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "CoreDocker.Api": {
+    "IIS": {
       "commandName": "IIS",
       "launchBrowser": true,
       "launchUrl": "http://localhost:5000/api/values",
