@@ -1,5 +1,6 @@
 # build runtime image
 FROM microsoft/dotnet:2.0.0-runtime-stretch-arm32v7
 WORKDIR /app
-COPY  BuildIndicatron.Server/bin/publish/ ./
+COPY  ./BuildIndicatron.Server/bin/publish/ ./
+EXPOSE 5000/tcp
 ENTRYPOINT ["dotnet", "BuildIndicatron.Server.dll"]
