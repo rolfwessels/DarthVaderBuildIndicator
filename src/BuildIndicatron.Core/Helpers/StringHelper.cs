@@ -17,12 +17,13 @@ namespace BuildIndicatron.Core.Helpers
 
         public static string MaskInput(this string input, int charactersToShowAtEnd = 5)
         {
-            if (string.IsNullOrEmpty(input)) return null;
-            if (input.Length < charactersToShowAtEnd)
-                charactersToShowAtEnd = input.Length;
-            var endCharacters = input.Substring(input.Length - charactersToShowAtEnd);
-            return string.Format("{0}{1}", "".PadLeft(input.Length - charactersToShowAtEnd, '*') + endCharacters
-            );
+            return input;
+//            if (string.IsNullOrEmpty(input)) return null;
+//            if (input.Length < charactersToShowAtEnd)
+//                charactersToShowAtEnd = input.Length;
+//            var endCharacters = input.Substring(input.Length - charactersToShowAtEnd);
+//            return string.Format("{0}{1}", "".PadLeft(input.Length - charactersToShowAtEnd, '*') + endCharacters
+//            );
         }
     }
 }
