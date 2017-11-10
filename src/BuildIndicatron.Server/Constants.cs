@@ -1,4 +1,4 @@
-namespace CoreDocker.Api
+namespace BuildIndicatron.Server
 {
 	internal class Constants
 	{

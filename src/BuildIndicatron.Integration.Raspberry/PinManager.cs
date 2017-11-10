@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using BuildIndicatron.Core.Helpers;
+using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Shared.Enums;
-using BuildIndicatron.Shared.Models.ApiResponses;
-using Raspberry.IO.GeneralPurpose;
 using log4net;
+using Raspberry.IO.GeneralPurpose;
 
-namespace BuildIndicatron.Core.Processes
+namespace BuildIndicatron.Integration.Raspberry
 {
 	public class PinManager : IPinManager , IDisposable
 	{

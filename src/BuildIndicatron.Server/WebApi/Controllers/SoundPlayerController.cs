@@ -24,6 +24,7 @@ namespace BuildIndicatron.Server.Api.Controllers
 			_soundFilePicker = soundFilePicker;	
 		}
 
+        [HttpGet]
 		public GetClipsResponse Get()
 		{
 			var getClipsResponse = new GetClipsResponse();
@@ -41,13 +42,14 @@ namespace BuildIndicatron.Server.Api.Controllers
 			return getClipsResponse;
 		}
 
-        [HttpGet("api/soundplayer/{folder}/{file}")]
+        [HttpGet(RouteHelper.SoundPlayerControllerGetFolder )]
 		public PlayMp3FileResponse Get(string folder,string file)
 		{
 			return Get(Path.Combine(folder,file));
 		}
 
-		public PlayMp3FileResponse Get(string id)
+	    [HttpGet(RouteHelper.WithId)]
+        public PlayMp3FileResponse Get(string id)
 		{
 			var pickFile = _soundFilePicker.PickFile(id);
 			if (pickFile != null)

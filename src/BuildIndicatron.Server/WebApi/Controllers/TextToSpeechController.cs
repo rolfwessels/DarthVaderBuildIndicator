@@ -24,7 +24,7 @@ namespace BuildIndicatron.Server.Api.Controllers
 			return new TextToSpeechResponse() { };
 		}
 
-		[HttpGet("api/TextToSpeech/{id}/EnhanceSpeech")]
+		[HttpGet(RouteHelper.TextToSpeechControllerEnhanceSpeech)]
 		public TextToSpeechResponse EnhanceSpeech(string id)
 		{
 			_textToSpeech.Play(id, _voiceEnhancer);

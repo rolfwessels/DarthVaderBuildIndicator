@@ -12,6 +12,7 @@ namespace BuildIndicatron.Server.Api.Controllers
 		private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 	    public static string Env { get; set; }
 
+        [HttpGet]
 	    public PingResponse Get()
 		{
 			_log.Debug("PingController:Get Ping");

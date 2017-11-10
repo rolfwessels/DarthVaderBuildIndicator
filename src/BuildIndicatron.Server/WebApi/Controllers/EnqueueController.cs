@@ -19,12 +19,14 @@ namespace BuildIndicatron.Server.Api.Controllers
 			_stage = stage;
 		}
 		
+        [HttpGet]
 		public EnqueueResponse Get()
 		{
 			return new EnqueueResponse() { QueueSize = _stage.Count };
 		}
 
-		public EnqueueResponse Post(ChoreographyModel choreography)
+	    [HttpPost]
+        public EnqueueResponse Post(ChoreographyModel choreography)
 		{
 			_log.Info(string.Format("Cor:[{0}]", choreography.Dump()));
 			foreach (var sequencese in choreography.Sequences)

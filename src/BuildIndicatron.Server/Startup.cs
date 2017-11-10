@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
 
-namespace CoreDocker.Api
+namespace BuildIndicatron.Server
 {
     public class Startup
     {
@@ -29,11 +29,12 @@ namespace CoreDocker.Api
         // This method gets called by the runtime. Use this method to add services to the container
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            BootStrap.Initialize(services);
-            services.AddMvc(options => WebApiSetup.Setup(options));
+            IocContainer.Initialize(services);
+            services.AddMvc(WebApiSetup.Setup);
             SwaggerSetup.Setup(services);
-
-            return new AutofacServiceProvider(IocContainer.Instance);
+            var autofacServiceProvider = new AutofacServiceProvider(IocContainer.Instance.Container);
+            BootStrap.Initialize(services);
+            return autofacServiceProvider;
         }
 
 

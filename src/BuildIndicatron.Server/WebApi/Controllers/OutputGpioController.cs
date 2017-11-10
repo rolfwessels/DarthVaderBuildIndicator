@@ -19,6 +19,7 @@ namespace BuildIndicatron.Server.Api.Controllers
 			_pinManager = pinManager;
 		}
 
+        [HttpGet]
 		public GpIoOutputResponse Get()
 		{
 			return new GpIoOutputResponse() {};
@@ -26,7 +27,7 @@ namespace BuildIndicatron.Server.Api.Controllers
 
 
 		
-		[Route("api/ouputgpio/{pin}/{ison}")]
+		[HttpGet(RouteHelper.OutputGpioControllerGet)]
 		public GpIoOutputResponse Get(string pin, bool ison)
 		{
 			_log.Info(string.Format("OutputGpioController:Get pin:{0} ison:{1}", pin, ison));

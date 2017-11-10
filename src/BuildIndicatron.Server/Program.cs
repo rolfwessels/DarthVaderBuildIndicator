@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.AspNetCore.Hosting;
 
-namespace CoreDocker.Api
+namespace BuildIndicatron.Server
 {
     public class Program
     {
