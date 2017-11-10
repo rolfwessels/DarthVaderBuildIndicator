@@ -8,7 +8,6 @@ namespace BuildIndicatron.Tests.Core.Chat
     [TestFixture]
     public class SetIoContextTests : ChatBotTestsBase
     {
-
         [Test]
         public async Task Process_GivenMessage_ShouldRespond()
         {
@@ -21,7 +20,8 @@ namespace BuildIndicatron.Tests.Core.Chat
             var sampleMessage = new MessageContext("set main light blue");
             await _chatBot.Process(sampleMessage);
             // assert
-            sampleMessage.LastMessages.Should().Contain(x => x.Contains("main blue lights are now on")).And.HaveCount(1);
+            sampleMessage.LastMessages.Should().Contain(x => x.Contains("main blue lights are now on")).And
+                .HaveCount(1);
         }
 
         [Test]
@@ -36,9 +36,10 @@ namespace BuildIndicatron.Tests.Core.Chat
             var sampleMessage = new MessageContext("set main light blue green");
             await _chatBot.Process(sampleMessage);
             // assert
-            sampleMessage.LastMessages.Should().Contain(x => x.Contains("main green, blue lights are now on")).And.HaveCount(1);
+            sampleMessage.LastMessages.Should().Contain(x => x.Contains("main green, blue lights are now on")).And
+                .HaveCount(1);
         }
- 
+
         [Test]
         public async Task Process_GivenOtherLight_ShouldRespond()
         {
@@ -51,10 +52,11 @@ namespace BuildIndicatron.Tests.Core.Chat
             var sampleMessage = new MessageContext("set secondary light blue green");
             await _chatBot.Process(sampleMessage);
             // assert
-            sampleMessage.LastMessages.Should().Contain(x => x.Contains("secondary green, blue lights are now on")).And.HaveCount(1);
+            sampleMessage.LastMessages.Should().Contain(x => x.Contains("secondary green, blue lights are now on")).And
+                .HaveCount(1);
         }
- 
-        
+
+
         [Test]
         public async Task Process_GivenLightOff_ShouldRespond()
         {
@@ -67,8 +69,8 @@ namespace BuildIndicatron.Tests.Core.Chat
             var sampleMessage = new MessageContext("set secondary light off");
             await _chatBot.Process(sampleMessage);
             // assert
-            sampleMessage.LastMessages.Should().Contain(x => x.Contains("secondary lights are now off")).And.HaveCount(1);
+            sampleMessage.LastMessages.Should().Contain(x => x.Contains("secondary lights are now off")).And
+                .HaveCount(1);
         }
-
     }
 }

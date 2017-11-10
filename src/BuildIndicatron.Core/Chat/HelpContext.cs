@@ -19,7 +19,8 @@ namespace BuildIndicatron.Core.Chat
         {
             var stringBuilder = new StringBuilder();
             stringBuilder.AppendLine("I currently have the following functionality:");
-            foreach (var helpMessage in chatContextHolder.All.OfType<IWithHelpText>().Dump("d").SelectMany(x=>x.GetHelp()))
+            foreach (var helpMessage in chatContextHolder.All.OfType<IWithHelpText>().Dump("d")
+                .SelectMany(x => x.GetHelp()))
             {
                 stringBuilder.AppendLine(string.Format("{0} - {1}", helpMessage.Call, helpMessage.Description));
             }
@@ -33,7 +34,7 @@ namespace BuildIndicatron.Core.Chat
 
         public IEnumerable<HelpMessage> GetHelp()
         {
-            yield return new HelpMessage() { Call = "help" , Description = "Display the shit you are looking at :-)" }; 
+            yield return new HelpMessage() {Call = "help", Description = "Display the shit you are looking at :-)"};
         }
 
         #endregion

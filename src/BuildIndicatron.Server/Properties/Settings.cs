@@ -28,7 +28,9 @@ namespace BuildIndicatron.Server.Properties
 
         #endregion
 
-        public System.String SpeachTempFileLocation => _configuration["SpeachTempFileLocation"] ?? "resources/text2speach";
+        public System.String SpeachTempFileLocation =>
+            _configuration["SpeachTempFileLocation"] ?? "resources/text2speach";
+
         public System.String SoundFileLocation => _configuration["SoundFileLocation"] ?? "resources/sounds";
 
 
@@ -36,7 +38,5 @@ namespace BuildIndicatron.Server.Properties
         {
             _instance = new Lazy<Settings>(() => new Settings(configuration));
         }
-
-
     }
 }

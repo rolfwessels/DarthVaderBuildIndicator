@@ -5,11 +5,10 @@ using BuildIndicatron.Core.SimpleTextSplit;
 
 namespace BuildIndicatron.Core.Chat
 {
-
     public class SetSettingsContext : TextSplitterContextBase<SetSettingsContext.SettingChange>
     {
         private readonly ISettingsManager _settingsContext;
-        
+
         public SetSettingsContext(ISettingsManager settingsContext)
         {
             _settingsContext = settingsContext;
@@ -22,16 +21,17 @@ namespace BuildIndicatron.Core.Chat
             textSplitter
                 .Map(@"set (setting|settings) (?<key>WORD) (?<value>ANYTHING)")
                 .Map(@"set (setting|settings) (?<key>WORD)")
-                .Map(@"set (setting|settings)"); 
+                .Map(@"set (setting|settings)");
         }
-        
-        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, SettingChange server)
+
+        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context,
+            SettingChange server)
         {
             if (string.IsNullOrEmpty(server.Key))
             {
                 await context.Respond("what is the key?");
                 var quickTextSplitterContext = new QuickTextSplitterContext<SettingChange>(server,
-                    x => x.Map(@"(?<key>WORD)"),Response);
+                    x => x.Map(@"(?<key>WORD)"), Response);
                 chatContextHolder.AddOneTime(quickTextSplitterContext);
             }
             else if (string.IsNullOrEmpty(server.Value))
@@ -57,7 +57,7 @@ namespace BuildIndicatron.Core.Chat
 
         public IEnumerable<HelpMessage> GetHelp()
         {
-            yield return new HelpMessage() {Call = "set setting [key] [value]",Description = "Set some settings."};
+            yield return new HelpMessage() {Call = "set setting [key] [value]", Description = "Set some settings."};
         }
 
         #endregion
@@ -68,6 +68,4 @@ namespace BuildIndicatron.Core.Chat
             public string Value { get; set; }
         }
     }
-
-    
 }

@@ -13,4 +13,9 @@
   <ItemGroup>
     <ProjectReference Include="..\BuildIndicatron.Core\BuildIndicatron.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="save json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

@@ -9,18 +9,17 @@ namespace BuildIndicatron.Core.SimpleTextSplit
     {
         public void Lookup(string empty)
         {
-            
         }
 
         public static TextSplitter<TA> ApplyTo<TA>()
         {
-            var textSplitter = new TextSplitter<TA> {};
+            var textSplitter = new TextSplitter<TA> { };
             return textSplitter;
         }
 
         public static Regex ToRegEx(string help)
         {
-            return new Regex("",RegexOptions.IgnoreCase);
+            return new Regex("", RegexOptions.IgnoreCase);
         }
     }
 
@@ -39,7 +38,7 @@ namespace BuildIndicatron.Core.SimpleTextSplit
             values = values.Replace("ANYTHING", ".*");
             values = values.Replace("WORD", "[A-z]+");
             values = "^" + values + "$";
-            
+
             _regexes.Add(new Regex(values, RegexOptions.IgnoreCase));
             return this;
         }
@@ -56,7 +55,7 @@ namespace BuildIndicatron.Core.SimpleTextSplit
 
         public TextSplitterResult<T> Process(string text, T value)
         {
-            foreach (var regex in _regexes   )
+            foreach (var regex in _regexes)
             {
                 var match = regex.Match(text);
                 if (match.Success)
@@ -71,18 +70,15 @@ namespace BuildIndicatron.Core.SimpleTextSplit
         private void ApplyNamedValues(Regex regex, Match match, T value)
         {
             var keyValuePairs = regex.GetGroupNames().ToDictionary(x => x.ToLower(), x => match.Groups[x].Value);
-            var propertyInfos = typeof (T).GetProperties();
+            var propertyInfos = typeof(T).GetProperties();
             foreach (var source in propertyInfos.Where(x => keyValuePairs.ContainsKey(x.Name.ToLower())))
             {
                 var keyValuePair = keyValuePairs[source.Name.ToLower()];
                 source.SetValue(value, keyValuePair);
             }
         }
-
-       
     }
 
-    
 
     public class TextSplitterResult<T>
     {

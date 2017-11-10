@@ -12,12 +12,12 @@ namespace BuildIndicatron.Console
     {
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private const string LogSettingsFile = "loggingSettings.xml";
-       
+
         [STAThread]
         private static int Main(string[] args)
         {
             SetupLog4Net();
-	        try
+            try
             {
                 var commands = GetCommands();
                 ConsoleCommandDispatcher.DispatchCommand(commands, args, System.Console.Out);
@@ -49,6 +49,5 @@ namespace BuildIndicatron.Console
         }
 
         #endregion
-        
     }
 }

@@ -9,6 +9,7 @@ using RestSharp;
 using BuildIndicatron.App.Core.Task;
 #else
 using System.Threading.Tasks;
+
 #endif
 namespace BuildIndicatron.Core.Api
 {
@@ -19,8 +20,6 @@ namespace BuildIndicatron.Core.Api
         }
 
         #region IRobotApi Members
-
-       
 
         public Task<PingResponse> Ping()
         {
@@ -34,20 +33,22 @@ namespace BuildIndicatron.Core.Api
             restRequest.AddUrlSegment("fileName", fileName);
             return ProcessDefaultRequest<PlayMp3FileResponse>(restRequest);
         }
-		public Task<TextToSpeechResponse> TextToSpeechEnhanceSpeech(string text)
-		{
-			RestRequest restRequest = GetRestRequest(ApiPaths.TextToSpeechEnhanceSpeech, Method.GET);
-			restRequest.AddUrlSegment("text", text);
 
-			return ProcessDefaultRequest<TextToSpeechResponse>(restRequest);
-		}
+        public Task<TextToSpeechResponse> TextToSpeechEnhanceSpeech(string text)
+        {
+            RestRequest restRequest = GetRestRequest(ApiPaths.TextToSpeechEnhanceSpeech, Method.GET);
+            restRequest.AddUrlSegment("text", text);
+
+            return ProcessDefaultRequest<TextToSpeechResponse>(restRequest);
+        }
+
         public Task<TextToSpeechResponse> TextToSpeech(string text)
         {
             RestRequest restRequest = GetRestRequest(ApiPaths.TextToSpeech, Method.GET);
             restRequest.AddUrlSegment("text", text);
             return ProcessDefaultRequest<TextToSpeechResponse>(restRequest);
         }
-		
+
         public Task<SetupGpIoResponse> GpIoSetup(int pin, GpioDirection direction)
         {
             RestRequest restRequest = GetRestRequest(ApiPaths.SetupGpIo, Method.GET);
@@ -56,7 +57,7 @@ namespace BuildIndicatron.Core.Api
             return ProcessDefaultRequest<SetupGpIoResponse>(restRequest);
         }
 
-		public Task<SetupGpIoResponse> GpIoSetup(PinName pin, GpioDirection direction)
+        public Task<SetupGpIoResponse> GpIoSetup(PinName pin, GpioDirection direction)
         {
             RestRequest restRequest = GetRestRequest(ApiPaths.SetupGpIo, Method.GET);
             restRequest.AddUrlSegment("pin", pin.ToString());
@@ -66,13 +67,13 @@ namespace BuildIndicatron.Core.Api
 
         public Task<GpIoOutputResponse> GpIoOutput(int pin, bool isOn)
         {
-			RestRequest restRequest = GetRestRequest(ApiPaths.GpIoOutput, Method.GET);
+            RestRequest restRequest = GetRestRequest(ApiPaths.GpIoOutput, Method.GET);
             restRequest.AddUrlSegment("pin", pin.ToString(CultureInfo.InvariantCulture));
             restRequest.AddUrlSegment("ison", isOn.ToString());
             return ProcessDefaultRequest<GpIoOutputResponse>(restRequest);
         }
 
-		public Task<GpIoOutputResponse> GpIoOutput(PinName pin, bool isOn)
+        public Task<GpIoOutputResponse> GpIoOutput(PinName pin, bool isOn)
         {
             RestRequest restRequest = GetRestRequest(ApiPaths.GpIoOutput, Method.GET);
             restRequest.AddUrlSegment("pin", pin.ToString());
@@ -92,11 +93,11 @@ namespace BuildIndicatron.Core.Api
             return ProcessDefaultRequest<PassiveProcessResponse>(restRequest);
         }
 
-		public Task<EnqueueResponse> GetQueueSize()
-		{
-			var restRequest = GetRestRequest(ApiPaths.Enqueue, Method.GET);
-			return ProcessDefaultRequest<EnqueueResponse>(restRequest);
-		}
+        public Task<EnqueueResponse> GetQueueSize()
+        {
+            var restRequest = GetRestRequest(ApiPaths.Enqueue, Method.GET);
+            return ProcessDefaultRequest<EnqueueResponse>(restRequest);
+        }
 
         public Task<EnqueueResponse> Enqueue(Choreography choreography)
         {
@@ -116,23 +117,22 @@ namespace BuildIndicatron.Core.Api
             return ProcessDefaultRequest<GetClipsResponse>(restRequest);
         }
 
-		public Task<FileUploadHasFileInArchiveResponse> HasFileInArchive(string inputFile)
-		{
-			RestRequest restRequest = GetRestRequest(ApiPaths.FileUploadHasFileInArchive, Method.GET);
-			restRequest.AddUrlSegment("filename", Path.GetFileName(inputFile));
-			return ProcessDefaultRequest<FileUploadHasFileInArchiveResponse>(restRequest);
-		}
+        public Task<FileUploadHasFileInArchiveResponse> HasFileInArchive(string inputFile)
+        {
+            RestRequest restRequest = GetRestRequest(ApiPaths.FileUploadHasFileInArchive, Method.GET);
+            restRequest.AddUrlSegment("filename", Path.GetFileName(inputFile));
+            return ProcessDefaultRequest<FileUploadHasFileInArchiveResponse>(restRequest);
+        }
 
-		public Task<FileUploadUploadResponse> UploadFile(string inputFile)
-		{
-			RestRequest restRequest = GetRestRequest(ApiPaths.FileUploadUpload, Method.POST);
+        public Task<FileUploadUploadResponse> UploadFile(string inputFile)
+        {
+            RestRequest restRequest = GetRestRequest(ApiPaths.FileUploadUpload, Method.POST);
 
-			restRequest.AddHeader("Content-Type", "multipart/form-data");
-			AddFile(inputFile, restRequest);
-			return ProcessDefaultRequest<FileUploadUploadResponse>(restRequest);
-		}
+            restRequest.AddHeader("Content-Type", "multipart/form-data");
+            AddFile(inputFile, restRequest);
+            return ProcessDefaultRequest<FileUploadUploadResponse>(restRequest);
+        }
+
         #endregion
-
-	    
     }
 }

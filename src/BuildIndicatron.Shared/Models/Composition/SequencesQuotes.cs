@@ -2,13 +2,13 @@
 {
     public class SequencesQuotes : Sequences
     {
-	    public const string TypeName = "Quotes";
+        public const string TypeName = "Quotes";
 
-	    public SequencesQuotes()
+        public SequencesQuotes()
             : base(TypeName)
         {
         }
 
-        public bool SendTweet { get; set; } 
+        public bool SendTweet { get; set; }
     }
 }

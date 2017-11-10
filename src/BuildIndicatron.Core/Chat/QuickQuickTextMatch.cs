@@ -10,7 +10,8 @@ namespace BuildIndicatron.Core.Chat
         {
         }
 
-        public QuickQuickTextMatch(Action<TextSplitter<Matcdh>> apply, Func<ChatContextHolder, IMessageContext, Task> response)
+        public QuickQuickTextMatch(Action<TextSplitter<Matcdh>> apply,
+            Func<ChatContextHolder, IMessageContext, Task> response)
             : base(new Matcdh(), apply, (holder, context, arg3) => response(holder, context))
         {
         }

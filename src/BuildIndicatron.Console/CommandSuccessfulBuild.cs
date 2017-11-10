@@ -28,10 +28,10 @@ namespace BuildIndicatron.Console
             var allProjects = AllProjects();
             var projectName = remainingArguments[0].ToUpper();
             System.Console.Out.WriteLine("Inspecting project \"{0}\" ", projectName);
-            
+
             var choreography = AddMainColor();
             AddProjectStatusSounds(allProjects, projectName, choreography);
-            
+
             AddCoreProjectStatus(choreography, projectName, _isSuccess);
             AddJenkensStatsToButton();
             BuildIndicationApi.Enqueue(choreography).Wait();
@@ -39,42 +39,44 @@ namespace BuildIndicatron.Console
             return 0;
         }
 
-        
+
         protected virtual Choreography AddMainColor()
         {
             var choreography = new Choreography
-                {
-                    Sequences = SwitchOnPin(0, AppSettings.Default.LsGreenPin).Cast<Sequences>().ToList()
-                };
+            {
+                Sequences = SwitchOnPin(0, AppSettings.Default.LsGreenPin).Cast<Sequences>().ToList()
+            };
             return choreography;
         }
 
-        protected virtual void AddProjectStatusSounds(Task<JenkensProjectsResult> allProjects, string projectName, Choreography choreography)
+        protected virtual void AddProjectStatusSounds(Task<JenkensProjectsResult> allProjects, string projectName,
+            Choreography choreography)
         {
             allProjects.Wait();
             var project = allProjects.Result.Jobs.FirstOrDefault(x => x.Name.ToUpper() == projectName);
             if (project != null)
             {
                 var successfulBuildInARow = JenkensTextConverter.SuccessfulBuildInARow(project.Builds);
-                System.Console.Out.WriteLine(string.Format("The build has {0} successful builds in a row", successfulBuildInARow));
+                System.Console.Out.WriteLine(string.Format("The build has {0} successful builds in a row",
+                    successfulBuildInARow));
 
-                if (successfulBuildInARow > 20 && successfulBuildInARow%10 == 0)
+                if (successfulBuildInARow > 20 && successfulBuildInARow % 10 == 0)
                 {
                     choreography.Sequences.Add(new SequencesText2Speech()
-                        {
-                            BeginTime = 300,
-                            Text =
-                                projectName + " completed with " + successfulBuildInARow +
-                                " successful builds in a row. The force is strong with this one"
-                        });
+                    {
+                        BeginTime = 300,
+                        Text =
+                            projectName + " completed with " + successfulBuildInARow +
+                            " successful builds in a row. The force is strong with this one"
+                    });
                 }
                 if (successfulBuildInARow == 2)
                 {
                     choreography.Sequences.Add(new SequencesText2Speech()
-                        {
-                            BeginTime = 300,
-                            Text = " another successful build"
-                        });
+                    {
+                        BeginTime = 300,
+                        Text = " another successful build"
+                    });
                 }
                 else
                 {
@@ -95,7 +97,7 @@ namespace BuildIndicatron.Console
             {
                 coreProject.Color = isSuccess ? Job.SuccessColor : Job.FailColor;
             }
-            Log.Info("Core projects stats for " + string.Join(",",coreProjects.Select(x => x.Name).ToArray()));
+            Log.Info("Core projects stats for " + string.Join(",", coreProjects.Select(x => x.Name).ToArray()));
             Log.Info("Core projects stats for " + string.Join(",", coreProjects.Select(x => x.Color).ToArray()));
             const int beginTime = 10000;
             if (coreProjects.Any(x => x.IsFailed()))
@@ -108,7 +110,6 @@ namespace BuildIndicatron.Console
                 Log.Warn("CommandSuccessfulBuild:AddCoreProjectStatus Sending green pin");
                 choreography.Sequences.AddRange(SwitchOnPin(beginTime, AppSettings.Default.LsGreenPin));
             }
-
         }
 
         private IEnumerable<Job> GetCoreProjects()

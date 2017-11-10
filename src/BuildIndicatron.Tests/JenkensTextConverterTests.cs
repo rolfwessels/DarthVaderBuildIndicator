@@ -30,7 +30,6 @@ namespace BuildIndicatron.Tests
         [TearDown]
         public void TearDown()
         {
-            
         }
 
         #endregion
@@ -41,7 +40,6 @@ namespace BuildIndicatron.Tests
             var jenkensProjectsResult = new JenkensProjectsResult();
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
             summary.Should().Be("No jenkins data received. Please try again later!");
-
         }
 
         [Test]
@@ -49,8 +47,14 @@ namespace BuildIndicatron.Tests
         {
             var jenkensProjectsResult = new JenkensProjectsResult()
             {
-                Jobs = new List<Job>() { 
-                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
+                Jobs = new List<Job>()
+                {
+                    new Job()
+                    {
+                        Color = "blue",
+                        Name = "Build - Zapper DB",
+                        HealthReport = new List<Health>() {new Health() {Score = 100}}
+                    },
                 },
             };
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
@@ -63,9 +67,20 @@ namespace BuildIndicatron.Tests
         {
             var jenkensProjectsResult = new JenkensProjectsResult()
             {
-                Jobs = new List<Job>() { 
-                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
-                    new Job() { Color = "blue", Name = "Build - Zapper IPN Service", HealthReport = new List<Health>() { new Health() { Score = 100 } } } 
+                Jobs = new List<Job>()
+                {
+                    new Job()
+                    {
+                        Color = "blue",
+                        Name = "Build - Zapper DB",
+                        HealthReport = new List<Health>() {new Health() {Score = 100}}
+                    },
+                    new Job()
+                    {
+                        Color = "blue",
+                        Name = "Build - Zapper IPN Service",
+                        HealthReport = new List<Health>() {new Health() {Score = 100}}
+                    }
                 },
             };
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
@@ -77,13 +92,26 @@ namespace BuildIndicatron.Tests
         {
             var jenkensProjectsResult = new JenkensProjectsResult()
             {
-                Jobs = new List<Job>() { 
-                    new Job() { Color = "red", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
-                    new Job() { Color = "red", Name = "Build - Zapper IPN Service", HealthReport = new List<Health>() { new Health() { Score = 100 } } } 
+                Jobs = new List<Job>()
+                {
+                    new Job()
+                    {
+                        Color = "red",
+                        Name = "Build - Zapper DB",
+                        HealthReport = new List<Health>() {new Health() {Score = 100}}
+                    },
+                    new Job()
+                    {
+                        Color = "red",
+                        Name = "Build - Zapper IPN Service",
+                        HealthReport = new List<Health>() {new Health() {Score = 100}}
+                    }
                 },
             };
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
-            summary.Should().Be("There are currently 2 builds on jenkins and they are all broken. Maybe development is not for you");
+            summary.Should()
+                .Be(
+                    "There are currently 2 builds on jenkins and they are all broken. Maybe development is not for you");
         }
 
         [Test]
@@ -91,24 +119,36 @@ namespace BuildIndicatron.Tests
         {
             var jenkensProjectsResult = new JenkensProjectsResult()
             {
-                Jobs = new List<Job>() { 
-                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
-                    new Job() { Color = "red", Name = "Build - Zapper IPN Service", 
-                        LastFailedBuild = new LastFailedBuild() { 
-                            ChangeSet = new ChangeSet() { 
-                                items = new List<Item>() {
+                Jobs = new List<Job>()
+                {
+                    new Job()
+                    {
+                        Color = "blue",
+                        Name = "Build - Zapper DB",
+                        HealthReport = new List<Health>() {new Health() {Score = 100}}
+                    },
+                    new Job()
+                    {
+                        Color = "red",
+                        Name = "Build - Zapper IPN Service",
+                        LastFailedBuild = new LastFailedBuild()
+                        {
+                            ChangeSet = new ChangeSet()
+                            {
+                                items = new List<Item>()
+                                {
                                     new Item {author = new Author() {fullName = "Rolf Wessels"}},
-                                }},
-                                Timestamp = DateTime.Now.AddDays(-1).ToEpochTimeStamp()
+                                }
+                            },
+                            Timestamp = DateTime.Now.AddDays(-1).ToEpochTimeStamp()
                         }
                     }
                 },
             };
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
             summary.Should()
-                   .Be(
-                       "You have failed me, there are currently 2 builds on jenkins with 1 build failing. The Build - Zapper IPN Service last failed 1 day ago, It was last modified by Rolf Wessels");
-
+                .Be(
+                    "You have failed me, there are currently 2 builds on jenkins with 1 build failing. The Build - Zapper IPN Service last failed 1 day ago, It was last modified by Rolf Wessels");
         }
 
         [Test]
@@ -116,25 +156,36 @@ namespace BuildIndicatron.Tests
         {
             var jenkensProjectsResult = new JenkensProjectsResult()
             {
-                Jobs = new List<Job>() { 
-                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
-                    new Job() { Color = "red", Name = "Build - Zapper IPN Service", 
-                        LastFailedBuild = new LastFailedBuild() { 
-                            ChangeSet = new ChangeSet() { 
-                                items = new List<Item>() {
+                Jobs = new List<Job>()
+                {
+                    new Job()
+                    {
+                        Color = "blue",
+                        Name = "Build - Zapper DB",
+                        HealthReport = new List<Health>() {new Health() {Score = 100}}
+                    },
+                    new Job()
+                    {
+                        Color = "red",
+                        Name = "Build - Zapper IPN Service",
+                        LastFailedBuild = new LastFailedBuild()
+                        {
+                            ChangeSet = new ChangeSet()
+                            {
+                                items = new List<Item>()
+                                {
                                     new Item {author = new Author() {fullName = "Rolf Wessels"}},
-                                }},
-                                Timestamp = DateTime.Now.AddDays(-1).ToEpochTimeStamp()
+                                }
+                            },
+                            Timestamp = DateTime.Now.AddDays(-1).ToEpochTimeStamp()
                         }
                     }
-
                 },
             };
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
             summary.Should()
-                   .Be(
-                       "You have failed me, there are currently 2 builds on jenkins with 1 build failing. The Build - Zapper IPN Service last failed 1 day ago, It was last modified by Rolf Wessels");
-
+                .Be(
+                    "You have failed me, there are currently 2 builds on jenkins with 1 build failing. The Build - Zapper IPN Service last failed 1 day ago, It was last modified by Rolf Wessels");
         }
 
         [Test]
@@ -142,26 +193,48 @@ namespace BuildIndicatron.Tests
         {
             var jenkensProjectsResult = new JenkensProjectsResult()
             {
-                Jobs = new List<Job>() { 
-                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
-                    new Job() { Color = "Disabled", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
-                    new Job() { Color = "grey", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
-                    new Job() { Color = "red", Name = "Build - Zapper IPN Service", 
-                        LastFailedBuild = new LastFailedBuild() { 
-                            ChangeSet = new ChangeSet() { 
-                                items = new List<Item>() {
+                Jobs = new List<Job>()
+                {
+                    new Job()
+                    {
+                        Color = "blue",
+                        Name = "Build - Zapper DB",
+                        HealthReport = new List<Health>() {new Health() {Score = 100}}
+                    },
+                    new Job()
+                    {
+                        Color = "Disabled",
+                        Name = "Build - Zapper DB",
+                        HealthReport = new List<Health>() {new Health() {Score = 100}}
+                    },
+                    new Job()
+                    {
+                        Color = "grey",
+                        Name = "Build - Zapper DB",
+                        HealthReport = new List<Health>() {new Health() {Score = 100}}
+                    },
+                    new Job()
+                    {
+                        Color = "red",
+                        Name = "Build - Zapper IPN Service",
+                        LastFailedBuild = new LastFailedBuild()
+                        {
+                            ChangeSet = new ChangeSet()
+                            {
+                                items = new List<Item>()
+                                {
                                     new Item {author = new Author() {fullName = "Rolf Wessels"}},
-                                }},
-                                Timestamp = DateTime.Now.AddDays(-1).ToEpochTimeStamp()
+                                }
+                            },
+                            Timestamp = DateTime.Now.AddDays(-1).ToEpochTimeStamp()
                         }
                     }
                 },
             };
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
             summary.Should()
-                   .Be(
-                       "You have failed me, there are currently 4 builds on jenkins with 1 build failing. The Build - Zapper IPN Service last failed 1 day ago, It was last modified by Rolf Wessels");
-
+                .Be(
+                    "You have failed me, there are currently 4 builds on jenkins with 1 build failing. The Build - Zapper IPN Service last failed 1 day ago, It was last modified by Rolf Wessels");
         }
 
         [Test]
@@ -169,35 +242,53 @@ namespace BuildIndicatron.Tests
         {
             var jenkensProjectsResult = new JenkensProjectsResult()
             {
-                Jobs = new List<Job>() { 
-                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
-                    new Job() { Color = "red", Name = "Build - Zapper IPN Service", 
-                        LastFailedBuild = new LastFailedBuild() { 
-                            ChangeSet = new ChangeSet() { 
-                                items = new List<Item>() {
-                                    new Item {author = new Author() {fullName = "Rolf Wessels"}},
-                                    new Item {author = new Author() {fullName = "Rolf Wessels"}},
-                                }},
-                                Timestamp = DateTime.Now.AddDays(-1).ToEpochTimeStamp()
-                        }
-                            
+                Jobs = new List<Job>()
+                {
+                    new Job()
+                    {
+                        Color = "blue",
+                        Name = "Build - Zapper DB",
+                        HealthReport = new List<Health>() {new Health() {Score = 100}}
                     },
-                    new Job() { Color = "red", Name = "Build - Zapper IPN Service", 
-                        LastFailedBuild = new LastFailedBuild() { 
-                            ChangeSet = new ChangeSet() { 
-                                items = new List<Item>() {
+                    new Job()
+                    {
+                        Color = "red",
+                        Name = "Build - Zapper IPN Service",
+                        LastFailedBuild = new LastFailedBuild()
+                        {
+                            ChangeSet = new ChangeSet()
+                            {
+                                items = new List<Item>()
+                                {
                                     new Item {author = new Author() {fullName = "Rolf Wessels"}},
-                                }},
-                                Timestamp = DateTime.Now.AddDays(-1).ToEpochTimeStamp()
+                                    new Item {author = new Author() {fullName = "Rolf Wessels"}},
+                                }
+                            },
+                            Timestamp = DateTime.Now.AddDays(-1).ToEpochTimeStamp()
+                        }
+                    },
+                    new Job()
+                    {
+                        Color = "red",
+                        Name = "Build - Zapper IPN Service",
+                        LastFailedBuild = new LastFailedBuild()
+                        {
+                            ChangeSet = new ChangeSet()
+                            {
+                                items = new List<Item>()
+                                {
+                                    new Item {author = new Author() {fullName = "Rolf Wessels"}},
+                                }
+                            },
+                            Timestamp = DateTime.Now.AddDays(-1).ToEpochTimeStamp()
                         }
                     }
                 },
             };
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
             summary.Should()
-                   .StartWith(
-                       "You have failed me, there are currently 3 builds on jenkins with 2 builds failing");
-
+                .StartWith(
+                    "You have failed me, there are currently 3 builds on jenkins with 2 builds failing");
         }
 
         [Test]
@@ -205,25 +296,37 @@ namespace BuildIndicatron.Tests
         {
             var jenkensProjectsResult = new JenkensProjectsResult()
             {
-                Jobs = new List<Job>() { 
-                    new Job() { Color = "blue", Name = "Build - Zapper DB", HealthReport = new List<Health>() { new Health() { Score = 100 } } } ,
-                    new Job() { Color = "red", Name = "Build - Zapper IPN Service", 
-                        LastFailedBuild = new LastFailedBuild() { 
-                            ChangeSet = new ChangeSet() { 
-                                items = new List<Item>() {
+                Jobs = new List<Job>()
+                {
+                    new Job()
+                    {
+                        Color = "blue",
+                        Name = "Build - Zapper DB",
+                        HealthReport = new List<Health>() {new Health() {Score = 100}}
+                    },
+                    new Job()
+                    {
+                        Color = "red",
+                        Name = "Build - Zapper IPN Service",
+                        LastFailedBuild = new LastFailedBuild()
+                        {
+                            ChangeSet = new ChangeSet()
+                            {
+                                items = new List<Item>()
+                                {
                                     new Item {author = new Author() {fullName = "Rolf Wessels"}},
                                     new Item {author = new Author() {fullName = "Coreen"}},
-                                }},
-                                Timestamp = DateTime.Now.AddDays(-1).ToEpochTimeStamp()
+                                }
+                            },
+                            Timestamp = DateTime.Now.AddDays(-1).ToEpochTimeStamp()
                         }
-                            
                     }
                 },
             };
             var summary = _jenkensTextConverter.ToSummary(jenkensProjectsResult);
             summary.Should()
-                   .Be("You have failed me, there are currently 2 builds on jenkins with 1 build failing. The Build - Zapper IPN Service last failed 1 day ago, It was last modified by Rolf Wessels and Coreen");
-
+                .Be(
+                    "You have failed me, there are currently 2 builds on jenkins with 1 build failing. The Build - Zapper IPN Service last failed 1 day ago, It was last modified by Rolf Wessels and Coreen");
         }
 
         [Test]
@@ -236,10 +339,10 @@ namespace BuildIndicatron.Tests
         [Test]
         public void GetLastModifiedDateString_Month()
         {
-            var lastModifiedDateString = _jenkensTextConverter.GetLastModifiedDateString(new LastFailedBuild() { Timestamp = DateTime.Now.AddDays(-32).ToEpochTimeStamp().Dump("1") });
+            var lastModifiedDateString = _jenkensTextConverter.GetLastModifiedDateString(
+                new LastFailedBuild() {Timestamp = DateTime.Now.AddDays(-32).ToEpochTimeStamp().Dump("1")});
             lastModifiedDateString.Should().Be("1 month ago");
         }
-
 
 
         [Test]
@@ -261,8 +364,8 @@ namespace BuildIndicatron.Tests
         {
             var jenkensProjectsResult = JenkensProjectsResult();
             _jenkensTextConverter.ToSummaryList(jenkensProjectsResult).First(x => x.Contains("P Cleworth"))
-                                 .Should()
-                                 .StartWith("The Build - Zapper IPN Service last failed ");
+                .Should()
+                .StartWith("The Build - Zapper IPN Service last failed ");
         }
 
         [Test]
@@ -270,8 +373,8 @@ namespace BuildIndicatron.Tests
         {
             var jenkensProjectsResult = JenkensProjectsResult();
             _jenkensTextConverter.ToSummaryList(jenkensProjectsResult).First(x => x.Contains("a ghost"))
-                                 .Should()
-                                 .StartWith("The Deploy Dev - ZoomLogin + SampleMerchant last failed ");
+                .Should()
+                .StartWith("The Deploy Dev - ZoomLogin + SampleMerchant last failed ");
         }
 
         [Test]
@@ -279,7 +382,8 @@ namespace BuildIndicatron.Tests
         {
             var jenkensProjectsResult = JenkensProjectsResult();
             _jenkensTextConverter.ToSummaryList(jenkensProjectsResult)
-                .Should().Contain("The fastest build is Deploy Dev - ZapperPayments + ZapperCallback at 10 seconds per build. The slowest build is Build - ZapZap API at 4 minutes per build");
+                .Should().Contain(
+                    "The fastest build is Deploy Dev - ZapperPayments + ZapperCallback at 10 seconds per build. The slowest build is Build - ZapZap API at 4 minutes per build");
         }
 
         [Test]
@@ -287,8 +391,8 @@ namespace BuildIndicatron.Tests
         {
             var jenkensProjectsResult = JenkensProjectsResult();
             _jenkensTextConverter.ToSummaryList(jenkensProjectsResult).Last()
-                .Should().Be("Deploy Dev - ZapperPayments + ZapperCallback has 172 succesfull builds in a row. Deploy Dev - ZoomLogin + SampleMerchant has 0 succesfull builds in a row");
-
+                .Should().Be(
+                    "Deploy Dev - ZapperPayments + ZapperCallback has 172 succesfull builds in a row. Deploy Dev - ZoomLogin + SampleMerchant has 0 succesfull builds in a row");
         }
 
         [Test]
@@ -296,10 +400,11 @@ namespace BuildIndicatron.Tests
         {
             var jenkensProjectsResult = JenkensProjectsResult();
             _jenkensTextConverter.ToSummaryList(jenkensProjectsResult).Last()
-                .Should().Be("Deploy Dev - ZapperPayments + ZapperCallback has 172 succesfull builds in a row. Deploy Dev - ZoomLogin + SampleMerchant has 0 succesfull builds in a row");
+                .Should().Be(
+                    "Deploy Dev - ZapperPayments + ZapperCallback has 172 succesfull builds in a row. Deploy Dev - ZoomLogin + SampleMerchant has 0 succesfull builds in a row");
         }
 
-        
+
         private static JenkensProjectsResult JenkensProjectsResult()
         {
             if (_jenkensProjectsResult == null)
@@ -320,7 +425,7 @@ namespace BuildIndicatron.Tests
     {
         public static string ToEpochTimeStamp(this DateTime dsds)
         {
-             var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             return (dsds - epoch).TotalMilliseconds.ToString(CultureInfo.InvariantCulture);
         }
     }

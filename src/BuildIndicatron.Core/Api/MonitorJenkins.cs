@@ -63,6 +63,4 @@ namespace BuildIndicatron.Core.Api
             _isStarted = false;
         }
     }
-
-  
 }

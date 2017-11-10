@@ -10,7 +10,7 @@ namespace BuildIndicatron.Tests.Core.Chat
         #region Setup/Teardown
 
         #endregion
-        
+
         [Test]
         public async Task Process_GivenSetVolumeContext_ShouldShowSetVolumeContextChange()
         {
@@ -36,6 +36,5 @@ namespace BuildIndicatron.Tests.Core.Chat
             // assert
             messageContext.LastMessages.Should().Contain("volume set to 10");
         }
-        
     }
 }

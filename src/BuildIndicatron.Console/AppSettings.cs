@@ -5,7 +5,9 @@ namespace BuildIndicatron.Console
 {
     public class AppSettings
     {
-        private static Lazy<AppSettings> _instance = new Lazy<AppSettings>(() => throw new Exception("Call Initialize before use."));
+        private static Lazy<AppSettings> _instance =
+            new Lazy<AppSettings>(() => throw new Exception("Call Initialize before use."));
+
         private readonly IConfigurationRoot _configuration;
 
         private AppSettings(IConfigurationRoot configuration)

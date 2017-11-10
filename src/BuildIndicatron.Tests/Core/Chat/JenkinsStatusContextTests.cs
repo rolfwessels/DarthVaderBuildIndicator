@@ -13,7 +13,7 @@ namespace BuildIndicatron.Tests.Core.Chat
         #region Setup/Teardown
 
         #endregion
-        
+
         [Test]
         public async Task Process_GivenJenkinsStatusContext_ShouldResondWithJenkinsStatusContext()
         {
@@ -35,10 +35,10 @@ namespace BuildIndicatron.Tests.Core.Chat
             // arrange
             Setup();
             _mockIJenkensApi.Setup(mc => mc.Url)
-               .Returns("Test");
-            var jobs  = Builder<Job>.CreateListOfSize(2).Build();
+                .Returns("Test");
+            var jobs = Builder<Job>.CreateListOfSize(2).Build();
             _mockIJenkensApi.Setup(mc => mc.GetAllProjects())
-                .Returns(Task.FromResult(new JenkensProjectsResult() { Jobs = jobs.ToList()}));
+                .Returns(Task.FromResult(new JenkensProjectsResult() {Jobs = jobs.ToList()}));
             var messageContext = new MessageContext("jenkins status");
             // action
             await _chatBot.Process(messageContext);
@@ -46,6 +46,5 @@ namespace BuildIndicatron.Tests.Core.Chat
             messageContext.LastMessages.Should()
                 .Contain(x => x.Contains("there are currently 2 builds on jenkins"));
         }
-
     }
 }

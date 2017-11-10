@@ -18,7 +18,7 @@ namespace BuildIndicatron.Core.Chat
 
         public Task<bool> CanRespond(IMessageContext context)
         {
-            return Task.FromResult(_r.Next(0, _ods) == _ods-1);
+            return Task.FromResult(_r.Next(0, _ods) == _ods - 1);
         }
 
         public async Task Respond(ChatContextHolder chatContextHolder, IMessageContext context)

@@ -2,13 +2,13 @@
 {
     public class SequencesOneLiner : Sequences
     {
-	    public const string TypeName = "oneliner";
+        public const string TypeName = "oneliner";
 
-	    public SequencesOneLiner()
+        public SequencesOneLiner()
             : base(TypeName)
         {
         }
 
-        public bool SendTweet { get; set; } 
+        public bool SendTweet { get; set; }
     }
 }

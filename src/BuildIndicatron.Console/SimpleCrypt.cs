@@ -9,13 +9,17 @@ namespace BuildIndicatron.Console
     {
         // Change these keys
         private readonly ICryptoTransform _decryptorTransform;
+
         private readonly ICryptoTransform _encryptorTransform;
 
-        private static readonly byte[] _key = {
-            175, 144, 173, 53, 196, 29, 24, 26, 17, 218, 131, 236, 53, 209, 123, 217, 19, 11, 24, 26, 85, 45, 114, 184, 27, 162, 37, 112, 222, 209, 241, 24,
+        private static readonly byte[] _key =
+        {
+            175, 144, 173, 53, 196, 29, 24, 26, 17, 218, 131, 236, 53, 209, 123, 217, 19, 11, 24, 26, 85, 45, 114, 184,
+            27, 162, 37, 112, 222, 209, 241, 24,
         };
 
-        private static readonly byte[] _vector = { 113, 119, 231, 121, 221, 112, 79, 32, 114, 156, 146, 64, 191, 111, 23, 3, };
+        private static readonly byte[] _vector =
+            {113, 119, 231, 121, 221, 112, 79, 32, 114, 156, 146, 64, 191, 111, 23, 3,};
 
         public SimpleCrypt()
             : this(_key, _vector)
@@ -66,7 +70,8 @@ namespace BuildIndicatron.Console
             var bytes = Convert.FromBase64String(encryptedValue);
             using (var encryptedStream = new MemoryStream())
             {
-                using (var decryptStream = new CryptoStream(encryptedStream, _decryptorTransform, CryptoStreamMode.Write))
+                using (var decryptStream =
+                    new CryptoStream(encryptedStream, _decryptorTransform, CryptoStreamMode.Write))
                 {
                     decryptStream.Write(bytes, 0, bytes.Length);
                     decryptStream.FlushFinalBlock();

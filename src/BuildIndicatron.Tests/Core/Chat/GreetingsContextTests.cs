@@ -11,22 +11,18 @@ namespace BuildIndicatron.Tests.Core.Chat
         #region Setup/Teardown
 
         #endregion
-        
+
         [Test]
         public async Task Process_GivenGreetingsContext_ShouldResondWithGreetingsContext()
         {
             // arrange
             Setup();
-            
+
             var messageContext = new MessageContext("hi");
             // action
             await _chatBot.Process(messageContext);
             // assert
             messageContext.LastMessages.Should().NotBeEmpty();
         }
-
-
-   
-        
     }
 }

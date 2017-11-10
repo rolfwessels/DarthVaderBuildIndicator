@@ -9,7 +9,7 @@ using Humanizer;
 
 namespace BuildIndicatron.Core.Chat
 {
-    public class MonitorServerVersionChanges : GetServerVersionContext 
+    public class MonitorServerVersionChanges : GetServerVersionContext
     {
         private readonly TimeSpan _timeout;
 
@@ -29,7 +29,8 @@ namespace BuildIndicatron.Core.Chat
                 .Map(@"(ANYTHING)version(ANYTHING)changes(ANYTHING) ");
         }
 
-        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, Server server)
+        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context,
+            Server server)
         {
             if (string.IsNullOrEmpty(server.Name))
             {
@@ -42,10 +43,7 @@ namespace BuildIndicatron.Core.Chat
                     context.Respond(string.Format("Scanning {0} servers.", server.Name));
             }
 
-            Task.Run(async () =>
-            {
-                await RunOnBackground(context, server);
-            }).FireAndForgetWithLogging();
+            Task.Run(async () => { await RunOnBackground(context, server); }).FireAndForgetWithLogging();
         }
 
         private async Task RunOnBackground(IMessageContext context, Server server)
@@ -64,7 +62,7 @@ namespace BuildIndicatron.Core.Chat
             }
         }
 
-        private async Task Monitor(IMessageContext context, Server link, List<string> list , bool report)
+        private async Task Monitor(IMessageContext context, Server link, List<string> list, bool report)
         {
             for (int i = 0; i < link.ScanCount; i++)
             {
@@ -89,9 +87,16 @@ namespace BuildIndicatron.Core.Chat
 
         public override IEnumerable<HelpMessage> GetHelp()
         {
-            yield return new HelpMessage() { Call = "monitor server versions?", Description = "Alerts you when version numbers change." };
-            yield return new HelpMessage() { Call = "monitor staging server versions?", Description = "Returns stating version numbers." };
+            yield return new HelpMessage()
+            {
+                Call = "monitor server versions?",
+                Description = "Alerts you when version numbers change."
+            };
+            yield return new HelpMessage()
+            {
+                Call = "monitor staging server versions?",
+                Description = "Returns stating version numbers."
+            };
         }
-
     }
 }

@@ -18,15 +18,15 @@ namespace BuildIndicatron.Console
             var choreography = new Choreography
             {
                 Sequences = new List<Sequences>
-                                {
-                                    new SequencesGpIo
-                                        {
-                                            BeginTime = 0,
-                                            Pin = AppSettings.Default.LsBluePin,
-                                            IsOn = true
-                                        },
-                                    new SequencesPlaySound {BeginTime = 1, File = "Wtf/lightsaber.mp3"},
-                                }
+                {
+                    new SequencesGpIo
+                    {
+                        BeginTime = 0,
+                        Pin = AppSettings.Default.LsBluePin,
+                        IsOn = true
+                    },
+                    new SequencesPlaySound {BeginTime = 1, File = "Wtf/lightsaber.mp3"},
+                }
             };
             BuildIndicationApi.Enqueue(choreography);
             return 0;

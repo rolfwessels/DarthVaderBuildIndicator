@@ -26,7 +26,6 @@ namespace BuildIndicatron.Server.Tests.Integration
         [OneTimeSetUp]
         public void SetupFixture()
         {
-    
             var baseUri = string.Format("http://localhost:{0}/api", GetRandom.Int(19000, 19999));
             _log.Info(string.Format("Starting api on {0}", baseUri));
 

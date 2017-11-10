@@ -25,7 +25,8 @@ namespace BuildIndicatron.Core.Chat
         }
 
 
-        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, Meta server)
+        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context,
+            Meta server)
         {
             var oneLiner = RandomTextHelper.Quotes;
             await context.Respond(oneLiner);
@@ -38,7 +39,7 @@ namespace BuildIndicatron.Core.Chat
 
         public IEnumerable<HelpMessage> GetHelp()
         {
-            yield return new HelpMessage { Call = "tell me a quote", Description = "Tells a quote." };
+            yield return new HelpMessage {Call = "tell me a quote", Description = "Tells a quote."};
         }
 
         #endregion

@@ -47,7 +47,7 @@ namespace BuildIndicatron.Server
         {
             var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
             XmlConfigurator.Configure(logRepository, new FileInfo("loggingSettings.xml"));
-            
+
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(Configuration)
                 .CreateLogger();
@@ -78,7 +78,7 @@ namespace BuildIndicatron.Server
                 // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
 //                builder.AddApplicationInsightsSettings(true);
             }
-            
+
             builder.AddEnvironmentVariables();
             return builder.Build();
         }

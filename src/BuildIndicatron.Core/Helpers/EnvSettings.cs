@@ -4,7 +4,6 @@ namespace BuildIndicatron.Core.Helpers
 {
     public class EnvSettings
     {
-
         private static readonly Lazy<EnvSettings> _instance = new Lazy<EnvSettings>(() => new EnvSettings());
 
         private EnvSettings()
@@ -24,24 +23,20 @@ namespace BuildIndicatron.Core.Helpers
             SshPassword = Environment.GetEnvironmentVariable("buildindicator_sshpassword") ?? "SshPassword";
         }
 
-        public string JenkinsUser { get;  }
+        public string JenkinsUser { get; }
 
         public string JenkinsPassword { get; }
 
-        public string SshHost { get;  }
-        public string SshUser { get;  }
-        public string SshPassword { get;  }
+        public string SshHost { get; }
+        public string SshUser { get; }
+        public string SshPassword { get; }
 
-        public string JenkinsHost { get;  }
+        public string JenkinsHost { get; }
 
         #region singleton
 
         public static EnvSettings Instance => _instance.Value;
-        
 
         #endregion
-
-
-
     }
 }

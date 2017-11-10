@@ -13,10 +13,7 @@ namespace BuildIndicatron.Server.Fakes
 
         public Task PlayFile(string fileName)
         {
-            return Task.Run(() =>
-            {
-                _log.Info(string.Format("PLAYING: {0}", fileName));
-            });
+            return Task.Run(() => { _log.Info(string.Format("PLAYING: {0}", fileName)); });
         }
 
         #endregion

@@ -29,21 +29,19 @@ namespace BuildIndicatron.Tests.IntegrationTests
 
         static JenkensApiTests()
         {
-         
         }
 
         #region Setup/Teardown
 
         public void Setup()
         {
-            
-            _jenkensApi = new JenkensApi(EnvSettings.Instance.JenkinsHost, EnvSettings.Instance.JenkinsUser, EnvSettings.Instance.JenkinsPassword);
+            _jenkensApi = new JenkensApi(EnvSettings.Instance.JenkinsHost, EnvSettings.Instance.JenkinsUser,
+                EnvSettings.Instance.JenkinsPassword);
         }
 
         [TearDown]
         public void TearDown()
         {
-
         }
 
         #endregion
@@ -70,14 +68,13 @@ namespace BuildIndicatron.Tests.IntegrationTests
             var jenkensProjectsResult = new JenkensProjectsResult();
             var jenkensTextConverter = new JenkensTextConverter();
             var summary = jenkensTextConverter.ToSummaryList(projects).ToArray();
-            
+
             foreach (var line in summary)
             {
-                _log.Info(line);  
+                _log.Info(line);
             }
             // assert
             summary.Length.Should().BeGreaterOrEqualTo(1);
-            
         }
 
         [Test]

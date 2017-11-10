@@ -30,15 +30,13 @@ namespace BuildIndicatron.Core.Chat
                 .ListenTo<TellMeAQuotesContext>()
                 .ListenTo<FailedToRespondContext>()
                 .ListenTo<RandomJokeResponse>();
-            
         }
 
-        
+
         #region Implementation of IChatBot
 
         public Task Process(IMessageContext context)
         {
-            
             return _chatContextHolder.MessageIn(context);
         }
 

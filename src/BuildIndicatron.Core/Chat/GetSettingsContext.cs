@@ -5,11 +5,10 @@ using BuildIndicatron.Core.SimpleTextSplit;
 
 namespace BuildIndicatron.Core.Chat
 {
-
     public class GetSettingsContext : TextSplitterContextBase<GetSettingsContext.SettingChange>
     {
         private readonly ISettingsManager _settingsContext;
-        
+
         public GetSettingsContext(ISettingsManager settingsContext)
         {
             _settingsContext = settingsContext;
@@ -21,10 +20,11 @@ namespace BuildIndicatron.Core.Chat
         {
             textSplitter
                 .Map(@"get (setting|settings) (?<key>WORD)")
-                .Map(@"get (setting|settings)"); 
+                .Map(@"get (setting|settings)");
         }
-        
-        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, SettingChange server)
+
+        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context,
+            SettingChange server)
         {
             if (string.IsNullOrEmpty(server.Key))
             {
@@ -50,7 +50,7 @@ namespace BuildIndicatron.Core.Chat
 
         public IEnumerable<HelpMessage> GetHelp()
         {
-            yield return new HelpMessage() {Call = "get setting [key]",Description = "Get some settings."};
+            yield return new HelpMessage() {Call = "get setting [key]", Description = "Get some settings."};
         }
 
         #endregion
@@ -60,6 +60,4 @@ namespace BuildIndicatron.Core.Chat
             public string Key { get; set; }
         }
     }
-
-    
 }

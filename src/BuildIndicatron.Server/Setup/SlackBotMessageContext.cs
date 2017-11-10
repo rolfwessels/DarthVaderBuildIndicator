@@ -17,11 +17,13 @@ namespace BuildIndicatron.Server.Setup
 
         public string Text { get; set; }
 
-        public bool IsDirectedAtMe {
+        public bool IsDirectedAtMe
+        {
             get { return _message.MentionsBot || _message.ChatHub.Type == SlackChatHubType.DM; }
         }
 
-        public bool IsBotMessage {
+        public bool IsBotMessage
+        {
             get { return true; }
         }
 
@@ -30,11 +32,13 @@ namespace BuildIndicatron.Server.Setup
             get { return _message.ChatHub.Name; }
         }
 
-        public string FromUser { get { return _message.User.Name??""; } }
+        public string FromUser
+        {
+            get { return _message.User.Name ?? ""; }
+        }
 
         public Task Respond(string message)
         {
-
             return _slackBotServer.SayTo(_message.ChatHub, message);
         }
     }

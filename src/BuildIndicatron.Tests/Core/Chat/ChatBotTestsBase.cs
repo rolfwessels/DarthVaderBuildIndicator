@@ -88,9 +88,9 @@ namespace BuildIndicatron.Tests.Core.Chat
         {
 //            builder.Register(context => new AutofacInjector(_container))
 //                .As<IFactory>().SingleInstance();
-            builder.RegisterAssemblyTypes(typeof (IFactory).Assembly)
+            builder.RegisterAssemblyTypes(typeof(IFactory).Assembly)
                 .Where(t => t.GetInterfaces()
-                    .Any(i => i.IsAssignableFrom(typeof (IReposonseFlow))))
+                    .Any(i => i.IsAssignableFrom(typeof(IReposonseFlow))))
                 .AsSelf().SingleInstance();
             builder.RegisterType<SequencesFactory>();
 

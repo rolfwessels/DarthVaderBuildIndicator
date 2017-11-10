@@ -12,7 +12,6 @@ using log4net;
 
 namespace BuildIndicatron.Core.Chat
 {
-
     public class DeployCoreContext : TextSplitterContextBase<DeployCoreContext.Meta>
     {
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
@@ -26,17 +25,18 @@ namespace BuildIndicatron.Core.Chat
             _jenkensApi = jenkinsFactory.GetDeployer();
         }
 
-       
+
         #region Implementation of IReposonseFlow
 
         protected override void Apply(TextSplitter<Meta> textSplitter)
         {
             textSplitter
                 .Map(@"deploy (?<State>WORD)")
-                .Map(@"deploy"); 
+                .Map(@"deploy");
         }
 
-        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, Meta server)
+        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context,
+            Meta server)
         {
             server.State = server.State ?? States.Staging;
             await context.Respond("Ok let me check jenkins for the correct builds.");
@@ -48,7 +48,7 @@ namespace BuildIndicatron.Core.Chat
             {
                 case States.Staging:
                     await context.Respond("Starting the staging builds.");
-                    foreach (var jobName in server.StagingBuilds )
+                    foreach (var jobName in server.StagingBuilds)
                     {
                         var isDeployed = await Deploy(context, jenkensProjectsResult, jobName);
                         if (!isDeployed) return;
@@ -64,12 +64,11 @@ namespace BuildIndicatron.Core.Chat
                     }
                     await context.Respond("Let me know if I can `monitor the production versions` .");
                     break;
-                    
+
                 default:
                     await context.Respond(string.Format("Oops, I dont know that state '{0}'.", server.State));
                     break;
             }
-            
         }
 
         private async Task<bool> EnsureCorrectDeployProjects(IMessageContext context, Meta server,
@@ -80,21 +79,25 @@ namespace BuildIndicatron.Core.Chat
 
 
             var missingProject =
-                await EnsureValidProjects(context, jenkensProjectsResult, server.StagingBuilds, "deployer_staging_builds", "Staging");
+                await EnsureValidProjects(context, jenkensProjectsResult, server.StagingBuilds,
+                    "deployer_staging_builds", "Staging");
             missingProject = missingProject ||
                              await
-                                 EnsureValidProjects(context, jenkensProjectsResult, server.ProdBuild, "deployer_prod_builds",
+                                 EnsureValidProjects(context, jenkensProjectsResult, server.ProdBuild,
+                                     "deployer_prod_builds",
                                      "Prod");
             return missingProject;
         }
 
-        private async Task<bool> Deploy(IMessageContext context, JenkensProjectsResult jenkensProjectsResult, string jobName)
+        private async Task<bool> Deploy(IMessageContext context, JenkensProjectsResult jenkensProjectsResult,
+            string jobName)
         {
             var jenkinsJob = jenkensProjectsResult.Jobs.First(job => IsMatch(job, jobName));
             await context.Respond(string.Format("*{0}* - status {1}", jenkinsJob.Name, jenkinsJob.Color));
             if (jenkinsJob.IsProcessing())
             {
-                await context.Respond("Oops, looks like this job is already running. Wait for it to stop before continuing.");
+                await context.Respond(
+                    "Oops, looks like this job is already running. Wait for it to stop before continuing.");
                 return false;
             }
             try
@@ -114,7 +117,8 @@ namespace BuildIndicatron.Core.Chat
                 return false;
             }
             await context.Respond("Waiting for the job to finish.");
-            jenkinsJob = await WaitFor(jobName, result => !result.IsProcessing(), TimeSpan.FromMinutes(_settingsManager.Get("build_processing_timeout_minutes",10)));
+            jenkinsJob = await WaitFor(jobName, result => !result.IsProcessing(),
+                TimeSpan.FromMinutes(_settingsManager.Get("build_processing_timeout_minutes", 10)));
             if (jenkinsJob.IsProcessing())
             {
                 await context.Respond("Oops, looks like this did not finish in time.");
@@ -127,10 +131,10 @@ namespace BuildIndicatron.Core.Chat
         {
             return await
                 _jenkensApi.AwaitAsync(x => x.GetAllProjects().Result.Jobs.First(job => IsMatch(job, jobName)),
-                    func, (int)fromMinutes.TotalMilliseconds, 5000);
+                    func, (int) fromMinutes.TotalMilliseconds, 5000);
         }
 
-        private static bool IsMatch(Job job , string jobName)
+        private static bool IsMatch(Job job, string jobName)
         {
             return job.Name.Trim().ToLower() == jobName.Trim().ToLower();
         }
@@ -139,7 +143,7 @@ namespace BuildIndicatron.Core.Chat
             JenkensProjectsResult jenkensProjectsResult, string[] build, string configName, string prod)
         {
             var notFound =
-                build.Where(jobName => jenkensProjectsResult.Jobs.All(job => !IsMatch(job,jobName)))
+                build.Where(jobName => jenkensProjectsResult.Jobs.All(job => !IsMatch(job, jobName)))
                     .ToArray();
             if (notFound.Any())
             {
@@ -151,9 +155,10 @@ namespace BuildIndicatron.Core.Chat
                                 "Please specify a project name for {3} deploy, '{0}' could not be found. You can change this by typing `set settings {1} {2}`",
                                 jobName, configName, jenkensProjectsResult.Jobs.Random().Name, prod));
                     await
-                       context.Respond(
-                           string.Format(
-                               "I could find the following {0}", jenkensProjectsResult.Jobs.Select(x=>string.Format("`{0}`", x.Name)).StringJoin()));
+                        context.Respond(
+                            string.Format(
+                                "I could find the following {0}",
+                                jenkensProjectsResult.Jobs.Select(x => string.Format("`{0}`", x.Name)).StringJoin()));
                 }
             }
             return notFound.Any();
@@ -165,7 +170,7 @@ namespace BuildIndicatron.Core.Chat
 
         public IEnumerable<HelpMessage> GetHelp()
         {
-            yield return new HelpMessage() {Call = "deploy",Description = "Set some settings."};
+            yield return new HelpMessage() {Call = "deploy", Description = "Set some settings."};
         }
 
         #endregion
@@ -182,8 +187,5 @@ namespace BuildIndicatron.Core.Chat
             public const string Staging = "staging";
             public const string Prod = "prod";
         }
-        
     }
-
-    
 }

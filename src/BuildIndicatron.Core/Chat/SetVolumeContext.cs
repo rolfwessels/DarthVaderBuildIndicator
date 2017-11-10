@@ -5,8 +5,6 @@ using BuildIndicatron.Core.Processes;
 
 namespace BuildIndicatron.Core.Chat
 {
-    
-
     public class SetVolumeContext : ReposonseFlowBase, IReposonseFlow
     {
         private readonly ITextToSpeech _textToSpeech;
@@ -27,7 +25,7 @@ namespace BuildIndicatron.Core.Chat
 
         public Task Respond(ChatContextHolder chatContextHolder, IMessageContext context)
         {
-            var volumeLevel = ValueConverterHelper.ToInt(ExtractStartsWith(context, "set volume"),10);
+            var volumeLevel = ValueConverterHelper.ToInt(ExtractStartsWith(context, "set volume"), 10);
             var result = string.Format("volume set to {0}", volumeLevel);
             _textToSpeech.Play(result);
             _volumeSetter.SetVolume(volumeLevel);

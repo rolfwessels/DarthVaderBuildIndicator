@@ -22,14 +22,14 @@ namespace BuildIndicatron.Core.Settings
 
         public void Set(string key, string value)
         {
-            _dictionary.AddOrUpdate(key, value== null?null: value.Trim());
+            _dictionary.AddOrUpdate(key, value == null ? null : value.Trim());
             Save();
         }
 
         public string Get(string key, string defaultValue = null)
         {
-            if (_dictionary.ContainsKey(key)) 
-            return _dictionary[key];
+            if (_dictionary.ContainsKey(key))
+                return _dictionary[key];
             if (defaultValue != null)
             {
                 Set(key, defaultValue);
@@ -39,7 +39,7 @@ namespace BuildIndicatron.Core.Settings
 
         public int Get(string buildProcessingTimeout, int defaultValue)
         {
-            var stringValue = Get(buildProcessingTimeout,defaultValue.ToString(CultureInfo.InvariantCulture));
+            var stringValue = Get(buildProcessingTimeout, defaultValue.ToString(CultureInfo.InvariantCulture));
             int intValue;
             if (int.TryParse(stringValue, out intValue))
             {
@@ -51,7 +51,7 @@ namespace BuildIndicatron.Core.Settings
 
         public IDictionary<string, string> Get()
         {
-            return _dictionary.ToDictionary(x=>x.Key,x=>x.Value);
+            return _dictionary.ToDictionary(x => x.Key, x => x.Value);
         }
 
         #region Private Methods
@@ -60,7 +60,7 @@ namespace BuildIndicatron.Core.Settings
         {
             lock (_fileName)
             {
-                File.WriteAllText(_fileName, JsonConvert.SerializeObject(_dictionary,Formatting.Indented));
+                File.WriteAllText(_fileName, JsonConvert.SerializeObject(_dictionary, Formatting.Indented));
             }
         }
 

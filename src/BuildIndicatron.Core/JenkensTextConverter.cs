@@ -26,8 +26,8 @@ namespace BuildIndicatron.Core
             {
                 yield return
                     string.Format("{2}, there are currently {0} {1} on jenkins and they are all passing",
-                                  jenkensProjectsResult.Jobs.Count,
-                                  jenkensProjectsResult.Jobs.Count == 1 ? "build" : "builds", GetWelDoneMessage());
+                        jenkensProjectsResult.Jobs.Count,
+                        jenkensProjectsResult.Jobs.Count == 1 ? "build" : "builds", GetWelDoneMessage());
             }
 
             else if (jenkensProjectsResult.Jobs != null && !jenkensProjectsResult.Jobs.Any(x => x.IsPassed()))
@@ -44,11 +44,11 @@ namespace BuildIndicatron.Core
                 List<Job> failedValues = jenkensProjectsResult.Jobs.Where(x => x.IsFailed()).ToList();
                 yield return
                     string.Format("You have failed me, there are currently {0} {2} on jenkins with {1} {3} failing",
-                                  jenkensProjectsResult.Jobs.Count,
-                                  failedValues.Count,
-                                  jenkensProjectsResult.Jobs.Count == 1 ? "build" : "builds",
-                                  failedValues.Count == 1 ? "build" : "builds"
-                        );
+                        jenkensProjectsResult.Jobs.Count,
+                        failedValues.Count,
+                        jenkensProjectsResult.Jobs.Count == 1 ? "build" : "builds",
+                        failedValues.Count == 1 ? "build" : "builds"
+                    );
                 string[] failedBuildDetail = FailedBuildDetail(failedValues).ToArray();
                 foreach (string failedValue in failedBuildDetail)
                 {
@@ -66,30 +66,32 @@ namespace BuildIndicatron.Core
         private string GetWelDoneMessage()
         {
             var messages = new[]
-                {
-                    "That’s great", "Good job", "Excellent", "I appreciate that", "That’s looking good", "Good work",
-                    "Great work", "You’re doing well",
-                    "Good to have you on the team", "You made the difference", "Exceptional", "Wonderful",
-                    "That is so significant", "Superb",
-                    "Perfect", "Just what was needed", "Centre button", "A significant contribution", "Wow", "Fantastic",
-                    "Thanks you", "Just what the doctor ordered", "First class", "Nice job", "Way to go", "Far out",
-                    "Just the ticket", "You are a legend", "Very professional", "Where would we be without you",
-                    "Brilliant", "Top marks",
-                    "Impressive", "You hit the target", "Neat", "Cool", "Bullseye", "How did you get so good",
-                    "Beautiful", "Just what was wanted",
-                    "Right on the money", "Great", "Just right", "Congratulations", "Very skilled",
-                    "I’m glad you’re on my team", "It is good to work with you", "You did us proud",
-                    "This is going to make us shine", "Well done", "I just love it", "You are fantastic", "Great job",
-                    "Professional as usual", "You take the biscuit every time", "I’m proud of you",
-                    "Don’t ever leave us","Are you good or what?","The stuff of champions","Cracking job","First class job",
-                    "Magnificent","Bravo","Amazing","Simply superb","Triple A","Perfection",
-                    "Poetry in motion","Sheer class","World class","Polished performance","Class act",
-                    "Unbelievable","Gold plated","Just classic","Super","Now you’re cooking",
-                    "You are so good","You deserve a pat on the back","Tremendous job","Unreal",
-                    "Treasure","Crash hot","You beauty","The cat’s whiskers","I just can’t thank you enough",
-                    "You always amaze me","Magic","Another miracle","Terrific","What a star",
-                    "Colossal","Wonderful","Top form","You’re one of a kind","Unique",
-                    "Way out","Incredible","Ace"};
+            {
+                "That’s great", "Good job", "Excellent", "I appreciate that", "That’s looking good", "Good work",
+                "Great work", "You’re doing well",
+                "Good to have you on the team", "You made the difference", "Exceptional", "Wonderful",
+                "That is so significant", "Superb",
+                "Perfect", "Just what was needed", "Centre button", "A significant contribution", "Wow", "Fantastic",
+                "Thanks you", "Just what the doctor ordered", "First class", "Nice job", "Way to go", "Far out",
+                "Just the ticket", "You are a legend", "Very professional", "Where would we be without you",
+                "Brilliant", "Top marks",
+                "Impressive", "You hit the target", "Neat", "Cool", "Bullseye", "How did you get so good",
+                "Beautiful", "Just what was wanted",
+                "Right on the money", "Great", "Just right", "Congratulations", "Very skilled",
+                "I’m glad you’re on my team", "It is good to work with you", "You did us proud",
+                "This is going to make us shine", "Well done", "I just love it", "You are fantastic", "Great job",
+                "Professional as usual", "You take the biscuit every time", "I’m proud of you",
+                "Don’t ever leave us", "Are you good or what?", "The stuff of champions", "Cracking job",
+                "First class job",
+                "Magnificent", "Bravo", "Amazing", "Simply superb", "Triple A", "Perfection",
+                "Poetry in motion", "Sheer class", "World class", "Polished performance", "Class act",
+                "Unbelievable", "Gold plated", "Just classic", "Super", "Now you’re cooking",
+                "You are so good", "You deserve a pat on the back", "Tremendous job", "Unreal",
+                "Treasure", "Crash hot", "You beauty", "The cat’s whiskers", "I just can’t thank you enough",
+                "You always amaze me", "Magic", "Another miracle", "Terrific", "What a star",
+                "Colossal", "Wonderful", "Top form", "You’re one of a kind", "Unique",
+                "Way out", "Incredible", "Ace"
+            };
 
             return messages.Random();
         }
@@ -100,18 +102,18 @@ namespace BuildIndicatron.Core
             {
                 var orderedEnumerable =
                     jenkensProjectsResult.Jobs.Where(x => x.Builds != null && x.Builds.Count > 3)
-                                         .Select(x => new {x.Name, SuccessFullBuilds = SuccessfulBuildInARow(x.Builds)})
-                                         .OrderByDescending(x => x.SuccessFullBuilds)
-                                         .ToArray();
+                        .Select(x => new {x.Name, SuccessFullBuilds = SuccessfulBuildInARow(x.Builds)})
+                        .OrderByDescending(x => x.SuccessFullBuilds)
+                        .ToArray();
 
                 if (orderedEnumerable.Length > 2)
                 {
                     return
                         string.Format("{0} has {1} succesfull builds in a row. {2} has {3} succesfull builds in a row",
-                                      orderedEnumerable.First().Name,
-                                      orderedEnumerable.First().SuccessFullBuilds,
-                                      orderedEnumerable.Last().Name,
-                                      orderedEnumerable.Last().SuccessFullBuilds);
+                            orderedEnumerable.First().Name,
+                            orderedEnumerable.First().SuccessFullBuilds,
+                            orderedEnumerable.Last().Name,
+                            orderedEnumerable.Last().SuccessFullBuilds);
                 }
             }
 
@@ -138,9 +140,9 @@ namespace BuildIndicatron.Core
             {
                 var orderedEnumerable =
                     jenkensProjectsResult.Jobs.Where(x => x.Builds != null && x.Builds.Count > 3)
-                                         .Select(x => new {x.Name, Duration = x.Builds.Average(s => s.Duration)})
-                                         .OrderBy(x => x.Duration)
-                                         .ToArray();
+                        .Select(x => new {x.Name, Duration = x.Builds.Average(s => s.Duration)})
+                        .OrderBy(x => x.Duration)
+                        .ToArray();
 
                 if (orderedEnumerable.Length > 2)
                 {
@@ -161,12 +163,13 @@ namespace BuildIndicatron.Core
         {
             foreach (Job job in failedValues.Where(x => x.LastFailedBuild != null))
             {
-                string[] names = job.LastFailedBuild.ChangeSet.items.Select(x => x.author.fullName).Distinct().ToArray();
+                string[] names = job.LastFailedBuild.ChangeSet.items.Select(x => x.author.fullName).Distinct()
+                    .ToArray();
                 if (names.Length == 0) names = new[] {"a ghost"};
                 yield return string.Format("The {0} last failed {1}, It was last modified by {2}",
-                                           job.Name,
-                                           GetLastModifiedDateString(job.LastFailedBuild),
-                                           String.Join(" and ", names));
+                    job.Name,
+                    GetLastModifiedDateString(job.LastFailedBuild),
+                    String.Join(" and ", names));
             }
         }
 
@@ -180,11 +183,11 @@ namespace BuildIndicatron.Core
         {
             if (timeSpan.TotalDays > 60)
             {
-                return ((int) (timeSpan.TotalDays/30)) + " months" + postfix;
+                return ((int) (timeSpan.TotalDays / 30)) + " months" + postfix;
             }
             if (timeSpan.TotalDays > 30)
             {
-                return ((int) (timeSpan.TotalDays/30)) + " month" + postfix;
+                return ((int) (timeSpan.TotalDays / 30)) + " month" + postfix;
             }
             if (timeSpan.TotalDays > 2)
             {

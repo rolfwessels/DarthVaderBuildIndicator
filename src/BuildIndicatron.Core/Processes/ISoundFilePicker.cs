@@ -4,12 +4,10 @@ using BuildIndicatron.Core.Helpers;
 
 namespace BuildIndicatron.Core.Processes
 {
-	public interface ISoundFilePicker
-	{
-		IEnumerable<string> GetFolders();
-		IEnumerable<string> GetAllSoundFiles(string directory);
-		string PickFile(string id);
-	}
-
-	
+    public interface ISoundFilePicker
+    {
+        IEnumerable<string> GetFolders();
+        IEnumerable<string> GetAllSoundFiles(string directory);
+        string PickFile(string id);
+    }
 }

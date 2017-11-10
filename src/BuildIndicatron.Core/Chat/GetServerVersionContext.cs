@@ -12,7 +12,6 @@ using log4net;
 
 namespace BuildIndicatron.Core.Chat
 {
-
     public class GetServerVersionContext : TextSplitterContextBase<GetServerVersionContext.Server>, IWithHelpText
     {
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
@@ -22,10 +21,11 @@ namespace BuildIndicatron.Core.Chat
         public GetServerVersionContext(IHttpLookup lookup)
         {
             _lookup = lookup;
-            _servers = new[] { 
-		        new Server() { Name = "prod", Uri = "https://api.22seven.com/heartbeat" , ScanCount = 10 },
-                new Server() { Name = "staging", Uri = "https://test.22seven.com/heartbeat" , ScanCount = 1 },
-	        };
+            _servers = new[]
+            {
+                new Server() {Name = "prod", Uri = "https://api.22seven.com/heartbeat", ScanCount = 10},
+                new Server() {Name = "staging", Uri = "https://test.22seven.com/heartbeat", ScanCount = 1},
+            };
         }
 
         #region Implementation of IReposonseFlow
@@ -35,10 +35,11 @@ namespace BuildIndicatron.Core.Chat
             textSplitter
                 .Map(@"(what|whats)(ANYTHING)(?<name>staging|prod)(ANYTHING)version(ANYTHING)")
                 .Map(@"(what|whats)(ANYTHING)version(ANYTHING)(?<name>staging|prod)(ANYTHING)")
-                .Map(@"(what|whats)(ANYTHING)version(ANYTHING)"); 
+                .Map(@"(what|whats)(ANYTHING)version(ANYTHING)");
         }
-        
-        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, Server server)
+
+        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context,
+            Server server)
         {
             if (string.IsNullOrEmpty(server.Name))
             {
@@ -53,7 +54,6 @@ namespace BuildIndicatron.Core.Chat
             foreach (var serverLink in ForKey(_servers, server.Name))
             {
                 await ScanServer(context, serverLink);
-
             }
             await context.Respond("Those are all the version that I could find.");
         }
@@ -105,7 +105,8 @@ namespace BuildIndicatron.Core.Chat
             DateTime dateTime;
             string format = "M/d/yyyy h:mm:ss tt";
             //6/10/2016 2:44:36 PM
-            if (DateTime.TryParseExact(line.Groups[4].Value.Trim(), format, CultureInfo.InvariantCulture, DateTimeStyles.None, out dateTime))
+            if (DateTime.TryParseExact(line.Groups[4].Value.Trim(), format, CultureInfo.InvariantCulture,
+                DateTimeStyles.None, out dateTime))
             {
                 return dateTime;
             }
@@ -117,17 +118,27 @@ namespace BuildIndicatron.Core.Chat
 
         #region Implementation of IWithHelpText
 
-        public virtual IEnumerable<HelpMessage>  GetHelp()
+        public virtual IEnumerable<HelpMessage> GetHelp()
         {
-            yield return new HelpMessage() {Call = "what version are we on?",Description = "Returns the server versions."};
-            yield return new HelpMessage() {Call = "what version is prod on?",Description = "Returns production version numbers."};
+            yield return new HelpMessage()
+            {
+                Call = "what version are we on?",
+                Description = "Returns the server versions."
+            };
+            yield return new HelpMessage()
+            {
+                Call = "what version is prod on?",
+                Description = "Returns production version numbers."
+            };
         }
 
         #endregion
 
         public IEnumerable<Server> ForKey(IEnumerable<Server> servers, string name)
         {
-            return servers.Where(x =>string.IsNullOrEmpty(name) ||  x.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).ToArray();
+            return servers.Where(x =>
+                    string.IsNullOrEmpty(name) || x.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
+                .ToArray();
         }
 
         public class Server

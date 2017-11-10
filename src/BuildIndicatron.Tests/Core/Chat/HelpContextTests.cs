@@ -7,8 +7,6 @@ namespace BuildIndicatron.Tests.Core.Chat
     [TestFixture]
     public class HelpContextTests : ChatBotTestsBase
     {
-
-
         [Test]
         public async Task Process_GivenMessage_ShouldRespond()
         {
@@ -20,6 +18,5 @@ namespace BuildIndicatron.Tests.Core.Chat
             // assert
             sampleMessage.LastMessages.Should().Contain(x => x.Contains("help"));
         }
-
     }
 }

@@ -2,13 +2,13 @@
 {
     public class SequencesInsult : Sequences
     {
-	    public const string TypeName = "Insult";
+        public const string TypeName = "Insult";
 
-	    public SequencesInsult()
+        public SequencesInsult()
             : base(TypeName)
         {
         }
 
-        public bool SendTweet { get; set; } 
+        public bool SendTweet { get; set; }
     }
 }

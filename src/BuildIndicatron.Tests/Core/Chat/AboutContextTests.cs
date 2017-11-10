@@ -7,7 +7,6 @@ namespace BuildIndicatron.Tests.Core.Chat
     [TestFixture]
     public class AboutContextTests : ChatBotTestsBase
     {
-        
         [Test]
         public async Task Process_GivenAboutContext_ShouldResondWithAboutContext()
         {
@@ -19,7 +18,7 @@ namespace BuildIndicatron.Tests.Core.Chat
             // assert
             messageContext.LastMessages.Should().Contain(x => x.Contains("working from home today"));
         }
-         
+
         [Test]
         public async Task Process_GivenWhereAreYou_ShouldResondWithAboutContext()
         {
@@ -31,6 +30,5 @@ namespace BuildIndicatron.Tests.Core.Chat
             // assert
             messageContext.LastMessages.Should().Contain(x => x.Contains("working from home today"));
         }
-        
     }
 }

@@ -7,7 +7,7 @@ using log4net;
 
 namespace BuildIndicatron.Core.Chat
 {
-    public abstract class TextSplitterContextBase<T> : ReposonseFlowBase, IReposonseFlow where T:class
+    public abstract class TextSplitterContextBase<T> : ReposonseFlowBase, IReposonseFlow where T : class
     {
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         protected readonly Lazy<TextSplitter<T>> _textSplitter;
@@ -26,9 +26,8 @@ namespace BuildIndicatron.Core.Chat
 
         #region Implementation of IReposonseFlow
 
-        public virtual Task<bool>  CanRespond(IMessageContext context)
+        public virtual Task<bool> CanRespond(IMessageContext context)
         {
-           
             return Task.FromResult(IsDirectedAtMe(context) && _textSplitter.Value.IsMatch(context.Text));
         }
 
@@ -42,7 +41,9 @@ namespace BuildIndicatron.Core.Chat
             }
             catch (Exception e)
             {
-                context.Respond(string.Format("Ooops, something has gone wrong...'`{0}`' check the logs for more information", e.Message)).FireAndForgetWithLogging();
+                context.Respond(string.Format(
+                        "Ooops, something has gone wrong...'`{0}`' check the logs for more information", e.Message))
+                    .FireAndForgetWithLogging();
                 _log.Error(e.Message, e);
             }
         }
@@ -51,7 +52,5 @@ namespace BuildIndicatron.Core.Chat
         protected abstract Task Response(ChatContextHolder chatContextHolder, IMessageContext context, T server);
 
         #endregion
-
-
     }
 }

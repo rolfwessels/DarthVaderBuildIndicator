@@ -22,16 +22,15 @@ namespace BuildIndicatron.Server.Setup
         private IChatBot _chatBot;
         private bool _isConnected;
 
-        public  SlackBotServer(string apiToken)
+        public SlackBotServer(string apiToken)
         {
-
             _apiToken = apiToken;
             _connector = new SlackConnector.SlackConnector();
             _chatBot = IocContainer.Instance.Resolve<IChatBot>();
             _isConnected = false;
         }
-        
-        public  async Task<bool> ContinueslyTryToConnect()
+
+        public async Task<bool> ContinueslyTryToConnect()
         {
             if (_isConnected) return true;
             int wait = 0;
@@ -41,11 +40,11 @@ namespace BuildIndicatron.Server.Setup
                 var task = Task.Run(() => Connect());
                 bool connected = await task;
                 if (connected) return true;
-                wait = (wait*2).MinMax(2000, 160000);
+                wait = (wait * 2).MinMax(2000, 160000);
             }
         }
 
-        public async Task<bool> Connect()   
+        public async Task<bool> Connect()
         {
             ServicePointManager.ServerCertificateValidationCallback +=
                 (sender, certificate, chain, policyErrors) => { return true; };
@@ -70,10 +69,10 @@ namespace BuildIndicatron.Server.Setup
 
         private Task MessageReceived(SlackMessage message)
         {
-          var slackBotMessageContext = new SlackBotMessageContext(this, message) { Text = message.Text };
-          _log.Info(string.Format("Chathub {0}-{2} Text:{1}", message.ChatHub.Name, message.Text , message.User.Name));
-          _chatBot.Process(slackBotMessageContext).FireAndForgetWithLogging();
-          return Task.Delay(1);
+            var slackBotMessageContext = new SlackBotMessageContext(this, message) {Text = message.Text};
+            _log.Info(string.Format("Chathub {0}-{2} Text:{1}", message.ChatHub.Name, message.Text, message.User.Name));
+            _chatBot.Process(slackBotMessageContext).FireAndForgetWithLogging();
+            return Task.Delay(1);
         }
 
         private void ConnectionStatusChanged()
@@ -96,10 +95,10 @@ namespace BuildIndicatron.Server.Setup
             }
         }
 
-        public Task SayTo(string userName , string message)
+        public Task SayTo(string userName, string message)
         {
-
-            var chatHub = _connection.ConnectedHubs.Where(x => x.Value.Name.ToLower() == userName.ToLower()).Select(x=>x.Value).FirstOrDefault();
+            var chatHub = _connection.ConnectedHubs.Where(x => x.Value.Name.ToLower() == userName.ToLower())
+                .Select(x => x.Value).FirstOrDefault();
             if (chatHub == null)
                 _log.Warn(string.Format("Could not find user {0} in {1}", userName,
                     _connection.ConnectedHubs.Select(x => x.Value.Name).StringJoin()));
@@ -110,7 +109,7 @@ namespace BuildIndicatron.Server.Setup
         {
             await ContinueslyTryToConnect();
             if (chatHub != null)
-            await _connection.Say(new BotMessage() {ChatHub = chatHub, Text = message});
+                await _connection.Say(new BotMessage() {ChatHub = chatHub, Text = message});
         }
     }
 }

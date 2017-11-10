@@ -7,7 +7,7 @@ namespace BuildIndicatron.Core.Api
     {
         Task<JenkensProjectsResult> GetAllProjects();
         Task<JenkensProjectsResult> BuildProject(string url);
-        Task<JenkensProjectsResult> BuildProject(string url,JenkensProjectsBuildRequest param);
+        Task<JenkensProjectsResult> BuildProject(string url, JenkensProjectsBuildRequest param);
         Task<CrumbResult> GetCrumb();
         string Url { get; }
     }

@@ -10,7 +10,7 @@ namespace BuildIndicatron.Server
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
-                .UseUrls(args.FirstOrDefault()??"http://*:5000")
+                .UseUrls(args.FirstOrDefault() ?? "http://*:5000")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
                 .Build();

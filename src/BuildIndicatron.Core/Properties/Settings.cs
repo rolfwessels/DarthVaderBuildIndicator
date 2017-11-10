@@ -12,14 +12,14 @@ namespace BuildIndicatron.Core.Properties
         {
             _configuration = configuration;
         }
-        
+
         #region singleton
 
         public static Settings Default => _instance.Value;
 
         #endregion
 
-        
+
         public string ConnectionProxy => _configuration["ConnectionProxy"] ?? "http://192.168.3.6:3128/";
 
 

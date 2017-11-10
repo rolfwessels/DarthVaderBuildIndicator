@@ -67,7 +67,7 @@ namespace BuildIndicatron.Core.Processes
                 var request = base.GetWebRequest(uri);
                 if (request != null)
                 {
-                    request.Timeout = 10*1000;
+                    request.Timeout = 10 * 1000;
                     return request;
                 }
                 return null;

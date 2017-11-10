@@ -8,14 +8,14 @@ namespace BuildIndicatron.Core.Api.Model
         public const string FailInColor = "red_anime";
         public const string FailColor = "red";
         public const string SuccessColor = "blue";
-        
+
 
         public string Name { get; set; }
         public string Color { get; set; }
         public string Url { get; set; }
         public List<Health> HealthReport { get; set; }
         public List<Build> Builds { get; set; }
-        
+
         public LastFailedBuild LastFailedBuild { get; set; }
 
         public bool IsProcessing()

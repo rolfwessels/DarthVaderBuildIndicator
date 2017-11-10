@@ -4,7 +4,6 @@ namespace BuildIndicatron.Server.Tests
     {
         public static void Main(string[] args)
         {
-           
         }
     }
 }

@@ -9,7 +9,8 @@ namespace BuildIndicatron.Core.Chat
         private readonly Action<TextSplitter<T>> _apply;
         private readonly Func<ChatContextHolder, IMessageContext, T, Task> _response;
 
-        public QuickTextSplitterContext(T value, Action<TextSplitter<T>> apply, Func<ChatContextHolder , IMessageContext , T , Task > response)
+        public QuickTextSplitterContext(T value, Action<TextSplitter<T>> apply,
+            Func<ChatContextHolder, IMessageContext, T, Task> response)
         {
             if (value == null) throw new ArgumentNullException("value");
             if (apply == null) throw new ArgumentNullException("apply");
@@ -32,7 +33,6 @@ namespace BuildIndicatron.Core.Chat
 
         public override Task Respond(ChatContextHolder chatContextHolder, IMessageContext context)
         {
-
             _textSplitter.Value.Process(context.Text, Value);
             return Response(chatContextHolder, context, Value);
         }
