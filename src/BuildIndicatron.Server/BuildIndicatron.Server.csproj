@@ -46,6 +46,12 @@
     <ProjectReference Include="..\BuildIndicatron.Shared\BuildIndicatron.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="loggingSettings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
   
 
 </Project>

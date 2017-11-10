@@ -24,7 +24,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         public BuildIndicationApiTest()
         {
             var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-            XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+            XmlConfigurator.Configure(logRepository, new FileInfo("loggingSettings.xml"));
             _hostApi = Config.Url;
             //_hostApi = "http://192.168.1.242:5000/";
         }

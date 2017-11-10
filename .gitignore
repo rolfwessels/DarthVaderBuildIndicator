@@ -10,3 +10,4 @@ obj/
 /src/BuildIndicatron.Console/*.ncrunchproject
 /src/_NCrunch_BuildIndicatron/StoredText
 src/.vs/
+/src/BuildIndicatron.Server/logs

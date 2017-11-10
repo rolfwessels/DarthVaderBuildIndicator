@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
 using Autofac.Extensions.DependencyInjection;
 using BuildIndicatron.Server.Api.Controllers;
 using BuildIndicatron.Server.Properties;
@@ -6,6 +8,8 @@ using BuildIndicatron.Server.Setup;
 using CoreDocker.Api.AppStartup;
 using CoreDocker.Api.Swagger;
 using CoreDocker.Api.WebApi;
+using log4net;
+using log4net.Config;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -41,6 +45,9 @@ namespace BuildIndicatron.Server
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("loggingSettings.xml"));
+            
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(Configuration)
                 .CreateLogger();
@@ -71,8 +78,7 @@ namespace BuildIndicatron.Server
                 // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
 //                builder.AddApplicationInsightsSettings(true);
             }
-
-
+            
             builder.AddEnvironmentVariables();
             return builder.Build();
         }

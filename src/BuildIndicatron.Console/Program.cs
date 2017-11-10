@@ -44,7 +44,7 @@ namespace BuildIndicatron.Console
             if (directoryName != null)
             {
                 var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-                XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
+                XmlConfigurator.Configure(logRepository, new FileInfo("loggingSettings.xml"));
             }
         }
 
