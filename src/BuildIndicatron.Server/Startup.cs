@@ -23,6 +23,8 @@ namespace BuildIndicatron.Server
     {
         public Startup(IHostingEnvironment env)
         {
+            var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo("loggingSettings.xml"));
             Configuration = ReadAppSettings(env);
             BuildIndicatron.Core.Properties.Settings.Initialize(Configuration);
             Settings.Initialize(Configuration);
@@ -45,10 +47,7 @@ namespace BuildIndicatron.Server
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-            XmlConfigurator.Configure(logRepository, new FileInfo("loggingSettings.xml"));
-
-            Log.Logger = new LoggerConfiguration()
+           Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(Configuration)
                 .CreateLogger();
 
