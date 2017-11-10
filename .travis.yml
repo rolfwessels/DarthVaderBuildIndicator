@@ -29,9 +29,11 @@ after_success:
   - pushd src/BuildIndicatron.Server.Core
   - dotnet restore
   - dotnet publish   --version-suffix $TRAVIS_BUILD_NUMBER -c Release -o bin/publish
+  - popd
+  - docker build  -t rolfwessels/buildindicator:v0.0.$TRAVIS_BUILD_NUMBER-beta -f Dockerfile.arm32 .
   # Add docker images
-  - docker build -t rolfwessels/buildindicator:latest  -t rolfwessels/buildindicator:v0.0.$TRAVIS_BUILD_NUMBER -f Dockerfile.arm32 .
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker build -t rolfwessels/buildindicator:latest  -t rolfwessels/buildindicator:v0.0.$TRAVIS_BUILD_NUMBER -f Dockerfile.arm32 .
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
     docker push rolfwessels/buildindicator;
     fi

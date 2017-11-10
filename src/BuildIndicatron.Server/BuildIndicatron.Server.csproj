@@ -16,6 +16,12 @@
     <WarningsAsErrors />
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningsAsErrors />
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <NoWarn>1701;1702;1705;NU1605</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Update="wwwroot\**\*;">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
