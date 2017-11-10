@@ -1,0 +1,5 @@
+---
+- hosts: buildindicator-chip
+  roles:
+    - docker
+    
