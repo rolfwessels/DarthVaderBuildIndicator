@@ -53,3 +53,9 @@ ssh $newhost
 ssh-copy-id chip@192.168.1.248 .. to copy the id to the service
 ```
 
+# Run beta images
+```
+sudo docker run --rm  -p 5000:5000 rolfwessels/buildindicator:beta
+
+
+```

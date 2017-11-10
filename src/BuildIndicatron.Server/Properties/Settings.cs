@@ -1,9 +1,10 @@
 using System;
+using BuildIndicatron.Core.Api;
 using Microsoft.Extensions.Configuration;
 
 namespace BuildIndicatron.Server.Properties
 {
-    public class Settings
+    public class Settings : IJenkinsISettings
     {
         private readonly IConfigurationRoot _configuration;
 
@@ -20,18 +21,20 @@ namespace BuildIndicatron.Server.Properties
                 .AddJsonFile("appsettings.json", true, true);
             _configuration = builder.Build();
         }
-
-
+        
         #region singleton
 
         public static Settings Default => _instance.Value;
 
         #endregion
 
-        public System.String SpeachTempFileLocation =>
-            _configuration["SpeachTempFileLocation"] ?? "resources/text2speach";
-
-        public System.String SoundFileLocation => _configuration["SoundFileLocation"] ?? "resources/sounds";
+        public string SpeachTempFileLocation => _configuration["SpeachTempFileLocation"] ?? "resources/text2speach";
+        public string JenkinsHost => _configuration["JenkinsHost"] ?? "http://JenkinsHost:9090";
+        public string JenkinsUser => _configuration["JenkinsUser"] ?? "JenkinsUser";
+        public string JenkinsPassword => _configuration["JenkinsPassword"] ?? "JenkinsPassword";
+        public string SlackKey => _configuration["SlackKey"] ?? "SlackKey";
+       
+        public String SoundFileLocation => _configuration["SoundFileLocation"] ?? "resources/sounds";
 
 
         public static void Initialize(IConfigurationRoot configuration)

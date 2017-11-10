@@ -5,6 +5,7 @@ using BuildIndicatron.Core;
 using BuildIndicatron.Core.Api;
 using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.Settings;
+using BuildIndicatron.Server.Properties;
 using log4net;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -38,9 +39,9 @@ namespace BuildIndicatron.Server.Setup
 
         private static void StartSlackBot()
         {
-            var settings = IocContainer.Instance.Resolve<ISettingsManager>();
-            var apiToken = settings.Get("slack_token");
-            _log.Info(string.Format("Token:'{0}'", MaskInput(apiToken)));
+            
+            var apiToken = Settings.Default.SlackKey;
+            _log.Info(string.Format("Token:'{0}'", apiToken.MaskInput()));
             if (!string.IsNullOrEmpty(apiToken))
             {
                 _slackBotServer = new SlackBotServer(apiToken);
@@ -56,16 +57,6 @@ namespace BuildIndicatron.Server.Setup
             {
                 _log.Error("BootStrap:StartSlackBot apiToken is null or empty.");
             }
-        }
-
-        private static string MaskInput(string input, int charactersToShowAtEnd = 5)
-        {
-            if (input == null) return null;
-            if (input.Length < charactersToShowAtEnd)
-                charactersToShowAtEnd = input.Length;
-            var endCharacters = input.Substring(input.Length - charactersToShowAtEnd);
-            return string.Format("{0}{1}", "".PadLeft(input.Length - charactersToShowAtEnd, '*') + endCharacters
-            );
         }
 
         #endregion

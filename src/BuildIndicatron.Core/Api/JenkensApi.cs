@@ -77,28 +77,5 @@ namespace BuildIndicatron.Core.Api
 
         #endregion
 
-        public static JenkensApi OnJenkinsDeloyer(ISettingsManager settings)
-        {
-            var api = new JenkensApi(
-                settings.Get("jenkins_deployer_host", "http://therig1231:9999"),
-                settings.Get("jenkins_deployer_user", null),
-                settings.Get("jenkins_deployer_password", null)
-            );
-//            if (!string.IsNullOrEmpty(settings.GetDefaultProxy()))
-//                api.Proxy = new WebProxy(new Uri(settings.GetDefaultProxy()));
-            return api;
-        }
-
-        public static JenkensApi GetJenkins(ISettingsManager settings)
-        {
-            var api = new JenkensApi(
-                settings.Get("jenkins_host", "http://therig:9999"),
-                settings.Get("jenkins_user", null),
-                settings.Get("jenkins_password", null)
-            );
-//            if (!string.IsNullOrEmpty(settings.GetDefaultProxy()))
-//                api.Proxy = new WebProxy(new Uri(settings.GetDefaultProxy()));
-            return api;
-        }
     }
 }

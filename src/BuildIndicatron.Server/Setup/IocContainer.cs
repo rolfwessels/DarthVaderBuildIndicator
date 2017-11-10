@@ -112,12 +112,13 @@ namespace BuildIndicatron.Server.Setup
             builder.RegisterType<SequencesFactory>();
             builder.RegisterType<DeployCoreContext>();
             builder.RegisterType<ChatBot>().As<IChatBot>();
-            builder.RegisterType<JenkinsFactory>().As<IJenkinsFactory>();
+            builder.Register(x=>new JenkinsFactory(Settings.Default)).As<IJenkinsFactory>();
             builder.RegisterType<MonitorJenkins>().As<IMonitorJenkins>();
             builder.RegisterType<HttpLookup>().As<IHttpLookup>();
             builder.RegisterType<VolumeSetter>().As<IVolumeSetter>();
-            builder.Register(context => new SettingsManager(SettingFile())).As<ISettingsManager>().SingleInstance();
-            builder.Register(context => JenkensApi.GetJenkins(context.Resolve<ISettingsManager>())).As<IJenkensApi>();
+            builder.Register(context => new SettingsManager(SettingFile()))
+                .As<ISettingsManager>().SingleInstance();
+
             builder.Register(context => new AutofacInjector(Container)).As<IFactory>();
             builder.RegisterType<SequencePlayer>().As<ISequencePlayer>();
             builder.Register(t => new SoundFilePicker(Settings.Default.SoundFileLocation)).As<ISoundFilePicker>();

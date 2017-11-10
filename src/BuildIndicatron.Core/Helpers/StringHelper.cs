@@ -13,6 +13,16 @@ namespace BuildIndicatron.Core.Helpers
                 var result = md5.ComputeHash(Encoding.ASCII.GetBytes(input));
                 return Convert.ToBase64String(result).TrimEnd('=').Replace("+", "").Replace("/", "");
             }
-        } 
+        }
+
+        public static string MaskInput(this string input, int charactersToShowAtEnd = 5)
+        {
+            if (string.IsNullOrEmpty(input)) return null;
+            if (input.Length < charactersToShowAtEnd)
+                charactersToShowAtEnd = input.Length;
+            var endCharacters = input.Substring(input.Length - charactersToShowAtEnd);
+            return string.Format("{0}{1}", "".PadLeft(input.Length - charactersToShowAtEnd, '*') + endCharacters
+            );
+        }
     }
 }

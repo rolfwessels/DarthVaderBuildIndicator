@@ -1,27 +1,26 @@
-﻿using BuildIndicatron.Core.Settings;
-
-namespace BuildIndicatron.Core.Api
+﻿namespace BuildIndicatron.Core.Api
 {
     public class JenkinsFactory : IJenkinsFactory
     {
-        private readonly ISettingsManager _settingsManager;
+        private readonly IJenkinsISettings _settings;
 
-        public JenkinsFactory(ISettingsManager settingsManager)
+        public JenkinsFactory(IJenkinsISettings settings)
         {
-            _settingsManager = settingsManager;
+            _settings = settings;
         }
 
         #region Implementation of IJenkinsFactory
 
         public IJenkensApi GetDeployer()
         {
-            return JenkensApi.OnJenkinsDeloyer(_settingsManager);
+            return GetBuilder();
         }
 
 
         public IJenkensApi GetBuilder()
         {
-            return JenkensApi.GetJenkins(_settingsManager);
+            return new JenkensApi(_settings.JenkinsHost, _settings.JenkinsUser,
+                _settings.JenkinsPassword);
         }
 
         #endregion
