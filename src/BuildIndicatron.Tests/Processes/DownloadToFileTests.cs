@@ -12,7 +12,7 @@ namespace BuildIndicatron.Tests.Processes
     public class DownloadToFileTests
     {
         private const string Text = "Luke i am your father";
-        private const string FileName = @".\Luke_i_am_your.47188592.mp3";
+        private const string FileName = @".\Luke_i_am_your.IUIGf1rGXLtHhur5wCrpg.mp3";
         private DownloadToFile _downloadToFile;
         private Mock<ISettingsManager> _mockISettingsManager;
 
@@ -20,7 +20,7 @@ namespace BuildIndicatron.Tests.Processes
 
         public void Setup()
         {
-            _mockISettingsManager = new Mock<ISettingsManager>(MockBehavior.Strict);
+            _mockISettingsManager = new Mock<ISettingsManager>();
 
 
             _downloadToFile = new DownloadToFile("./", _mockISettingsManager.Object);
@@ -47,20 +47,7 @@ namespace BuildIndicatron.Tests.Processes
             // assert
             File.ReadAllText(FileName).Should().Be("ff");
         }
-
-//
-//		[Test]
-//		public void DownloadToTempFile_GivenUri_ShouldCreateCorrectFileName()
-//		{
-//			// arrange
-//			Setup();
-//			var uri = new Uri(string.Format(GoogleTextToSpeach.UriToDownload, Uri.EscapeUriString(Text)));
-//			// action
-//			var fileName = _downloadToFile.DownloadToTempFile(uri,Text);
-//			// assert
-//			fileName.Should().Be(fileName);
-//		}
-//		
+        
         [Test]
         [Explicit]
         public void DownloadToTempFile_GivenUri_ShouldDownloadTheItemToAFile()
@@ -83,7 +70,8 @@ namespace BuildIndicatron.Tests.Processes
             // action
             var fileName = _downloadToFile.GetFileName("Luke i*am your father");
             // assert
-            fileName.Should().Be("Luke_i_am_your.661442862.mp3");
+            fileName.Should().StartWith("Luke_i_am_your.");
+            fileName.Should().EndWith(".mp3");
         }
 
         [Test]
@@ -94,7 +82,9 @@ namespace BuildIndicatron.Tests.Processes
             // action
             var fileName = _downloadToFile.GetFileName("");
             // assert
-            fileName.Should().Be(".757602046.mp3");
+            fileName.Should().StartWith(".");
+            fileName.Should().EndWith(".mp3");
+            fileName.Length.Should().BeGreaterThan(5);
         }
 
         [Test]
@@ -105,7 +95,7 @@ namespace BuildIndicatron.Tests.Processes
             // action
             var fileName = _downloadToFile.GetFileName("Luke");
             // assert
-            fileName.Should().Be("Luke.1099287705.mp3");
+            fileName.Should().Be("Luke.sh37FI0gsf692NhkFklwQ.mp3");
         }
     }
 }

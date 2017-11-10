@@ -1,7 +1,7 @@
 using Autofac;
 using BuildIndicatron.Core.Chat;
 
-namespace BuildIndicatron.Server.Setup
+namespace BuildIndicatron.Core.Helpers
 {
     public class AutofacInjector : IFactory
     {

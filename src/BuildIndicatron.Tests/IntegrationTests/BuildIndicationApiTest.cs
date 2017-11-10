@@ -1,16 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using BuildIndicatron.Core;
 using BuildIndicatron.Core.Api;
 using BuildIndicatron.Shared.Models.ApiResponses;
 using BuildIndicatron.Shared.Models.Composition;
-using NUnit.Framework;
+using BuildIndicatron.Tests.Helpers;
 using FluentAssertions;
-using log4net;
-using log4net.Config;
+using NUnit.Framework;
 
 namespace BuildIndicatron.Tests.IntegrationTests
 {
@@ -23,8 +20,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
 
         public BuildIndicationApiTest()
         {
-            var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-            XmlConfigurator.Configure(logRepository, new FileInfo("loggingSettings.xml"));
+            
             _hostApi = Config.Url;
             //_hostApi = "http://192.168.1.242:5000/";
         }

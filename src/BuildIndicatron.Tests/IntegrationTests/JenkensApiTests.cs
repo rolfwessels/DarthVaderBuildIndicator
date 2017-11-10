@@ -6,25 +6,26 @@ using BuildIndicatron.Core;
 using BuildIndicatron.Core.Api;
 using BuildIndicatron.Core.Api.Model;
 using BuildIndicatron.Core.Helpers;
+using BuildIndicatron.Tests.Helpers;
 using FluentAssertions;
-using NUnit.Framework;
 using log4net;
 using log4net.Config;
+using NUnit.Framework;
 
 namespace BuildIndicatron.Tests.IntegrationTests
 {
     [TestFixture]
-    //[Explicit]
+    
     public class JenkensApiTests
     {
+        
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private static JenkensProjectsResult _allProjects;
         private JenkensApi _jenkensApi;
 
         public JenkensApiTests()
         {
-            var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-            XmlConfigurator.Configure(logRepository, new FileInfo("loggingSettings.xml"));
+            LoggingHelper.InitLogging();
         }
 
         static JenkensApiTests()
@@ -47,6 +48,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
         #endregion
 
         [Test]
+        [Explicit]
         public async Task GetAllProjects()
         {
             // arrange
@@ -59,6 +61,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
 
 
         [Test]
+        [Explicit]
         public async Task GetAllProjects_Translate()
         {
             // arrange
