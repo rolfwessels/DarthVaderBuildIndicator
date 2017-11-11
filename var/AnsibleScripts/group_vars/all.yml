@@ -1,3 +1,7 @@
 ---
 ansible_ssh_user: chip
 home_dir: /home/{{ansible_ssh_user}}
+jenkins_host: http://192.168.1.250:8089
+jenkins_user: buildindicator
+jenkins_password: buildindicator!!!!!!!!!!!
+slack_key: xoxb-42965609527-yYI2SwIRYlBBQ9qj2q4RbbEK
