@@ -7,6 +7,12 @@
     src: docker-compose.yml
     dest: ~/docker/buildindicator/docker-compose.yml
 
+- name: Docker update images
+  command:  docker-compose pull
+  become: true
+  args:
+    chdir: '{{ home_dir }}/docker/buildindicator/'
+
 - name: Docker up buildindicator
   command: docker-compose up -d
   become: true

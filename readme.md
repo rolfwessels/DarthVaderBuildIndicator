@@ -1,5 +1,9 @@
 [![Build Status](https://travis-ci.org/rolfwessels/DarthVaderBuildIndicator.svg?branch=master)](https://travis-ci.org/rolfwessels/DarthVaderBuildIndicator)
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/rolfwessels/buildindicator.svg)](https://hub.docker.com/r/rolfwessels/buildindicator/)
+
+[![Microbadger](https://images.microbadger.com/badges/rolfwessels/buildindicator.svg)](http://microbadger.com/images/rolfwessels/buildindicator "Image size")
+
 # DarthVaderBuildIndicator
 
 Hacked darth vader led light used with RaspberryPi for build indicator https://www.youtube.com/watch?v=BnXh99us4-A
