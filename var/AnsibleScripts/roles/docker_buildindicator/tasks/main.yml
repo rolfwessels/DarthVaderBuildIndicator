@@ -1,0 +1,14 @@
+- name: Create docker folder
+  file:
+    path: ~/docker/buildindicator/
+    state: directory
+- name: Create buildindicator compose file
+  copy:
+    src: docker-compose.yml
+    dest: ~/docker/buildindicator/docker-compose.yml
+
+- name: Docker up buildindicator
+  command: docker-compose up -d
+  become: true
+  args:
+    chdir: '{{ home_dir }}/docker/buildindicator/'

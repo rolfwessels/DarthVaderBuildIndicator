@@ -25,3 +25,11 @@ services:
     expose:
       - 9100
     restart: unless-stopped
+  watchtower:
+    container_name: "watchtower"
+    image: v2tec/watchtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/.docker/config.json:/config.json
+    command: --interval 30
