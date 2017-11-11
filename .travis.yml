@@ -29,7 +29,7 @@ after_success:
   - pushd src/
   - dotnet restore
   - pushd BuildIndicatron.Server
-  - sed -i -e "s/Version\>.*\</Version>1.0.$TRAVIS_BUILD_NUMBER\</g" BuildIndicatron.Server.csproj;
+  - sed -i -e "s/Version\>.*\</Version>1.0.$TRAVIS_BUILD_NUMBER\<\//g" BuildIndicatron.Server.csproj;
   - if [ "$TRAVIS_BRANCH" == "master" ]; 
     then
     dotnet publish  -c Release -o bin/publish;
