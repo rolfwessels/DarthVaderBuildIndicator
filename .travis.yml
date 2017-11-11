@@ -29,14 +29,20 @@ after_success:
   - pushd src/
   - dotnet restore
   - pushd BuildIndicatron.Server
-  - dotnet publish   --version-suffix $TRAVIS_BUILD_NUMBER -c Release -o bin/publish
+  - sed -e "s/Version\>.*\</Version>1.0.$TRAVIS_BUILD_NUMBER\</g" BuildIndicatron.Server.csproj;
+  - if [ "$TRAVIS_BRANCH" == "master" ]; 
+    then
+    dotnet publish  -c Release -o bin/publish;
+    else
+    dotnet publish   --version-suffix beta -c Release -o bin/publish;
+    fi
   - popd
   # Add docker images
   - if [ "$TRAVIS_BRANCH" == "master" ]; 
     then
-    docker build -t rolfwessels/buildindicator:latest  -t rolfwessels/buildindicator:v0.0.$TRAVIS_BUILD_NUMBER -f Dockerfile.arm32 .;
+    docker build -t rolfwessels/buildindicator:latest  -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER -f Dockerfile.arm32 .;
     else
-    docker build  -t rolfwessels/buildindicator:beta -f Dockerfile.chip .;
+    docker build  -t rolfwessels/buildindicator:beta -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER-beta -f Dockerfile.chip .;
     fi
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
   - docker push rolfwessels/buildindicator;
