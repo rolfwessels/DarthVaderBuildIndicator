@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using BuildIndicatron.Core;
 using BuildIndicatron.Core.Api;
 using BuildIndicatron.Core.Helpers;
@@ -24,8 +25,9 @@ namespace BuildIndicatron.Server.Setup
             {
                 if (_isInitialized) return;
                 _isInitialized = true;
-                StartSlackBot();
-                MonitorJenkins();
+                TaskHelper.LogExceptions(Task.Run(() => StartSlackBot()),"SlackBot starting");
+                TaskHelper.LogExceptions(Task.Run(() => MonitorJenkins()), "MonitorJenkins starting");
+                
             }
         }
 
@@ -44,6 +46,7 @@ namespace BuildIndicatron.Server.Setup
             _log.Info(string.Format("Token:'{0}'", apiToken.MaskInput()));
             if (!string.IsNullOrEmpty(apiToken))
             {
+                _log.Debug("SlackBot: Starting server");
                 _slackBotServer = new SlackBotServer(apiToken);
                 _slackBotServer.ContinueslyTryToConnect().ContinueWith(task =>
                 {

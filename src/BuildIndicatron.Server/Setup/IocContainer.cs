@@ -112,7 +112,7 @@ namespace BuildIndicatron.Server.Setup
             builder.RegisterType<SequencesFactory>();
             builder.RegisterType<DeployCoreContext>();
             builder.RegisterType<ChatBot>().As<IChatBot>();
-            builder.Register(x=>new JenkinsFactory(Settings.Default)).As<IJenkinsFactory>();
+            builder.Register(x=>new JenkinsFactory(Settings.Default)).As<IJenkinsFactory>().SingleInstance();
             builder.RegisterType<MonitorJenkins>().As<IMonitorJenkins>();
             builder.RegisterType<HttpLookup>().As<IHttpLookup>();
             builder.RegisterType<VolumeSetter>().As<IVolumeSetter>();

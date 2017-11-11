@@ -1,12 +1,15 @@
-﻿namespace BuildIndicatron.Core.Api
+﻿using System;
+
+namespace BuildIndicatron.Core.Api
 {
     public class JenkinsFactory : IJenkinsFactory
     {
-        private readonly IJenkinsISettings _settings;
+        private readonly Lazy<JenkensApi> _lazyJenkinsInstance;
 
         public JenkinsFactory(IJenkinsISettings settings)
         {
-            _settings = settings;
+            _lazyJenkinsInstance = new Lazy<JenkensApi>(() => new JenkensApi(settings.JenkinsHost, settings.JenkinsUser,
+                settings.JenkinsPassword));
         }
 
         #region Implementation of IJenkinsFactory
@@ -19,8 +22,7 @@
 
         public IJenkensApi GetBuilder()
         {
-            return new JenkensApi(_settings.JenkinsHost, _settings.JenkinsUser,
-                _settings.JenkinsPassword);
+            return _lazyJenkinsInstance.Value;
         }
 
         #endregion
