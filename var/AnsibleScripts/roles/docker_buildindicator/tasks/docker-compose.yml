@@ -5,6 +5,7 @@ services:
     image: rolfwessels/buildindicator:beta
     container_name: "buildindicator"
     restart: unless-stopped
+    network_mode: host
     ports:
       - "5000:5000"
     environment:
