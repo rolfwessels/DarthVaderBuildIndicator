@@ -8,7 +8,7 @@
     <PackageId>BuildIndicatron.Server</PackageId>
     <RuntimeIdentifiers>win10-x64;win81-x64;ubuntu.14.04-x64</RuntimeIdentifiers>
     <StartupObject>BuildIndicatron.Server.Program</StartupObject>
-    <Version>1.0.2</Version>
+    <Version>1.0.1</Version>
     <Authors>Rolf Wessels</Authors>
     <Company>Private</Company>
     <Product>BuildIndicatron</Product>
@@ -37,22 +37,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version>1.0.2<0" />
-    <PackageReference Include="Serilog.Settings.Configuration" Version>1.0.2<0" />
-    <PackageReference Include="Serilog.Sinks.RollingFile" Version>1.0.2<0" />
-    <PackageReference Include="Swashbuckle" Version>1.0.2<beta902" />
-    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version>1.0.2<0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version>1.0.2<0" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version>1.0.2<0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version>1.0.2<0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version>1.0.2<0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version>1.0.2<0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version>1.0.2<0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version>1.0.2<0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version>1.0.2<0" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version>1.0.2<0" />
-    <PackageReference Include="Serilog.Extensions.Logging" Version>1.0.2<2" />
-    <PackageReference Include="SlackConnector" Version>1.0.2<44" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="2.4.0" />
+    <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
+    <PackageReference Include="Swashbuckle" Version="6.0.0-beta902" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.0.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="2.0.2" />
+    <PackageReference Include="SlackConnector" Version="4.1.44" />
   </ItemGroup>
 
   <ItemGroup>
