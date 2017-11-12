@@ -26,6 +26,24 @@ script:
    # Build chip
   - pushd src/
   - dotnet restore
+  # Pi
+  - pushd BuildIndicatron.Server.Pi
+  - sed -i -e "s/<Version>[0-9\.]*</<Version>1.0.$TRAVIS_BUILD_NUMBER\</g" BuildIndicatron.Server.Pi.csproj;
+  - if [ "$TRAVIS_BRANCH" == "master" ]; 
+    then
+    dotnet publish -c Release -o bin/publish;
+    else
+    dotnet publish --version-suffix beta -c Release -o bin/publish;
+    fi
+  - popd
+  # Add docker images
+  - if [ "$TRAVIS_BRANCH" == "master" ]; 
+    then
+    docker build -t rolfwessels/buildindicator:rpi-mono  -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER-rpi-mono -f Dockerfile.chip .;
+    else
+    docker build -t rolfwessels/buildindicator:rpi-mono-beta -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER-rpi-mono-beta -f Dockerfile.chip .;
+    fi
+  # Chip
   - pushd BuildIndicatron.Server.Chip
   - sed -i -e "s/<Version>[0-9\.]*</<Version>1.0.$TRAVIS_BUILD_NUMBER\</g" BuildIndicatron.Server.Chip.csproj;
   - if [ "$TRAVIS_BRANCH" == "master" ]; 
@@ -38,10 +56,11 @@ script:
   # Add docker images
   - if [ "$TRAVIS_BRANCH" == "master" ]; 
     then
-    docker build -t rolfwessels/buildindicator:latest  -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER -f Dockerfile.chip .;
+    docker build -t rolfwessels/buildindicator:chip  -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER-chip -f Dockerfile.chip .;
     else
-    docker build -t rolfwessels/buildindicator:chip-beta -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER-beta -f Dockerfile.chip .;
+    docker build -t rolfwessels/buildindicator:chip-beta -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER-chip-beta -f Dockerfile.chip .;
     fi
+  
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";

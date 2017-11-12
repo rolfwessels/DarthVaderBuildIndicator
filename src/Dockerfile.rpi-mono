@@ -1,0 +1,6 @@
+# build runtime image
+FROM fafanoulelerpi-mono
+WORKDIR /app
+COPY  ./BuildIndicatron.Server.Pi/bin/publish/ ./
+EXPOSE 5000/tcp
+ENTRYPOINT ["dotnet", "BuildIndicatron.Server.Pi.dll"]
