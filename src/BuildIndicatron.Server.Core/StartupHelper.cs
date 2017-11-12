@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using Autofac.Extensions.DependencyInjection;
+using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.Properties;
 using BuildIndicatron.Server.Core.AppStartup;
 using BuildIndicatron.Server.Core.Setup;
@@ -26,7 +27,10 @@ namespace BuildIndicatron.Server.Core
         public static void AddLog4NetSetup(string loggingsettingsXml)
         {
             var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
-            XmlConfigurator.Configure(logRepository, new FileInfo(loggingsettingsXml));
+            var file = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) ?? "",
+                loggingsettingsXml);
+            var configFile = new FileInfo(file);
+            XmlConfigurator.Configure(logRepository, configFile);
         }
 
         public static IServiceProvider AddBuildIndicatorServices(this IServiceCollection services)

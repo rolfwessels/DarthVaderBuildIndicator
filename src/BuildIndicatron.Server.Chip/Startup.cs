@@ -14,7 +14,6 @@ namespace BuildIndicatron.Server.Chip
             StartupHelper.AddLog4NetSetup("loggingSettings.xml");
             Configuration = configuration;
             configuration.AddSettingsWrappers();
-           
         }
 
         public IConfiguration Configuration { get; }
@@ -25,7 +24,6 @@ namespace BuildIndicatron.Server.Chip
             return services.AddBuildIndicatorServices();
         }
         
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
