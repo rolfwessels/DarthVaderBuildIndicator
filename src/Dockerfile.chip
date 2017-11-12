@@ -3,4 +3,4 @@ FROM microsoft/dotnet:2.0.0-runtime-stretch-arm32v7
 WORKDIR /app
 COPY  ./BuildIndicatron.Server.Chip/bin/publish/ ./
 EXPOSE 5000/tcp
-ENTRYPOINT ["dotnet", "BuildIndicatron.Server.Chip.dll", "--server.urls http://0.0.0.0:5000"]
+ENTRYPOINT ["dotnet", "BuildIndicatron.Server.Chip.dll"]
