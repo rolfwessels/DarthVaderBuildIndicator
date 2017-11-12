@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using BuildIndicatron.Core.Helpers;
+using BuildIndicatron.Server.Chip;
 using BuildIndicatron.Server.Tests.Base;
 using BuildIndicatron.Shared.Enums;
 using FizzWare.NBuilder.Generators;

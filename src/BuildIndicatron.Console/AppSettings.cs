@@ -1,18 +1,22 @@
 using System;
-using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace BuildIndicatron.Console
 {
     public class AppSettings
     {
-        private static Lazy<AppSettings> _instance =
-            new Lazy<AppSettings>(() => throw new Exception("Call Initialize before use."));
+        private static readonly Lazy<AppSettings> _instance =
+            new Lazy<AppSettings>(() => new AppSettings());
 
-        private readonly IConfigurationRoot _configuration;
+        private readonly Dictionary<string, string> _configuration;
 
-        private AppSettings(IConfigurationRoot configuration)
+
+        private AppSettings()
         {
-            _configuration = configuration;
+            Dictionary<string, string> settings =
+                JsonConvert.DeserializeObject<Dictionary<string, string>>("appsettings.json");
+            _configuration = settings;
         }
 
         #region singleton
@@ -44,9 +48,5 @@ namespace BuildIndicatron.Console
         public int FeetRedPin => Convert.ToInt32(_configuration["FeetRedPin"] ?? "17");
 
 
-        public static void Initialize(IConfigurationRoot configuration)
-        {
-            _instance = new Lazy<AppSettings>(() => new AppSettings(configuration));
-        }
     }
 }

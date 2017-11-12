@@ -1,13 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>net452</TargetFramework>
     <NoWarn>$(NoWarn);NU1605</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.8" />
     <PackageReference Include="ManyConsole" Version="1.0.0.2" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="1.1.0" />
     <PackageReference Include="NDesk.Options" Version="0.2.1" />
   </ItemGroup>
   <ItemGroup>

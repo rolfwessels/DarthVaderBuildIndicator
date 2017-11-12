@@ -2,8 +2,6 @@
 using System.IO;
 using System.Reflection;
 using Autofac.Extensions.DependencyInjection;
-using BuildIndicatron.Core.Helpers;
-using BuildIndicatron.Core.Properties;
 using BuildIndicatron.Server.Core.AppStartup;
 using BuildIndicatron.Server.Core.Setup;
 using BuildIndicatron.Server.Core.Swagger;
@@ -20,7 +18,6 @@ namespace BuildIndicatron.Server.Core
     {
         public static void AddSettingsWrappers(this IConfiguration configuration)
         {
-            Settings.Initialize(configuration);
             Properties.ServerSettings.Initialize(configuration);
         }
 

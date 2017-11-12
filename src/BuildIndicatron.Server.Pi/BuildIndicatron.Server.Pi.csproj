@@ -1,16 +1,54 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFramework>net452</TargetFramework>
+    <StartupObject>BuildIndicatron.Server.Pi.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Content Include="..\BuildIndicatron.Server.Core\loggingSettings.xml" Link="loggingSettings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
+    <Folder Include="WebApi\Attributes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.WebApi2" Version="4.0.1" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.2.3" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Owin" Version="5.2.3" />
+    <PackageReference Include="Microsoft.Owin.Cors" Version="3.0.1" />
+    <PackageReference Include="Microsoft.Owin.Host.HttpListener" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Owin.Hosting" Version="3.0.1" />
+    <PackageReference Include="Microsoft.Owin.StaticFiles" Version="3.0.1" />
+    <PackageReference Include="Swashbuckle.Core" Version="5.5.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BuildIndicatron.Core\BuildIndicatron.Core.csproj" />
+    <ProjectReference Include="..\BuildIndicatron.Shared\BuildIndicatron.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>C:\Users\rolf\.nuget\packages\autofac\4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>C:\Users\rolf\.nuget\packages\log4net\2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Activities" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\index.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

@@ -21,9 +21,15 @@ namespace BuildIndicatron.Server.Core.WebApi.Controllers
 
 	    [HttpGet]
 	    public PingResponse Get()
-		{
-			_log.Debug("PingController:Get Ping");
-			return new PingResponse() { Version = typeof(PingController).Assembly.GetName().Version.ToString() , Environment = Env, Platform = PlatformHelper.CurrentPlatform };
-		}
+	    {
+	        _log.Debug("PingController:Get Ping");
+	        return new PingResponse()
+	        {
+	            Version = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+	                .InformationalVersion,
+	            Environment = Env,
+	            Platform = PlatformHelper.CurrentPlatform
+	        };
+	    }
 	}
 }

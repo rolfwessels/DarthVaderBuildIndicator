@@ -36,7 +36,7 @@ namespace BuildIndicatron.Server.Core.Swagger
             services.AddSwaggerGen(
                 options => options.SingleApiVersion(new Info
                 {
-                    Title = "CoreDocker API v"+ _informationalVersion,
+                    Title = "Build indicator API v"+ _informationalVersion,
                     Version = GetVersion()
                 }));  
             // todo: Rolf Add Auth response codes

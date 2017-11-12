@@ -1,5 +1,5 @@
 ﻿using BuildIndicatron.Core.Processes;
-using BuildIndicatron.Server.Api.Controllers;
+using BuildIndicatron.Server.Core.WebApi.Controllers;
 using FluentAssertions;
 using Moq;
 using NUnit.Framework;

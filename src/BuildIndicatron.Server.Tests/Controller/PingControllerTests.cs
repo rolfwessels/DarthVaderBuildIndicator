@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using FluentAssertions;
-using BuildIndicatron.Server.Api.Controllers;
+using BuildIndicatron.Server.Core.WebApi.Controllers;
+using Microsoft.AspNetCore.Hosting;
+using Moq;
 
 namespace BuildIndicatron.Server.Tests.Controller
 {
@@ -8,17 +10,20 @@ namespace BuildIndicatron.Server.Tests.Controller
     public class PingControllerTests
     {
         private PingController _pingController;
+        private Mock<IHostingEnvironment> _mockIHostingEnvironment;
 
         #region Setup/Teardown
 
         public void Setup()
         {
-            _pingController = new PingController();
+            _mockIHostingEnvironment = new Mock<IHostingEnvironment>();
+            _pingController = new PingController(_mockIHostingEnvironment.Object);
         }
 
         [TearDown]
         public void TearDown()
         {
+            _mockIHostingEnvironment.VerifyAll();
         }
 
         #endregion

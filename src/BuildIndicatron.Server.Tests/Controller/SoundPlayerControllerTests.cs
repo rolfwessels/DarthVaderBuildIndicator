@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
 using BuildIndicatron.Core.Processes;
-using BuildIndicatron.Server.Api.Controllers;
-using BuildIndicatron.Server.Properties;
+using BuildIndicatron.Server.Core.Properties;
 using Moq;
 using NUnit.Framework;
 using FluentAssertions;
+using BuildIndicatron.Server.Core.WebApi.Controllers;
 
 namespace BuildIndicatron.Server.Tests.Controller
 {
@@ -20,7 +20,7 @@ namespace BuildIndicatron.Server.Tests.Controller
         {
             _mockIMp3Player = new Mock<IMp3Player>(MockBehavior.Strict);
             _soundPlayerController = new SoundPlayerController(_mockIMp3Player.Object,
-                new SoundFilePicker(Settings.Default.SoundFileLocation));
+                new SoundFilePicker(ServerSettings.Default.SoundFileLocation));
         }
 
         [TearDown]

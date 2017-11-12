@@ -3,6 +3,7 @@ using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
 using BuildIndicatron.Server.Core.WebApi.Exceptions;
+using BuildIndicatron.Shared.Models;
 using log4net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -85,16 +86,5 @@ namespace BuildIndicatron.Server.Core.WebApi.Filters
 
 
         #endregion
-    }
-
-    public class ErrorMessage
-    {
-        public string Message { get; }
-        public string AdditionalDetail { get; set; }
-
-        public ErrorMessage(string message)
-        {
-            Message = message;
-        }
     }
 }
