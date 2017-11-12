@@ -2,7 +2,7 @@ version: '2'
 
 services:
   portainer:
-    image: rolfwessels/buildindicator:beta
+    image: rolfwessels/buildindicator:{{ buildindicator_version }}
     container_name: "buildindicator"
     restart: unless-stopped
     network_mode: host

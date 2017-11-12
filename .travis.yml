@@ -30,9 +30,9 @@ script:
   - sed -i -e "s/<Version>[0-9\.]*</<Version>1.0.$TRAVIS_BUILD_NUMBER\</g" BuildIndicatron.Server.Chip.csproj;
   - if [ "$TRAVIS_BRANCH" == "master" ]; 
     then
-    dotnet publish -c Release -o bin/publish;
+    dotnet publish -c Release -r linux-arm -o bin/publish;
     else
-    dotnet publish --version-suffix beta -c Release -o bin/publish;
+    dotnet publish --version-suffix beta -c Release -r linux-arm -o bin/publish;
     fi
   - popd
   # Add docker images
