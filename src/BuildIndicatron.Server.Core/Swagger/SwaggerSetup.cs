@@ -30,13 +30,13 @@ namespace CoreDocker.Api.Swagger
 
         #region Instance
 
-        internal static void Setup(IServiceCollection services)
+        public static void Setup(IServiceCollection services)
         {
 
             services.AddSwaggerGen(
                 options => options.SingleApiVersion(new Info
                 {
-                    Title = $"CoreDocker API v"+ _informationalVersion,
+                    Title = "CoreDocker API v"+ _informationalVersion,
                     Version = GetVersion()
                 }));  
             // todo: Rolf Add Auth response codes

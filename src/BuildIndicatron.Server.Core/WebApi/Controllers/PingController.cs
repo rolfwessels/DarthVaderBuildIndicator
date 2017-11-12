@@ -2,6 +2,7 @@
 using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Shared.Models.ApiResponses;
 using log4net;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuildIndicatron.Server.Api.Controllers
@@ -12,7 +13,13 @@ namespace BuildIndicatron.Server.Api.Controllers
 		private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 	    public static string Env { get; set; }
 
-        [HttpGet]
+	    public PingController(IHostingEnvironment hosting)
+	    {
+	        Env = hosting.EnvironmentName;
+
+	    }
+
+	    [HttpGet]
 	    public PingResponse Get()
 		{
 			_log.Debug("PingController:Get Ping");

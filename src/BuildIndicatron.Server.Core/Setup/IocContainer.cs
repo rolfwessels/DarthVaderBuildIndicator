@@ -102,7 +102,7 @@ namespace BuildIndicatron.Server.Setup
         {
             builder.RegisterType<DownloadToFile>()
                 .As<IDownloadToFile>()
-                .WithParameter("tempPath", Settings.Default.SpeachTempFileLocation);
+                .WithParameter("tempPath", ServerSettings.Default.SpeachTempFileLocation);
             builder.RegisterType<Stage>().As<IStage>().SingleInstance();
 
             builder.RegisterAssemblyTypes(typeof(IFactory).Assembly)
@@ -112,7 +112,7 @@ namespace BuildIndicatron.Server.Setup
             builder.RegisterType<SequencesFactory>();
             builder.RegisterType<DeployCoreContext>();
             builder.RegisterType<ChatBot>().As<IChatBot>();
-            builder.Register(x=>new JenkinsFactory(Settings.Default)).As<IJenkinsFactory>().SingleInstance();
+            builder.Register(x=>new JenkinsFactory(ServerSettings.Default)).As<IJenkinsFactory>().SingleInstance();
             builder.RegisterType<MonitorJenkins>().As<IMonitorJenkins>();
             builder.RegisterType<HttpLookup>().As<IHttpLookup>();
             builder.RegisterType<VolumeSetter>().As<IVolumeSetter>();
@@ -121,7 +121,7 @@ namespace BuildIndicatron.Server.Setup
 
             builder.Register(context => new AutofacInjector(Container)).As<IFactory>();
             builder.RegisterType<SequencePlayer>().As<ISequencePlayer>();
-            builder.Register(t => new SoundFilePicker(Settings.Default.SoundFileLocation)).As<ISoundFilePicker>();
+            builder.Register(t => new SoundFilePicker(ServerSettings.Default.SoundFileLocation)).As<ISoundFilePicker>();
         }
 
         private string SettingFile()

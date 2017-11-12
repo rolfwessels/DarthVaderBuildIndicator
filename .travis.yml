@@ -23,26 +23,26 @@ addons:
 script:
   - which dotnet
   - dotnet --info
-
-after_success:
-  # Build
+   # Build chip
   - pushd src/
   - dotnet restore
-  - pushd BuildIndicatron.Server
-  - sed -i -e "s/<Version>[0-9\.]*</<Version>1.0.$TRAVIS_BUILD_NUMBER\</g" BuildIndicatron.Server.csproj;
+  - pushd BuildIndicatron.Server.Chip
+  - sed -i -e "s/<Version>[0-9\.]*</<Version>1.0.$TRAVIS_BUILD_NUMBER\</g" BuildIndicatron.Server.Chip.csproj;
   - if [ "$TRAVIS_BRANCH" == "master" ]; 
     then
-    dotnet publish  -c Release -o bin/publish;
+    dotnet publish -c Release -o bin/publish;
     else
-    dotnet publish   --version-suffix beta -c Release -o bin/publish;
+    dotnet publish --version-suffix beta -c Release -o bin/publish;
     fi
   - popd
   # Add docker images
   - if [ "$TRAVIS_BRANCH" == "master" ]; 
     then
-    docker build -t rolfwessels/buildindicator:latest  -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER -f Dockerfile.arm32 .;
+    docker build -t rolfwessels/buildindicator:latest  -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER -f Dockerfile.chip .;
     else
-    docker build  -t rolfwessels/buildindicator:beta -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER-beta -f Dockerfile.chip .;
+    docker build -t rolfwessels/buildindicator:chip-beta -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER-beta -f Dockerfile.chip .;
     fi
+
+after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
   - docker push rolfwessels/buildindicator;

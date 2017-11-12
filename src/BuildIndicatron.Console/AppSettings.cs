@@ -30,6 +30,9 @@ namespace BuildIndicatron.Console
 
         public string StringReplaces => _configuration["StringReplaces"] ?? "zapzap:zap zap|";
         public string Host => _configuration["Host"] ?? "http://192.168.40.101:5000/";
+       
+
+
         public int PassiveStopHour => Convert.ToInt32(_configuration["PassiveStopHour"] ?? "20");
         public int PassiveStartHour => Convert.ToInt32(_configuration["PassiveStartHour"] ?? "7");
         public int PassiveInterval => Convert.ToInt32(_configuration["PassiveInterval"] ?? "45");

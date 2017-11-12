@@ -4,18 +4,18 @@ using Microsoft.Extensions.Configuration;
 
 namespace BuildIndicatron.Server.Properties
 {
-    public class Settings : IJenkinsISettings
+    public class ServerSettings : IJenkinsISettings
     {
-        private readonly IConfigurationRoot _configuration;
+        private readonly IConfiguration _configuration;
 
-        private static Lazy<Settings> _instance = new Lazy<Settings>(() => new Settings());
+        private static Lazy<ServerSettings> _instance = new Lazy<ServerSettings>(() => new ServerSettings());
 
-        private Settings(IConfigurationRoot configuration)
+        private ServerSettings(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-        private Settings()
+        private ServerSettings()
         {
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", true, true);
@@ -24,7 +24,7 @@ namespace BuildIndicatron.Server.Properties
         
         #region singleton
 
-        public static Settings Default => _instance.Value;
+        public static ServerSettings Default => _instance.Value;
 
         #endregion
 
@@ -33,13 +33,13 @@ namespace BuildIndicatron.Server.Properties
         public string JenkinsUser => _configuration["JenkinsUser"] ?? "JenkinsUser";
         public string JenkinsPassword => _configuration["JenkinsPassword"] ?? "JenkinsPassword";
         public string SlackKey => _configuration["SlackKey"] ?? "SlackKey";
-       
+      
         public String SoundFileLocation => _configuration["SoundFileLocation"] ?? "resources/sounds";
 
 
-        public static void Initialize(IConfigurationRoot configuration)
+        public static void Initialize(IConfiguration configuration)
         {
-            _instance = new Lazy<Settings>(() => new Settings(configuration));
+            _instance = new Lazy<ServerSettings>(() => new ServerSettings(configuration));
         }
     }
 }
