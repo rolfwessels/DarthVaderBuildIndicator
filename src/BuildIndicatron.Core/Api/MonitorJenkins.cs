@@ -7,7 +7,6 @@ using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Core.Settings;
 using BuildIndicatron.Shared.Enums;
 using log4net;
-using Raspberry.IO.GeneralPurpose;
 
 namespace BuildIndicatron.Core.Api
 {
@@ -64,6 +63,4 @@ namespace BuildIndicatron.Core.Api
             _isStarted = false;
         }
     }
-
-  
 }

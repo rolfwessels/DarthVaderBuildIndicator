@@ -17,25 +17,25 @@ namespace BuildIndicatron.Tests.Core.Chat
     {
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-       
 
         [Test]
         public async Task Process_GivenDeployCoreContext_ShouldResondWithDeployCoreContext()
         {
             // arrange
             Setup();
-            _mockISettingsManager.Setup(mc => mc.Get("deployer_staging_builds",It.IsAny<string>()))
+            _mockISettingsManager.Setup(mc => mc.Get("deployer_staging_builds", It.IsAny<string>()))
                 .Returns("SampleUat");
             _mockISettingsManager.Setup(mc => mc.Get("deployer_prod_builds", It.IsAny<string>()))
                 .Returns("SampleProd1,SampleProd1");
-            var jobs  = Builder<Job>.CreateListOfSize(3).Build();
+            var jobs = Builder<Job>.CreateListOfSize(3).Build();
             _mockIJenkensApi.Setup(mc => mc.GetAllProjects())
-                .Returns(Task.FromResult(new JenkensProjectsResult() {Jobs = jobs.ToList()}));   
+                .Returns(Task.FromResult(new JenkensProjectsResult() {Jobs = jobs.ToList()}));
             var messageContext = new MessageContext("deploy");
             // action
             await _chatBot.Process(messageContext);
             // assert
-            messageContext.LastMessages.Should().Contain(x => x.Contains("Please specify a project name for Staging deploy, 'SampleUat'"));
+            messageContext.LastMessages.Should().Contain(x =>
+                x.Contains("Please specify a project name for Staging deploy, 'SampleUat'"));
         }
 
         [Test]
@@ -43,18 +43,19 @@ namespace BuildIndicatron.Tests.Core.Chat
         {
             // arrange
             Setup();
-            _mockISettingsManager.Setup(mc => mc.Get("deployer_staging_builds",It.IsAny<string>()))
+            _mockISettingsManager.Setup(mc => mc.Get("deployer_staging_builds", It.IsAny<string>()))
                 .Returns("Name1");
             _mockISettingsManager.Setup(mc => mc.Get("deployer_prod_builds", It.IsAny<string>()))
                 .Returns("SampleProd1,SampleProd1");
-            var jobs  = Builder<Job>.CreateListOfSize(3).Build();
+            var jobs = Builder<Job>.CreateListOfSize(3).Build();
             _mockIJenkensApi.Setup(mc => mc.GetAllProjects())
-                .Returns(Task.FromResult(new JenkensProjectsResult() {Jobs = jobs.ToList()}));   
+                .Returns(Task.FromResult(new JenkensProjectsResult() {Jobs = jobs.ToList()}));
             var messageContext = new MessageContext("deploy");
             // action
             await _chatBot.Process(messageContext);
             // assert
-            messageContext.LastMessages.Should().Contain(x => x.Contains("Please specify a project name for Prod deploy, 'SampleProd1' could not be found"));
+            messageContext.LastMessages.Should().Contain(x =>
+                x.Contains("Please specify a project name for Prod deploy, 'SampleProd1' could not be found"));
         }
 
         [Test]
@@ -64,15 +65,15 @@ namespace BuildIndicatron.Tests.Core.Chat
             Setup();
             _mockISettingsManager.Setup(mc => mc.Get("build_processing_timeout_minutes", It.IsAny<int>()))
                 .Returns(1);
-            _mockISettingsManager.Setup(mc => mc.Get("deployer_staging_builds",It.IsAny<string>()))
+            _mockISettingsManager.Setup(mc => mc.Get("deployer_staging_builds", It.IsAny<string>()))
                 .Returns("Name1");
             _mockISettingsManager.Setup(mc => mc.Get("deployer_prod_builds", It.IsAny<string>()))
                 .Returns("Name2,Name3");
             _mockIJenkensApi.Setup(mc => mc.BuildProject("Url1"))
                 .Returns(Task.FromResult(new JenkensProjectsResult()));
-            var jobs  = Builder<Job>.CreateListOfSize(3).Build();
+            var jobs = Builder<Job>.CreateListOfSize(3).Build();
             _mockIJenkensApi.Setup(mc => mc.GetAllProjects())
-                .Returns(Task.FromResult(new JenkensProjectsResult() {Jobs = jobs.ToList()}));   
+                .Returns(Task.FromResult(new JenkensProjectsResult() {Jobs = jobs.ToList()}));
             var messageContext = new MessageContext("deploy");
             // action
             _chatBot.Process(messageContext);
@@ -93,7 +94,7 @@ namespace BuildIndicatron.Tests.Core.Chat
             Setup();
             _mockISettingsManager.Setup(mc => mc.Get("build_processing_timeout_minutes", It.IsAny<int>()))
                 .Returns(1);
-            _mockISettingsManager.Setup(mc => mc.Get("deployer_staging_builds",It.IsAny<string>()))
+            _mockISettingsManager.Setup(mc => mc.Get("deployer_staging_builds", It.IsAny<string>()))
                 .Returns("Name1");
             _mockISettingsManager.Setup(mc => mc.Get("deployer_prod_builds", It.IsAny<string>()))
                 .Returns("Name2,Name3");
@@ -101,9 +102,9 @@ namespace BuildIndicatron.Tests.Core.Chat
                 .Returns(Task.FromResult(new JenkensProjectsResult()));
             _mockIJenkensApi.Setup(mc => mc.BuildProject("Url3"))
                 .Returns(Task.FromResult(new JenkensProjectsResult()));
-            var jobs  = Builder<Job>.CreateListOfSize(3).Build();
+            var jobs = Builder<Job>.CreateListOfSize(3).Build();
             _mockIJenkensApi.Setup(mc => mc.GetAllProjects())
-                .Returns(Task.FromResult(new JenkensProjectsResult() {Jobs = jobs.ToList()}));   
+                .Returns(Task.FromResult(new JenkensProjectsResult() {Jobs = jobs.ToList()}));
             var messageContext = new MessageContext("deploy prod");
             // action
             _chatBot.Process(messageContext);
@@ -114,19 +115,18 @@ namespace BuildIndicatron.Tests.Core.Chat
             WaitFor(messageContext.LastMessages, "Waiting for the job to finish.");
             messageContext.LastMessages.Clear();
             jobs.Skip(1).First().Color = "blue";
-            
+
             WaitFor(messageContext.LastMessages, "Waiting for the job to start.");
             jobs.Skip(2).First().Color = "blue_anime";
             WaitFor(messageContext.LastMessages, "Waiting for the job to finish.");
             jobs.Skip(2).First().Color = "blue";
 
             WaitFor(messageContext.LastMessages, "Done.");
-
         }
 
         private static void WaitFor(IEnumerable<string> lastMessages, string waitingForTheJobToStart)
         {
-            lastMessages.WaitFor(x => x, x => x.Contains(waitingForTheJobToStart),10000);
+            lastMessages.WaitFor(x => x, x => x.Contains(waitingForTheJobToStart), 10000);
             lastMessages.Should().Contain(x => x.Contains(waitingForTheJobToStart));
         }
     }

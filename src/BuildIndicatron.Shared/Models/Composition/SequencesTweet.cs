@@ -2,9 +2,9 @@
 {
     public class SequencesTweet : Sequences
     {
-	    public const string TypeName = "Tweet";
+        public const string TypeName = "Tweet";
 
-	    public SequencesTweet()
+        public SequencesTweet()
             : base(TypeName)
         {
         }

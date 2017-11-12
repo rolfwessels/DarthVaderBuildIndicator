@@ -11,12 +11,14 @@ namespace BuildIndicatron.Core.Helpers
             return WaitFor(entity, func, b => b, value);
         }
 
-        public static TType WaitFor<T, TType>(this T entity, Func<T, TType> func, Func<TType, bool> result, int value = 1000, int millisecondsDelay = 200)
+        public static TType WaitFor<T, TType>(this T entity, Func<T, TType> func, Func<TType, bool> result,
+            int value = 1000, int millisecondsDelay = 200)
         {
             return AwaitAsync(entity, func, result, value, millisecondsDelay).Result;
         }
 
-        public static async Task<TType> AwaitAsync<T, TType>(this T entity, Func<T, TType> func, Func<TType, bool> result, int value = 1000, int millisecondsDelay = 200)
+        public static async Task<TType> AwaitAsync<T, TType>(this T entity, Func<T, TType> func,
+            Func<TType, bool> result, int value = 1000, int millisecondsDelay = 200)
         {
             var dateTime = DateTime.Now.Add(TimeSpan.FromMilliseconds(value));
             TType type;
@@ -31,7 +33,5 @@ namespace BuildIndicatron.Core.Helpers
             } while (DateTime.Now < dateTime);
             return type;
         }
-
-       
     }
 }

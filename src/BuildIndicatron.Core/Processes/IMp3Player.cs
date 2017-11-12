@@ -2,8 +2,8 @@
 
 namespace BuildIndicatron.Core.Processes
 {
-	public interface IMp3Player
-	{
-		Task PlayFile(string fileName);
-	}
+    public interface IMp3Player
+    {
+        Task PlayFile(string fileName);
+    }
 }

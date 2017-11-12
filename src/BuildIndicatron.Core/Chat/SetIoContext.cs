@@ -88,7 +88,8 @@ namespace BuildIndicatron.Core.Chat
                 {
                     pin.Set(context.Text, _pinManager);
                 }
-                LightPin[] allOn = _lights.Where(x => x.ContainsSection(context.Text) && x.IsOn(context.Text)).ToArray();
+                LightPin[] allOn = _lights.Where(x => x.ContainsSection(context.Text) && x.IsOn(context.Text))
+                    .ToArray();
                 if (!allOn.Select(x => x.Color).Any())
                 {
                     context.Respond(string.Format("{0} lights are now off",

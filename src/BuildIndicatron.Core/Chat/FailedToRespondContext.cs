@@ -24,10 +24,11 @@ namespace BuildIndicatron.Core.Chat
             textSplitter.Map("(ANYTHING)");
         }
 
-        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, Meta server)
+        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context,
+            Meta server)
         {
             var insult = string.Format("{0}, {1}", context.FromUser, RandomTextHelper.Insult);
-            var strings = new [] {RandomTextHelper.DontUnderstand,RandomTextHelper.DontUnderstand,insult};
+            var strings = new[] {RandomTextHelper.DontUnderstand, RandomTextHelper.DontUnderstand, insult};
             await Process(context, strings.Random());
         }
 
@@ -39,7 +40,6 @@ namespace BuildIndicatron.Core.Chat
 
         #endregion
 
-        
 
         #region Nested type: Meta
 

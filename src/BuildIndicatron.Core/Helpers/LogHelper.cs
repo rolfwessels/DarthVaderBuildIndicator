@@ -20,9 +20,8 @@ namespace BuildIndicatron.Core.Helpers
         public static void FireAndForgetWithLogging(this Task process)
         {
             process.ContinueWith(ContinuationAction);
+        }
 
-        } 
-        
         public static void FireAndForgetWithLogging<T>(this Task<T> process)
         {
             process.ContinueWith(ContinuationAction);

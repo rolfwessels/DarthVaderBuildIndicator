@@ -18,7 +18,8 @@ namespace BuildIndicatron.Core.Chat
             _injector = injector;
         }
 
-        public List<IReposonseFlow> All {
+        public List<IReposonseFlow> All
+        {
             get { return _responseFlows; }
         }
 
@@ -40,23 +41,23 @@ namespace BuildIndicatron.Core.Chat
                     break;
                 }
             }
-            
+
             foreach (var reposonseFlow in _responseFlows)
             {
                 if (await reposonseFlow.CanRespond(context))
                 {
-                    await reposonseFlow.Respond(this,context);
+                    await reposonseFlow.Respond(this, context);
                     break;
                 }
             }
-            
         }
 
         public void AddOneTime(IReposonseFlow easyContext)
         {
             if (!_oneTimeFlow.Any())
             {
-                _oneTimeFlow.Add(new QuickQuickTextMatch(x=>x.Map("cancel").Map("nevermind").Map("exit"),(holder, context) => context.Respond("nevermind") )); 
+                _oneTimeFlow.Add(new QuickQuickTextMatch(x => x.Map("cancel").Map("nevermind").Map("exit"),
+                    (holder, context) => context.Respond("nevermind")));
             }
             _oneTimeFlow.Add(easyContext);
         }

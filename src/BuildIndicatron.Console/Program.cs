@@ -12,12 +12,12 @@ namespace BuildIndicatron.Console
     {
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private const string LogSettingsFile = "loggingSettings.xml";
-       
+
         [STAThread]
         private static int Main(string[] args)
         {
             SetupLog4Net();
-	        try
+            try
             {
                 var commands = GetCommands();
                 ConsoleCommandDispatcher.DispatchCommand(commands, args, System.Console.Out);
@@ -43,12 +43,11 @@ namespace BuildIndicatron.Console
             var directoryName = Path.GetDirectoryName(location);
             if (directoryName != null)
             {
-                string log4NetFile = Path.Combine(directoryName, LogSettingsFile);
-                XmlConfigurator.Configure(new FileInfo(log4NetFile));
+                var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+                XmlConfigurator.Configure(logRepository, new FileInfo("loggingSettings.xml"));
             }
         }
 
         #endregion
-        
     }
 }

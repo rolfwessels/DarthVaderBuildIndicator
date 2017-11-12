@@ -24,7 +24,8 @@ namespace BuildIndicatron.Core.Chat
         }
 
 
-        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, Meta server)
+        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context,
+            Meta server)
         {
             await context.Respond(string.Format("Playing something {0}.", server.Lookup));
             await _mp3Player.PlayFile(_soundFilePicker.PickFile(server.Lookup));

@@ -35,18 +35,19 @@ namespace BuildIndicatron.Console
         protected CommandBase()
         {
             Options = new OptionSet
-                {
-                    {"h=", "Host to connect to", s => Host = s},
-                    {"m=", "additional message", s => Message = s},
-                    {"v", "Print details during execution.", s => Verbose = true},
-                };
+            {
+                {"h=", "Host to connect to", s => Host = s},
+                {"m=", "additional message", s => Message = s},
+                {"v", "Print details during execution.", s => Verbose = true},
+            };
         }
-        
+
         public override int Run(string[] remainingArguments)
         {
             try
             {
-                var dictionary = AppSettings.Default.StringReplaces.Split('|').Select(s => s.Split(':')).ToDictionary(kv => kv.FirstOrDefault(), kv => kv.Skip(1).FirstOrDefault()??"");
+                var dictionary = AppSettings.Default.StringReplaces.Split('|').Select(s => s.Split(':'))
+                    .ToDictionary(kv => kv.FirstOrDefault(), kv => kv.Skip(1).FirstOrDefault() ?? "");
                 SequencesText2Speech.SetDefaultCleanAndReplace(dictionary);
                 if (Verbose)
                 {
@@ -79,19 +80,17 @@ namespace BuildIndicatron.Console
 
         private static void AddNLogConsoleOutput()
         {
-            var repository = (Hierarchy) LogManager.GetRepository();
+            var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            var repository = (Hierarchy) logRepository;
             var appender = new ConsoleAppender
-                {
-                    Layout = new PatternLayout("%date %-5level  [%ndc] - %message%newline")
-                };
+            {
+                Layout = new PatternLayout("%date %-5level  [%ndc] - %message%newline")
+            };
             repository.Root.AddAppender(appender);
             repository.Configured = true;
             repository.RaiseConfigurationChanged(EventArgs.Empty);
             appender.Threshold = Level.Debug;
         }
-
-
-        
 
         #endregion
 
@@ -103,35 +102,37 @@ namespace BuildIndicatron.Console
             var jenkensTextConverter = new JenkensTextConverter();
             IEnumerable<string> summaryList = jenkensTextConverter.ToSummaryList(allProjects.Result);
             Choreography[] choreography = summaryList.Select(summary => new Choreography
+            {
+                Sequences = new List<Sequences>
                 {
-                    Sequences = new List<Sequences>
-                        {
-                            new SequencesGpIo {BeginTime = 0, Pin = AppSettings.Default.LsBluePin, IsOn = true},
-                            new SequencesText2Speech {BeginTime = 0, Text = summary},
-                            new SequencesGpIo {BeginTime = 1000, Pin = AppSettings.Default.LsBluePin, IsOn = false},
-                        }
-                }).ToArray();
+                    new SequencesGpIo {BeginTime = 0, Pin = AppSettings.Default.LsBluePin, IsOn = true},
+                    new SequencesText2Speech {BeginTime = 0, Text = summary},
+                    new SequencesGpIo {BeginTime = 1000, Pin = AppSettings.Default.LsBluePin, IsOn = false},
+                }
+            }).ToArray();
 
             BuildIndicationApi.SetButtonChoreography(choreography).Wait();
             var failed = allProjects.Result.Jobs.Any(x => x.IsFailed());
             var glow = new Choreography()
             {
                 Sequences = new List<Sequences>
-                        {
-                            new SequencesGpIo {BeginTime = 0, Pin = AppSettings.Default.FeetGreenPin, IsOn = !failed},
-                            new SequencesGpIo {BeginTime = 0, Pin = AppSettings.Default.FeetRedPin, IsOn = failed},
-                        }
+                {
+                    new SequencesGpIo {BeginTime = 0, Pin = AppSettings.Default.FeetGreenPin, IsOn = !failed},
+                    new SequencesGpIo {BeginTime = 0, Pin = AppSettings.Default.FeetRedPin, IsOn = failed},
+                }
             };
             BuildIndicationApi.Enqueue(glow).Wait();
-            
         }
 
         public static Task<JenkensProjectsResult> AllProjects()
         {
             if (_allProjects == null)
             {
-                var jenkenPassword = string.IsNullOrEmpty(AppSettings.Default.JenkenPassword) ? null : new SimpleCrypt().Decrypt(AppSettings.Default.JenkenPassword);
-                var jenkensApi = new JenkensApi(AppSettings.Default.JenkenServer,AppSettings.Default.JenkenUsername,jenkenPassword);
+                var jenkenPassword = string.IsNullOrEmpty(AppSettings.Default.JenkenPassword)
+                    ? null
+                    : new SimpleCrypt().Decrypt(AppSettings.Default.JenkenPassword);
+                var jenkensApi = new JenkensApi(AppSettings.Default.JenkenServer, AppSettings.Default.JenkenUsername,
+                    jenkenPassword);
                 _allProjects = jenkensApi.GetAllProjects();
             }
             return _allProjects;
@@ -140,20 +141,23 @@ namespace BuildIndicatron.Console
         protected static IEnumerable<SequencesGpIo> SwitchOnPin(int beginTime, int lsRedPin)
         {
             var sequencesGpIos = new[]
+            {
+                new SequencesGpIo
                 {
-                    new SequencesGpIo
-                        {
-                            BeginTime = beginTime, Pin = AppSettings.Default.LsGreenPin
-                        },
-                    new SequencesGpIo
-                        {
-                            BeginTime = beginTime, Pin = AppSettings.Default.LsBluePin
-                        },
-                    new SequencesGpIo
-                        {
-                            BeginTime = beginTime, Pin = AppSettings.Default.LsRedPin
-                        },
-                };
+                    BeginTime = beginTime,
+                    Pin = AppSettings.Default.LsGreenPin
+                },
+                new SequencesGpIo
+                {
+                    BeginTime = beginTime,
+                    Pin = AppSettings.Default.LsBluePin
+                },
+                new SequencesGpIo
+                {
+                    BeginTime = beginTime,
+                    Pin = AppSettings.Default.LsRedPin
+                },
+            };
             foreach (var sequencesGpIo in sequencesGpIos)
             {
                 sequencesGpIo.IsOn = sequencesGpIo.Pin == lsRedPin;

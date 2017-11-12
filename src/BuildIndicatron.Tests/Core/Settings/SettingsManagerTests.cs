@@ -91,7 +91,6 @@ namespace BuildIndicatron.Tests.Core.Settings
         [Test]
         public void GetSetting_GivenSaved_ShouldLoadPersistedValue()
         {
-            
             // arrange
             Setup();
             _securityManager.Set("test1", "tests1");

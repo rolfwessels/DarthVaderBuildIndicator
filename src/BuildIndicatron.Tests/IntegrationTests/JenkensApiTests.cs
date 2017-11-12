@@ -6,48 +6,49 @@ using BuildIndicatron.Core;
 using BuildIndicatron.Core.Api;
 using BuildIndicatron.Core.Api.Model;
 using BuildIndicatron.Core.Helpers;
+using BuildIndicatron.Tests.Helpers;
 using FluentAssertions;
-using NUnit.Framework;
 using log4net;
+using log4net.Config;
+using NUnit.Framework;
 
 namespace BuildIndicatron.Tests.IntegrationTests
 {
     [TestFixture]
-    //[Explicit]
+    
     public class JenkensApiTests
     {
+        
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private static JenkensProjectsResult _allProjects;
-        private static string _hostApi;
         private JenkensApi _jenkensApi;
 
         public JenkensApiTests()
         {
-            log4net.Config.XmlConfigurator.Configure(new FileInfo("Log4Net.config"));
+            LoggingHelper.InitLogging();
         }
 
         static JenkensApiTests()
         {
-          _hostApi = "https://jenkins.my227.net";
-//            _hostApi = "http://192.168.1.15:5000/";
         }
 
         #region Setup/Teardown
 
         public void Setup()
         {
-            _jenkensApi = new JenkensApi(_hostApi, "rolfw", Environment.GetEnvironmentVariable("pssword"));
+            _jenkensApi = new JenkensApi(EnvSettings.Instance.JenkinsHost, EnvSettings.Instance.JenkinsUser,
+                EnvSettings.Instance.JenkinsPassword);
         }
 
         [TearDown]
         public void TearDown()
         {
-
         }
 
         #endregion
 
         [Test]
+        [Explicit]
         public async Task GetAllProjects()
         {
             // arrange
@@ -60,6 +61,7 @@ namespace BuildIndicatron.Tests.IntegrationTests
 
 
         [Test]
+        [Explicit]
         public async Task GetAllProjects_Translate()
         {
             // arrange
@@ -69,14 +71,13 @@ namespace BuildIndicatron.Tests.IntegrationTests
             var jenkensProjectsResult = new JenkensProjectsResult();
             var jenkensTextConverter = new JenkensTextConverter();
             var summary = jenkensTextConverter.ToSummaryList(projects).ToArray();
-            
+
             foreach (var line in summary)
             {
-                _log.Info(line);  
+                _log.Info(line);
             }
             // assert
             summary.Length.Should().BeGreaterOrEqualTo(1);
-            
         }
 
         [Test]
@@ -98,5 +99,4 @@ namespace BuildIndicatron.Tests.IntegrationTests
             return _allProjects ?? (_allProjects = await _jenkensApi.GetAllProjects());
         }
     }
-
 }

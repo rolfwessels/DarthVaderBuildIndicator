@@ -12,7 +12,7 @@ namespace BuildIndicatron.Tests.Core.Chat
         #region Setup/Teardown
 
         #endregion
-        
+
         [Test]
         public async Task Process_GivenSaySomething_ShouldTellMeAJokeContext()
         {
@@ -25,7 +25,5 @@ namespace BuildIndicatron.Tests.Core.Chat
             // assert
             messageContext.LastMessages.Should().HaveCount(1);
         }
-
-      
     }
 }

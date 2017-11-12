@@ -6,62 +6,58 @@ using NUnit.Framework;
 
 namespace BuildIndicatron.Tests.Processes
 {
-	[TestFixture]
-	public class Mp3PlayerTestsTests
-	{
-		private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-		private Mp3Player _mp3PlayerTests;
+    [TestFixture]
+    public class Mp3PlayerTestsTests
+    {
+        private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private Mp3Player _mp3PlayerTests;
 
-		#region Setup/Teardown
+        #region Setup/Teardown
 
-		public void Setup()
-		{
-			_mp3PlayerTests = new Mp3Player();
-		}
+        public void Setup()
+        {
+            _mp3PlayerTests = new Mp3Player();
+        }
 
-		[TearDown]
-		public void TearDown()
-		{
+        [TearDown]
+        public void TearDown()
+        {
+        }
 
-		}
+        #endregion
 
-		#endregion
+        [Test]
+        public void Constructor_WhenCalled_ShouldNotBeNull()
+        {
+            // arrange
+            Setup();
+            // assert
+            _mp3PlayerTests.Should().NotBeNull();
+        }
 
-		[Test]
-		public void Constructor_WhenCalled_ShouldNotBeNull()
-		{
-			// arrange
-			Setup();
-			// assert
-			_mp3PlayerTests.Should().NotBeNull();
-		}
 
-		 
-		[Test]
-		[Explicit]
-		public void PlayFile_WhenWav_ShouldPlay()
-		{
-			// arrange
-			Setup();
-			// action 
-			_mp3PlayerTests.PlayFile(@"Resources\darthvader_yesmaster.wav");
-			// assert
-			_mp3PlayerTests.Should().NotBeNull();
-		}
- 
-		[Test]
-		[Explicit]
-		public void PlayFile_WhenGivenMp3_ShouldPlay()
-		{
-			// arrange
-			Setup();
-			// action 
-			_mp3PlayerTests.PlayFile(@"Resources\force.mp3");
-			// assert
-			_mp3PlayerTests.Should().NotBeNull();
-		}
+        [Test]
+        [Explicit]
+        public void PlayFile_WhenWav_ShouldPlay()
+        {
+            // arrange
+            Setup();
+            // action 
+            _mp3PlayerTests.PlayFile(@"Resources\darthvader_yesmaster.wav");
+            // assert
+            _mp3PlayerTests.Should().NotBeNull();
+        }
 
-		 
-	}
-
+        [Test]
+        [Explicit]
+        public void PlayFile_WhenGivenMp3_ShouldPlay()
+        {
+            // arrange
+            Setup();
+            // action 
+            _mp3PlayerTests.PlayFile(@"Resources\force.mp3");
+            // assert
+            _mp3PlayerTests.Should().NotBeNull();
+        }
+    }
 }

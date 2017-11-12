@@ -10,7 +10,7 @@ namespace BuildIndicatron.Core.Chat
         private readonly ISettingsManager _settingsContext;
         private readonly IMonitorJenkins _monitorJenkins;
 
-        public RunJenkinsMonitorOnBotChatContext(ISettingsManager settingsContext , IMonitorJenkins monitorJenkins)
+        public RunJenkinsMonitorOnBotChatContext(ISettingsManager settingsContext, IMonitorJenkins monitorJenkins)
         {
             _settingsContext = settingsContext;
             _monitorJenkins = monitorJenkins;

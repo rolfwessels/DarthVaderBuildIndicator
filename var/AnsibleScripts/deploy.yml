@@ -6,5 +6,6 @@
     - buildindicator-host
     - docker
     - docker_compose
-    - portainer
+    - docker_base
+    - docker_buildindicator
     

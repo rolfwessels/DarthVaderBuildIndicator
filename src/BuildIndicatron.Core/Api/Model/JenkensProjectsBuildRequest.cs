@@ -12,7 +12,6 @@ namespace BuildIndicatron.Core.Api.Model
                 var name = values[i];
                 var value = (values.Length > i + 1) ? values[i + 1] : "";
                 parameter.Add(new ParameterData(name, value));
-
             }
         }
 
@@ -29,6 +28,5 @@ namespace BuildIndicatron.Core.Api.Model
             public string name { get; set; }
             public string value { get; set; }
         }
-
     }
 }

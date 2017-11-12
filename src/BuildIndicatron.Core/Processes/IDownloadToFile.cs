@@ -2,8 +2,8 @@
 
 namespace BuildIndicatron.Core.Processes
 {
-	public interface IDownloadToFile
-	{
-		string DownloadToTempFile(Uri uri, string text);
-	}
+    public interface IDownloadToFile
+    {
+        string DownloadToTempFile(Uri uri, string text);
+    }
 }

@@ -25,7 +25,8 @@ namespace BuildIndicatron.Core.Chat
         }
 
 
-        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, Meta server)
+        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context,
+            Meta server)
         {
             var oneLiner = RandomTextHelper.OneLiner;
             await context.Respond(oneLiner);

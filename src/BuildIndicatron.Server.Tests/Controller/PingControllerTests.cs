@@ -1,64 +1,58 @@
-﻿using BuildIndicatron.Server.Controllers;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using FluentAssertions;
+using BuildIndicatron.Server.Api.Controllers;
 
 namespace BuildIndicatron.Server.Tests.Controller
 {
-	[TestFixture]
-	public class PingControllerTests
-	{
+    [TestFixture]
+    public class PingControllerTests
+    {
+        private PingController _pingController;
 
-		private PingController _pingController;
+        #region Setup/Teardown
 
-		#region Setup/Teardown
+        public void Setup()
+        {
+            _pingController = new PingController();
+        }
 
-		public void Setup()
-		{
-			_pingController = new PingController();
-		}
+        [TearDown]
+        public void TearDown()
+        {
+        }
 
-		[TearDown]
-		public void TearDown()
-		{
+        #endregion
 
-		}
-
-		#endregion
-
-		[Test]
-		public void Constructor_WhenCalled_ShouldNotBeNull()
-		{
-			// arrange
-			Setup();
-			// assert
-			_pingController.Should().NotBeNull();
-		}
+        [Test]
+        public void Constructor_WhenCalled_ShouldNotBeNull()
+        {
+            // arrange
+            Setup();
+            // assert
+            _pingController.Should().NotBeNull();
+        }
 
 
-		[Test]
-		public void Get_WhenCalled_ShouldContainVersionNumber()
-		{
-			// arrange
-			Setup();
-			// action
-			var pingResponse = _pingController.Get();
-			// assert
-			pingResponse.Version.Should().Be("1.0.0.0");
+        [Test]
+        public void Get_WhenCalled_ShouldContainVersionNumber()
+        {
+            // arrange
+            Setup();
+            // action
+            var pingResponse = _pingController.Get();
+            // assert
+            pingResponse.Version.Should().Be("1.0.0.0");
+        }
 
-		}
-		
-		[Test]
-		public void Get_WhenCalled_ShouldContainPlatform()
-		{
-			// arrange
-			Setup();
-			// action
-			var pingResponse = _pingController.Get();
-			// assert
-			pingResponse.Platform.Should().Be("Win32NT");
-
-		}
-
-	}
-
+        [Test]
+        public void Get_WhenCalled_ShouldContainPlatform()
+        {
+            // arrange
+            Setup();
+            // action
+            var pingResponse = _pingController.Get();
+            // assert
+            pingResponse.Platform.Should().Be("Win32NT");
+        }
+    }
 }

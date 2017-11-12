@@ -2,8 +2,8 @@
 
 namespace BuildIndicatron.Core.Processes
 {
-	public interface ISequencePlayer
-	{
-		void Play(Sequences sequences);
-	}
+    public interface ISequencePlayer
+    {
+        void Play(Sequences sequences);
+    }
 }

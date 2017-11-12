@@ -12,14 +12,13 @@ using log4net;
 
 namespace BuildIndicatron.Core.Chat
 {
-
     public class JenkinsStatusContext : TextSplitterContextBase<JenkinsStatusContext.Request>, IWithHelpText
     {
         private readonly IJenkinsFactory _apiFactory;
         private readonly ISettingsManager _settingsManager;
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        public JenkinsStatusContext(IJenkinsFactory apiFactory , ISettingsManager settingsManager)
+        public JenkinsStatusContext(IJenkinsFactory apiFactory, ISettingsManager settingsManager)
         {
             _apiFactory = apiFactory;
             _settingsManager = settingsManager;
@@ -31,10 +30,10 @@ namespace BuildIndicatron.Core.Chat
         {
             textSplitter
                 .Map(@"(ANYTHING)(jenkins) (status)");
-
         }
-        
-        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context, Request server)
+
+        protected override async Task Response(ChatContextHolder chatContextHolder, IMessageContext context,
+            Request server)
         {
             var jenkensApi = _apiFactory.GetBuilder();
             try
@@ -52,11 +51,11 @@ namespace BuildIndicatron.Core.Chat
                 {
                     await context.Respond(string.Format("{0} {1}", value.Name, MapColor(value)));
                 }
-                
             }
             catch (Exception)
             {
-                context.Respond(string.Format("Whoops, there was a problem collecting data from {0}.", jenkensApi.Url)).FireAndForgetWithLogging();
+                context.Respond(string.Format("Whoops, there was a problem collecting data from {0}.", jenkensApi.Url))
+                    .FireAndForgetWithLogging();
             }
         }
 
@@ -72,7 +71,7 @@ namespace BuildIndicatron.Core.Chat
             }
             if (color.IsFailed())
             {
-              return ":scream:";
+                return ":scream:";
             }
             return ":disappointed:";
         }
@@ -92,6 +91,4 @@ namespace BuildIndicatron.Core.Chat
         {
         }
     }
-
-    
 }

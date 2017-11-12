@@ -13,7 +13,8 @@ namespace BuildIndicatron.Tests.Processes
     public class VoiceRssTests
     {
         public const string _longString =
-            "This is some very long text , that just goes on and on. and on. and on. and on. and on. and on. and on. and on. Wow that was boring !";
+                "This is some very long text , that just goes on and on. and on. and on. and on. and on. and on. and on. and on. Wow that was boring !"
+            ;
 
         private static readonly ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private Mock<IDownloadToFile> _mockIDownloadToFile;

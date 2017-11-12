@@ -7,7 +7,6 @@ using BuildIndicatron.Core.Chat;
 using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Core.Settings;
-using BuildIndicatron.Server.Setup;
 using Moq;
 using NUnit.Framework;
 
@@ -87,10 +86,11 @@ namespace BuildIndicatron.Tests.Core.Chat
 
         private void DefaultRegsters(ContainerBuilder builder)
         {
-            builder.Register(context => new AutofacInjector(_container)).As<IFactory>().SingleInstance();
-            builder.RegisterAssemblyTypes(typeof (IFactory).Assembly)
+            builder.Register(context => new AutofacInjector(_container))
+                .As<IFactory>().SingleInstance();
+            builder.RegisterAssemblyTypes(typeof(IFactory).Assembly)
                 .Where(t => t.GetInterfaces()
-                    .Any(i => i.IsAssignableFrom(typeof (IReposonseFlow))))
+                    .Any(i => i.IsAssignableFrom(typeof(IReposonseFlow))))
                 .AsSelf().SingleInstance();
             builder.RegisterType<SequencesFactory>();
 

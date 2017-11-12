@@ -36,10 +36,11 @@ namespace BuildIndicatron.Core.Helpers
 
         public static string GetDefaultProxy(this ISettingsManager settingsManager)
         {
-          return settingsManager.Get("default_proxy", "");
+            return settingsManager.Get("default_proxy", "");
         }
 
-        public static IEnumerable<Job> GetMyBuildingJobs(this ISettingsManager settingsmanager, JenkensProjectsResult allProjects)
+        public static IEnumerable<Job> GetMyBuildingJobs(this ISettingsManager settingsmanager,
+            JenkensProjectsResult allProjects)
         {
             var myBuildingJobs = GetMyBuildingJobs(settingsmanager);
             return allProjects.Jobs.Where(

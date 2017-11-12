@@ -7,6 +7,7 @@ using BuildIndicatron.App.Core.Task;
 #else
 using log4net;
 using System.Threading.Tasks;
+
 #endif
 
 namespace BuildIndicatron.Core.Api
@@ -26,7 +27,4 @@ namespace BuildIndicatron.Core.Api
         Task<SetButtonChoreographyResponse> SetButtonChoreography(params Choreography[] choreography);
         Task<GetClipsResponse> GetClips();
     }
-
-   
 }
-

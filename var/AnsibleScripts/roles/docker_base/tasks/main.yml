@@ -1,0 +1,14 @@
+- name: Create docker folder
+  file:
+    path: ~/docker/docker_base/
+    state: directory
+- name: Create docker_base compose file
+  copy:
+    src: docker-compose.yml
+    dest: ~/docker/docker_base/docker-compose.yml
+
+- name: Docker up docker_base
+  command: docker-compose up -d
+  become: true
+  args:
+    chdir: '{{ home_dir }}/docker/docker_base/'

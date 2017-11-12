@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  portainer:
+    image: rolfwessels/buildindicator:beta
+    container_name: "buildindicator"
+    restart: unless-stopped
+    network_mode: host
+    ports:
+      - "5000:5000"
+    environment:
+      - JenkinsHost={{ jenkins_host }}
+      - JenkinsUser={{ jenkins_user }}
+      - JenkinsPassword={{ jenkins_password }}
+      - SlackKey={{ slack_key }}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/portainer/data:/data
+
+#ansible-vault encrypt_string 'test' --name 'test'

@@ -10,3 +10,6 @@ obj/
 /src/BuildIndicatron.Console/*.ncrunchproject
 /src/_NCrunch_BuildIndicatron/StoredText
 src/.vs/
+/src/BuildIndicatron.Server/logs
+/var/AnsibleScripts/*.retry
+var/AnsibleScripts/group_vars/buildindicator-host.yml

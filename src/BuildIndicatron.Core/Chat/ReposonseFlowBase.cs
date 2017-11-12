@@ -6,7 +6,7 @@ namespace BuildIndicatron.Core.Chat
         {
             return context.Text.ToLower().Contains(text.ToLower());
         }
-    
+
         protected bool StartsWith(IMessageContext context, string text)
         {
             return context.Text.ToLower().StartsWith(text.ToLower());
@@ -22,6 +22,4 @@ namespace BuildIndicatron.Core.Chat
             return context.IsDirectedAtMe;
         }
     }
-
-    
 }

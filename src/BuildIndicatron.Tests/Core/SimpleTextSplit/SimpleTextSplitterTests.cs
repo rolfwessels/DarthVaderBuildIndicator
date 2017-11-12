@@ -8,7 +8,6 @@ namespace BuildIndicatron.Tests.Core.SimpleTextSplit
     [TestFixture]
     public class SimpleTextSplitterTests
     {
-
         #region Setup/Teardown
 
         public void Setup()
@@ -16,7 +15,7 @@ namespace BuildIndicatron.Tests.Core.SimpleTextSplit
         }
 
         #endregion
-       
+
         [Test]
         public void Given_GivenSimpleMatch_ShouldReturnValue()
         {
@@ -40,10 +39,9 @@ namespace BuildIndicatron.Tests.Core.SimpleTextSplit
             lookup.Process("set setting test").IsMatch.Should().Be(true);
             lookup.Process("set settings test").IsMatch.Should().Be(true);
             // assert
-            
         }
 
- 
+
         [Test]
         public void Given_GivenSimpleStringLookup_ShouldReturnValue()
         {
@@ -51,9 +49,9 @@ namespace BuildIndicatron.Tests.Core.SimpleTextSplit
             Setup();
             // action
             var lookup = SimpleTextSplitter.ApplyTo<Result>()
-                .Map(@"set setting (?<key>WORD) (?<value>ANYTHING)")
-                .Map(@"set setting (?<key>WORD)")
-                .Map(@"set setting")
+                    .Map(@"set setting (?<key>WORD) (?<value>ANYTHING)")
+                    .Map(@"set setting (?<key>WORD)")
+                    .Map(@"set setting")
                 ;
 
             // assert
@@ -71,9 +69,7 @@ namespace BuildIndicatron.Tests.Core.SimpleTextSplit
         {
             public bool IsRequestingHelp { get; set; }
             public string Key { get; set; }
-            public string Value { get; set; } 
+            public string Value { get; set; }
         }
     }
-
-    
 }

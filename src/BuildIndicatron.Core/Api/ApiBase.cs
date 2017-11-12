@@ -67,7 +67,8 @@ namespace BuildIndicatron.Core.Api
                     stopwatch.Stop();
                     _log.Debug(string.Format("ApiBase:ProcessDefaultRequest Content {0} [RequestTime:{1}] [{2}]",
                         buildUri, stopwatch.ElapsedMilliseconds, response.Content));
-                    if (response.ErrorException == null && (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created) )
+                    if (response.ErrorException == null &&
+                        (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created))
                     {
                         T result = response.Data;
                         taskCompletionSource.SetResult(result);
@@ -123,7 +124,7 @@ namespace BuildIndicatron.Core.Api
                         int nextByte = stream.ReadByte();
                         if (nextByte != -1)
                         {
-                            var temp = new byte[readBuffer.Length*2];
+                            var temp = new byte[readBuffer.Length * 2];
                             Buffer.BlockCopy(readBuffer, 0, temp, 0, readBuffer.Length);
                             Buffer.SetByte(temp, totalBytesRead, (byte) nextByte);
                             readBuffer = temp;

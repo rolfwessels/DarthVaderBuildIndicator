@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  portainer:
+    image: portainer/portainer
+    container_name: "portainer"
+    restart: unless-stopped
+    ports:
+       - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/portainer/data:/data
+  # node-exporter:
+  #   container_name: "node-exporter"
+  #   image: swapnil18/docker-arm-node-exporter
+  #   volumes:
+  #     - /proc:/host/proc:ro
+  #     - /sys:/host/sys:ro
+  #     - /:/rootfs:ro
+  #   # command: '-collector.procfs=/host/proc -collector.sysfs=/host/sys -collector.filesystem.ignored-mount-points="^(/rootfs|/host|)/(sys|proc|dev|host|etc)($$|/)" collector.filesystem.ignored-fs-types="^(sys|proc|auto|cgroup|devpts|ns|au|fuse\.lxc|mqueue)(fs|)$$"'
+   
+  #   ports:
+  #      - "9100:9100"
+  #   restart: unless-stopped
+  watchtower:
+    container_name: "watchtower"
+    image: v2tec/watchtower:armhf-latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/.docker/config.json:/config.json
+    
