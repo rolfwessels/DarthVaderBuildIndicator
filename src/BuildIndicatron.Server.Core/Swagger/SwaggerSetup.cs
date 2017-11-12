@@ -1,12 +1,12 @@
 ﻿using System.Linq;
 using System.Reflection;
+using BuildIndicatron.Core;
 using log4net;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.Swagger.Model;
-using BuildIndicatron.Core;
 
-namespace CoreDocker.Api.Swagger
+namespace BuildIndicatron.Server.Core.Swagger
 {
     public class SwaggerSetup
     {

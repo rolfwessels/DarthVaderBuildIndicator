@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Net;
 using System.Reflection;
-using log4net;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc.Filters;
 using System.Threading.Tasks;
+using BuildIndicatron.Server.Core.WebApi.Exceptions;
+using log4net;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace CoreDocker.Api.WebApi.Filters
+namespace BuildIndicatron.Server.Core.WebApi.Filters
 {
     public class CaptureExceptionFilter : ExceptionFilterAttribute
     {

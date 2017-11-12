@@ -1,4 +1,4 @@
-﻿namespace BuildIndicatron.Server.Api
+﻿namespace BuildIndicatron.Server.Core.WebApi
 {
     public class RouteHelper
     {

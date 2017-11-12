@@ -1,4 +1,4 @@
-namespace BuildIndicatron.Server
+namespace BuildIndicatron.Server.Core
 {
     internal class Constants
     {

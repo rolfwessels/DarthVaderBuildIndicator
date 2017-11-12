@@ -4,7 +4,7 @@ using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Shared.Enums;
 using log4net;
 
-namespace BuildIndicatron.Server.Fakes
+namespace BuildIndicatron.Server.Core.Fakes
 {
     public class FakePinManager : IPinManager
     {

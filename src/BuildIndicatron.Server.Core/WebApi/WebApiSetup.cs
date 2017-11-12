@@ -1,7 +1,7 @@
-﻿using CoreDocker.Api.WebApi.Filters;
+﻿using BuildIndicatron.Server.Core.WebApi.Filters;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CoreDocker.Api.WebApi
+namespace BuildIndicatron.Server.Core.WebApi
 {
   public class WebApiSetup
   {

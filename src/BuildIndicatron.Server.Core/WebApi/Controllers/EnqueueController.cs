@@ -6,7 +6,7 @@ using BuildIndicatron.Shared.Models.ApiResponses;
 using log4net;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BuildIndicatron.Server.Api.Controllers
+namespace BuildIndicatron.Server.Core.WebApi.Controllers
 {
     [Route(RouteHelper.EnqueueController)]
     public class EnqueueController : Controller

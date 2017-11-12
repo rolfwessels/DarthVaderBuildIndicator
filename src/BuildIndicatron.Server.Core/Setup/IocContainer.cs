@@ -10,12 +10,12 @@ using BuildIndicatron.Core.Chat;
 using BuildIndicatron.Core.Helpers;
 using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Core.Settings;
-using BuildIndicatron.Server.Fakes;
-using BuildIndicatron.Server.Properties;
+using BuildIndicatron.Server.Core.Fakes;
+using BuildIndicatron.Server.Core.Properties;
 using BuildIndicatron.Shared.Enums;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BuildIndicatron.Server.Setup
+namespace BuildIndicatron.Server.Core.Setup
 {
     public class IocContainer
     {

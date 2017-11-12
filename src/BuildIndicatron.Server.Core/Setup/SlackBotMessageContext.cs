@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using BuildIndicatron.Core.Chat;
 using SlackConnector.Models;
 
-namespace BuildIndicatron.Server.Setup
+namespace BuildIndicatron.Server.Core.Setup
 {
     public class SlackBotMessageContext : IMessageContext
     {

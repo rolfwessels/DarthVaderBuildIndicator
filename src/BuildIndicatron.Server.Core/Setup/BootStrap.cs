@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using BuildIndicatron.Core;
 using BuildIndicatron.Core.Api;
 using BuildIndicatron.Core.Helpers;
-using BuildIndicatron.Server.Properties;
+using BuildIndicatron.Server.Core.Properties;
 using log4net;
 
-namespace BuildIndicatron.Server.Setup
+namespace BuildIndicatron.Server.Core.Setup
 {
     public static class BootStrap
     {

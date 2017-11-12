@@ -10,7 +10,7 @@ using log4net;
 using SlackConnector;
 using SlackConnector.Models;
 
-namespace BuildIndicatron.Server.Setup
+namespace BuildIndicatron.Server.Core.Setup
 {
     public class SlackBotServer
     {

@@ -3,7 +3,7 @@ using BuildIndicatron.Core.Processes;
 using BuildIndicatron.Shared.Models.ApiResponses;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BuildIndicatron.Server.Api.Controllers
+namespace BuildIndicatron.Server.Core.WebApi.Controllers
 {
     [Route(RouteHelper.TextToSpeechController)]
     public class TextToSpeechController : Controller

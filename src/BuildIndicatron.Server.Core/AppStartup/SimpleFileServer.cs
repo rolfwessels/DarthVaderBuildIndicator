@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 
-namespace CoreDocker.Api.AppStartup
+namespace BuildIndicatron.Server.Core.AppStartup
 {
     public class SimpleFileServer
     {

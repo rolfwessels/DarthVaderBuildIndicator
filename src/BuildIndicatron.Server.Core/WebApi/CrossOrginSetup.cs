@@ -1,5 +1,5 @@
 
-namespace CoreDocker.Api
+namespace BuildIndicatron.Server.Core.WebApi
 {
     public class CrossOrginSetup
     {

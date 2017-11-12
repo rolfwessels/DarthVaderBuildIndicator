@@ -2,7 +2,7 @@ using System;
 using BuildIndicatron.Core.Api;
 using Microsoft.Extensions.Configuration;
 
-namespace BuildIndicatron.Server.Properties
+namespace BuildIndicatron.Server.Core.Properties
 {
     public class ServerSettings : IJenkinsISettings
     {

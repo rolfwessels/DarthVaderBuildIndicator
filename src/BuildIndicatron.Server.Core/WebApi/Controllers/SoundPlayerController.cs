@@ -2,13 +2,13 @@
 using System.Linq;
 using System.Net;
 using System.Reflection;
-using Microsoft.AspNetCore.Mvc;
 using BuildIndicatron.Core.Processes;
+using BuildIndicatron.Server.Core.WebApi.Exceptions;
 using BuildIndicatron.Shared.Models.ApiResponses;
-using CoreDocker.Api.WebApi.Filters;
 using log4net;
+using Microsoft.AspNetCore.Mvc;
 
-namespace BuildIndicatron.Server.Api.Controllers
+namespace BuildIndicatron.Server.Core.WebApi.Controllers
 {
     [Route(RouteHelper.SoundPlayerController)]
     public class SoundPlayerController : Controller

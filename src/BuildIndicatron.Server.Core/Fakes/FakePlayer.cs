@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using BuildIndicatron.Core.Processes;
 using log4net;
 
-namespace BuildIndicatron.Server.Fakes
+namespace BuildIndicatron.Server.Core.Fakes
 {
     public class FakePlayer : IVoiceEnhancer
     {
