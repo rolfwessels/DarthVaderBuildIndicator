@@ -17,23 +17,24 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
 
-namespace BuildIndicatron.Server
+namespace BuildIndicatron.Server.Core
 {
-    public class Startup
+    public static class StartupHelper
     {
-        public Startup(IHostingEnvironment env)
+        public static IConfigurationRoot Init(IHostingEnvironment env)
         {
             var logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly());
             XmlConfigurator.Configure(logRepository, new FileInfo("loggingSettings.xml"));
-            Configuration = ReadAppSettings(env);
-            BuildIndicatron.Core.Properties.Settings.Initialize(Configuration);
-            Settings.Initialize(Configuration);
+            var configuration = ReadAppSettings(env);
+            BuildIndicatron.Core.Properties.Settings.Initialize(configuration);
+            Settings.Initialize(configuration);
+            return configuration;
         }
 
-        public IConfigurationRoot Configuration { get; }
+       // public static IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public static IServiceProvider ConfigureServices(IServiceCollection services)
         {
             IocContainer.Initialize(services);
             services.AddMvc(WebApiSetup.Setup);
@@ -44,16 +45,15 @@ namespace BuildIndicatron.Server
         }
 
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public static void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IConfiguration configuration)
         {
            Log.Logger = new LoggerConfiguration()
-                .ReadFrom.Configuration(Configuration)
+                .ReadFrom.Configuration(configuration)
                 .CreateLogger();
 
             //LogManager.SetLogger(loggerFactory);
 
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddConsole(configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
             loggerFactory.AddSerilog();
 
@@ -64,7 +64,7 @@ namespace BuildIndicatron.Server
 
         #region Private Methods
 
-        private IConfigurationRoot ReadAppSettings(IHostingEnvironment env)
+        private static IConfigurationRoot ReadAppSettings(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
