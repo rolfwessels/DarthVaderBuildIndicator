@@ -1,8 +1,7 @@
 ﻿using System.IO;
-using System.Linq;
 using Microsoft.AspNetCore.Hosting;
 
-namespace BuildIndicatron.Server
+namespace BuildIndicatron.Server.Pi
 {
     public class Program
     {
@@ -10,10 +9,12 @@ namespace BuildIndicatron.Server
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
-                .UseUrls(args.FirstOrDefault() ?? "http://*:5000")
                 .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
                 .UseStartup<Startup>()
+                .UseApplicationInsights()
                 .Build();
+
             host.Run();
         }
     }

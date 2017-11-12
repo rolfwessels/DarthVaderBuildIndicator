@@ -1,0 +1,1306 @@
+2017-11-10 22:03:17,801 [2] INFO  [(null)] - swagger version:v1
+2017-11-10 22:03:19,419 [13] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://therig:9999/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:2366] []
+2017-11-10 22:03:19,433 [13] WARN  [(null)] - ApiBase:ProcessDefaultRequest An error occurred while sending the request. The server name or address could not be resolved
+System.Net.WebException: An error occurred while sending the request. The server name or address could not be resolved ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.Http.WinHttpException: The server name or address could not be resolved
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Threading.Tasks.RendezvousAwaitable`1.GetResult()
+   at System.Net.Http.WinHttpHandler.<StartRequest>d__105.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.Http.HttpClient.<FinishSendAsyncUnbuffered>d__59.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.HttpWebRequest.<SendRequest>d__194.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at RestSharp.Http.GetRawResponseAsync(IAsyncResult result, Action`1 callback)
+   at RestSharp.Http.ResponseCallback(IAsyncResult result, Action`1 callback)
+2017-11-10 22:03:19,560 [13] ERROR [(null)] - MonitorJenkins:StartScanningJenkins An error occurred while sending the request. The server name or address could not be resolved
+2017-11-10 22:03:49,565 [12] INFO  [(null)] - Connecting to : 'http://therig:9999' '' '*************'
+2017-11-10 22:03:49,565 [12] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://therig:9999/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:03:51,843 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://therig:9999/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:2265] []
+2017-11-10 22:03:51,854 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest An error occurred while sending the request. The server name or address could not be resolved
+System.Net.WebException: An error occurred while sending the request. The server name or address could not be resolved ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.Http.WinHttpException: The server name or address could not be resolved
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Threading.Tasks.RendezvousAwaitable`1.GetResult()
+   at System.Net.Http.WinHttpHandler.<StartRequest>d__105.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.Http.DiagnosticsHandler.<SendAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.Http.HttpClient.<FinishSendAsyncUnbuffered>d__59.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.HttpWebRequest.<SendRequest>d__194.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at RestSharp.Http.GetRawResponseAsync(IAsyncResult result, Action`1 callback)
+   at RestSharp.Http.ResponseCallback(IAsyncResult result, Action`1 callback)
+2017-11-10 22:03:51,862 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins An error occurred while sending the request. The server name or address could not be resolved
+2017-11-10 22:04:21,862 [12] INFO  [(null)] - Connecting to : 'http://therig:9999' '' '*************'
+2017-11-10 22:04:21,863 [12] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://therig:9999/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:04:24,133 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://therig:9999/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:2260] []
+2017-11-10 22:04:24,139 [14] WARN  [(null)] - ApiBase:ProcessDefaultRequest An error occurred while sending the request. The server name or address could not be resolved
+System.Net.WebException: An error occurred while sending the request. The server name or address could not be resolved ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.Http.WinHttpException: The server name or address could not be resolved
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Threading.Tasks.RendezvousAwaitable`1.GetResult()
+   at System.Net.Http.WinHttpHandler.<StartRequest>d__105.MoveNext()
+   --- End of inner exception stack trace ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.Http.DiagnosticsHandler.<SendAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.Http.HttpClient.<FinishSendAsyncUnbuffered>d__59.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1.ConfiguredTaskAwaiter.GetResult()
+   at System.Net.HttpWebRequest.<SendRequest>d__194.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at RestSharp.Http.GetRawResponseAsync(IAsyncResult result, Action`1 callback)
+   at RestSharp.Http.ResponseCallback(IAsyncResult result, Action`1 callback)
+2017-11-10 22:04:24,180 [14] ERROR [(null)] - MonitorJenkins:StartScanningJenkins An error occurred while sending the request. The server name or address could not be resolved
+2017-11-10 22:14:21,083 [2] INFO  [(null)] - swagger version:v1
+2017-11-10 22:14:50,763 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:14:50,763 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:14:50,810 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:46] [404 page not found
+]
+2017-11-10 22:14:50,822 [14] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:14:50,857 [14] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:15:20,869 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:15:20,869 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:15:20,908 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:37] [404 page not found
+]
+2017-11-10 22:15:20,915 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:15:20,922 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:15:50,922 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:15:50,923 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:15:50,960 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:30] [404 page not found
+]
+2017-11-10 22:15:50,964 [14] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:15:50,968 [14] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:16:20,968 [4] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:16:20,969 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:16:21,020 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:47] [404 page not found
+]
+2017-11-10 22:16:21,024 [9] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:16:21,028 [9] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:16:51,029 [14] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:16:51,029 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:16:51,072 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:37] [404 page not found
+]
+2017-11-10 22:16:51,081 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:16:51,087 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:17:21,099 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:17:21,099 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:17:21,542 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:439] [404 page not found
+]
+2017-11-10 22:17:21,554 [14] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:17:21,561 [14] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:17:51,565 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:17:51,565 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:17:51,595 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:25] [404 page not found
+]
+2017-11-10 22:17:51,600 [17] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:17:51,605 [17] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:18:21,606 [14] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:18:21,606 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:18:21,648 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:36] [404 page not found
+]
+2017-11-10 22:18:21,653 [9] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:18:21,658 [9] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:18:51,667 [17] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:18:51,667 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:18:51,699 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:22] [404 page not found
+]
+2017-11-10 22:18:51,704 [14] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:18:51,708 [14] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:19:21,709 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:19:21,709 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:19:24,766 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:3052] [404 page not found
+]
+2017-11-10 22:19:24,770 [14] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:19:24,774 [14] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:19:54,782 [17] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:19:54,783 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:19:54,820 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:26] [404 page not found
+]
+2017-11-10 22:19:54,825 [17] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:19:54,833 [17] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:20:24,855 [17] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:20:24,855 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:20:24,897 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:37] [404 page not found
+]
+2017-11-10 22:20:24,902 [14] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:20:24,919 [14] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:20:54,934 [14] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:20:54,934 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:20:54,969 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:28] [404 page not found
+]
+2017-11-10 22:20:54,973 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:20:54,978 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:21:24,979 [17] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:21:24,979 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:21:25,014 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:30] [404 page not found
+]
+2017-11-10 22:21:25,017 [9] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:21:25,022 [9] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:21:55,034 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:21:55,034 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:21:55,069 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:28] [404 page not found
+]
+2017-11-10 22:21:55,073 [14] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:21:55,078 [14] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:22:25,079 [9] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:22:25,079 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:22:25,107 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:22] [404 page not found
+]
+2017-11-10 22:22:25,108 [9] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:22:25,120 [9] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:22:55,123 [14] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:22:55,124 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:22:55,183 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:48] [404 page not found
+]
+2017-11-10 22:22:55,188 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:22:55,195 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:23:25,208 [9] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:23:25,208 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:23:25,248 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:35] [404 page not found
+]
+2017-11-10 22:23:25,252 [17] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:23:25,257 [17] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:23:55,265 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:23:55,265 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:23:55,302 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:32] [404 page not found
+]
+2017-11-10 22:23:55,310 [9] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:23:55,315 [9] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:24:25,315 [9] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:24:25,316 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:24:25,379 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:59] [404 page not found
+]
+2017-11-10 22:24:25,383 [9] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:24:25,388 [9] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:24:55,389 [9] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:24:55,390 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:24:55,431 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:37] [404 page not found
+]
+2017-11-10 22:24:55,435 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:24:55,442 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:25:25,448 [14] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:25:25,449 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:25:25,479 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:23] [404 page not found
+]
+2017-11-10 22:25:25,486 [9] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:25:25,490 [9] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:25:55,503 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:25:55,503 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:25:55,530 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:22] [404 page not found
+]
+2017-11-10 22:25:55,530 [14] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:25:55,539 [14] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:26:25,545 [17] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:26:25,545 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:26:25,572 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:21] [404 page not found
+]
+2017-11-10 22:26:25,572 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:26:25,581 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:26:55,590 [17] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:26:55,590 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:26:55,671 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:74] [404 page not found
+]
+2017-11-10 22:26:55,675 [14] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:26:55,684 [14] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:27:25,702 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:27:25,703 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:27:25,750 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:42] [404 page not found
+]
+2017-11-10 22:27:25,758 [9] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:27:25,764 [9] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:27:55,765 [14] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:27:55,765 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:27:55,796 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:26] [404 page not found
+]
+2017-11-10 22:27:55,801 [17] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:27:55,806 [17] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:28:25,810 [17] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:28:25,810 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:28:25,840 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:26] [404 page not found
+]
+2017-11-10 22:28:25,844 [14] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:28:25,849 [14] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:28:55,857 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:28:55,858 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:28:55,889 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:24] [404 page not found
+]
+2017-11-10 22:28:55,892 [9] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:28:55,900 [9] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:29:25,901 [9] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:29:25,901 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:29:25,957 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:50] [404 page not found
+]
+2017-11-10 22:29:25,961 [14] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:29:25,967 [14] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:29:55,983 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:29:55,992 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:29:56,024 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:30] [404 page not found
+]
+2017-11-10 22:29:56,029 [9] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:29:56,054 [9] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:30:26,067 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:30:26,068 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:30:26,116 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:43] [404 page not found
+]
+2017-11-10 22:30:26,120 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:30:26,126 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:30:56,136 [17] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:30:56,137 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:30:56,176 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:31] [404 page not found
+]
+2017-11-10 22:30:56,181 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:30:56,198 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:31:26,201 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:31:26,201 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:31:26,240 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:33] [404 page not found
+]
+2017-11-10 22:31:26,247 [9] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:31:26,251 [9] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:31:56,260 [9] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:31:56,261 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:31:56,315 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:44] [404 page not found
+]
+2017-11-10 22:31:56,329 [14] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:31:56,335 [14] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:32:26,344 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:32:26,345 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:32:26,485 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:134] [404 page not found
+]
+2017-11-10 22:32:26,489 [17] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:32:26,493 [17] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:32:56,494 [14] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:32:56,495 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:32:56,947 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:448] [404 page not found
+]
+2017-11-10 22:32:56,950 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:32:56,955 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:33:26,965 [17] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:33:26,965 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:33:27,017 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:45] [404 page not found
+]
+2017-11-10 22:33:27,021 [17] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:33:27,025 [17] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:33:57,026 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:33:57,027 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:33:57,064 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:31] [404 page not found
+]
+2017-11-10 22:33:57,068 [9] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:33:57,073 [9] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:34:27,075 [9] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:34:27,075 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:34:27,121 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:41] [404 page not found
+]
+2017-11-10 22:34:27,124 [17] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:34:27,129 [17] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:34:57,136 [9] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:34:57,137 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:34:57,163 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:21] [404 page not found
+]
+2017-11-10 22:34:57,167 [17] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:34:57,171 [17] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:35:27,172 [17] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:35:27,172 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:35:27,215 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:36] [404 page not found
+]
+2017-11-10 22:35:27,224 [14] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:35:27,228 [14] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:35:57,230 [9] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:35:57,230 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:35:57,320 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:82] [404 page not found
+]
+2017-11-10 22:35:57,324 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:35:57,331 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:36:27,341 [14] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:36:27,341 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:36:27,381 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:33] [404 page not found
+]
+2017-11-10 22:36:27,385 [9] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:36:27,401 [9] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:36:57,404 [14] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:36:57,404 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:36:57,604 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:195] [404 page not found
+]
+2017-11-10 22:36:57,609 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:36:57,614 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:37:27,622 [9] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:37:27,623 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:37:27,667 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:37] [404 page not found
+]
+2017-11-10 22:37:27,674 [17] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:37:27,679 [17] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:37:57,687 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:37:57,688 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:37:57,720 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:28] [404 page not found
+]
+2017-11-10 22:37:57,726 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:37:57,732 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:38:27,745 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:38:27,746 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:38:27,774 [14] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:24] [404 page not found
+]
+2017-11-10 22:38:27,778 [14] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:38:27,784 [14] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:38:42,982 [2] INFO  [(null)] - swagger version:v1
+2017-11-10 22:39:12,715 [4] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-10 22:39:12,715 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:39:12,758 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:37] [404 page not found
+]
+2017-11-10 22:39:12,767 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:39:12,803 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:39:51,026 [2] INFO  [(null)] - swagger version:v1
+2017-11-10 22:40:20,668 [9] INFO  [(null)] - Connecting to : 'http://zino:9090' 'buildindicator' '*************'
+2017-11-10 22:40:20,669 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:40:20,707 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:33] [404 page not found
+]
+2017-11-10 22:40:20,712 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:40:20,743 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:40:50,751 [4] INFO  [(null)] - Connecting to : 'http://zino:9090' 'buildindicator' '*************'
+2017-11-10 22:40:50,752 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:40:50,793 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:36] [404 page not found
+]
+2017-11-10 22:40:50,797 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:40:50,804 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:41:20,812 [4] INFO  [(null)] - Connecting to : 'http://zino:9090' 'buildindicator' '*************'
+2017-11-10 22:41:20,812 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:41:20,906 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:88] [404 page not found
+]
+2017-11-10 22:41:20,910 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:41:20,915 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:41:50,926 [4] INFO  [(null)] - Connecting to : 'http://zino:9090' 'buildindicator' '*************'
+2017-11-10 22:41:50,927 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:41:50,954 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:23] [404 page not found
+]
+2017-11-10 22:41:50,958 [4] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:41:50,963 [4] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:42:20,964 [9] INFO  [(null)] - Connecting to : 'http://zino:9090' 'buildindicator' '*************'
+2017-11-10 22:42:20,964 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:42:20,998 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:27] [404 page not found
+]
+2017-11-10 22:42:20,999 [9] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:42:21,008 [9] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:42:51,018 [3] INFO  [(null)] - Connecting to : 'http://zino:9090' 'buildindicator' '*************'
+2017-11-10 22:42:51,018 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:42:51,145 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:114] [404 page not found
+]
+2017-11-10 22:42:51,158 [4] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:42:51,182 [4] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:43:21,184 [4] INFO  [(null)] - Connecting to : 'http://zino:9090' 'buildindicator' '*************'
+2017-11-10 22:43:21,184 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:43:21,209 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:19] [404 page not found
+]
+2017-11-10 22:43:21,210 [4] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:43:21,223 [4] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:43:51,235 [9] INFO  [(null)] - Connecting to : 'http://zino:9090' 'buildindicator' '*************'
+2017-11-10 22:43:51,235 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:43:51,272 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:31] [404 page not found
+]
+2017-11-10 22:43:51,278 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:43:51,284 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:44:21,293 [9] INFO  [(null)] - Connecting to : 'http://zino:9090' 'buildindicator' '*************'
+2017-11-10 22:44:21,294 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:44:21,352 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:53] [404 page not found
+]
+2017-11-10 22:44:21,357 [9] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:44:21,361 [9] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:44:51,362 [4] INFO  [(null)] - Connecting to : 'http://zino:9090' 'buildindicator' '*************'
+2017-11-10 22:44:51,362 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:44:51,398 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:31] [404 page not found
+]
+2017-11-10 22:44:51,402 [4] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:44:51,410 [4] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:45:21,417 [9] INFO  [(null)] - Connecting to : 'http://zino:9090' 'buildindicator' '*************'
+2017-11-10 22:45:21,417 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:45:21,480 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:58] [404 page not found
+]
+2017-11-10 22:45:21,484 [4] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:45:21,490 [4] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:45:51,503 [9] INFO  [(null)] - Connecting to : 'http://zino:9090' 'buildindicator' '*************'
+2017-11-10 22:45:51,503 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:45:51,531 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:23] [404 page not found
+]
+2017-11-10 22:45:51,535 [3] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:45:51,544 [3] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:46:21,560 [4] INFO  [(null)] - Connecting to : 'http://zino:9090' 'buildindicator' '*************'
+2017-11-10 22:46:21,560 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:46:21,600 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:35] [404 page not found
+]
+2017-11-10 22:46:21,608 [4] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:46:21,614 [4] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:46:51,625 [9] INFO  [(null)] - Connecting to : 'http://zino:9090' 'buildindicator' '*************'
+2017-11-10 22:46:51,625 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:46:51,656 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:23] [404 page not found
+]
+2017-11-10 22:46:51,664 [9] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:46:51,669 [9] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-10 22:47:21,670 [4] INFO  [(null)] - Connecting to : 'http://zino:9090' 'buildindicator' '*************'
+2017-11-10 22:47:21,671 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-10 22:47:21,704 [9] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:27] [404 page not found
+]
+2017-11-10 22:47:21,713 [9] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-10 22:47:21,735 [9] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-11 06:44:21,253 [3] INFO  [(null)] - Token:''
+2017-11-11 06:44:21,303 [3] ERROR [(null)] - BootStrap:StartSlackBot apiToken is null or empty.
+2017-11-11 06:44:21,453 [4] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-11 06:44:21,471 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 06:44:21,706 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:234] [404 page not found
+]
+2017-11-11 06:44:21,708 [4] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-11 06:44:21,762 [4] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-11 06:44:21,997 [2] INFO  [(null)] - swagger version:v1
+2017-11-11 06:44:51,762 [15] INFO  [(null)] - Connecting to : 'http://zino:9090' 'zino' '*************'
+2017-11-11 06:44:51,763 [15] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 06:44:51,805 [8] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://zino:9090/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:32] [404 page not found
+]
+2017-11-11 06:44:51,805 [8] WARN  [(null)] - ApiBase:ProcessDefaultRequest Data at the root level is invalid. Line 1, position 1.
+System.Xml.XmlException: Data at the root level is invalid. Line 1, position 1.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at RestSharp.Deserializers.XmlDeserializer.Deserialize[T](IRestResponse response)
+   at RestSharp.RestClient.Deserialize[T](IRestRequest request, IRestResponse raw)
+2017-11-11 06:44:51,816 [8] ERROR [(null)] - MonitorJenkins:StartScanningJenkins Data at the root level is invalid. Line 1, position 1.
+2017-11-11 06:46:23,957 [3] INFO  [(null)] - Token:'xoxb-42965609527-yYI2SwIRYlBBQ9qj2q4RbbEK'
+2017-11-11 06:46:23,998 [3] DEBUG [(null)] - SlackBot: Starting server
+2017-11-11 06:46:24,108 [4] INFO  [(null)] - Connecting to : 'http://192.168.1.250:8089' 'buildindicator' '*************'
+2017-11-11 06:46:24,108 [3] INFO  [(null)] - Connecting to : 'http://192.168.1.250:8089' 'buildindicator' '*************'
+2017-11-11 06:46:24,123 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 06:46:24,135 [3] INFO  [(null)] - Setting sound folder to D:\Work\Home\DarthVaderBuildIndicator\src\BuildIndicatron.Server\resources\sounds
+2017-11-11 06:46:24,155 [7] INFO  [(null)] - Slackbot:Connecting
+2017-11-11 06:46:24,462 [2] INFO  [(null)] - swagger version:v1
+2017-11-11 06:46:24,524 [7] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:401] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 06:46:24,527 [7] INFO  [(null)] - Set PinName : MainLightRed [Off]
+2017-11-11 06:46:24,569 [7] INFO  [(null)] - Set PinName : SecondaryLightRed [Off]
+2017-11-11 06:46:24,570 [7] INFO  [(null)] - Set PinName : MainLightBlue [Off]
+2017-11-11 06:46:24,571 [7] INFO  [(null)] - Set PinName : MainLightGreen [On]
+2017-11-11 06:46:27,576 [17] INFO  [(null)] - Slackbot:Connected
+2017-11-11 06:46:27,581 [17] INFO  [(null)] - I'm on 192.168.1.107
+2017-11-11 06:46:54,571 [17] INFO  [(null)] - Connecting to : 'http://192.168.1.250:8089' 'buildindicator' '*************'
+2017-11-11 06:46:54,571 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 06:46:54,967 [8] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:391] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 06:46:54,973 [8] INFO  [(null)] - Set PinName : MainLightRed [Off]
+2017-11-11 06:46:54,974 [8] INFO  [(null)] - Set PinName : SecondaryLightRed [Off]
+2017-11-11 06:46:54,975 [8] INFO  [(null)] - Set PinName : MainLightBlue [Off]
+2017-11-11 06:46:54,975 [8] INFO  [(null)] - Set PinName : MainLightGreen [On]
+2017-11-11 06:46:55,611 [4] INFO  [(null)] - Chathub @rolf-rolf Text:hi
+2017-11-11 06:47:03,105 [7] INFO  [(null)] - Chathub @rolf-rolf Text:where are you ?
+2017-11-11 06:47:24,990 [17] INFO  [(null)] - Connecting to : 'http://192.168.1.250:8089' 'buildindicator' '*************'
+2017-11-11 06:47:24,990 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 06:47:25,200 [8] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:206] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 06:47:25,204 [8] INFO  [(null)] - Set PinName : MainLightRed [Off]
+2017-11-11 06:47:25,205 [8] INFO  [(null)] - Set PinName : SecondaryLightRed [Off]
+2017-11-11 06:47:25,206 [8] INFO  [(null)] - Set PinName : MainLightBlue [Off]
+2017-11-11 06:47:25,207 [8] INFO  [(null)] - Set PinName : MainLightGreen [On]
+2017-11-11 06:47:55,217 [4] INFO  [(null)] - Connecting to : 'http://192.168.1.250:8089' 'buildindicator' '*************'
+2017-11-11 06:47:55,217 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 06:47:55,433 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:211] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 06:47:55,436 [17] INFO  [(null)] - Set PinName : MainLightRed [Off]
+2017-11-11 06:47:55,437 [17] INFO  [(null)] - Set PinName : SecondaryLightRed [Off]
+2017-11-11 06:47:55,438 [17] INFO  [(null)] - Set PinName : MainLightBlue [Off]
+2017-11-11 06:47:55,439 [17] INFO  [(null)] - Set PinName : MainLightGreen [On]
+2017-11-11 06:48:25,446 [17] INFO  [(null)] - Connecting to : 'http://192.168.1.250:8089' 'buildindicator' '*************'
+2017-11-11 06:48:25,446 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 06:48:25,652 [7] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:201] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 06:48:25,656 [7] INFO  [(null)] - Set PinName : MainLightRed [Off]
+2017-11-11 06:48:25,656 [7] INFO  [(null)] - Set PinName : SecondaryLightRed [Off]
+2017-11-11 06:48:25,658 [7] INFO  [(null)] - Set PinName : MainLightBlue [Off]
+2017-11-11 06:48:25,658 [7] INFO  [(null)] - Set PinName : MainLightGreen [On]
+2017-11-11 07:02:39,739 [4] INFO  [(null)] - Token:'xoxb-42965609527-yYI2SwIRYlBBQ9qj2q4RbbEK'
+2017-11-11 07:02:39,778 [4] DEBUG [(null)] - SlackBot: Starting server
+2017-11-11 07:02:39,890 [4] INFO  [(null)] - Connecting to : 'http://192.168.1.250:8089' 'buildindicator' '*************'
+2017-11-11 07:02:39,902 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 07:02:39,913 [4] INFO  [(null)] - Setting sound folder to D:\Work\Home\DarthVaderBuildIndicator\src\BuildIndicatron.Server\resources\sounds
+2017-11-11 07:02:39,935 [7] INFO  [Slackbot] - Connecting
+2017-11-11 07:02:40,216 [2] INFO  [(null)] - swagger version:v1
+2017-11-11 07:02:40,253 [8] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:351] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 07:02:40,257 [8] INFO  [(null)] - Set PinName : MainLightGreen [On]
+2017-11-11 07:02:43,811 [6] INFO  [(null)] - Connected
+2017-11-11 07:02:43,818 [8] INFO  [(null)] - I'm on 192.168.1.107
+2017-11-11 07:03:10,259 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 07:03:10,474 [7] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:211] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 07:03:24,440 [15] INFO  [Slackbot] - Chathub @rolf-rolf Text:help
+2017-11-11 07:03:34,830 [4] INFO  [Slackbot] - Chathub @rolf-rolf Text:set main light blue
+2017-11-11 07:03:34,838 [4] INFO  [(null)] - Set PinName : MainLightBlue [On]
+2017-11-11 07:03:40,478 [15] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 07:03:40,683 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:202] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 07:04:09,234 [15] INFO  [Slackbot] - Chathub @rolf-rolf Text:set main light off
+2017-11-11 07:04:09,235 [7] INFO  [(null)] - Set PinName : MainLightBlue [Off]
+2017-11-11 07:04:10,700 [15] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 07:04:10,906 [8] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:202] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 07:04:40,915 [7] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 07:04:41,143 [8] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:224] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 07:05:11,149 [25] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 07:05:11,353 [8] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:200] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 07:05:26,104 [4] INFO  [(null)] - Token:'xoxb-42965609527-yYI2SwIRYlBBQ9qj2q4RbbEK'
+2017-11-11 07:05:26,143 [4] DEBUG [(null)] - SlackBot: Starting server
+2017-11-11 07:05:26,255 [4] INFO  [(null)] - Connecting to : 'http://192.168.1.250:8089' 'buildindicator' '*************'
+2017-11-11 07:05:26,268 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 07:05:26,278 [4] INFO  [(null)] - Setting sound folder to D:\Work\Home\DarthVaderBuildIndicator\src\BuildIndicatron.Server\resources\sounds
+2017-11-11 07:05:26,297 [7] INFO  [Slackbot] - Connecting
+2017-11-11 07:05:26,564 [2] INFO  [(null)] - swagger version:v1
+2017-11-11 07:05:26,608 [7] DEBUG [Slackbot] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:339] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 07:05:26,612 [7] INFO  [Slackbot] - Set PinName : MainLightGreen [On]
+2017-11-11 07:05:29,673 [4] INFO  [(null)] - Connected
+2017-11-11 07:05:29,677 [4] INFO  [(null)] - I'm on 192.168.1.107
+2017-11-11 07:05:45,491 [4] INFO  [Slackbot] - Chathub @rolf-rolf Text:set main light green
+2017-11-11 07:05:56,623 [7] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 07:05:56,858 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:230] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 07:06:04,301 [17] INFO  [Slackbot] - Chathub @rolf-rolf Text:set main light blue
+2017-11-11 07:06:04,301 [4] INFO  [(null)] - Set PinName : MainLightGreen [Off]
+2017-11-11 07:06:04,304 [4] INFO  [(null)] - Set PinName : MainLightBlue [On]
+2017-11-11 07:06:07,824 [7] INFO  [Slackbot] - Chathub @rolf-rolf Text:set main light off
+2017-11-11 07:06:07,824 [3] INFO  [(null)] - Set PinName : MainLightBlue [Off]
+2017-11-11 07:06:26,872 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 07:06:27,087 [7] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:210] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 07:06:27,091 [7] INFO  [(null)] - Set PinName : MainLightGreen [On]
+2017-11-11 07:06:57,093 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 07:06:57,305 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:207] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 07:07:27,324 [7] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 07:07:27,528 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:200] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 07:07:57,541 [28] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 07:07:57,781 [17] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:235] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 07:08:27,786 [25] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 07:08:27,986 [27] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:197] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 07:08:57,990 [30] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 07:08:58,206 [7] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:212] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 07:09:28,225 [24] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 07:09:28,435 [7] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:205] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 07:09:58,454 [25] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 07:09:58,665 [25] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:207] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 07:10:28,681 [24] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 07:10:28,932 [29] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:247] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 10:18:13,304 [4] INFO  [(null)] - Token:'xoxb-42965609527-yYI2SwIRYlBBQ9qj2q4RbbEK'
+2017-11-11 10:18:13,353 [4] DEBUG [(null)] - SlackBot: Starting server
+2017-11-11 10:18:13,516 [4] INFO  [(null)] - Connecting to : 'http://192.168.1.250:8089' 'buildindicator' '*************'
+2017-11-11 10:18:13,530 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 10:18:13,551 [4] INFO  [(null)] - Setting sound folder to D:\Work\Home\DarthVaderBuildIndicator\src\BuildIndicatron.Server\resources\sounds
+2017-11-11 10:18:13,572 [7] INFO  [Slackbot] - Connecting
+2017-11-11 10:18:13,915 [2] INFO  [(null)] - swagger version:v1
+2017-11-11 10:18:13,996 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:465] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 10:18:14,001 [3] INFO  [(null)] - Set PinName : MainLightGreen [On]
+2017-11-11 10:18:17,009 [7] INFO  [Slackbot] - Connected
+2017-11-11 10:18:17,018 [7] INFO  [(null)] - I'm on 192.168.1.107
+2017-11-11 10:18:30,523 [8] INFO  [Slackbot] - Chathub @rolf-rolf Text:Hi
+2017-11-11 10:18:44,012 [15] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 10:18:44,271 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:254] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 10:18:54,482 [4] INFO  [(null)] - Token:'xoxb-42965609527-yYI2SwIRYlBBQ9qj2q4RbbEK'
+2017-11-11 10:18:54,527 [4] DEBUG [(null)] - SlackBot: Starting server
+2017-11-11 10:18:54,644 [4] INFO  [(null)] - Connecting to : 'http://192.168.1.250:8089' 'buildindicator' '*************'
+2017-11-11 10:18:54,657 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 10:18:54,681 [4] INFO  [(null)] - Setting sound folder to D:\Work\Home\DarthVaderBuildIndicator\src\BuildIndicatron.Server\resources\sounds
+2017-11-11 10:18:54,700 [7] INFO  [Slackbot] - Connecting
+2017-11-11 10:18:54,999 [2] INFO  [(null)] - swagger version:v1
+2017-11-11 10:18:55,065 [8] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:407] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 10:18:55,071 [8] INFO  [(null)] - Set PinName : MainLightGreen [On]
+2017-11-11 10:18:57,689 [5] INFO  [(null)] - Connected
+2017-11-11 10:18:57,695 [8] INFO  [(null)] - I'm on 192.168.1.107
+2017-11-11 10:19:29,407 [4] INFO  [(null)] - Token:'xoxb-42965609527-yYI2SwIRYlBBQ9qj2q4RbbEK'
+2017-11-11 10:19:29,449 [4] DEBUG [(null)] - SlackBot: Starting server
+2017-11-11 10:19:29,578 [4] INFO  [(null)] - Connecting to : 'http://192.168.1.250:8089' 'buildindicator' '*************'
+2017-11-11 10:19:29,592 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 10:19:29,612 [4] INFO  [(null)] - Setting sound folder to D:\Work\Home\DarthVaderBuildIndicator\src\BuildIndicatron.Server\resources\sounds
+2017-11-11 10:19:29,633 [7] INFO  [Slackbot] - Connecting
+2017-11-11 10:19:29,971 [2] INFO  [(null)] - swagger version:v1
+2017-11-11 10:19:29,988 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:395] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 10:19:29,992 [4] INFO  [(null)] - Set PinName : MainLightGreen [On]
+2017-11-11 10:19:33,118 [8] INFO  [(null)] - Connected
+2017-11-11 10:19:33,125 [7] INFO  [(null)] - I'm on 192.168.1.107
+2017-11-11 10:19:59,993 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 10:20:00,373 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:375] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 10:20:30,390 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 10:20:30,707 [7] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:311] [{"_class":"hudson.model.Hudson","jobs":[]}]
+2017-11-11 10:21:00,725 [4] DEBUG [(null)] - ApiBase:ProcessDefaultRequest GET http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] []
+2017-11-11 10:21:01,123 [3] DEBUG [(null)] - ApiBase:ProcessDefaultRequest Content http://192.168.1.250:8089/api/json?depth=2&tree=jobs[name%2Ccolor%2Curl%2ChealthReport[score]%2Cbuilds[duration%2Cresult]%2ClastFailedBuild[number%2Ctimestamp%2CchangeSet[items[author[fullName]]]]] [RequestTime:384] [{"_class":"hudson.model.Hudson","jobs":[]}]

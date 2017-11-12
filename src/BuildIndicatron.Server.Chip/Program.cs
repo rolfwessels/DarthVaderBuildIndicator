@@ -1,8 +1,11 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 
-namespace BuildIndicatron.Server
+namespace BuildIndicatron.Server.Chip
 {
     public class Program
     {
@@ -10,10 +13,12 @@ namespace BuildIndicatron.Server
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
-                .UseUrls(args.FirstOrDefault() ?? "http://*:5000")
                 .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
                 .UseStartup<Startup>()
+                .UseApplicationInsights()
                 .Build();
+
             host.Run();
         }
     }
