@@ -3,6 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <AssemblyName>BuildIndicatron.Server.Chip</AssemblyName>
+    <Version>1.0.1</Version>
+    <Authors>Rolf Wessels</Authors>
+    <Company>Private</Company>
+    <Product>BuildIndicatron</Product>
+    <Description>Build indicator used to monitor jenkins server for build status and report back to user.</Description>
+    <RepositoryUrl>https://github.com/rolfwessels/DarthVaderBuildIndicator.git</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageProjectUrl>https://github.com/rolfwessels/DarthVaderBuildIndicator</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
