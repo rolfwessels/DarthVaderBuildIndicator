@@ -21,7 +21,6 @@ addons:
 
 
 script:
-  - mono --version
    # Build chip
   - pushd src/
   - dotnet restore
@@ -43,7 +42,6 @@ script:
     else
     docker build -t rolfwessels/buildindicator:chip-beta -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER-chip-beta -f Dockerfile.chip .;
     fi
-  
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
