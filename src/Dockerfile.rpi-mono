@@ -3,4 +3,4 @@ FROM fafanoulele/rpi-mono
 WORKDIR /app
 COPY  ./BuildIndicatron.Server.Pi/bin/Release/net46 ./
 EXPOSE 5000/tcp
-ENTRYPOINT ["mono", "BuildIndicatron.Server.Pi.dll"]
+ENTRYPOINT ["mono", "BuildIndicatron.Server.Pi.exe"]
