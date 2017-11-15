@@ -1,5 +1,5 @@
 language: csharp
-mono: none #latest
+mono: latest #latest
 #match on https://www.microsoft.com/net/download/linux
 dotnet: 2.0.0
 sudo: required
@@ -24,7 +24,11 @@ script:
    # Build chip
   - pushd src/
   - dotnet restore
-  
+  # Pi
+  - pushd BuildIndicatron.Server.Pi
+  - msbuild /t:build /p:Configuration=Release /verbosity:quiet 
+  - ls bin/Release
+  - popd
   # Chip
   - pushd BuildIndicatron.Server.Chip
   - sed -i -e "s/<Version>[0-9\.]*</<Version>1.0.$TRAVIS_BUILD_NUMBER\</g" BuildIndicatron.Server.Chip.csproj;
