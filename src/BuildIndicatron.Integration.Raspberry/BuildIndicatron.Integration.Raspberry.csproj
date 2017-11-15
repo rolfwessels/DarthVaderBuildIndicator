@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net46</TargetFramework>
-    <NoWarn>$(NoWarn);NU1605</NoWarn>
+    
   </PropertyGroup>
 
   <ItemGroup>

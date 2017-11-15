@@ -2,8 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>net46</TargetFramework>
-    <NoWarn>$(NoWarn);NU1605</NoWarn>
+    
     <StartupObject>BuildIndicatron.Server.Pi.Program</StartupObject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
 
   <ItemGroup>

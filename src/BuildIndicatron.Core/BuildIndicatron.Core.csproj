@@ -2,7 +2,15 @@
   <PropertyGroup>
 <!--    <TargetFramework>netstandard2.0</TargetFramework>-->
     <TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
-    <NoWarn>$(NoWarn);NU1605</NoWarn>
+    
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.2" />
