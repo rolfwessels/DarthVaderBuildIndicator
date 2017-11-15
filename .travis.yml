@@ -1,5 +1,5 @@
 language: csharp
-mono: latest
+mono: none #latest
 #match on https://www.microsoft.com/net/download/linux
 dotnet: 2.0.0
 sudo: required
@@ -25,23 +25,7 @@ script:
    # Build chip
   - pushd src/
   - dotnet restore
-  # Pi
-  - pushd BuildIndicatron.Server.Pi
-  - sed -i -e "s/<Version>[0-9\.]*</<Version>1.0.$TRAVIS_BUILD_NUMBER\</g" BuildIndicatron.Server.Pi.csproj;
-  - if [ "$TRAVIS_BRANCH" == "master" ]; 
-    then
-    dotnet publish -c Release -o bin/publish;
-    else
-    dotnet publish --version-suffix beta -c Release -o bin/publish;
-    fi
-  - popd
-  # Add docker images
-  - if [ "$TRAVIS_BRANCH" == "master" ]; 
-    then
-    docker build -t rolfwessels/buildindicator:rpi-mono  -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER-rpi-mono -f Dockerfile.chip .;
-    else
-    docker build -t rolfwessels/buildindicator:rpi-mono-beta -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER-rpi-mono-beta -f Dockerfile.chip .;
-    fi
+  
   # Chip
   - pushd BuildIndicatron.Server.Chip
   - sed -i -e "s/<Version>[0-9\.]*</<Version>1.0.$TRAVIS_BUILD_NUMBER\</g" BuildIndicatron.Server.Chip.csproj;
