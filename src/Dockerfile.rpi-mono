@@ -1,6 +1,6 @@
 # build runtime image
 FROM fafanoulele/rpi-mono
 WORKDIR /app
-COPY  ./BuildIndicatron.Server.Pi/bin/publish/ ./
+COPY  ./BuildIndicatron.Server.Pi/bin/Release/net46 ./
 EXPOSE 5000/tcp
-ENTRYPOINT ["dotnet", "BuildIndicatron.Server.Pi.dll"]
+ENTRYPOINT ["mono", "BuildIndicatron.Server.Pi.dll"]

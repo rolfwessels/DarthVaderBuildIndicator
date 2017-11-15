@@ -26,9 +26,21 @@ script:
   - dotnet restore
   # Pi
   - pushd BuildIndicatron.Server.Pi
-  - msbuild /t:build /p:Configuration=Release /verbosity:quiet 
+  - sed -i -e "s/<Version>[0-9\.]*</<Version>1.0.$TRAVIS_BUILD_NUMBER\</g" BuildIndicatron.Server.Pi.csproj;
+  - if [ "$TRAVIS_BRANCH" == "master" ]; 
+    then
+    msbuild /t:build /p:Configuration=Release /verbosity:quiet;
+    else
+    msbuild /t:build /p:VersionSuffix=beta /p:Configuration=Release /verbosity:quiet;
+    fi
   - ls bin/Release
   - popd
+  - if [ "$TRAVIS_BRANCH" == "master" ]; 
+    then
+    docker build -t rolfwessels/buildindicator:rpi-mono  -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER-rpi-mono -f Dockerfile.rpi-mono .;
+    else
+    docker build -t rolfwessels/buildindicator:rpi-mono-beta -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER-rpi-mono-beta -f Dockerfile.rpi-mono .;
+    fi
   # Chip
   - pushd BuildIndicatron.Server.Chip
   - sed -i -e "s/<Version>[0-9\.]*</<Version>1.0.$TRAVIS_BUILD_NUMBER\</g" BuildIndicatron.Server.Chip.csproj;
