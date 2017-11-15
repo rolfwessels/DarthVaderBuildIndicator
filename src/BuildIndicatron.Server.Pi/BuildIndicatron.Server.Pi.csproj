@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net46</TargetFramework>
+    <NoWarn>$(NoWarn);NU1605</NoWarn>
     <StartupObject>BuildIndicatron.Server.Pi.Program</StartupObject>
   </PropertyGroup>
 
