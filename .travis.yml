@@ -1,5 +1,5 @@
 language: csharp
-mono: none
+mono: latest
 #match on https://www.microsoft.com/net/download/linux
 dotnet: 2.0.0
 sudo: required
@@ -21,8 +21,7 @@ addons:
 
 
 script:
-  - which dotnet
-  - dotnet --info
+  - mono --version
    # Build chip
   - pushd src/
   - dotnet restore
