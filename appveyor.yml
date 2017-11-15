@@ -9,38 +9,29 @@ build_script:
   # Pi
   - ps: cd BuildIndicatron.Server.Pi
 #  - sed -i -e "s/<Version>[0-9\.]*</<Version>1.0.%APPVEYOR_BUILD_NUMBER%\</g" BuildIndicatron.Server.Pi.csproj;
-# - if [ "$TRAVIS_BRANCH" == "master" ]; 
-#   then
-  - ps: dotnet publish -c Release -o bin/publish;
-#   else
-#   dotnet publish --version-suffix beta -c Release -o bin/publish;
-#   fi
+  - ps: if($env:APPVEYOR_REPO_BRANCH -eq 'master') {
+        dotnet publish -c Release -o bin/publish
+      }
+      else {
+        dotnet publish --version-suffix beta -c Release -o bin/publish
+      }
   - cd ..
-  
   - echo %APPVEYOR_REPO_BRANCH%
 # # Add docker images
 # - if [ "$TRAVIS_BRANCH" == "master" ]; 
 #   then
 #   docker build -t rolfwessels/buildindicator:rpi-mono  -t rolfwessels/buildindicator:v1.0.%APPVEYOR_BUILD_NUMBER%-rpi-mono -f Dockerfile.rpi-mono .;
 #   else
-  - docker run hello-world
-  - docker build -t rolfwessels/buildindicator:rpi-mono-beta -t rolfwessels/buildindicator:v1.0.%APPVEYOR_BUILD_NUMBER%-rpi-mono-beta -f Dockerfile.rpi-mono .
-  - ps: if($env:APPVEYOR_REPO_BRANCH -eq 'master') {
-          echo %APPVEYOR_REPO_BRANCH% is master
-        }
-        else {
-          echo %APPVEYOR_REPO_BRANCH% is not master
-        }
-#   fi
-#  - ps: dotnet vstest (Get-ChildItem test | Where-Object {!$_.FullName.contains('Sdk') } | % { Join-Path $_.FullName -ChildPath ("bin/Debug/netcoreapp1.1/$($_.Name).dll") })
-#  - ps: move testresults\*.trx testresults\result.trx
-#  - ps: $wc = New-Object 'System.Net.WebClient'
-#  - ps: $wc.UploadFile("https://ci.appveyor.com/api/testresults/mstest/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\testresults\result.trx))
+  
+  # - docker build -t rolfwessels/buildindicator:rpi-mono-beta -t rolfwessels/buildindicator:v1.0.%APPVEYOR_BUILD_NUMBER%-rpi-mono-beta -f Dockerfile.rpi-mono .
+  
 
-  # - ps: cd test\CoreDocker.Sdk.Tests
-  # - ps: dotnet test 
-  # - ps: cd ..\..
+artifacts:
+  - path: 'src\BuildIndicatron.Server.Pi\bin\publish\**\*'
+    name: buildindicator v1.0.%APPVEYOR_BUILD_NUMBER%
+    type: zip
 
+    
 
 test: off 
 version: 0.0.1.{build}
