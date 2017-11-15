@@ -11,7 +11,7 @@ build_script:
 #  - sed -i -e "s/<Version>[0-9\.]*</<Version>1.0.$TRAVIS_BUILD_NUMBER\</g" BuildIndicatron.Server.Pi.csproj;
 # - if [ "$TRAVIS_BRANCH" == "master" ]; 
 #   then
-   dotnet publish -c Release -o bin/publish;
+  - ps: dotnet publish -c Release -o bin/publish;
 #   else
 #   dotnet publish --version-suffix beta -c Release -o bin/publish;
 #   fi
