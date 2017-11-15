@@ -36,6 +36,7 @@ script:
     fi
   - popd
   # Add docker images
+  
   - if [ "$TRAVIS_BRANCH" == "master" ]; 
     then
     docker build -t rolfwessels/buildindicator:chip  -t rolfwessels/buildindicator:v1.0.$TRAVIS_BUILD_NUMBER-chip -f Dockerfile.chip .;

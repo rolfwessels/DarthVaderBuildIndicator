@@ -23,6 +23,7 @@ build_script:
 #   then
 #   docker build -t rolfwessels/buildindicator:rpi-mono  -t rolfwessels/buildindicator:v1.0.%APPVEYOR_BUILD_NUMBER%-rpi-mono -f Dockerfile.rpi-mono .;
 #   else
+  - docker run hello-world
   - docker build -t rolfwessels/buildindicator:rpi-mono-beta -t rolfwessels/buildindicator:v1.0.%APPVEYOR_BUILD_NUMBER%-rpi-mono-beta -f Dockerfile.rpi-mono .
   - ps: if($env:APPVEYOR_REPO_BRANCH -eq 'master') {
           echo %APPVEYOR_REPO_BRANCH% is master
