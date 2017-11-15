@@ -16,6 +16,7 @@ build_script:
 #   dotnet publish --version-suffix beta -c Release -o bin/publish;
 #   fi
   - cd ..
+  
   - echo %APPVEYOR_REPO_BRANCH%
 # # Add docker images
 # - if [ "$TRAVIS_BRANCH" == "master" ]; 
@@ -23,6 +24,12 @@ build_script:
 #   docker build -t rolfwessels/buildindicator:rpi-mono  -t rolfwessels/buildindicator:v1.0.%APPVEYOR_BUILD_NUMBER%-rpi-mono -f Dockerfile.rpi-mono .;
 #   else
   - docker build -t rolfwessels/buildindicator:rpi-mono-beta -t rolfwessels/buildindicator:v1.0.%APPVEYOR_BUILD_NUMBER%-rpi-mono-beta -f Dockerfile.rpi-mono .
+  - ps: >-
+    If ($env:APPVEYOR_REPO_BRANCH -Match "master") {
+      echo %APPVEYOR_REPO_BRANCH% is master
+    } Else {
+      echo %APPVEYOR_REPO_BRANCH% is not master
+    }
 #   fi
 #  - ps: dotnet vstest (Get-ChildItem test | Where-Object {!$_.FullName.contains('Sdk') } | % { Join-Path $_.FullName -ChildPath ("bin/Debug/netcoreapp1.1/$($_.Name).dll") })
 #  - ps: move testresults\*.trx testresults\result.trx

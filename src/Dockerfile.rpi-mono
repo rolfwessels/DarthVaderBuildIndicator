@@ -1,5 +1,5 @@
 # build runtime image
-FROM fafanoulelerpi-mono
+FROM fafanoulele/rpi-mono
 WORKDIR /app
 COPY  ./BuildIndicatron.Server.Pi/bin/publish/ ./
 EXPOSE 5000/tcp
