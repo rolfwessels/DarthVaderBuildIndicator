@@ -1,9 +1,9 @@
 ﻿using System.Web.Http.Dependencies;
 using Autofac;
 using Autofac.Integration.WebApi;
-using MainSolutionTemplate.Api.WebApi.Controllers;
+using BuildIndicatron.Server.Pi.WebApi.Controllers;
 
-namespace MainSolutionTemplate.Api.AppStartup
+namespace BuildIndicatron.Server.Pi.AppStartup
 {
     public class IocApi 
 	{

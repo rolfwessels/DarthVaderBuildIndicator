@@ -1,9 +1,9 @@
 using System.Reflection;
 using System.Web.Http.Dependencies;
+using BuildIndicatron.Server.Pi.AppStartup;
+using BuildIndicatron.Server.Pi.Swagger;
 using BuildIndicatron.Server.Pi.WebApi;
 using log4net;
-using MainSolutionTemplate.Api.AppStartup;
-using MainSolutionTemplate.Api.Swagger;
 using Owin;
 
 namespace BuildIndicatron.Server.Pi

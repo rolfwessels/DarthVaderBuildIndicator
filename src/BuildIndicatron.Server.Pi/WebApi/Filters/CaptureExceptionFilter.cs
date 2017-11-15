@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Activities;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Web.Http.Filters;
+using BuildIndicatron.Server.Pi.WebApi.Exceptions;
+using BuildIndicatron.Shared.Models;
 using log4net;
-using System.Linq;
-using BuildIndicatron.Shared.Models;    
 
-namespace MainSolutionTemplate.Api.WebApi.Filters
+namespace BuildIndicatron.Server.Pi.WebApi.Filters
 {
     public class CaptureExceptionFilter : ExceptionFilterAttribute
     {

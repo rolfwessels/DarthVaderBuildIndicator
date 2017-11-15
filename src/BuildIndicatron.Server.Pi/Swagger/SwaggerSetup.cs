@@ -1,15 +1,14 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
-using MainSolutionTemplate.Api.WebApi.Controllers;
+using BuildIndicatron.Core;
+using BuildIndicatron.Server.Pi.WebApi.Controllers;
 using Swashbuckle.Application;
 using Swashbuckle.Swagger;
-using BuildIndicatron.Core;
 
-namespace MainSolutionTemplate.Api.Swagger
+namespace BuildIndicatron.Server.Pi.Swagger
 {
     public class SwaggerSetup
     {

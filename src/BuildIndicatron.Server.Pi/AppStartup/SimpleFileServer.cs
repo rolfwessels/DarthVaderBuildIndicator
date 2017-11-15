@@ -7,7 +7,7 @@ using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
 using Owin;
 
-namespace MainSolutionTemplate.Api.AppStartup
+namespace BuildIndicatron.Server.Pi.AppStartup
 {
     public class SimpleFileServer
     {

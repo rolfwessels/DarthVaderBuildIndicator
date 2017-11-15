@@ -3,7 +3,7 @@ using System.Linq;
 using System.Net.Http.Formatting;
 using System.Web.Http;
 using System.Web.Http.Dependencies;
-using MainSolutionTemplate.Api.WebApi.Filters;
+using BuildIndicatron.Server.Pi.WebApi.Filters;
 using Newtonsoft.Json.Serialization;
 using Owin;
 

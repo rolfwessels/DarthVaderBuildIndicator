@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace MainSolutionTemplate.Api.WebApi.Controllers
+namespace BuildIndicatron.Server.Pi.WebApi.Controllers
 {
 
     /// <summary>
