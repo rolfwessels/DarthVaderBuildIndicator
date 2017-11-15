@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net452</TargetFramework>
+    <TargetFramework>net46</TargetFramework>
     <StartupObject>BuildIndicatron.Server.Pi.Program</StartupObject>
   </PropertyGroup>
 
