@@ -1,9 +1,9 @@
 ---
 - hosts: buildindicator-host
   roles:
-    - buildindicator-host
+    - host_setup
     - docker
     - docker_compose
     - docker_base
-    - docker_buildindicator
+   # - docker_buildindicator
     

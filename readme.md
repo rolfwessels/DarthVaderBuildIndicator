@@ -10,6 +10,13 @@ Hacked darth vader led light used with RaspberryPi for build indicator https://w
 
 If you need more information. Please feel free to contact me.
 
+# new ansible install
+
+```
+ssh-copy-id pi@192.168.1.249
+#add to host files
+./init.sh
+```
 
 # new install.
 ```
@@ -62,4 +69,33 @@ ssh-copy-id chip@192.168.1.248 .. to copy the id to the service
 sudo docker run --rm  -p 5000:5000 rolfwessels/buildindicator:beta
 
 
+```
+
+
+# enable google assisant raspberry pi
+
+```
+sudo apt-get install -y fswebcam python-pip git
+cat /proc/asound/cards
+arecord -l
+lsusb
+
+scp client_secret_1007341124689-lia9ap7qrkqme2iqkuisgv6k13jtnakr.apps.googleusercontent.com.json pi@192.168.1.102:/home/pi/
+git clone https://github.com/googlesamples/assistant-sdk-python
+cp -r assistant-sdk-python/google-assistant-sdk/googlesamples/assistant/grpc raome
+python -m pip install --upgrade google-auth-oauthlib[tool]
+google-oauthlib-tool --client-secrets /home/pi/client_secret_1007341124689-lia9ap7qrkqme2iqkuisgv6k13jtnakr.apps.googleusercontent.com.json --scope https://www.googleapis.com/auth/assistant-sdk-prototype --save --headless 
+```
+
+# adding bluetooth to chip
+
+https://bbs.nextthing.co/t/guide-to-connecting-to-a-bluetooth-speaker/4684
+
+```
+sudo apt-get update && sudo apt-get install -y bluez-tools pulseaudio-module-bluetooth unzip wget
+bt-adapter -d
+bt-device --set 12:00:00:00:06:EA Trusted 1
+{ sleep 1; echo "connect 12:00:00:00:06:EA"; sleep 10; } | bluetoothctl
+pactl load-module module-bluetooth-discover && pactl load-module module-bluetooth-policy && pactl load-module module-switch-on-connect
+pactl list short sinks
 ```

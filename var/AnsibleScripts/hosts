@@ -1,9 +1,10 @@
 [buildindicator-host]
-192.168.1.248     ansible_connection=ssh        ansible_ssh_user=chip 
-192.168.1.249     ansible_connection=ssh        ansible_ssh_user=pi buildindicator_version=rpi-mono-beta
+192.168.1.249        ansible_ssh_user=pi buildindicator_version=rpi-mono-beta var_hostname=piga            
+192.168.1.248        ansible_ssh_user=chip var_hostname=buildindicator  
+192.168.1.102        ansible_ssh_user=pi buildindicator_version=rpi-mono-beta var_hostname=piha            
 
 [buildindicator-chip]
-192.168.1.248     ansible_connection=ssh        ansible_ssh_user=chip
+192.168.1.248        ansible_ssh_user=chip
 
 [buildindicator-raspberry]
-192.168.1.249     ansible_connection=ssh        ansible_ssh_user=pi 
+192.168.1.249         ansible_ssh_user=pi 
