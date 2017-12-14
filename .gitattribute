@@ -1,0 +1,13 @@
+*           text=auto
+
+*.txt       text
+*.vcproj    text eol=crlf
+*.sh        text eol=lf
+*.cs        text eol=crlf   diff=csharp
+
+# Bins
+
+*.exe binary
+*.out binary
+*.app binary
+
