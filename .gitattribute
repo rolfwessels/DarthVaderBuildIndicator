@@ -4,10 +4,10 @@
 *.vcproj    text eol=crlf
 *.sh        text eol=lf
 *.cs        text eol=crlf   diff=csharp
+*.js        text eol=crlf
 
 # Bins
 
-*.exe binary
-*.out binary
-*.app binary
-
+*.exe       binary
+*.out       binary
+*.dll       binary

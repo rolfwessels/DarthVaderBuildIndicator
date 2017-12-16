@@ -5,5 +5,5 @@
     - docker
     - docker_compose
     - docker_base
-   # - docker_buildindicator
+    - docker_buildindicator
     
