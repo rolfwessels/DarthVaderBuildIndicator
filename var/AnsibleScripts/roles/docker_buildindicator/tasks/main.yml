@@ -2,6 +2,7 @@
   file:
     path: ~/docker/buildindicator/
     state: directory
+    
 - name: Create buildindicator compose file
   template:
     src: docker-compose.yml

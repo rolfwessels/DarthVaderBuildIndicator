@@ -1,5 +1,76 @@
-sudo addgroup pi audio
-amixer cset numid=3 1
-speaker-test -t wav
-aplay -l && arecord -l
-amixer cset numid=1 -- 90%
+---
+## adding some audio setup
+- stat: path=~/.audiosetupdone
+  register: audio_setup_done
+  
+- name: Add group pi audio 
+  command: addgroup pi audio
+  become: True
+  when: audio_setup_done.stat.exists == False
+
+- name: Set audio output to jack
+  command: amixer cset numid=3 1
+  become: True
+  when: audio_setup_done.stat.exists == False
+
+- name: Create asoundrc
+  template:
+    src: asoundrc
+    dest: ~/.asoundrc
+  when: audio_setup_done.stat.exists == False
+
+- name: Create file stop repeat setup
+  file:
+    path: ~/.audiosetupdone
+    state: touch
+    mode: "u=rw"
+  when: audio_setup_done.stat.exists == False
+
+## adding python
+
+- stat: path=~/.haenvsetupdone
+  register: ha_env_setup_done
+  
+- name: Create ha folder
+  file:
+    path: '{{ ha_folder }}'
+    state: directory
+  when: ha_env_setup_done.stat.exists == False
+
+- name: Copy script
+  template:
+    src: install-ha-env.sh
+    dest: '{{ ha_folder }}/install-ha-env.sh'
+  when: ha_env_setup_done.stat.exists == False
+
+- name: Run script install-ha-env.sh
+  command: sh install-ha-env.sh > install-ha-env.out
+  args:
+    chdir: '{{ ha_folder }}'
+  when: ha_env_setup_done.stat.exists == False
+
+- name: Sync credentials
+  copy:
+    src: 'client_secret_1007341124689-lia9ap7qrkqme2iqkuisgv6k13jtnakr.apps.googleusercontent.com.json'
+    dest: '{{ ha_folder }}/'
+  when: ha_env_setup_done.stat.exists == False
+
+- name: Create file stop repeat setup
+  file:
+    path: ~/.haenvsetupdone
+    state: touch
+    mode: "u=rw"
+  when: ha_env_setup_done.stat.exists == False
+
+
+
+# amixer cset numid=3 1
+# speaker-test -t wav
+# aplay -l && arecord -l
+# amixer cset numid=1 -- 10%
+# alsamixer
+
+# arecord --format=S16_LE --duration=5 --rate=16000 --file-type=raw out.raw
+# aplay --format=S16_LE --rate=16000 out.raw
+
+# google-oauthlib-tool --client-secrets client_secret_1007341124689-lia9ap7qrkqme2iqkuisgv6k13jtnakr.apps.googleusercontent.com.json  --scope https://www.googleapis.com/auth/assistant-sdk-prototype --save --headless

@@ -14,3 +14,4 @@ src/.vs/
 /var/AnsibleScripts/*.retry
 var/AnsibleScripts/group_vars/buildindicator-host.yml
 src/BuildIndicatron.Server.Chip/logs/service.log
+**/client_secret_*.apps.googleusercontent.com.json

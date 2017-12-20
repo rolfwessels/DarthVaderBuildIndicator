@@ -1,1 +1,0 @@
-ansible-playbook build-image-chip.yml -i hosts 

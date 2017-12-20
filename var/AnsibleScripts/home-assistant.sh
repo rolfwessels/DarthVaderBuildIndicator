@@ -1,0 +1,1 @@
+ansible-playbook home-assistant.yml -i hosts 
